@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>31301036149-10th0nlpmbve8vaiivcdac15niu9ehdq.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.31301036149-10th0nlpmbve8vaiivcdac15niu9ehdq</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAgH6i8ypV74kTrEW5YF3X_ml3RqaI5nA8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>31301036149</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.fidelity.QuickFin</string>
+	<key>PROJECT_ID</key>
+	<string>quickfin-bc9c6</string>
+	<key>STORAGE_BUCKET</key>
+	<string>quickfin-bc9c6.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:31301036149:ios:7dda1e7c14d0fdbc61303c</string>
+	<key>DATABASE_URL</key>
+	<string>https://quickfin-bc9c6.firebaseio.com</string>
+</dict>
+</plist>
