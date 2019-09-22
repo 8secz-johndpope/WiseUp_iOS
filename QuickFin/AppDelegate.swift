@@ -11,6 +11,7 @@ import Firebase
 import GoogleSignIn
 import FBSDKCoreKit
 import IQKeyboardManagerSwift
+import UIWindowTransitions
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -31,11 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             // This state listener should persist.
             Auth.auth().addStateDidChangeListener { (_, user) in
                 if user != nil {
-                    window.rootViewController = MainTabBarViewController()
-                    window.makeKeyAndVisible()
+                    window.setRootViewControllerWithAnimation(target: MainTabBarViewController())
                 } else {
-                    window.rootViewController = SignInViewController()
-                    window.makeKeyAndVisible()
+                    window.setRootViewControllerWithAnimation(target: SignInViewController())
                 }
             }
         }
@@ -94,3 +93,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
 }
 
+extension UIWindow {
+    
+    func setRootViewControllerWithAnimation(target: UIViewController) {
+        var options = TransitionOptions()
+        if #available(iOS 13.0, *) {
+            options.background = TransitionOptions.Background.solidColor(UIColor.systemBackground)
+        } else {
+            // Fallback on earlier versions
+            options.background = TransitionOptions.Background.solidColor(UIColor.white)
+        }
+        options.direction = .toRight
+        options.style = .easeInOut
+        options.duration = 0.5
+        setRootViewController(target, options: options)
+    }
+    
+}

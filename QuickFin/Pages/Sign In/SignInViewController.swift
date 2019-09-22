@@ -20,6 +20,41 @@ class SignInViewController: BaseViewController, LoginButtonDelegate {
         initUI()
     }
     
+    func emailSignInHandler(email: String?, password: String?) {
+        guard let email = email, let password = password else {
+            #warning("TODO: Error handling")
+            return
+        }
+        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                #warning("TODO: Error handling")
+                print(error.localizedDescription)
+                return
+            }
+            #warning("TODO: Sync data")
+            UIApplication.shared.keyWindow?.setRootViewControllerWithAnimation(target: MainTabBarViewController())
+        }
+    }
+    
+    func signUpHandler() {
+        let signUpVC = SignUpViewController()
+        signUpVC.delegate = self
+        present(signUpVC, animated: true)
+    }
+    
+}
+
+// MARK: - Delegate pattern to automatically sign in
+extension SignInViewController: SignInDelegate {
+    
+    func didSignUp(email: String, password: String) {
+        self.emailSignInHandler(email: email, password: password)
+    }
+}
+
+// MARK: - Facebook sign in logic
+extension SignInViewController {
+    
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         if let error = error {
             #warning("TODO: Error popup")
@@ -52,5 +87,3 @@ class SignInViewController: BaseViewController, LoginButtonDelegate {
     }
 
 }
-
-

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2C3D0108485E6C69AD05E0C3 /* Pods_QuickFinUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2114EC9390AE4F3EB05513BF /* Pods_QuickFinUITests.framework */; };
 		905110A5966A1AFD247A2AEE /* Pods_QuickFin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 657B8E2B2F6E01BEDD7EB608 /* Pods_QuickFin.framework */; };
+		D5469B4523377A5D0047D09D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5469B4423377A5D0047D09D /* SignUpViewController.swift */; };
+		D5469B4823377AF20047D09D /* SignInDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5469B4723377AF20047D09D /* SignInDelegateProtocol.swift */; };
 		D570D5FE2333595900AB308B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D570D5FD2333595900AB308B /* AppDelegate.swift */; };
 		D570D6002333595900AB308B /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D570D5FF2333595900AB308B /* MainTabBarViewController.swift */; };
 		D570D6052333595B00AB308B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D570D6042333595B00AB308B /* Assets.xcassets */; };
@@ -52,6 +54,8 @@
 		657B8E2B2F6E01BEDD7EB608 /* Pods_QuickFin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuickFin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B31879574D3BA8D04FFAA5B /* Pods-QuickFin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickFin.debug.xcconfig"; path = "Target Support Files/Pods-QuickFin/Pods-QuickFin.debug.xcconfig"; sourceTree = "<group>"; };
 		B4E9EBC18D75FC4B60DA70CF /* Pods-QuickFinTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickFinTests.release.xcconfig"; path = "Target Support Files/Pods-QuickFinTests/Pods-QuickFinTests.release.xcconfig"; sourceTree = "<group>"; };
+		D5469B4423377A5D0047D09D /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		D5469B4723377AF20047D09D /* SignInDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDelegateProtocol.swift; sourceTree = "<group>"; };
 		D570D5FA2333595900AB308B /* QuickFin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickFin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D570D5FD2333595900AB308B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D570D5FF2333595900AB308B /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +116,14 @@
 				532CFC07664B61F2E2CCB7E0 /* Pods-QuickFinUITests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		D5469B4623377AD00047D09D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D5469B4723377AF20047D09D /* SignInDelegateProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		D570D5F12333595900AB308B = {
@@ -199,8 +211,10 @@
 		D5EA30562337184100F56428 /* Sign In */ = {
 			isa = PBXGroup;
 			children = (
+				D5469B4623377AD00047D09D /* Protocols */,
 				D5EA305C23371DE000F56428 /* Views */,
 				D5EA305A23371D5600F56428 /* SignInViewController.swift */,
+				D5469B4423377A5D0047D09D /* SignUpViewController.swift */,
 			);
 			path = "Sign In";
 			sourceTree = "<group>";
@@ -473,11 +487,13 @@
 			files = (
 				D5EA3060233737C100F56428 /* FontSizes.swift in Sources */,
 				D5EA305E23371E0700F56428 /* SignInView.swift in Sources */,
+				D5469B4523377A5D0047D09D /* SignUpViewController.swift in Sources */,
 				D570D6002333595900AB308B /* MainTabBarViewController.swift in Sources */,
 				D5EA30592337187100F56428 /* BaseViewController.swift in Sources */,
 				D570D5FE2333595900AB308B /* AppDelegate.swift in Sources */,
 				D5EA305B23371D5600F56428 /* SignInViewController.swift in Sources */,
 				D570D630233368DD00AB308B /* FirebaseUtility.swift in Sources */,
+				D5469B4823377AF20047D09D /* SignInDelegateProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
