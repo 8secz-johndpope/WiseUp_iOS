@@ -12,6 +12,7 @@ import SkyFloatingLabelTextField
 import GoogleSignIn
 import FBSDKCoreKit
 import FBSDKLoginKit
+import Bond
 
 extension SignInViewController {
     
@@ -91,6 +92,9 @@ extension SignInViewController {
             b.setTitle("Sign In".localized(), for: .normal)
             b.setTitleColor(UIColor.white, for: .normal)
             b.backgroundColor = UIColor(named: "Fidelity Green")
+            b.reactive.tap.observeNext { [unowned self] (_) in
+                self.emailSignInHandler(email: emailField.text, password: passwordField.text)
+            }
             return b
         }()
         let googleSignInButton: GIDSignInButton = {
@@ -135,6 +139,17 @@ extension SignInViewController {
             this.trailing.equalTo(view.snp.trailingMargin)
         }
         signInView.setCustomSpacing(20, after: passwordField)
+        
+        // MARK: - Sign up & forgot password
+        let signUpLabel: UIButton = {
+            let b = UIButton()
+            b.setTitle("Sign Up".localized(), for: .normal)
+            b.setTitleColor(UIColor(named: "Fidelity Green"), for: .normal)
+            b.reactive.tap.observeNext { (_) in
+                <#code#>
+            }
+            return b
+        }()
     }
     
 }
