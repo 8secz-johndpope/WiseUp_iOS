@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainTabBarViewController.swift
 //  QuickFin
 //
 //  Created by Boyuan Xu on 9/18/19.
@@ -7,14 +7,14 @@
 //
 
 import UIKit
+import RAMAnimatedTabBarController
 
-class ViewController: UIViewController {
+class MainTabBarViewController: RAMAnimatedTabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .darkGray
+        setBackground()
     }
-
 
 }
 

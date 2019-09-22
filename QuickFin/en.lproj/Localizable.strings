@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  QuickFin
+
+  Created by Boyuan Xu on 9/21/19.
+  Copyright © 2019 Fidelity Investments. All rights reserved.
+*/
+
+"QuickFin:" = "QuickFin:";
+"A financial literacy game." = "A financial literacy game.";
+"Email" = "Email";
+"Password" = "Password";
+"Sign In" = "Sign In";
+"Sign Up" = "Sign Up";
+"Forgot Password?" = "Forgot Password?";

@@ -10,13 +10,18 @@
 		2C3D0108485E6C69AD05E0C3 /* Pods_QuickFinUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2114EC9390AE4F3EB05513BF /* Pods_QuickFinUITests.framework */; };
 		905110A5966A1AFD247A2AEE /* Pods_QuickFin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 657B8E2B2F6E01BEDD7EB608 /* Pods_QuickFin.framework */; };
 		D570D5FE2333595900AB308B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D570D5FD2333595900AB308B /* AppDelegate.swift */; };
-		D570D6002333595900AB308B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D570D5FF2333595900AB308B /* ViewController.swift */; };
+		D570D6002333595900AB308B /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D570D5FF2333595900AB308B /* MainTabBarViewController.swift */; };
 		D570D6052333595B00AB308B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D570D6042333595B00AB308B /* Assets.xcassets */; };
 		D570D6082333595B00AB308B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D570D6062333595B00AB308B /* LaunchScreen.storyboard */; };
 		D570D6132333595B00AB308B /* QuickFinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D570D6122333595B00AB308B /* QuickFinTests.swift */; };
 		D570D61E2333595B00AB308B /* QuickFinUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D570D61D2333595B00AB308B /* QuickFinUITests.swift */; };
 		D570D62C2333611400AB308B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D570D62B2333611400AB308B /* GoogleService-Info.plist */; };
 		D570D630233368DD00AB308B /* FirebaseUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D570D62F233368DD00AB308B /* FirebaseUtility.swift */; };
+		D5EA30522337148800F56428 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D5EA30542337148800F56428 /* Localizable.strings */; };
+		D5EA30592337187100F56428 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EA30582337187100F56428 /* BaseViewController.swift */; };
+		D5EA305B23371D5600F56428 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EA305A23371D5600F56428 /* SignInViewController.swift */; };
+		D5EA305E23371E0700F56428 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EA305D23371E0700F56428 /* SignInView.swift */; };
+		D5EA3060233737C100F56428 /* FontSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EA305F233737C100F56428 /* FontSizes.swift */; };
 		DB094DCDC402ADD06E939CE1 /* Pods_QuickFinTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A3F0B0F7A2758259C7D929 /* Pods_QuickFinTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,7 +54,7 @@
 		B4E9EBC18D75FC4B60DA70CF /* Pods-QuickFinTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickFinTests.release.xcconfig"; path = "Target Support Files/Pods-QuickFinTests/Pods-QuickFinTests.release.xcconfig"; sourceTree = "<group>"; };
 		D570D5FA2333595900AB308B /* QuickFin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickFin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D570D5FD2333595900AB308B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D570D5FF2333595900AB308B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D570D5FF2333595900AB308B /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		D570D6042333595B00AB308B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D570D6072333595B00AB308B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D570D6092333595B00AB308B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,6 +66,11 @@
 		D570D61F2333595B00AB308B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D570D62B2333611400AB308B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D570D62F233368DD00AB308B /* FirebaseUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUtility.swift; sourceTree = "<group>"; };
+		D5EA30532337148800F56428 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D5EA30582337187100F56428 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		D5EA305A23371D5600F56428 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		D5EA305D23371E0700F56428 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		D5EA305F233737C100F56428 /* FontSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +139,8 @@
 		D570D5FC2333595900AB308B /* QuickFin */ = {
 			isa = PBXGroup;
 			children = (
-				D570D62E233368C500AB308B /* View Controllers */,
+				D5EA30542337148800F56428 /* Localizable.strings */,
+				D570D62E233368C500AB308B /* Pages */,
 				D570D62D233368BB00AB308B /* Utility */,
 				D570D62B2333611400AB308B /* GoogleService-Info.plist */,
 				D570D5FD2333595900AB308B /* AppDelegate.swift */,
@@ -162,16 +173,52 @@
 			isa = PBXGroup;
 			children = (
 				D570D62F233368DD00AB308B /* FirebaseUtility.swift */,
+				D5EA305F233737C100F56428 /* FontSizes.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
 		};
-		D570D62E233368C500AB308B /* View Controllers */ = {
+		D570D62E233368C500AB308B /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				D570D5FF2333595900AB308B /* ViewController.swift */,
+				D5EA30572337185900F56428 /* Base View Controller */,
+				D5EA30562337184100F56428 /* Sign In */,
+				D5EA30552337182D00F56428 /* Main Tab Bar Controller */,
 			);
-			path = "View Controllers";
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		D5EA30552337182D00F56428 /* Main Tab Bar Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D570D5FF2333595900AB308B /* MainTabBarViewController.swift */,
+			);
+			path = "Main Tab Bar Controller";
+			sourceTree = "<group>";
+		};
+		D5EA30562337184100F56428 /* Sign In */ = {
+			isa = PBXGroup;
+			children = (
+				D5EA305C23371DE000F56428 /* Views */,
+				D5EA305A23371D5600F56428 /* SignInViewController.swift */,
+			);
+			path = "Sign In";
+			sourceTree = "<group>";
+		};
+		D5EA30572337185900F56428 /* Base View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D5EA30582337187100F56428 /* BaseViewController.swift */,
+			);
+			path = "Base View Controller";
+			sourceTree = "<group>";
+		};
+		D5EA305C23371DE000F56428 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D5EA305D23371E0700F56428 /* SignInView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E6D470ABFB375B5E62AB03D7 /* Frameworks */ = {
@@ -196,6 +243,7 @@
 				D570D5F72333595900AB308B /* Frameworks */,
 				D570D5F82333595900AB308B /* Resources */,
 				E1C41B4CB259E83F66DE75AB /* [CP] Embed Pods Frameworks */,
+				46827DDE95A176476A247148 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -293,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D570D6082333595B00AB308B /* LaunchScreen.storyboard in Resources */,
+				D5EA30522337148800F56428 /* Localizable.strings in Resources */,
 				D570D62C2333611400AB308B /* GoogleService-Info.plist in Resources */,
 				D570D6052333595B00AB308B /* Assets.xcassets in Resources */,
 			);
@@ -359,6 +408,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		46827DDE95A176476A247148 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QuickFin/Pods-QuickFin-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QuickFin/Pods-QuickFin-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QuickFin/Pods-QuickFin-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		927696A219EBE7F35CBCA261 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -405,8 +471,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D570D6002333595900AB308B /* ViewController.swift in Sources */,
+				D5EA3060233737C100F56428 /* FontSizes.swift in Sources */,
+				D5EA305E23371E0700F56428 /* SignInView.swift in Sources */,
+				D570D6002333595900AB308B /* MainTabBarViewController.swift in Sources */,
+				D5EA30592337187100F56428 /* BaseViewController.swift in Sources */,
 				D570D5FE2333595900AB308B /* AppDelegate.swift in Sources */,
+				D5EA305B23371D5600F56428 /* SignInViewController.swift in Sources */,
 				D570D630233368DD00AB308B /* FirebaseUtility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,6 +519,14 @@
 				D570D6072333595B00AB308B /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D5EA30542337148800F56428 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D5EA30532337148800F56428 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -509,6 +587,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -563,6 +642,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -578,6 +658,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D5GTMK5VKL;
 				INFOPLIST_FILE = QuickFin/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -597,6 +678,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D5GTMK5VKL;
 				INFOPLIST_FILE = QuickFin/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

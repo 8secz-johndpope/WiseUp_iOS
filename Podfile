@@ -12,6 +12,8 @@ target 'QuickFin' do
   pod 'Firebase/Functions'
   pod 'Firebase/Messaging'
   pod 'Firebase/Storage'
+  pod 'GoogleSignIn'
+  pod 'FBSDKLoginKit'
   pod 'CodableFirebase'
   pod 'IQKeyboardManagerSwift'
   pod 'SnapKit'
@@ -19,6 +21,10 @@ target 'QuickFin' do
   pod 'Disk'
   pod 'SwiftDate'
   pod 'SwiftRichString'
+  pod 'RAMAnimatedTabBarController'
+  pod 'SCLAlertView'
+  pod 'Localize-Swift'
+  pod 'SkyFloatingLabelTextField'
 
   target 'QuickFinTests' do
     inherit! :search_paths
