@@ -8,27 +8,65 @@
 
 import UIKit
 import Firebase
+import GoogleSignIn
+import FBSDKCoreKit
 import IQKeyboardManagerSwift
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+    
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        GIDSignIn.sharedInstance()?.clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance()?.delegate = self
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         IQKeyboardManager.shared.enable = true
         
         // MARK : - Programmatically initialize UI
-        #warning("TODO: - Check if logged in, show correct view controller")
         window = UIWindow(frame: UIScreen.main.bounds)
         if let window = window {
-            window.rootViewController = ViewController()
-            window.makeKeyAndVisible()
+            // This state listener should persist.
+            Auth.auth().addStateDidChangeListener { (_, user) in
+                if user != nil {
+                    window.rootViewController = MainTabBarViewController()
+                    window.makeKeyAndVisible()
+                } else {
+                    window.rootViewController = SignInViewController()
+                    window.makeKeyAndVisible()
+                }
+            }
         }
         return true
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            #warning("TODO: Error popup")
+            print(error.localizedDescription)
+            return
+        }
+        guard let auth = user.authentication else {
+            #warning("TODO: Error popup")
+            print(error.localizedDescription)
+            return
+        }
+        let credential = GoogleAuthProvider.credential(withIDToken: auth.idToken, accessToken: auth.accessToken)
+        Auth.auth().signIn(with: credential) { (result, error) in
+            if let error = error {
+                #warning("TODO: Error popup")
+                print(error.localizedDescription)
+                return
+            }
+            // Shouldn't need to do anything here due to the Auth state listener set previously.
+        }
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        let handled = (GIDSignIn.sharedInstance()?.handle(url))! || ApplicationDelegate.shared.application(app, open: url, options: options)
+        return handled
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
