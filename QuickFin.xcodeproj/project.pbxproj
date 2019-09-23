@@ -11,6 +11,8 @@
 		905110A5966A1AFD247A2AEE /* Pods_QuickFin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 657B8E2B2F6E01BEDD7EB608 /* Pods_QuickFin.framework */; };
 		D5469B4823377AF20047D09D /* SignInDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5469B4723377AF20047D09D /* SignInDelegateProtocol.swift */; };
 		D5469B4A2338247F0047D09D /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5469B492338247F0047D09D /* Core.swift */; };
+		D5469B4F23398AC70047D09D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5469B4E23398AC70047D09D /* User.swift */; };
+		D5469B5123398E170047D09D /* FirestoreUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5469B5023398E170047D09D /* FirestoreUserResponse.swift */; };
 		D570D5FE2333595900AB308B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D570D5FD2333595900AB308B /* AppDelegate.swift */; };
 		D570D6002333595900AB308B /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D570D5FF2333595900AB308B /* MainTabBarViewController.swift */; };
 		D570D6052333595B00AB308B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D570D6042333595B00AB308B /* Assets.xcassets */; };
@@ -56,6 +58,8 @@
 		B4E9EBC18D75FC4B60DA70CF /* Pods-QuickFinTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickFinTests.release.xcconfig"; path = "Target Support Files/Pods-QuickFinTests/Pods-QuickFinTests.release.xcconfig"; sourceTree = "<group>"; };
 		D5469B4723377AF20047D09D /* SignInDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDelegateProtocol.swift; sourceTree = "<group>"; };
 		D5469B492338247F0047D09D /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
+		D5469B4E23398AC70047D09D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D5469B5023398E170047D09D /* FirestoreUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUserResponse.swift; sourceTree = "<group>"; };
 		D570D5FA2333595900AB308B /* QuickFin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickFin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D570D5FD2333595900AB308B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D570D5FF2333595900AB308B /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +130,15 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		D5469B4D23398ABB0047D09D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D5469B4E23398AC70047D09D /* User.swift */,
+				D5469B5023398E170047D09D /* FirestoreUserResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		D570D5F12333595900AB308B = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +164,7 @@
 		D570D5FC2333595900AB308B /* QuickFin */ = {
 			isa = PBXGroup;
 			children = (
+				D5469B4D23398ABB0047D09D /* Models */,
 				D5EA30542337148800F56428 /* Localizable.strings */,
 				D570D62E233368C500AB308B /* Pages */,
 				D570D62D233368BB00AB308B /* Utility */,
@@ -493,7 +507,9 @@
 				D5EA305B23371D5600F56428 /* SignInViewController.swift in Sources */,
 				D570D630233368DD00AB308B /* FirebaseService.swift in Sources */,
 				D5469B4A2338247F0047D09D /* Core.swift in Sources */,
+				D5469B4F23398AC70047D09D /* User.swift in Sources */,
 				D5469B4823377AF20047D09D /* SignInDelegateProtocol.swift in Sources */,
+				D5469B5123398E170047D09D /* FirestoreUserResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
