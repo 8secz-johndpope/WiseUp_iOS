@@ -77,6 +77,13 @@ extension SignInViewController {
             tf.spellCheckingType = .no
             return tf
         }()
+        let passwordStackView: UIStackView = {
+            let v = UIStackView()
+            v.axis = .horizontal
+            v.alignment = .center
+            v.spacing = 5
+            return v
+        }()
         let passwordField: SkyFloatingLabelTextField = {
             let tf = SkyFloatingLabelTextField()
             tf.title = "Password".localized()
@@ -86,6 +93,16 @@ extension SignInViewController {
             tf.selectedLineColor = UIColor(named: "Fidelity Green")!
             tf.isSecureTextEntry = true
             return tf
+        }()
+        let revealPasswordButton: UIButton = {
+            let b = UIButton()
+            b.setTitle("Toggle".localized(), for: .normal)
+            b.setTitleColor(UIColor.white, for: .normal)
+            b.titleLabel?.font = UIFont.systemFont(ofSize: FontSizes.text)
+            b.reactive.tap.observeNext { (_) in
+                passwordField.isSecureTextEntry.toggle()
+            }
+            return b
         }()
         let signInButton: UIButton = {
             let b = UIButton()
@@ -118,8 +135,13 @@ extension SignInViewController {
             this.width.equalTo(signInView.snp.width).offset(-40)
             this.height.equalTo(40)
         }
-        signInView.addArrangedSubview(passwordField)
-        passwordField.snp.makeConstraints { (this) in
+        signInView.addArrangedSubview(passwordStackView)
+        passwordStackView.addArrangedSubview(passwordField)
+        passwordStackView.addArrangedSubview(revealPasswordButton)
+        revealPasswordButton.layer.backgroundColor = UIColor(named: "Fidelity Green")?.cgColor
+        revealPasswordButton.layer.cornerRadius = 2
+        
+        passwordStackView.snp.makeConstraints { (this) in
             this.width.equalTo(emailField.snp.width)
             this.height.equalTo(emailField.snp.height)
         }
@@ -138,18 +160,41 @@ extension SignInViewController {
             this.leading.equalTo(view.snp.leadingMargin)
             this.trailing.equalTo(view.snp.trailingMargin)
         }
-        signInView.setCustomSpacing(20, after: passwordField)
+        signInView.setCustomSpacing(20, after: passwordStackView)
         
         // MARK: - Sign up & forgot password
-        let signUpLabel: UIButton = {
+        let bottomView: UIStackView = {
+            let v = UIStackView()
+            v.axis = .vertical
+            v.alignment = .center
+            return v
+        }()
+        let signUpButton: UIButton = {
             let b = UIButton()
             b.setTitle("Sign Up".localized(), for: .normal)
             b.setTitleColor(UIColor(named: "Fidelity Green"), for: .normal)
-            b.reactive.tap.observeNext { (_) in
-                <#code#>
+            b.reactive.tap.observeNext { [weak self] (_) in
+                self?.signUpHandler(email: emailField.text, password: passwordField.text)
             }
             return b
         }()
+        let forgotPasswordButton: UIButton = {
+            let b = UIButton()
+            b.setTitle("Forgot Password?".localized(), for: .normal)
+            b.setTitleColor(UIColor(named: "Dynamic Text Color"), for: .normal)
+            b.reactive.tap.observeNext { [weak self] (_) in
+                self?.forgotPasswordHandler(email: emailField.text)
+            }
+            return b
+        }()
+        
+        bottomView.addArrangedSubview(signUpButton)
+        bottomView.addArrangedSubview(forgotPasswordButton)
+        view.addSubview(bottomView)
+        bottomView.snp.makeConstraints { (this) in
+            this.bottom.equalTo(view.snp.bottomMargin)
+            this.centerX.equalToSuperview()
+        }
     }
     
 }

@@ -27,6 +27,7 @@ target 'QuickFin' do
   pod 'SkyFloatingLabelTextField'
   pod 'UIWindowTransitions'
   pod 'SwiftMessages'
+  pod 'Motion'
 
   target 'QuickFinTests' do
     inherit! :search_paths

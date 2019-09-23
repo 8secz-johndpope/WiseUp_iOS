@@ -6,10 +6,16 @@
   Copyright © 2019 Fidelity Investments. All rights reserved.
 */
 
+// MARK: - Sign In Screen
 "QuickFin:" = "QuickFin:";
 "A financial literacy game." = "A financial literacy game.";
 "Email" = "Email";
 "Password" = "Password";
+"Toggle" = "  Toggle  "; // Lazy fix for UIEdgeInset
 "Sign In" = "Sign In";
 "Sign Up" = "Sign Up";
 "Forgot Password?" = "Forgot Password?";
+
+// MARK: - Sign Up Screen
+"Create Account" = "Create Account";
+"Confirm Password" = "Confirm Password";

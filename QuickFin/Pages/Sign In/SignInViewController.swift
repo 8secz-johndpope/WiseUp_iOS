@@ -36,10 +36,34 @@ class SignInViewController: BaseViewController, LoginButtonDelegate {
         }
     }
     
-    func signUpHandler() {
-        let signUpVC = SignUpViewController()
-        signUpVC.delegate = self
-        present(signUpVC, animated: true)
+    func signUpHandler(email: String?, password: String?) {
+        guard let email = email, let password = password else {
+            #warning("TODO: Error handling")
+            return
+        }
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                #warning("TODO: Error handling")
+                print(error.localizedDescription)
+                return
+            }
+        }
+        #warning("TODO: Sync data")
+        UIApplication.shared.keyWindow?.setRootViewControllerWithAnimation(target: MainTabBarViewController())
+    }
+    
+    func forgotPasswordHandler(email: String?) {
+        guard let email = email else {
+            #warning("TODO: Error handling")
+            return
+        }
+        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+            if let error = error {
+                #warning("TODO: Error handling")
+                print(error.localizedDescription)
+                return
+            }
+        }
     }
     
 }
