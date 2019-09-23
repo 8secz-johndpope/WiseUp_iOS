@@ -31,8 +31,8 @@ class SignInViewController: BaseViewController, LoginButtonDelegate {
                 print(error.localizedDescription)
                 return
             }
-            #warning("TODO: Sync data")
             UIApplication.shared.keyWindow?.setRootViewControllerWithAnimation(target: MainTabBarViewController())
+            #warning("TODO: Sync data")
         }
     }
     
@@ -47,9 +47,9 @@ class SignInViewController: BaseViewController, LoginButtonDelegate {
                 print(error.localizedDescription)
                 return
             }
+            UIApplication.shared.keyWindow?.setRootViewControllerWithAnimation(target: MainTabBarViewController())
         }
         #warning("TODO: Sync data")
-        UIApplication.shared.keyWindow?.setRootViewControllerWithAnimation(target: MainTabBarViewController())
     }
     
     func forgotPasswordHandler(email: String?) {
