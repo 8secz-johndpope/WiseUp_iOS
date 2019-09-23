@@ -1,5 +1,5 @@
 //
-//  FirebaseUtility.swift
+//  FirebaseService.swift
 //  QuickFin
 //
 //  Created by Boyuan Xu on 9/19/19.
@@ -9,9 +9,9 @@
 import Foundation
 import Firebase
 
-class FirebaseUtility {
+class FirebaseService {
     
-    static var shared = FirebaseUtility()
+    static var shared = FirebaseService()
     private init() {}
     
 }
