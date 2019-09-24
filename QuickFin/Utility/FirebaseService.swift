@@ -47,4 +47,33 @@ class FirebaseService {
             completion(error)
         }
     }
+    
+    func loadChapters(completion: @escaping ([Chapter]) -> Void) {
+        
+        var chaps = [Chapter]()
+
+        db.collection("chapters").getDocuments() { (querySnapshot, err) in
+            
+            if let err = err {
+                print("Error getting chapters: \(err)")
+                completion([])
+            } else {
+                for chapter in querySnapshot!.documents {
+
+                    let data = chapter.data()
+                    let name = data["name"] as! String
+                    #warning("TO DO : Load Questions From Firestore Here")
+                    let questions = [""]
+                    let active = data["active"] as! Bool
+                    let id = data["id"] as! Int
+                      
+                    chaps.append(Chapter(name: name, questions: questions, active: active, id: id))
+                }
+                
+                completion(chaps)
+            }
+            
+        }
+        
+    }
 }
