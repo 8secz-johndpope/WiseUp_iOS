@@ -10,7 +10,18 @@ import Foundation
 
 class Question {
     
-    let answers = [String]()
-    let question = ""
+    let answer: String
+    let answerOptions: [String]
+    let id: Int
+    let question: String
+    let score: Int
     
+    // Called from Chapters Constructor to load questions into chapters
+    init(data: [String: Any]) {
+        self.answer = data["answer"] as! String
+        self.answerOptions = data["answerOptions"] as! [String]
+        self.id = data["id"] as! Int
+        self.question = data["question"] as! String
+        self.score = data["score"] as! Int
+    }
 }
