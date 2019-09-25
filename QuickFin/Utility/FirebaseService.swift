@@ -47,4 +47,19 @@ class FirebaseService {
             completion(error)
         }
     }
+    
+    func loadChapters(completion: @escaping ([Chapter]) -> Void) {
+        var chaps = [Chapter]()
+        db.collection("chapters").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting chapters: \(err)")
+                completion([])
+            } else {
+                for chapter in querySnapshot!.documents {
+                    chaps.append(Chapter(data: chapter.data()))
+                }
+                completion(chaps)
+            }
+        }
+    }
 }
