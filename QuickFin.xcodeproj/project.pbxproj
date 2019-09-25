@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		2C3D0108485E6C69AD05E0C3 /* Pods_QuickFinUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2114EC9390AE4F3EB05513BF /* Pods_QuickFinUITests.framework */; };
 		905110A5966A1AFD247A2AEE /* Pods_QuickFin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 657B8E2B2F6E01BEDD7EB608 /* Pods_QuickFin.framework */; };
+		BFD5653D2339926B007ECD97 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD5653B2339926B007ECD97 /* Chapter.swift */; };
+		BFD5653E2339926B007ECD97 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD5653C2339926B007ECD97 /* Question.swift */; };
+		BFD565422339927C007ECD97 /* ChapterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD5653F2339927C007ECD97 /* ChapterViewController.swift */; };
+		BFD565432339927C007ECD97 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD565402339927C007ECD97 /* ProfileView.swift */; };
+		BFD565442339927C007ECD97 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD565412339927C007ECD97 /* ProfileViewController.swift */; };
 		D5469B4823377AF20047D09D /* SignInDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5469B4723377AF20047D09D /* SignInDelegateProtocol.swift */; };
 		D5469B4A2338247F0047D09D /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5469B492338247F0047D09D /* Core.swift */; };
 		D5469B4F23398AC70047D09D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5469B4E23398AC70047D09D /* User.swift */; };
@@ -56,6 +61,11 @@
 		657B8E2B2F6E01BEDD7EB608 /* Pods_QuickFin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuickFin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B31879574D3BA8D04FFAA5B /* Pods-QuickFin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickFin.debug.xcconfig"; path = "Target Support Files/Pods-QuickFin/Pods-QuickFin.debug.xcconfig"; sourceTree = "<group>"; };
 		B4E9EBC18D75FC4B60DA70CF /* Pods-QuickFinTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickFinTests.release.xcconfig"; path = "Target Support Files/Pods-QuickFinTests/Pods-QuickFinTests.release.xcconfig"; sourceTree = "<group>"; };
+		BFD5653B2339926B007ECD97 /* Chapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
+		BFD5653C2339926B007ECD97 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		BFD5653F2339927C007ECD97 /* ChapterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterViewController.swift; sourceTree = "<group>"; };
+		BFD565402339927C007ECD97 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		BFD565412339927C007ECD97 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D5469B4723377AF20047D09D /* SignInDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDelegateProtocol.swift; sourceTree = "<group>"; };
 		D5469B492338247F0047D09D /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		D5469B4E23398AC70047D09D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -135,6 +145,8 @@
 			children = (
 				D5469B4E23398AC70047D09D /* User.swift */,
 				D5469B5023398E170047D09D /* FirestoreUserResponse.swift */,
+				BFD5653B2339926B007ECD97 /* Chapter.swift */,
+				BFD5653C2339926B007ECD97 /* Question.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -218,6 +230,9 @@
 		D5EA30552337182D00F56428 /* Main Tab Bar Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BFD5653F2339927C007ECD97 /* ChapterViewController.swift */,
+				BFD565402339927C007ECD97 /* ProfileView.swift */,
+				BFD565412339927C007ECD97 /* ProfileViewController.swift */,
 				D570D5FF2333595900AB308B /* MainTabBarViewController.swift */,
 			);
 			path = "Main Tab Bar Controller";
@@ -502,11 +517,16 @@
 				D5EA3060233737C100F56428 /* FontSizes.swift in Sources */,
 				D5EA305E23371E0700F56428 /* SignInView.swift in Sources */,
 				D570D6002333595900AB308B /* MainTabBarViewController.swift in Sources */,
+				BFD5653D2339926B007ECD97 /* Chapter.swift in Sources */,
 				D5EA30592337187100F56428 /* BaseViewController.swift in Sources */,
 				D570D5FE2333595900AB308B /* AppDelegate.swift in Sources */,
+				BFD565442339927C007ECD97 /* ProfileViewController.swift in Sources */,
 				D5EA305B23371D5600F56428 /* SignInViewController.swift in Sources */,
+				BFD565432339927C007ECD97 /* ProfileView.swift in Sources */,
 				D570D630233368DD00AB308B /* FirebaseService.swift in Sources */,
+				BFD5653E2339926B007ECD97 /* Question.swift in Sources */,
 				D5469B4A2338247F0047D09D /* Core.swift in Sources */,
+				BFD565422339927C007ECD97 /* ChapterViewController.swift in Sources */,
 				D5469B4F23398AC70047D09D /* User.swift in Sources */,
 				D5469B4823377AF20047D09D /* SignInDelegateProtocol.swift in Sources */,
 				D5469B5123398E170047D09D /* FirestoreUserResponse.swift in Sources */,
