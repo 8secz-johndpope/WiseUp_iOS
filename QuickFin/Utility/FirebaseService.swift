@@ -56,7 +56,7 @@ class FirebaseService {
                 completion([])
             } else {
                 for chapter in querySnapshot!.documents {
-                    chaps.append(Chapter(data: chapter.data()))
+                    chaps.append(try! FirebaseDecoder().decode(Chapter.self, from: chapter.data()))
                 }
                 completion(chaps)
             }
