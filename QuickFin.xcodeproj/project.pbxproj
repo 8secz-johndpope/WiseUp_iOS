@@ -14,6 +14,8 @@
 		BFD565422339927C007ECD97 /* ChapterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD5653F2339927C007ECD97 /* ChapterViewController.swift */; };
 		BFD565432339927C007ECD97 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD565402339927C007ECD97 /* ProfileView.swift */; };
 		BFD565442339927C007ECD97 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD565412339927C007ECD97 /* ProfileViewController.swift */; };
+		D52471D023401F3900922564 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52471CF23401F3900922564 /* BaseNavigationController.swift */; };
+		D52471D223402B2400922564 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52471D123402B2400922564 /* Colors.swift */; };
 		D5469B4823377AF20047D09D /* SignInDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5469B4723377AF20047D09D /* SignInDelegateProtocol.swift */; };
 		D5469B4A2338247F0047D09D /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5469B492338247F0047D09D /* Core.swift */; };
 		D5469B4F23398AC70047D09D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5469B4E23398AC70047D09D /* User.swift */; };
@@ -66,6 +68,8 @@
 		BFD5653F2339927C007ECD97 /* ChapterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterViewController.swift; sourceTree = "<group>"; };
 		BFD565402339927C007ECD97 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		BFD565412339927C007ECD97 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D52471CF23401F3900922564 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		D52471D123402B2400922564 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D5469B4723377AF20047D09D /* SignInDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDelegateProtocol.swift; sourceTree = "<group>"; };
 		D5469B492338247F0047D09D /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		D5469B4E23398AC70047D09D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -210,9 +214,10 @@
 		D570D62D233368BB00AB308B /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				D52471D123402B2400922564 /* Colors.swift */,
+				D5469B492338247F0047D09D /* Core.swift */,
 				D570D62F233368DD00AB308B /* FirebaseService.swift */,
 				D5EA305F233737C100F56428 /* FontSizes.swift */,
-				D5469B492338247F0047D09D /* Core.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -252,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				D5EA30582337187100F56428 /* BaseViewController.swift */,
+				D52471CF23401F3900922564 /* BaseNavigationController.swift */,
 			);
 			path = "Base View Controller";
 			sourceTree = "<group>";
@@ -528,8 +534,10 @@
 				D5469B4A2338247F0047D09D /* Core.swift in Sources */,
 				BFD565422339927C007ECD97 /* ChapterViewController.swift in Sources */,
 				D5469B4F23398AC70047D09D /* User.swift in Sources */,
+				D52471D023401F3900922564 /* BaseNavigationController.swift in Sources */,
 				D5469B4823377AF20047D09D /* SignInDelegateProtocol.swift in Sources */,
 				D5469B5123398E170047D09D /* FirestoreUserResponse.swift in Sources */,
+				D52471D223402B2400922564 /* Colors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
