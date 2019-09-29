@@ -28,6 +28,7 @@ target 'QuickFin' do
   pod 'UIWindowTransitions'
   pod 'SwiftMessages'
   pod 'Motion'
+  pod 'GradientLoadingBar'
 
   target 'QuickFinTests' do
     inherit! :search_paths
