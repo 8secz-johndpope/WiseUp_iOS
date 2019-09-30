@@ -48,18 +48,49 @@ class FirebaseService {
         }
     }
     
-    func loadChapters(completion: @escaping ([Chapter]) -> Void) {
+    func loadChapters(completion: @escaping ([Chapter], VersionTimeStamp?) -> Void) {
         var chaps = [Chapter]()
         db.collection("chapters").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting chapters: \(err)")
-                completion([])
+                completion([], nil)
             } else {
+                
+                var timestamp: VersionTimeStamp = VersionTimeStamp()
+                
                 for chapter in querySnapshot!.documents {
-                    chaps.append(try! FirebaseDecoder().decode(Chapter.self, from: chapter.data()))
+                    if (chapter.documentID == "lastUpdated") {
+                        timestamp = try! FirebaseDecoder().decode(VersionTimeStamp.self, from: chapter.data())
+                    } else {
+                        chaps.append(try! FirebaseDecoder().decode(Chapter.self, from: chapter.data()))
+                    }
                 }
-                completion(chaps)
+                
+                completion(chaps, timestamp)
             }
         }
     }
+    
+    func getChapterTimestamp(completion: @escaping (VersionTimeStamp?) -> Void) {
+        
+        db.collection("chapters").document("lastUpdated").getDocument { (querySnapshot, err) in
+            
+            if let err = err {
+                print("Error getting chapters: \(err)")
+                completion(nil)
+                return
+            }
+            
+            if let querySnapshot = querySnapshot {
+                let timestamp = try! FirebaseDecoder().decode(VersionTimeStamp.self, from: querySnapshot.data()!)
+                completion(timestamp)
+                return
+            }
+            
+            completion(nil)
+        }
+    }
+    
 }
+    
+

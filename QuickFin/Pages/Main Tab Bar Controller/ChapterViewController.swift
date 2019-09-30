@@ -33,10 +33,17 @@ class ChapterViewController: UICollectionViewController, UICollectionViewDelegat
     }
     
     func loadChapters() {
-        FirebaseService.shared.loadChapters { (chaps) in
+        
+        // First Get Pre-Cached Chapters (or empty if nothing cached)
+        self.chapters = CacheService.shared.getCachedChapters()
+        self.collectionView.reloadData()
+        
+        // Second, asynchronously check for updates to chapters and download them if needed
+        CacheService.shared.getChapters { (chaps) in
             self.chapters = chaps
             self.collectionView.reloadData()
         }
+    
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

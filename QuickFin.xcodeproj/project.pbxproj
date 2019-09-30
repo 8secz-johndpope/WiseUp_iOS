@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2C3D0108485E6C69AD05E0C3 /* Pods_QuickFinUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2114EC9390AE4F3EB05513BF /* Pods_QuickFinUITests.framework */; };
 		905110A5966A1AFD247A2AEE /* Pods_QuickFin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 657B8E2B2F6E01BEDD7EB608 /* Pods_QuickFin.framework */; };
+		BF4EDAA42341DC7500E45E90 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4EDAA32341DC7500E45E90 /* CacheService.swift */; };
+		BF4EDAA62341E09800E45E90 /* VersionTimeStamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4EDAA52341E09800E45E90 /* VersionTimeStamp.swift */; };
 		BFD5653D2339926B007ECD97 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD5653B2339926B007ECD97 /* Chapter.swift */; };
 		BFD5653E2339926B007ECD97 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD5653C2339926B007ECD97 /* Question.swift */; };
 		BFD565422339927C007ECD97 /* ChapterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD5653F2339927C007ECD97 /* ChapterViewController.swift */; };
@@ -66,6 +68,8 @@
 		657B8E2B2F6E01BEDD7EB608 /* Pods_QuickFin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuickFin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B31879574D3BA8D04FFAA5B /* Pods-QuickFin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickFin.debug.xcconfig"; path = "Target Support Files/Pods-QuickFin/Pods-QuickFin.debug.xcconfig"; sourceTree = "<group>"; };
 		B4E9EBC18D75FC4B60DA70CF /* Pods-QuickFinTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickFinTests.release.xcconfig"; path = "Target Support Files/Pods-QuickFinTests/Pods-QuickFinTests.release.xcconfig"; sourceTree = "<group>"; };
+		BF4EDAA32341DC7500E45E90 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
+		BF4EDAA52341E09800E45E90 /* VersionTimeStamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionTimeStamp.swift; sourceTree = "<group>"; };
 		BFD5653B2339926B007ECD97 /* Chapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		BFD5653C2339926B007ECD97 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		BFD5653F2339927C007ECD97 /* ChapterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +161,7 @@
 				D5469B5023398E170047D09D /* FirestoreUserResponse.swift */,
 				BFD5653B2339926B007ECD97 /* Chapter.swift */,
 				BFD5653C2339926B007ECD97 /* Question.swift */,
+				BF4EDAA52341E09800E45E90 /* VersionTimeStamp.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -224,6 +229,7 @@
 				D52471D92341CC8900922564 /* AppDelegateExtension.swift */,
 				D52471D123402B2400922564 /* Colors.swift */,
 				D5469B492338247F0047D09D /* Core.swift */,
+				BF4EDAA32341DC7500E45E90 /* CacheService.swift */,
 				D570D62F233368DD00AB308B /* FirebaseService.swift */,
 				D5EA305F233737C100F56428 /* FontSizes.swift */,
 				D52471D723415A2D00922564 /* Images.swift */,
@@ -547,8 +553,10 @@
 				D5469B4F23398AC70047D09D /* User.swift in Sources */,
 				D52471D023401F3900922564 /* BaseNavigationController.swift in Sources */,
 				D5469B4823377AF20047D09D /* SignInDelegateProtocol.swift in Sources */,
+				BF4EDAA62341E09800E45E90 /* VersionTimeStamp.swift in Sources */,
 				D5469B5123398E170047D09D /* FirestoreUserResponse.swift in Sources */,
 				D52471DA2341CC8900922564 /* AppDelegateExtension.swift in Sources */,
+				BF4EDAA42341DC7500E45E90 /* CacheService.swift in Sources */,
 				D52471D223402B2400922564 /* Colors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
