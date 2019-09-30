@@ -12,6 +12,7 @@ import GoogleSignIn
 import FBSDKCoreKit
 import IQKeyboardManagerSwift
 import UIWindowTransitions
+import CYLTabBarController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -30,9 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         if let window = window {
             // This state listener should persist.
-            Auth.auth().addStateDidChangeListener { (_, user) in
+            Auth.auth().addStateDidChangeListener { [unowned self] (_, user) in
                 if user != nil {
-                    window.setRootViewControllerWithAnimation(target: MainTabBarViewController())
+                    window.setRootViewControllerWithAnimation(target: self.makeMainTabBarController())
                 } else {
                     window.setRootViewControllerWithAnimation(target: SignInViewController())
                 }
@@ -40,6 +41,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         }
         return true
     }
+    
+    func makeMainTabBarController() -> MainTabBarViewController {
+        let chaptersVC = makeChildViewController(rootViewController: ChapterViewController(collectionViewLayout: UICollectionViewFlowLayout()), prefersLargeTitles: false, title: "Chapters", image: Images.chaptersUnselected, selectedImage: Images.chapters)
+        let profileVC = makeChildViewController(rootViewController: ProfileViewController(), prefersLargeTitles: false, title: "Profile", image: Images.profileUnselected, selectedImage: Images.profile)
+        let tabBarItemsAttributes = [
+            [CYLTabBarItemTitle: "Chapters",
+             CYLTabBarItemImage: Images.chaptersUnselected,
+             CYLTabBarItemSelectedImage: Images.chapters],
+            [CYLTabBarItemTitle: "Profile",
+            CYLTabBarItemImage: Images.profileUnselected,
+            CYLTabBarItemSelectedImage: Images.profile]
+        ]
+        return MainTabBarViewController(viewControllers: [chaptersVC, profileVC], tabBarItemsAttributes: tabBarItemsAttributes)
+    }
+    
+    func makeChildViewController(rootViewController: UIViewController, prefersLargeTitles: Bool, title: String?, image: UIImage?, selectedImage: UIImage?) -> UIViewController {
+            // Add BaseNavigationController
+            let nav = BaseNavigationController(rootViewController: rootViewController, prefersLargeTitles: prefersLargeTitles)
+            // Add bar item
+    //        let tabBarItem = RAMAnimatedTabBarItem(title: title, image: image, selectedImage: selectedImage)
+    //        tabBarItem.animation = RAMBounceAnimation()
+            let tabBarItem = UITabBarItem(title: title, image: image, selectedImage: selectedImage)
+            nav.tabBarItem = tabBarItem
+            return nav
+        }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {

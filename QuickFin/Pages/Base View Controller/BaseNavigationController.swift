@@ -30,7 +30,9 @@ extension BaseNavigationController {
     
     func initBaseUI() {
         navigationBar.barTintColor = Colors.DynamicNavigationBarColor
-        navigationBar.tintColor = Colors.DynamicTextColor
+        navigationBar.tintColor = Colors.DynamicNavigationTitleColor
+        let titleAttributes = [NSAttributedString.Key.foregroundColor: Colors.DynamicNavigationTitleColor!]
+        navigationBar.titleTextAttributes = titleAttributes
     }
     
 }
