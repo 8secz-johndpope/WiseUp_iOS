@@ -30,6 +30,7 @@ class FirebaseService {
         db.collection(users).document(uid).getDocument { (snapshot, error) in
             if let error = error {
                 completion(FirestoreUserResponse(error: error))
+                return
             }
             if let snapshot = snapshot {
                 let user = try! FirebaseDecoder().decode(User.self, from: snapshot.data()!)
@@ -37,6 +38,7 @@ class FirebaseService {
                 return
             }
             completion(FirestoreUserResponse(error: FirebaseError.snapshotError("E_SDNE")))
+            return
         }
     }
     
@@ -54,6 +56,7 @@ class FirebaseService {
             if let err = err {
                 print("Error getting chapters: \(err)")
                 completion([], nil)
+                return
             } else {
                 
                 var timestamp: VersionTimeStamp = VersionTimeStamp()
@@ -67,6 +70,7 @@ class FirebaseService {
                 }
                 
                 completion(chaps, timestamp)
+                return
             }
         }
     }
@@ -88,6 +92,7 @@ class FirebaseService {
             }
             
             completion(nil)
+            return
         }
     }
     
