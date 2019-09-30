@@ -146,6 +146,31 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D52471DB234257A400922564 /* Chapters */ = {
+			isa = PBXGroup;
+			children = (
+				BFD5653F2339927C007ECD97 /* ChapterViewController.swift */,
+			);
+			path = Chapters;
+			sourceTree = "<group>";
+		};
+		D52471DC234257AE00922564 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D52471DD234257BF00922564 /* Views */,
+				BFD565412339927C007ECD97 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		D52471DD234257BF00922564 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BFD565402339927C007ECD97 /* ProfileView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		D5469B4623377AD00047D09D /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,9 +275,8 @@
 		D5EA30552337182D00F56428 /* Main Tab Bar Controller */ = {
 			isa = PBXGroup;
 			children = (
-				BFD5653F2339927C007ECD97 /* ChapterViewController.swift */,
-				BFD565402339927C007ECD97 /* ProfileView.swift */,
-				BFD565412339927C007ECD97 /* ProfileViewController.swift */,
+				D52471DC234257AE00922564 /* Profile */,
+				D52471DB234257A400922564 /* Chapters */,
 				D570D5FF2333595900AB308B /* MainTabBarViewController.swift */,
 			);
 			path = "Main Tab Bar Controller";

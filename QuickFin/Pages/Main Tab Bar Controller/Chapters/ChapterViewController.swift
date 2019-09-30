@@ -8,8 +8,11 @@
 
 import UIKit
 import Firebase
+import GradientLoadingBar
 
 class ChapterViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
+    private let gradientLoadingBar = GradientLoadingBar()
     
     private let cellId = "cellId"
     
@@ -34,14 +37,16 @@ class ChapterViewController: UICollectionViewController, UICollectionViewDelegat
     
     func loadChapters() {
         
+        gradientLoadingBar.fadeIn()
         // First Get Pre-Cached Chapters (or empty if nothing cached)
         self.chapters = CacheService.shared.getCachedChapters()
         self.collectionView.reloadData()
         
         // Second, asynchronously check for updates to chapters and download them if needed
-        CacheService.shared.getChapters { (chaps) in
+        CacheService.shared.getChapters { [unowned self] (chaps) in
             self.chapters = chaps
             self.collectionView.reloadData()
+            self.gradientLoadingBar.fadeOut()
         }
     
     }
