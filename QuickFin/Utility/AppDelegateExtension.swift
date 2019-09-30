@@ -8,6 +8,7 @@
 
 import UIKit
 import CYLTabBarController
+import Localize_Swift
 
 // MARK: - Functions extracted from AppDelegate for better readability
 extension AppDelegate {
@@ -15,10 +16,10 @@ extension AppDelegate {
         let chaptersVC = BaseNavigationController(rootViewController: ChapterViewController(collectionViewLayout: UICollectionViewFlowLayout()), prefersLargeTitles: false)
         let profileVC = BaseNavigationController(rootViewController: ProfileViewController(), prefersLargeTitles: false)
         let tabBarItemsAttributes = [
-            [CYLTabBarItemTitle: "Chapters",
+            [CYLTabBarItemTitle: "Chapters".localized(),
              CYLTabBarItemImage: Images.chaptersUnselected,
              CYLTabBarItemSelectedImage: Images.chapters],
-            [CYLTabBarItemTitle: "Profile",
+            [CYLTabBarItemTitle: "Profile".localized(),
             CYLTabBarItemImage: Images.profileUnselected,
             CYLTabBarItemSelectedImage: Images.profile]
         ]
