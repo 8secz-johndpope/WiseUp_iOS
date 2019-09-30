@@ -9,6 +9,7 @@
 import UIKit
 
 struct Colors {
+    static let DynamicNavigationTitleColor = UIColor(named: "Dynamic Navigation Title Color")
     static let DynamicNavigationBarColor = UIColor(named: "Dynamic Navigation Bar Color")
     static let DynamicTextColor = UIColor(named: "Dynamic Text Color")
     static let FidelityGreen = UIColor(named: "Fidelity Green")

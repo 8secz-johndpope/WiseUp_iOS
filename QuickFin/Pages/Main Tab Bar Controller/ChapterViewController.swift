@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import RAMAnimatedTabBarController
 
 class ChapterViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     

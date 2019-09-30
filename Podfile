@@ -21,7 +21,7 @@ target 'QuickFin' do
   pod 'Disk'
   pod 'SwiftDate'
   pod 'SwiftRichString'
-  pod 'RAMAnimatedTabBarController'
+  pod 'CYLTabBarController'
   pod 'SCLAlertView'
   pod 'Localize-Swift'
   pod 'SkyFloatingLabelTextField'
