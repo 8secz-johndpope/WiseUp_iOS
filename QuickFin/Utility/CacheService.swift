@@ -23,6 +23,7 @@ class CacheService {
             updateChapters() { (chaps)  in
                 chapters = chaps
                 completion(chapters)
+                return
             }
             
         }
@@ -50,6 +51,7 @@ class CacheService {
                 if (cachedTimeStamp.timestamp == timestamp?.timestamp) {
                     chapters = self.getCachedChapters()
                     completion(chapters)
+                    return
                 }
                     
                 //else we need to update the cached chapters
@@ -57,6 +59,7 @@ class CacheService {
                     self.updateChapters { (chaps) in
                         chapters = chaps
                         completion(chapters)
+                        return
                     }
                 }
                 
@@ -108,7 +111,7 @@ class CacheService {
             }
             
             completion(chaps)
-            
+            return
         }
         
     }
