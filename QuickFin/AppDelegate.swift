@@ -12,7 +12,6 @@ import GoogleSignIn
 import FBSDKCoreKit
 import IQKeyboardManagerSwift
 import UIWindowTransitions
-import CYLTabBarController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -41,31 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         }
         return true
     }
-    
-    func makeMainTabBarController() -> MainTabBarViewController {
-        let chaptersVC = makeChildViewController(rootViewController: ChapterViewController(collectionViewLayout: UICollectionViewFlowLayout()), prefersLargeTitles: false, title: "Chapters", image: Images.chaptersUnselected, selectedImage: Images.chapters)
-        let profileVC = makeChildViewController(rootViewController: ProfileViewController(), prefersLargeTitles: false, title: "Profile", image: Images.profileUnselected, selectedImage: Images.profile)
-        let tabBarItemsAttributes = [
-            [CYLTabBarItemTitle: "Chapters",
-             CYLTabBarItemImage: Images.chaptersUnselected,
-             CYLTabBarItemSelectedImage: Images.chapters],
-            [CYLTabBarItemTitle: "Profile",
-            CYLTabBarItemImage: Images.profileUnselected,
-            CYLTabBarItemSelectedImage: Images.profile]
-        ]
-        return MainTabBarViewController(viewControllers: [chaptersVC, profileVC], tabBarItemsAttributes: tabBarItemsAttributes)
-    }
-    
-    func makeChildViewController(rootViewController: UIViewController, prefersLargeTitles: Bool, title: String?, image: UIImage?, selectedImage: UIImage?) -> UIViewController {
-            // Add BaseNavigationController
-            let nav = BaseNavigationController(rootViewController: rootViewController, prefersLargeTitles: prefersLargeTitles)
-            // Add bar item
-    //        let tabBarItem = RAMAnimatedTabBarItem(title: title, image: image, selectedImage: selectedImage)
-    //        tabBarItem.animation = RAMBounceAnimation()
-            let tabBarItem = UITabBarItem(title: title, image: image, selectedImage: selectedImage)
-            nav.tabBarItem = tabBarItem
-            return nav
-        }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
@@ -117,54 +91,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
 
 
-}
-
-extension UIViewController {
-    
-    func topMostViewController() -> UIViewController {
-        
-        if let presented = self.presentedViewController {
-            return presented.topMostViewController()
-        }
-        
-        if let navigation = self as? UINavigationController {
-            return navigation.visibleViewController?.topMostViewController() ?? navigation
-        }
-        
-        if let tab = self as? UITabBarController {
-            return tab.selectedViewController?.topMostViewController() ?? tab
-        }
-        
-        return self
-    }
-}
-
-extension UIApplication {
-    func topMostViewController() -> UIViewController? {
-        return self.keyWindow?.rootViewController?.topMostViewController()
-    }
-}
-
-extension UIWindow {
-    
-    func setRootViewControllerWithAnimation(target: UIViewController) {
-        if Core.shared.coldStart {
-            Core.shared.coldStart = false
-            rootViewController = target
-            makeKeyAndVisible()
-            return
-        }
-        var options = TransitionOptions()
-        if #available(iOS 13.0, *) {
-            options.background = TransitionOptions.Background.solidColor(UIColor.systemBackground)
-        } else {
-            // Fallback on earlier versions
-            options.background = TransitionOptions.Background.solidColor(UIColor.white)
-        }
-        options.direction = .toRight
-        options.style = .easeInOut
-        options.duration = 0.4
-        setRootViewController(target, options: options)
-    }
-    
 }
