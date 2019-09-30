@@ -22,7 +22,9 @@ extension AppDelegate {
             CYLTabBarItemImage: Images.profileUnselected,
             CYLTabBarItemSelectedImage: Images.profile]
         ]
-        return MainTabBarViewController(viewControllers: [chaptersVC, profileVC], tabBarItemsAttributes: tabBarItemsAttributes)
+        let tabBar = MainTabBarViewController(viewControllers: [chaptersVC, profileVC], tabBarItemsAttributes: tabBarItemsAttributes);
+        tabBar.setTintColor(Colors.FidelityGreen!)
+        return tabBar
     }
 }
 
