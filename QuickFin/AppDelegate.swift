@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import FBSDKCoreKit
+import FBSDKLoginKit
 import IQKeyboardManagerSwift
 import UIWindowTransitions
 
@@ -34,6 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 if user != nil {
                     window.setRootViewControllerWithAnimation(target: self.makeMainTabBarController())
                 } else {
+                    LoginManager().logOut()
+                    GIDSignIn.sharedInstance()?.signOut()
                     window.setRootViewControllerWithAnimation(target: SignInViewController())
                 }
             }
