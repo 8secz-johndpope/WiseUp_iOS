@@ -11,7 +11,6 @@ import Foundation
 class Question: Codable {
     let answer: String
     let answerOptions: [String]
-    let id: Int
     let question: String
     let score: Int
 }
