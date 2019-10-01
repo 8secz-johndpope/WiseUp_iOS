@@ -65,7 +65,17 @@ class FirebaseService {
                     if (chapter.documentID == "lastUpdated") {
                         timestamp = try! FirebaseDecoder().decode(VersionTimeStamp.self, from: chapter.data())
                     } else {
-                        chaps.append(try! FirebaseDecoder().decode(Chapter.self, from: chapter.data()))
+                        
+                        if (chapter.data().count == 4) {
+                            
+                            let chap = try! FirebaseDecoder().decode(Chapter.self, from: chapter.data())
+                            
+                            if (chap.active) {
+                                chaps.append(chap)
+                            }
+                            
+                        }
+                        
                     }
                 }
                 
