@@ -21,13 +21,14 @@ target 'QuickFin' do
   pod 'Disk'
   pod 'SwiftDate'
   pod 'SwiftRichString'
-  pod 'RAMAnimatedTabBarController'
+  pod 'CYLTabBarController'
   pod 'SCLAlertView'
   pod 'Localize-Swift'
   pod 'SkyFloatingLabelTextField'
   pod 'UIWindowTransitions'
   pod 'SwiftMessages'
   pod 'Motion'
+  pod 'GradientLoadingBar'
 
   target 'QuickFinTests' do
     inherit! :search_paths

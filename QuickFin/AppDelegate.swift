@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import FBSDKCoreKit
+import FBSDKLoginKit
 import IQKeyboardManagerSwift
 import UIWindowTransitions
 
@@ -30,10 +31,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         if let window = window {
             // This state listener should persist.
-            Auth.auth().addStateDidChangeListener { (_, user) in
+            Auth.auth().addStateDidChangeListener { [unowned self] (_, user) in
                 if user != nil {
-                    window.setRootViewControllerWithAnimation(target: MainTabBarViewController())
+                    window.setRootViewControllerWithAnimation(target: self.makeMainTabBarController())
                 } else {
+                    LoginManager().logOut()
+                    GIDSignIn.sharedInstance()?.signOut()
                     window.setRootViewControllerWithAnimation(target: SignInViewController())
                 }
             }
@@ -91,54 +94,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
 
 
-}
-
-extension UIViewController {
-    
-    func topMostViewController() -> UIViewController {
-        
-        if let presented = self.presentedViewController {
-            return presented.topMostViewController()
-        }
-        
-        if let navigation = self as? UINavigationController {
-            return navigation.visibleViewController?.topMostViewController() ?? navigation
-        }
-        
-        if let tab = self as? UITabBarController {
-            return tab.selectedViewController?.topMostViewController() ?? tab
-        }
-        
-        return self
-    }
-}
-
-extension UIApplication {
-    func topMostViewController() -> UIViewController? {
-        return self.keyWindow?.rootViewController?.topMostViewController()
-    }
-}
-
-extension UIWindow {
-    
-    func setRootViewControllerWithAnimation(target: UIViewController) {
-        if Core.shared.coldStart {
-            Core.shared.coldStart = false
-            rootViewController = target
-            makeKeyAndVisible()
-            return
-        }
-        var options = TransitionOptions()
-        if #available(iOS 13.0, *) {
-            options.background = TransitionOptions.Background.solidColor(UIColor.systemBackground)
-        } else {
-            // Fallback on earlier versions
-            options.background = TransitionOptions.Background.solidColor(UIColor.white)
-        }
-        options.direction = .toRight
-        options.style = .easeInOut
-        options.duration = 0.4
-        setRootViewController(target, options: options)
-    }
-    
 }

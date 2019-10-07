@@ -28,7 +28,7 @@ extension ProfileViewController {
             let b = UIButton()
             b.setTitle("Sign Out".localized(), for: .normal)
             b.setTitleColor(UIColor.white, for: .normal)
-            b.backgroundColor = UIColor(named: "Fidelity Green")
+            b.backgroundColor = Colors.FidelityGreen
             b.reactive.tap.observeNext { [unowned self] (_) in
                 do {
                     try Auth.auth().signOut()

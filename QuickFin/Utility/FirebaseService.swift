@@ -30,6 +30,7 @@ class FirebaseService {
         db.collection(users).document(uid).getDocument { (snapshot, error) in
             if let error = error {
                 completion(FirestoreUserResponse(error: error))
+                return
             }
             if let snapshot = snapshot {
                 let user = try! FirebaseDecoder().decode(User.self, from: snapshot.data()!)
@@ -37,6 +38,7 @@ class FirebaseService {
                 return
             }
             completion(FirestoreUserResponse(error: FirebaseError.snapshotError("E_SDNE")))
+            return
         }
     }
     
@@ -48,18 +50,62 @@ class FirebaseService {
         }
     }
     
-    func loadChapters(completion: @escaping ([Chapter]) -> Void) {
+    func loadChapters(completion: @escaping ([Chapter], VersionTimeStamp?) -> Void) {
         var chaps = [Chapter]()
         db.collection("chapters").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting chapters: \(err)")
-                completion([])
+                completion([], nil)
+                return
             } else {
+                
+                var timestamp: VersionTimeStamp = VersionTimeStamp()
+                
                 for chapter in querySnapshot!.documents {
-                    chaps.append(try! FirebaseDecoder().decode(Chapter.self, from: chapter.data()))
+                    if (chapter.documentID == "lastUpdated") {
+                        timestamp = try! FirebaseDecoder().decode(VersionTimeStamp.self, from: chapter.data())
+                    } else {
+                        
+                        if (chapter.data().count == 4) {
+                            
+                            let chap = try! FirebaseDecoder().decode(Chapter.self, from: chapter.data())
+                            
+                            if (chap.active) {
+                                chaps.append(chap)
+                            }
+                            
+                        }
+                        
+                    }
                 }
-                completion(chaps)
+                
+                completion(chaps, timestamp)
+                return
             }
         }
     }
+    
+    func getChapterTimestamp(completion: @escaping (VersionTimeStamp?) -> Void) {
+        
+        db.collection("chapters").document("lastUpdated").getDocument { (querySnapshot, err) in
+            
+            if let err = err {
+                print("Error getting chapters: \(err)")
+                completion(nil)
+                return
+            }
+            
+            if let querySnapshot = querySnapshot {
+                let timestamp = try! FirebaseDecoder().decode(VersionTimeStamp.self, from: querySnapshot.data()!)
+                completion(timestamp)
+                return
+            }
+            
+            completion(nil)
+            return
+        }
+    }
+    
 }
+    
+
