@@ -69,9 +69,9 @@ extension SignInViewController {
             let tf = SkyFloatingLabelTextField()
             tf.title = "Email".localized()
             tf.placeholder = "Email".localized()
-            tf.textColor = UIColor(named: "Dynamic Text Color")
-            tf.selectedTitleColor = UIColor(named: "Fidelity Green")!
-            tf.selectedLineColor = UIColor(named: "Fidelity Green")!
+            tf.textColor = Colors.DynamicTextColor
+            tf.selectedTitleColor = Colors.FidelityGreen!
+            tf.selectedLineColor = Colors.FidelityGreen!
             tf.autocapitalizationType = .none
             tf.autocorrectionType = .no
             tf.spellCheckingType = .no
@@ -88,9 +88,9 @@ extension SignInViewController {
             let tf = SkyFloatingLabelTextField()
             tf.title = "Password".localized()
             tf.placeholder = "Password".localized()
-            tf.textColor = UIColor(named: "Dynamic Text Color")
-            tf.selectedTitleColor = UIColor(named: "Fidelity Green")!
-            tf.selectedLineColor = UIColor(named: "Fidelity Green")!
+            tf.textColor = Colors.DynamicTextColor
+            tf.selectedTitleColor = Colors.FidelityGreen!
+            tf.selectedLineColor = Colors.FidelityGreen!
             tf.isSecureTextEntry = true
             return tf
         }()
@@ -108,7 +108,7 @@ extension SignInViewController {
             let b = UIButton()
             b.setTitle("Sign In".localized(), for: .normal)
             b.setTitleColor(UIColor.white, for: .normal)
-            b.backgroundColor = UIColor(named: "Fidelity Green")
+            b.backgroundColor = Colors.FidelityGreen!
             b.reactive.tap.observeNext { [unowned self] (_) in
                 self.emailSignInHandler(email: emailField.text, password: passwordField.text)
             }
@@ -138,7 +138,7 @@ extension SignInViewController {
         signInView.addArrangedSubview(passwordStackView)
         passwordStackView.addArrangedSubview(passwordField)
         passwordStackView.addArrangedSubview(revealPasswordButton)
-        revealPasswordButton.layer.backgroundColor = UIColor(named: "Fidelity Green")?.cgColor
+        revealPasswordButton.layer.backgroundColor = Colors.FidelityGreen?.cgColor
         revealPasswordButton.layer.cornerRadius = 2
         
         passwordStackView.snp.makeConstraints { (this) in
@@ -172,7 +172,7 @@ extension SignInViewController {
         let signUpButton: UIButton = {
             let b = UIButton()
             b.setTitle("Sign Up".localized(), for: .normal)
-            b.setTitleColor(UIColor(named: "Fidelity Green"), for: .normal)
+            b.setTitleColor(Colors.FidelityGreen, for: .normal)
             b.reactive.tap.observeNext { [weak self] (_) in
                 self?.signUpHandler(email: emailField.text, password: passwordField.text)
             }
@@ -181,7 +181,7 @@ extension SignInViewController {
         let forgotPasswordButton: UIButton = {
             let b = UIButton()
             b.setTitle("Forgot Password?".localized(), for: .normal)
-            b.setTitleColor(UIColor(named: "Dynamic Text Color"), for: .normal)
+            b.setTitleColor(Colors.DynamicTextColor, for: .normal)
             b.reactive.tap.observeNext { [weak self] (_) in
                 self?.forgotPasswordHandler(email: emailField.text)
             }

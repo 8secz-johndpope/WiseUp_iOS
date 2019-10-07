@@ -19,3 +19,7 @@
 // MARK: - Sign Up Screen
 "Create Account" = "Create Account";
 "Confirm Password" = "Confirm Password";
+
+// MARK: - Main tab bar controller
+"Chapters" = "Chapters";
+"Profile" = "Profile";
