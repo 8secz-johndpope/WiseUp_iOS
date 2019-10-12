@@ -13,8 +13,11 @@ import Localize_Swift
 // MARK: - Functions extracted from AppDelegate for better readability
 extension AppDelegate {
     func makeMainTabBarController() -> MainTabBarViewController {
+        // Chapters
         let chaptersVC = BaseNavigationController(rootViewController: ChapterViewController(collectionViewLayout: UICollectionViewFlowLayout()), prefersLargeTitles: false)
+        // Profile
         let profileVC = BaseNavigationController(rootViewController: ProfileViewController(), prefersLargeTitles: false)
+        // Setting tab bar items
         let tabBarItemsAttributes = [
             [CYLTabBarItemTitle: "Chapters".localized(),
              CYLTabBarItemImage: Images.chaptersUnselected,

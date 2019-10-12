@@ -7,22 +7,16 @@
 //
 
 import UIKit
-import Firebase
+import Localize_Swift
 
 class ProfileViewController: BaseViewController {
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
-        navigationItem.title = "Profile"
-        
+        navigationItem.title = "Profile".localized()
         setBackground()
-    
-        navigationItem.title = "Profile"
-        
+        initNavBar()
         initUI()
-        
     }
     
 }

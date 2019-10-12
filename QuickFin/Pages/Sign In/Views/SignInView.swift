@@ -99,7 +99,8 @@ extension SignInViewController {
             b.setTitle("Toggle".localized(), for: .normal)
             b.setTitleColor(UIColor.white, for: .normal)
             b.titleLabel?.font = UIFont.systemFont(ofSize: FontSizes.text)
-            b.reactive.tap.observeNext { (_) in
+            b.contentEdgeInsets = UIEdgeInsets(top: 5, left: 6, bottom: 5, right: 6)
+            _ = b.reactive.tap.observeNext { (_) in
                 passwordField.isSecureTextEntry.toggle()
             }
             return b
@@ -109,7 +110,7 @@ extension SignInViewController {
             b.setTitle("Sign In".localized(), for: .normal)
             b.setTitleColor(UIColor.white, for: .normal)
             b.backgroundColor = Colors.FidelityGreen!
-            b.reactive.tap.observeNext { [unowned self] (_) in
+            _ = b.reactive.tap.observeNext { [unowned self] (_) in
                 self.emailSignInHandler(email: emailField.text, password: passwordField.text)
             }
             return b
@@ -173,7 +174,7 @@ extension SignInViewController {
             let b = UIButton()
             b.setTitle("Sign Up".localized(), for: .normal)
             b.setTitleColor(Colors.FidelityGreen, for: .normal)
-            b.reactive.tap.observeNext { [weak self] (_) in
+            _ = b.reactive.tap.observeNext { [weak self] (_) in
                 self?.signUpHandler(email: emailField.text, password: passwordField.text)
             }
             return b
@@ -182,7 +183,7 @@ extension SignInViewController {
             let b = UIButton()
             b.setTitle("Forgot Password?".localized(), for: .normal)
             b.setTitleColor(Colors.DynamicTextColor, for: .normal)
-            b.reactive.tap.observeNext { [weak self] (_) in
+            _ = b.reactive.tap.observeNext { [weak self] (_) in
                 self?.forgotPasswordHandler(email: emailField.text)
             }
             return b
