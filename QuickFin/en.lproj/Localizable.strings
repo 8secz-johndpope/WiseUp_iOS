@@ -11,7 +11,7 @@
 "A financial literacy game." = "A financial literacy game.";
 "Email" = "Email";
 "Password" = "Password";
-"Toggle" = "  Toggle  "; // Lazy fix for UIEdgeInset
+"Toggle" = "Toggle"; // Lazy fix for UIEdgeInset
 "Sign In" = "Sign In";
 "Sign Up" = "Sign Up";
 "Forgot Password?" = "Forgot Password?";
@@ -23,3 +23,17 @@
 // MARK: - Main tab bar controller
 "Chapters" = "Chapters";
 "Profile" = "Profile";
+
+// MARK: - Settings
+"Settings" = "Settings";
+"Change Password" = "Change Password";
+"Game Settings" = "Game Settings";
+"Privacy Notice" = "Privacy Notice";
+"About" = "About";
+"Log Out" = "Log Out";
+
+// MARK: - Settings -> Change Password
+"Old password" = "Old password";
+"New password" = "New password";
+"Confirm new password" = "Confirm new password";
+"New passwords don't match!" = "New passwords don't match!";

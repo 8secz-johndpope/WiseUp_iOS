@@ -17,6 +17,7 @@ class ChapterViewController: UICollectionViewController, UICollectionViewDelegat
     private let cellId = "cellId"
     
     var chapters: [Chapter]?
+
     
     override func viewDidLoad() {
         
