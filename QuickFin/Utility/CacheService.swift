@@ -31,10 +31,10 @@ class CacheService {
         // Else something is cached, need to check the timestamps to see if we have the most recent version
         else {
             
-            var cachedTimeStamp: VersionTimeStamp
+            var cachedTimeStamp: ChapterStats
             
             do {
-                cachedTimeStamp = try Disk.retrieve("timestamp.json", from: .caches, as: VersionTimeStamp.self)
+                cachedTimeStamp = try Disk.retrieve("timestamp.json", from: .caches, as: ChapterStats.self)
             } catch let error as NSError {
                 fatalError("""
                 Domain: \(error.domain)

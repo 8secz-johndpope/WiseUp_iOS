@@ -231,7 +231,7 @@ DEPENDENCIES:
   - UIWindowTransitions
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - AppAuth
     - Bond
     - BoringSSL-GRPC
@@ -265,6 +265,7 @@ SPEC REPOS:
     - GTMAppAuth
     - GTMSessionFetcher
     - IGListKit
+    - InAppSettingsKit
     - IQKeyboardManagerSwift
     - leveldb-library
     - LightweightObservable
@@ -280,8 +281,6 @@ SPEC REPOS:
     - SwiftMessages
     - SwiftRichString
     - UIWindowTransitions
-  trunk:
-    - InAppSettingsKit
 
 SPEC CHECKSUMS:
   AppAuth: bce82c76043657c99d91e7882e8a9e1a93650cd4
@@ -336,4 +335,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: ff7602582d293772ec0cf92ff8705f73d9489dd5
 
-COCOAPODS: 1.8.3
+COCOAPODS: 1.7.5
