@@ -8,8 +8,12 @@
 
 import Foundation
 
-class VersionTimeStamp: Codable {
+class ChapterStats: Codable {
     let timestamp: Int
+    let chapterCount: Int
     
-    init() { timestamp = -1 }
+    init() {
+        timestamp = -1
+        chapterCount = -1
+    }
 }

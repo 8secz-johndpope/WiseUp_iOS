@@ -54,44 +54,44 @@ class FirebaseService {
         }
     }
     
-    func loadChapters(completion: @escaping ([Chapter], VersionTimeStamp?) -> Void) {
+    func loadChapters(completion: @escaping ([Chapter], ChapterStats?) -> Void) {
         var chaps = [Chapter]()
-//        db.collection("chapters").getDocuments() { (querySnapshot, err) in
-//            if let err = err {
-//                print("Error getting chapters: \(err)")
-//                completion([], nil)
-//                return
-//            } else {
-//                
-//                var timestamp: VersionTimeStamp = VersionTimeStamp()
-//                
-//                for chapter in querySnapshot!.documents {
-//                    if (chapter.documentID == "lastUpdated") {
-//                        timestamp = try! FirebaseDecoder().decode(VersionTimeStamp.self, from: chapter.data())
-//                    } else {
-//                        
-//                        if (chapter.data().count == 4) {
-//                            
-//                            let chap = try! FirebaseDecoder().decode(Chapter.self, from: chapter.data())
-//                            
-//                            if (chap.active) {
-//                                chaps.append(chap)
-//                            }
-//                            
-//                        }
-//                        
-//                    }
-//                }
-//                
-//                completion(chaps, timestamp)
-//                return
-//            }
-//        }
+        db.collection("chapters").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting chapters: \(err)")
+                completion([], nil)
+                return
+            } else {
+                
+                var timestamp: ChapterStats = ChapterStats()
+                
+                for chapter in querySnapshot!.documents {
+                    if (chapter.documentID == "--stats--") {
+                        timestamp = try! FirebaseDecoder().decode(ChapterStats.self, from: chapter.data())
+                    } else {
+                        
+                        if (chapter.data().count == 4) {
+                            
+                            let chap = try! FirebaseDecoder().decode(Chapter.self, from: chapter.data())
+                            
+                            if (chap.active) {
+                                chaps.append(chap)
+                            }
+                            
+                        }
+                        
+                    }
+                }
+                
+                completion(chaps, timestamp)
+                return
+            }
+        }
     }
     
-    func getChapterTimestamp(completion: @escaping (VersionTimeStamp?) -> Void) {
+    func getChapterTimestamp(completion: @escaping (ChapterStats?) -> Void) {
         
-        db.collection("chapters").document("lastUpdated").getDocument { (querySnapshot, err) in
+        db.collection("chapters").document("--stats--").getDocument { (querySnapshot, err) in
             
             if let err = err {
                 print("Error getting chapters: \(err)")
@@ -100,7 +100,7 @@ class FirebaseService {
             }
             
             if let querySnapshot = querySnapshot {
-                let timestamp = try! FirebaseDecoder().decode(VersionTimeStamp.self, from: querySnapshot.data()!)
+                let timestamp = try! FirebaseDecoder().decode(ChapterStats.self, from: querySnapshot.data()!)
                 completion(timestamp)
                 return
             }

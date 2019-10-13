@@ -11,6 +11,6 @@ import Foundation
 class Chapter: Codable {
     var name: String
     var questions: [Question]
-    var id: Int
+    var order: Int
     var active: Bool
 }
