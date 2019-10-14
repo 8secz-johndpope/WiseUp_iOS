@@ -17,6 +17,7 @@ class GameTableViewCell: UITableViewCell {
         let l = UILabel()
         l.text = "--"
         l.textColor = .white
+        l.numberOfLines = 0
         return l
     }()
 

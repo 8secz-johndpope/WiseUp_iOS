@@ -7,18 +7,50 @@
 //
 
 import UIKit
+import Localize_Swift
 
 // MARK: - UI
 extension GameViewController {
     
+    func initNav() {
+        title = "Question".localized() + " \(questionNumber!)"
+        navigationItem.setRightBarButton(UIBarButtonItem(title: "Skip".localized(), style: .plain, target: self, action: #selector(skip)), animated: true)
+    }
+    
     func initUI() {
-        title = "Question"
+        let progressBar: UIProgressView = {
+            let p = UIProgressView(progressViewStyle: .default)
+            return p
+        }()
+        
         let questionLabel: UILabel = {
             let l = UILabel()
             l.text = currentQuestion.question
-            l.font = UIFont.boldSystemFont(ofSize: 20)
+            l.font = UIFont.boldSystemFont(ofSize: 25)
             return l
         }()
+        
+        view.addSubview(progressBar)
+        progressBar.snp.makeConstraints { (this) in
+            this.leading.equalToSuperview()
+            this.trailing.equalToSuperview()
+            this.top.equalTo(view.snp.topMargin)
+            this.height.equalTo(5)
+        }
+        view.addSubview(questionLabel)
+        questionLabel.snp.makeConstraints { (this) in
+            this.leading.equalToSuperview().offset(20)
+            this.trailing.equalToSuperview().offset(-20)
+            this.top.equalTo(view.snp.topMargin).offset(20)
+        }
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { (this) in
+            this.leading.equalTo(questionLabel.snp.leading)
+            this.trailing.equalTo(questionLabel.snp.trailing)
+            this.top.equalTo(questionLabel.snp.bottom).offset(10)
+            this.bottom.equalToSuperview().offset(-20)
+        }
+        
     }
     
 }
@@ -27,10 +59,12 @@ extension GameViewController {
 extension GameViewController: UITableViewDataSource, UITableViewDelegate {
     
     func initTableView() {
-        tableView = UITableView(frame: .zero, style: .insetGrouped)
+        tableView = UITableView(frame: .zero, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(GameTableViewCell.self, forCellReuseIdentifier: reuseID)
+        tableView.backgroundColor = .clear
+        tableView.bounces = false
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
