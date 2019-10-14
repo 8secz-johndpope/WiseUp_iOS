@@ -75,8 +75,6 @@ class ChapterViewController: UICollectionViewController, UICollectionViewDelegat
         let gameVC = GameViewController()
         gameVC.questionNumber = 1
         gameVC.questions = chapter?.questions
-        gameVC.countCorrect = 0
-        gameVC.countIncorrect = 0
         navigationController?.pushViewController(gameVC, animated: true)
     }
     

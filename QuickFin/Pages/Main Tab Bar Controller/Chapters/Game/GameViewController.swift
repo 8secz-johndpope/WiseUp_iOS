@@ -12,9 +12,9 @@ import Localize_Swift
 class GameViewController: BaseViewController {
     
     var answered = false
+    var attempts = 0
+    var points = 0
     var questionNumber: Int!
-    var countCorrect: Int!
-    var countIncorrect: Int!
     var questions: [Question]!
     var currentQuestion: Question!
     let reuseID = "game"
@@ -47,25 +47,28 @@ class GameViewController: BaseViewController {
     }
     
     @objc func proceedToNextVC() {
-        answered = true
+        tableView.isUserInteractionEnabled = false
+        calculatePoints()
         if questionNumber == questions.count {
             let nextVC = ResultsViewController()
-            nextVC.countCorrect = countCorrect
-            nextVC.countIncorrect = countIncorrect
+            nextVC.points = points
             navigationController?.pushViewController(nextVC, animated: true)
         } else {
             let nextVC = GameViewController()
-            nextVC.countCorrect = countCorrect
-            nextVC.countIncorrect = countIncorrect
+            nextVC.points = points
             nextVC.questionNumber = questionNumber + 1
             nextVC.questions = questions
             navigationController?.pushViewController(nextVC, animated: true)
+            print("ttttt")
         }
     }
     
     @objc func popToRootVC() {
-        print("Test")
         navigationController?.popToRootViewController(animated: true)
+    }
+    
+    func calculatePoints() {
+        #warning("TODO: Implementation")
     }
     
 }
