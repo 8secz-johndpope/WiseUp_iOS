@@ -34,6 +34,7 @@ extension ProfileViewController {
             let textView = UITextView()
             textView.text = "Director Jeff".localized()
             textView.font = .boldSystemFont(ofSize: 40)
+            textView.isUserInteractionEnabled = false
             return textView
         }()
                 
@@ -50,6 +51,7 @@ extension ProfileViewController {
             textView.text = "48".localized()
             textView.font = .systemFont(ofSize: 28)
             textView.textColor = UIColor.brown
+            textView.isUserInteractionEnabled = false
             return textView
           }()
         
@@ -66,6 +68,7 @@ extension ProfileViewController {
               textView.text = "11".localized()
               textView.font = .systemFont(ofSize: 28)
             textView.textColor = UIColor.brown
+            textView.isUserInteractionEnabled = false
               return textView
           }()
         
@@ -82,6 +85,7 @@ extension ProfileViewController {
               textView.text = "400/1000".localized()
               textView.font = .systemFont(ofSize: 28)
               textView.textColor = UIColor.brown
+            textView.isUserInteractionEnabled = false
               return textView
           }()
         
