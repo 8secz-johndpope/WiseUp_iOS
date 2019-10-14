@@ -21,6 +21,7 @@ class GameViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getCurrentQuestionAndIncrement()
+        initNav()
         initTableView()
         initUI()
     }
@@ -28,6 +29,10 @@ class GameViewController: BaseViewController {
     func getCurrentQuestionAndIncrement() {
         currentQuestion = questions[0]
         questions.remove(at: 0)
+    }
+    
+    @objc func skip() {
+        
     }
     
 }

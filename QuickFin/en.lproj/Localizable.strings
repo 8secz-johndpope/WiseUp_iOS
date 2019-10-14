@@ -37,3 +37,6 @@
 "New password" = "New password";
 "Confirm new password" = "Confirm new password";
 "New passwords don't match!" = "New passwords don't match!";
+
+// MARK: - Game
+"Question" = "Question";
