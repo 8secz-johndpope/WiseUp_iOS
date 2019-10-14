@@ -17,7 +17,6 @@ class ChapterViewController: UICollectionViewController, UICollectionViewDelegat
     private let cellId = "cellId"
     
     var chapters: [Chapter]?
-
     
     override func viewDidLoad() {
         
@@ -67,6 +66,14 @@ class ChapterViewController: UICollectionViewController, UICollectionViewDelegat
         }
         
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let chapter = chapters?[indexPath.row]
+        
+        navigationController?.pushViewController(GameViewController(), animated: true)
+       
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
