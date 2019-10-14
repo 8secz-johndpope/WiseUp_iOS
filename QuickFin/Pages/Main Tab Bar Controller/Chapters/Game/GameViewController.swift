@@ -17,6 +17,7 @@ class GameViewController: BaseViewController {
     var currentQuestion: Question!
     let reuseID = "game"
     var tableView: UITableView!
+    var questionLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()

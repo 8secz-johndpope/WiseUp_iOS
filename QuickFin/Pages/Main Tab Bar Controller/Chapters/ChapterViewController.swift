@@ -24,7 +24,8 @@ class ChapterViewController: UICollectionViewController, UICollectionViewDelegat
         
         navigationItem.title = "Chapters"
         
-        setBackground()
+        setBackground() // Won't work here because the background is a collection view
+        collectionView.backgroundColor = .systemBackground
         
         collectionView?.alwaysBounceVertical = true
         

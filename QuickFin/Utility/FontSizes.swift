@@ -17,3 +17,14 @@ struct FontSizes {
     static let tableHeader: CGFloat = 13
     static let tabBarTitle: CGFloat = 10
 }
+
+extension UILabel{
+    func requiredHeight(width: CGFloat) -> CGFloat {
+        let lbl = UILabel()
+        lbl.numberOfLines = 0
+        lbl.font = font
+        lbl.text = text
+        let height = lbl.systemLayoutSizeFitting(CGSize(width: width, height: UIView.layoutFittingCompressedSize.height), withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel).height
+        return height
+    }
+}
