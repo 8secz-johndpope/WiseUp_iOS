@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import Localize_Swift
 
 class GameViewController: BaseViewController {
     
+    var answered = false
     var questionNumber: Int!
     var countCorrect: Int!
     var countIncorrect: Int!
@@ -21,19 +23,49 @@ class GameViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getCurrentQuestionAndIncrement()
+        getCurrentQuestion()
         initNav()
         initTableView()
         initUI()
     }
     
-    func getCurrentQuestionAndIncrement() {
-        currentQuestion = questions[0]
-        questions.remove(at: 0)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if answered {
+            navigationItem.hidesBackButton = true
+            navigationItem.setLeftBarButton(UIBarButtonItem(title: "Chapters".localized(), style: .plain, target: self, action: #selector(popToRootVC)), animated: true)
+            navigationItem.rightBarButtonItem?.title = "Next"
+        } else {
+            navigationItem.hidesBackButton = false
+            navigationItem.leftBarButtonItem = nil
+            navigationItem.rightBarButtonItem?.title = "Skip"
+        }
     }
     
-    @objc func skip() {
-        
+    func getCurrentQuestion() {
+        currentQuestion = questions[questionNumber-1]
+    }
+    
+    @objc func proceedToNextVC() {
+        answered = true
+        if questionNumber == questions.count {
+            let nextVC = ResultsViewController()
+            nextVC.countCorrect = countCorrect
+            nextVC.countIncorrect = countIncorrect
+            navigationController?.pushViewController(nextVC, animated: true)
+        } else {
+            let nextVC = GameViewController()
+            nextVC.countCorrect = countCorrect
+            nextVC.countIncorrect = countIncorrect
+            nextVC.questionNumber = questionNumber + 1
+            nextVC.questions = questions
+            navigationController?.pushViewController(nextVC, animated: true)
+        }
+    }
+    
+    @objc func popToRootVC() {
+        print("Test")
+        navigationController?.popToRootViewController(animated: true)
     }
     
 }

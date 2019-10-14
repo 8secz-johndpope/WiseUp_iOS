@@ -43,6 +43,7 @@
 		D570D630233368DD00AB308B /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D570D62F233368DD00AB308B /* FirebaseService.swift */; };
 		D5726DF123546F170077BF95 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5726DF023546F170077BF95 /* GameView.swift */; };
 		D5726DF42354710D0077BF95 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5726DF32354710D0077BF95 /* GameTableViewCell.swift */; };
+		D58CAE9823551190009639F5 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58CAE9723551190009639F5 /* ResultsViewController.swift */; };
 		D5EA30522337148800F56428 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D5EA30542337148800F56428 /* Localizable.strings */; };
 		D5EA30592337187100F56428 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EA30582337187100F56428 /* BaseViewController.swift */; };
 		D5EA305B23371D5600F56428 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EA305A23371D5600F56428 /* SignInViewController.swift */; };
@@ -118,6 +119,7 @@
 		D570D62F233368DD00AB308B /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		D5726DF023546F170077BF95 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		D5726DF32354710D0077BF95 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
+		D58CAE9723551190009639F5 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		D5EA30532337148800F56428 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D5EA30582337187100F56428 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D5EA305A23371D5600F56428 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 			children = (
 				D5726DF023546F170077BF95 /* GameView.swift */,
 				D5726DF32354710D0077BF95 /* GameTableViewCell.swift */,
+				D58CAE9723551190009639F5 /* ResultsViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -646,6 +649,7 @@
 				D5EA30592337187100F56428 /* BaseViewController.swift in Sources */,
 				D570D5FE2333595900AB308B /* AppDelegate.swift in Sources */,
 				D5726DF123546F170077BF95 /* GameView.swift in Sources */,
+				D58CAE9823551190009639F5 /* ResultsViewController.swift in Sources */,
 				BFD565442339927C007ECD97 /* ProfileViewController.swift in Sources */,
 				D5EA305B23371D5600F56428 /* SignInViewController.swift in Sources */,
 				BFD565432339927C007ECD97 /* ProfileView.swift in Sources */,
