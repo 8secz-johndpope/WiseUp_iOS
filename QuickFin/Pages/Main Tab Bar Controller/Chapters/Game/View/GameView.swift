@@ -14,7 +14,8 @@ extension GameViewController {
     
     func initNav() {
         title = "Question".localized() + " \(questionNumber!)"
-        navigationItem.setRightBarButton(UIBarButtonItem(title: "Skip".localized(), style: .plain, target: self, action: #selector(skip)), animated: true)
+        navigationItem.setRightBarButton(UIBarButtonItem(title: "Skip".localized(), style: .plain, target: self, action: #selector(proceedToNextVC)), animated: true)
+        navigationItem.leftItemsSupplementBackButton = true
     }
     
     func initUI() {
@@ -82,6 +83,8 @@ extension GameViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
             countIncorrect += 1
         }
+        tableView.isUserInteractionEnabled = false
+        proceedToNextVC()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
