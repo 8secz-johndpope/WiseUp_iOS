@@ -13,4 +13,5 @@ class Chapter: Codable {
     var questions: [Question]
     var order: Int
     var active: Bool
+    var imageName: String
 }
