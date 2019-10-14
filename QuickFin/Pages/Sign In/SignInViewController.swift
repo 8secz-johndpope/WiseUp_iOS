@@ -31,7 +31,6 @@ class SignInViewController: BaseViewController, LoginButtonDelegate {
                 print(error.localizedDescription)
                 return
             }
-            UIApplication.shared.keyWindow?.setRootViewControllerWithAnimation(target: MainTabBarViewController())
             #warning("TODO: Sync data")
         }
     }
@@ -47,7 +46,6 @@ class SignInViewController: BaseViewController, LoginButtonDelegate {
                 print(error.localizedDescription)
                 return
             }
-            UIApplication.shared.keyWindow?.setRootViewControllerWithAnimation(target: MainTabBarViewController())
         }
         #warning("TODO: Sync data")
     }
