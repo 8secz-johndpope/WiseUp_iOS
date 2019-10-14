@@ -10,16 +10,10 @@ import UIKit
 
 class ResultsViewController: BaseViewController {
     
-    var countCorrect: Int!
-    var countIncorrect: Int!
+    var points = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    func calculateScore() -> Double {
-        #warning("TODO: Score calculation")
-        return 0
     }
 
 }

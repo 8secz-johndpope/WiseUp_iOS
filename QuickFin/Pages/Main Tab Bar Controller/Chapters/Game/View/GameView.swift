@@ -60,6 +60,7 @@ extension GameViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.dataSource = self
         tableView.register(GameTableViewCell.self, forCellReuseIdentifier: reuseID)
         tableView.backgroundColor = .clear
+        tableView.layer.masksToBounds = false
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -78,13 +79,14 @@ extension GameViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if currentQuestion.answer == currentQuestion.answerOptions[indexPath.row] {
-            countCorrect += 1
+        if currentQuestion.answer == currentQuestion.answerOptions[indexPath.section] {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
+                self.proceedToNextVC()
+            }
         } else {
-            countIncorrect += 1
+            attempts += 1
         }
-        tableView.isUserInteractionEnabled = false
-        proceedToNextVC()
+        answered = true
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
