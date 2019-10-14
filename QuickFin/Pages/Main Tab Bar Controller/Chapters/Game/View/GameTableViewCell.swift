@@ -32,9 +32,10 @@ class GameTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        tappped(correct: isCorrect)
+        if selected {
+            tappped(correct: isCorrect)
+        }
     }
-
 }
 
 extension GameTableViewCell {

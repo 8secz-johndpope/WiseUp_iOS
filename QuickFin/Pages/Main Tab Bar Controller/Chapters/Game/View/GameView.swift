@@ -68,12 +68,12 @@ extension GameViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentQuestion.answerOptions.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseID, for: indexPath) as! GameTableViewCell
-        let cellText = currentQuestion.answerOptions[indexPath.row]
+        let cellText = currentQuestion.answerOptions[indexPath.section]
         if cellText == currentQuestion.answer {
             cell.isCorrect = true
         }
@@ -91,5 +91,18 @@ extension GameViewController: UITableViewDataSource, UITableViewDelegate {
         
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return currentQuestion.answerOptions.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let v = UIView()
+        v.backgroundColor = .clear
+        return v
+    }
     
 }
