@@ -69,11 +69,13 @@ class ChapterViewController: UICollectionViewController, UICollectionViewDelegat
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let chapter = chapters?[indexPath.row]
-        
-        navigationController?.pushViewController(GameViewController(), animated: true)
-       
+        let gameVC = GameViewController()
+        gameVC.questionNumber = 1
+        gameVC.questions = chapter?.questions
+        gameVC.countCorrect = 0
+        gameVC.countIncorrect = 0
+        navigationController?.pushViewController(gameVC, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -9,19 +9,27 @@
 import UIKit
 
 class GameViewController: BaseViewController {
+    
+    var questionNumber: Int!
+    var countCorrect: Int!
+    var countIncorrect: Int!
+    var questions: [Question]!
+    var currentQuestion: Question!
+    let reuseID = "game"
+    var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        getCurrentQuestionAndIncrement()
+        initTableView()
         initUI()
+    }
+    
+    func getCurrentQuestionAndIncrement() {
+        currentQuestion = questions[0]
+        questions.remove(at: 0)
     }
     
 }
 
-// MARK: - UI
-extension GameViewController {
-    
-    func initUI() {
-        
-    }
-    
-}
+
