@@ -18,16 +18,17 @@ extension GameViewController {
     }
     
     func initUI() {
+        questionLabel = {
+            let l = UILabel()
+            l.text = "\n" + currentQuestion.question + "\n"   // Hacky!
+            l.font = UIFont.boldSystemFont(ofSize: 25)
+            l.numberOfLines = 0
+            return l
+        }()
+        
         let progressBar: UIProgressView = {
             let p = UIProgressView(progressViewStyle: .default)
             return p
-        }()
-        
-        let questionLabel: UILabel = {
-            let l = UILabel()
-            l.text = currentQuestion.question
-            l.font = UIFont.boldSystemFont(ofSize: 25)
-            return l
         }()
         
         view.addSubview(progressBar)
@@ -37,18 +38,12 @@ extension GameViewController {
             this.top.equalTo(view.snp.topMargin)
             this.height.equalTo(5)
         }
-        view.addSubview(questionLabel)
-        questionLabel.snp.makeConstraints { (this) in
-            this.leading.equalToSuperview().offset(20)
-            this.trailing.equalToSuperview().offset(-20)
-            this.top.equalTo(view.snp.topMargin).offset(20)
-        }
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (this) in
-            this.leading.equalTo(questionLabel.snp.leading)
-            this.trailing.equalTo(questionLabel.snp.trailing)
-            this.top.equalTo(questionLabel.snp.bottom).offset(10)
-            this.bottom.equalToSuperview().offset(-20)
+            this.leading.equalTo(view.snp.leading).offset(20)
+            this.trailing.equalTo(view.snp.trailing).offset(-20)
+            this.top.equalTo(progressBar.snp.bottom)
+            this.bottom.equalToSuperview()
         }
         
     }
@@ -64,7 +59,6 @@ extension GameViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.dataSource = self
         tableView.register(GameTableViewCell.self, forCellReuseIdentifier: reuseID)
         tableView.backgroundColor = .clear
-        tableView.bounces = false
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -88,7 +82,6 @@ extension GameViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
             countIncorrect += 1
         }
-        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -96,10 +89,16 @@ extension GameViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        if section == 0 {
+            return questionLabel.requiredHeight(width: tableView.frame.width)
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            return questionLabel
+        }
         let v = UIView()
         v.backgroundColor = .clear
         return v
