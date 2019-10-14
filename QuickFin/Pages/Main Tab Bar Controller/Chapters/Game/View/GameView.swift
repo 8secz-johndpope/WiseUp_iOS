@@ -27,6 +27,7 @@ extension GameViewController {
             let l = UILabel()
             l.text = currentQuestion.question
             l.font = UIFont.boldSystemFont(ofSize: 25)
+            l.numberOfLines = 3; // Change as needed to fit any size question
             return l
         }()
         
