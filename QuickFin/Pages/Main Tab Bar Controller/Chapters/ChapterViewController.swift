@@ -63,6 +63,7 @@ class ChapterViewController: UICollectionViewController, UICollectionViewDelegat
         
         if let chapter = chapters?[indexPath.item] {
             cell.name = chapter.name
+            cell.imageName = chapter.imageName
         }
         
         return cell
@@ -92,6 +93,12 @@ class ChapterCell: BaseCell {
         }
     }
     
+    var imageName: String? {
+        didSet {
+            iconImageView.image = UIImage(named: imageName!)
+        }
+    }
+    
     let iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -111,7 +118,6 @@ class ChapterCell: BaseCell {
         
         addSubview(iconImageView)
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
-        iconImageView.image = UIImage(named: "Quick Fin Logo")
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-12-[v0(68)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":iconImageView]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-12-[v0(68)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":iconImageView]))
         

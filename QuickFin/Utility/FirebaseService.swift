@@ -70,7 +70,7 @@ class FirebaseService {
                         timestamp = try! FirebaseDecoder().decode(ChapterStats.self, from: chapter.data())
                     } else {
                         
-                        if (chapter.data().count == 4) {
+                        if (chapter.data().count == 5) {
                             
                             let chap = try! FirebaseDecoder().decode(Chapter.self, from: chapter.data())
                             

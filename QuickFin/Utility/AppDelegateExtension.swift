@@ -13,20 +13,41 @@ import Localize_Swift
 // MARK: - Functions extracted from AppDelegate for better readability
 extension AppDelegate {
     func makeMainTabBarController() -> MainTabBarViewController {
+        
         // Chapters
         let chaptersVC = BaseNavigationController(rootViewController: ChapterViewController(collectionViewLayout: UICollectionViewFlowLayout()), prefersLargeTitles: false)
+        
+        // Leaderboard
+        let leaderboardVC = BaseNavigationController(rootViewController: LeaderboardViewController(), prefersLargeTitles: false)
+        
+        // Store
+        let storeVC = BaseNavigationController(rootViewController: StoreViewController(), prefersLargeTitles: false)
+        
         // Profile
         let profileVC = BaseNavigationController(rootViewController: ProfileViewController(), prefersLargeTitles: false)
+        
+        
         // Setting tab bar items
         let tabBarItemsAttributes = [
             [CYLTabBarItemTitle: "Chapters".localized(),
              CYLTabBarItemImage: Images.chaptersUnselected,
              CYLTabBarItemSelectedImage: Images.chapters],
+            
+            [CYLTabBarItemTitle: "Leaderboard".localized(),
+            CYLTabBarItemImage: Images.leaderboardUnselected,
+            CYLTabBarItemSelectedImage: Images.leaderboard],
+            
+            [CYLTabBarItemTitle: "Store".localized(),
+            CYLTabBarItemImage: Images.storeUnselected,
+            CYLTabBarItemSelectedImage: Images.store],
+            
             [CYLTabBarItemTitle: "Profile".localized(),
             CYLTabBarItemImage: Images.profileUnselected,
             CYLTabBarItemSelectedImage: Images.profile]
         ]
-        let tabBar = MainTabBarViewController(viewControllers: [chaptersVC, profileVC], tabBarItemsAttributes: tabBarItemsAttributes);
+        
+        let tabBar = MainTabBarViewController(viewControllers: [chaptersVC, leaderboardVC, storeVC, profileVC], tabBarItemsAttributes: tabBarItemsAttributes);
+        
         tabBar.setTintColor(Colors.FidelityGreen!)
         return tabBar
     }
