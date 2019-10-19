@@ -46,20 +46,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
-            #warning("TODO: Error popup")
-            print(error.localizedDescription)
+            ErrorMessageHandler.shared.showMessageModal(theme: .error, title: "Google sign in error", body: error.localizedDescription)
             return
         }
         guard let auth = user.authentication else {
-            #warning("TODO: Error popup")
-            print(error.localizedDescription)
+            ErrorMessageHandler.shared.showMessageModal(theme: .error, title: "Google sign in error", body: error.localizedDescription)
             return
         }
         let credential = GoogleAuthProvider.credential(withIDToken: auth.idToken, accessToken: auth.accessToken)
         Auth.auth().signIn(with: credential) { (result, error) in
             if let error = error {
-                #warning("TODO: Error popup")
-                print(error.localizedDescription)
+                ErrorMessageHandler.shared.showMessageModal(theme: .error, title: "Firebase sign in error", body: error.localizedDescription)
                 return
             }
             // Shouldn't need to do anything here due to the Auth state listener set previously.
