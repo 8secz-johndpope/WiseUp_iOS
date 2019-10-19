@@ -16,6 +16,7 @@ struct FontSizes {
     static let text: CGFloat = 13
     static let tableHeader: CGFloat = 13
     static let tabBarTitle: CGFloat = 10
+    static let circularProgressNumber: CGFloat = 70
 }
 
 extension UILabel{

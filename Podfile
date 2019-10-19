@@ -31,6 +31,7 @@ target 'QuickFin' do
   pod 'GradientLoadingBar'
   pod 'IGListKit'
   pod 'InAppSettingsKit'
+  pod 'UICircularProgressRing'
 
   target 'QuickFinTests' do
     inherit! :search_paths
