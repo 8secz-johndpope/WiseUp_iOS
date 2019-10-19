@@ -80,6 +80,7 @@ extension GameViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if currentQuestion.answer == currentQuestion.answerOptions[indexPath.section] {
+            navigationItem.rightBarButtonItem?.isEnabled = false
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
                 self.proceedToNextVC()
             }
