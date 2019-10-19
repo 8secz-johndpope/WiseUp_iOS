@@ -40,6 +40,7 @@ class GameViewController: BaseViewController {
             navigationItem.leftBarButtonItem = nil
             navigationItem.rightBarButtonItem?.title = "Skip"
         }
+        navigationItem.rightBarButtonItem?.isEnabled = true
     }
     
     func getCurrentQuestion() {
