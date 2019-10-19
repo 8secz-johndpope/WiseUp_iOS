@@ -6,6 +6,18 @@
   Copyright © 2019 Fidelity Investments. All rights reserved.
 */
 
+// MARK: - Errors
+"Okay" = "Okay";
+"Sign in error" = "Sign in error";
+"Sign up error" = "Sign up error";
+"Password reset error" = "Password reset error";
+"Facebook sign in error" = "Facebook sign in error";
+"Google sign in error" = "Google sign in error";
+"Firebase sign in error" = "Firebase sign in error";
+"Sign out error" = "Sign out error";
+"Update password error" = "Update password error";
+"Passwords do not match!" = "Passwords do not match!";
+
 // MARK: - Sign In Screen
 "QuickFin:" = "QuickFin:";
 "A financial literacy game." = "A financial literacy game.";
