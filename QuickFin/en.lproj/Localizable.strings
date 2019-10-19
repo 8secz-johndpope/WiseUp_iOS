@@ -17,6 +17,7 @@
 "Sign out error" = "Sign out error";
 "Update password error" = "Update password error";
 "Passwords do not match!" = "Passwords do not match!";
+"Action cancelled." = "Action cancelled.";
 
 // MARK: - Sign In Screen
 "QuickFin:" = "QuickFin:";
@@ -27,6 +28,7 @@
 "Sign In" = "Sign In";
 "Sign Up" = "Sign Up";
 "Forgot Password?" = "Forgot Password?";
+"Google sign in" = "Google sign in";
 
 // MARK: - Sign Up Screen
 "Create Account" = "Create Account";
