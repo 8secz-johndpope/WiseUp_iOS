@@ -6,7 +6,6 @@
 //  Copyright © 2019 Fidelity Investments. All rights reserved.
 //
 
-import Localize_Swift
 import SnapKit
 import SkyFloatingLabelTextField
 import GoogleSignIn

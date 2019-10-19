@@ -8,7 +8,6 @@
 
 import UIKit
 import SkyFloatingLabelTextField
-import Localize_Swift
 import ReactiveKit
 import Firebase
 
@@ -20,6 +19,7 @@ class ChangePasswordViewController: BaseViewController {
     }
     
     func changePassword(password: String) {
+        #warning("TODO: Reauthenticate before password change!")
         Auth.auth().currentUser?.updatePassword(to: password, completion: { (error) in
             if let error = error {
                 ErrorMessageHandler.shared.showMessageModal(theme: .error, title: "Update password error", body: error.localizedDescription)

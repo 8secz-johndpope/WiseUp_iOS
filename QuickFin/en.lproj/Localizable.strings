@@ -53,3 +53,5 @@
 // MARK: - Game
 "Question" = "Question";
 "Next" = "Next";
+"Done" = "Done";
+"Skip" = "Skip";

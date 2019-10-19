@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Localize_Swift
 
 // MARK: - UI
 extension GameViewController {

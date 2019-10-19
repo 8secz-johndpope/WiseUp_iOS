@@ -14,6 +14,11 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         setBackground()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
 }
 
 extension UIViewController {
