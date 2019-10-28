@@ -201,6 +201,7 @@ PODS:
     - SwiftMessages/App (= 7.0.1)
   - SwiftMessages/App (7.0.1)
   - SwiftRichString (3.0.1)
+  - UICircularProgressRing (6.3.0)
   - UIWindowTransitions (0.2.0)
 
 DEPENDENCIES:
@@ -228,10 +229,11 @@ DEPENDENCIES:
   - SwiftDate
   - SwiftMessages
   - SwiftRichString
+  - UICircularProgressRing
   - UIWindowTransitions
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AppAuth
     - Bond
     - BoringSSL-GRPC
@@ -281,6 +283,8 @@ SPEC REPOS:
     - SwiftMessages
     - SwiftRichString
     - UIWindowTransitions
+  trunk:
+    - UICircularProgressRing
 
 SPEC CHECKSUMS:
   AppAuth: bce82c76043657c99d91e7882e8a9e1a93650cd4
@@ -331,8 +335,9 @@ SPEC CHECKSUMS:
   SwiftDate: fa2bb3962056bb44047b4b85a30044e5eae30b03
   SwiftMessages: b577dc7043be8b299857ab35bb663dbff6483bd0
   SwiftRichString: a560aebd82e0b43e2277f1615686f2e5bf006dfd
+  UICircularProgressRing: e700fb0505328e88ee53c4ed92bee6d1a5b8bbe3
   UIWindowTransitions: cb662e2ae9e2d1060fcdbe3eb3de9232bedb7612
 
-PODFILE CHECKSUM: ff7602582d293772ec0cf92ff8705f73d9489dd5
+PODFILE CHECKSUM: 74d999de11e7cda58f88ccff75cc0bb9277495aa
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.3

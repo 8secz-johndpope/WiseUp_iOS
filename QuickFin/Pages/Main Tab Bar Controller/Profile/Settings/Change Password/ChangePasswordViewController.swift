@@ -8,8 +8,8 @@
 
 import UIKit
 import SkyFloatingLabelTextField
-import Localize_Swift
 import ReactiveKit
+import Firebase
 
 class ChangePasswordViewController: BaseViewController {
 
@@ -19,7 +19,12 @@ class ChangePasswordViewController: BaseViewController {
     }
     
     func changePassword(password: String) {
-        #warning("TODO: Change password logic")
+        #warning("TODO: Reauthenticate before password change!")
+        Auth.auth().currentUser?.updatePassword(to: password, completion: { (error) in
+            if let error = error {
+                ErrorMessageHandler.shared.showMessageModal(theme: .error, title: "Update password error", body: error.localizedDescription)
+            }
+        })
     }
 }
 
@@ -29,7 +34,6 @@ extension ChangePasswordViewController {
     func initUI() {
         title = "Change Password".localized()
         
-        let oldPasswordTextField = makeTextField(title: "Old password")
         let newPasswordTextField = makeTextField(title: "New password")
         let confirmNewPasswordTextField = makeTextField(title: "Confirm new password")
         _ = confirmNewPasswordTextField.reactive.text.observeNext { (text) in
@@ -46,32 +50,27 @@ extension ChangePasswordViewController {
             b.backgroundColor = Colors.FidelityGreen!
             b.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
             _ = b.reactive.tap.observeNext { [unowned self] (_) in
+                if newPasswordTextField.text != confirmNewPasswordTextField.text {
+                    ErrorMessageHandler.shared.showMessage(theme: .error, title: "Update password error", body: "Passwords do not match!".localized())
+                }
                 if let password = confirmNewPasswordTextField.text {
                     self.changePassword(password: password)
-                } else {
-                    #warning("TODO: Error popup: No password entered")
                 }
             }
             return b
         }()
         
-        view.addSubview(oldPasswordTextField)
-        oldPasswordTextField.snp.makeConstraints { (this) in
+        view.addSubview(newPasswordTextField)
+        newPasswordTextField.snp.makeConstraints { (this) in
             this.top.equalTo(view.snp_topMargin).offset(20)
             this.leading.equalToSuperview().offset(20)
             this.trailing.equalToSuperview().offset(-20)
         }
-        view.addSubview(newPasswordTextField)
-        newPasswordTextField.snp.makeConstraints { (this) in
-            this.top.equalTo(oldPasswordTextField.snp.bottom).offset(10)
-            this.leading.equalTo(oldPasswordTextField.snp.leading)
-            this.trailing.equalTo(oldPasswordTextField.snp.trailing)
-        }
         view.addSubview(confirmNewPasswordTextField)
         confirmNewPasswordTextField.snp.makeConstraints { (this) in
             this.top.equalTo(newPasswordTextField.snp.bottom).offset(10)
-            this.leading.equalTo(oldPasswordTextField.snp.leading)
-            this.trailing.equalTo(oldPasswordTextField.snp.trailing)
+            this.leading.equalTo(newPasswordTextField.snp.leading)
+            this.trailing.equalTo(newPasswordTextField.snp.trailing)
         }
         view.addSubview(changePasswordButton)
         changePasswordButton.snp.makeConstraints { (this) in

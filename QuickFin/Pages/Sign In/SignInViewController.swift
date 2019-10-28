@@ -22,50 +22,41 @@ class SignInViewController: BaseViewController, LoginButtonDelegate {
     
     func emailSignInHandler(email: String?, password: String?) {
         guard let email = email, let password = password else {
-            #warning("TODO: Error handling")
             return
         }
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if let error = error {
-                #warning("TODO: Error handling")
-                print(error.localizedDescription)
+                ErrorMessageHandler.shared.showMessage(theme: .error, title: "Sign in error", body: error.localizedDescription)
                 return
             }
-            UIApplication.shared.keyWindow?.setRootViewControllerWithAnimation(target: MainTabBarViewController())
             #warning("TODO: Sync data")
         }
     }
     
     func signUpHandler(email: String?, password: String?) {
         guard let email = email, let password = password else {
-            #warning("TODO: Error handling")
             return
         }
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             if let error = error {
-                #warning("TODO: Error handling")
-                print(error.localizedDescription)
+                ErrorMessageHandler.shared.showMessage(theme: .error, title: "Sign up error", body: error.localizedDescription)
                 return
             }
-            UIApplication.shared.keyWindow?.setRootViewControllerWithAnimation(target: MainTabBarViewController())
         }
         #warning("TODO: Sync data")
     }
     
     func forgotPasswordHandler(email: String?) {
         guard let email = email else {
-            #warning("TODO: Error handling")
             return
         }
         Auth.auth().sendPasswordReset(withEmail: email) { (error) in
             if let error = error {
-                #warning("TODO: Error handling")
-                print(error.localizedDescription)
+                ErrorMessageHandler.shared.showMessage(theme: .error, title: "Password reset error", body: error.localizedDescription)
                 return
             }
         }
     }
-    
 }
 
 // MARK: - Delegate pattern to automatically sign in
@@ -81,16 +72,14 @@ extension SignInViewController {
     
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         if let error = error {
-            #warning("TODO: Error popup")
-            print(error.localizedDescription)
+            ErrorMessageHandler.shared.showMessage(theme: .error, title: "Facebook sign in error", body: error.localizedDescription)
             return
         }
         if let token = AccessToken.current {
             let credential = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
             Auth.auth().signIn(with: credential) { (result, error) in
                 if let error = error {
-                    #warning("TODO: Error popup")
-                    print(error.localizedDescription)
+                    ErrorMessageHandler.shared.showMessage(theme: .error, title: "Facebook sign in error", body: error.localizedDescription)
                     return
                 }
                 // Shouldn't need to do anything here due to the Auth state listener set previously in AppDelegate.
@@ -105,8 +94,7 @@ extension SignInViewController {
         do {
             try Auth.auth().signOut()
         } catch let error as NSError {
-            #warning("TODO: Error popup")
-            print(error.localizedDescription)
+            ErrorMessageHandler.shared.showMessage(theme: .error, title: "Sign out error", body: error.localizedDescription)
         }
     }
 

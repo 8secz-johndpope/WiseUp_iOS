@@ -28,15 +28,25 @@ class BaseNavigationController: UINavigationController {
         return .lightContent
     }
     
+    let appearance: UINavigationBarAppearance = {
+        let titleAttributes = [NSAttributedString.Key.foregroundColor: Colors.DynamicNavigationTitleColor!]
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithDefaultBackground()
+        appearance.largeTitleTextAttributes = titleAttributes
+        appearance.titleTextAttributes = titleAttributes
+        appearance.backgroundColor = Colors.DynamicNavigationBarColor
+        return appearance
+    }()
+    
+    
 }
 
 extension BaseNavigationController {
     
     func initBaseUI() {
-        navigationBar.barTintColor = Colors.DynamicNavigationBarColor
         navigationBar.tintColor = Colors.DynamicNavigationTitleColor
-        let titleAttributes = [NSAttributedString.Key.foregroundColor: Colors.DynamicNavigationTitleColor!]
-        navigationBar.titleTextAttributes = titleAttributes
+        navigationBar.standardAppearance = appearance
+        navigationBar.scrollEdgeAppearance = appearance
     }
     
 }

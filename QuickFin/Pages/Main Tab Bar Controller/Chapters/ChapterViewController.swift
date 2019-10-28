@@ -24,7 +24,8 @@ class ChapterViewController: UICollectionViewController, UICollectionViewDelegat
         
         navigationItem.title = "Chapters"
         
-        setBackground()
+        setBackground() // Won't work here because the background is a collection view
+        collectionView.backgroundColor = .systemBackground
         
         collectionView?.alwaysBounceVertical = true
         
@@ -70,11 +71,11 @@ class ChapterViewController: UICollectionViewController, UICollectionViewDelegat
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let chapter = chapters?[indexPath.row]
-        
-        navigationController?.pushViewController(GameViewController(), animated: true)
-       
+        let gameVC = GameViewController()
+        gameVC.questionNumber = 1
+        gameVC.questions = chapter?.questions
+        navigationController?.pushViewController(gameVC, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
