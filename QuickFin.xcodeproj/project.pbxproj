@@ -46,6 +46,11 @@
 		D5726DF42354710D0077BF95 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5726DF32354710D0077BF95 /* GameTableViewCell.swift */; };
 		D5737F76235ADE6300756298 /* ErrorMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5737F75235ADE6300756298 /* ErrorMessageHandler.swift */; };
 		D58CAE9823551190009639F5 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58CAE9723551190009639F5 /* ResultsViewController.swift */; };
+		D5BA98662367779B0099D528 /* StoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA98652367779B0099D528 /* StoreItem.swift */; };
+		D5BA986923677D180099D528 /* StoreTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA986823677D180099D528 /* StoreTableView.swift */; };
+		D5BA986B23677D490099D528 /* StoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA986A23677D490099D528 /* StoreTableViewCell.swift */; };
+		D5BA986D23677FA30099D528 /* StoreItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA986C23677FA30099D528 /* StoreItemDetailsViewController.swift */; };
+		D5BA986F23677FC70099D528 /* StoreItemDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA986E23677FC70099D528 /* StoreItemDetailsView.swift */; };
 		D5EA30522337148800F56428 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D5EA30542337148800F56428 /* Localizable.strings */; };
 		D5EA30592337187100F56428 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EA30582337187100F56428 /* BaseViewController.swift */; };
 		D5EA305B23371D5600F56428 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EA305A23371D5600F56428 /* SignInViewController.swift */; };
@@ -120,6 +125,11 @@
 		D5726DF32354710D0077BF95 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
 		D5737F75235ADE6300756298 /* ErrorMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageHandler.swift; sourceTree = "<group>"; };
 		D58CAE9723551190009639F5 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		D5BA98652367779B0099D528 /* StoreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItem.swift; sourceTree = "<group>"; };
+		D5BA986823677D180099D528 /* StoreTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTableView.swift; sourceTree = "<group>"; };
+		D5BA986A23677D490099D528 /* StoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTableViewCell.swift; sourceTree = "<group>"; };
+		D5BA986C23677FA30099D528 /* StoreItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItemDetailsViewController.swift; sourceTree = "<group>"; };
+		D5BA986E23677FC70099D528 /* StoreItemDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItemDetailsView.swift; sourceTree = "<group>"; };
 		D5EA30532337148800F56428 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D5EA30582337187100F56428 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D5EA305A23371D5600F56428 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -192,7 +202,9 @@
 		BF2E7AC2235465870048A201 /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				D5BA986723677CFE0099D528 /* Views */,
 				BF2E7AC6235466370048A201 /* StoreViewController.swift */,
+				D5BA986C23677FA30099D528 /* StoreItemDetailsViewController.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -267,6 +279,7 @@
 				BFD5653B2339926B007ECD97 /* Chapter.swift */,
 				BFD5653C2339926B007ECD97 /* Question.swift */,
 				BF4EDAA52341E09800E45E90 /* ChapterStats.swift */,
+				D5BA98652367779B0099D528 /* StoreItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -362,6 +375,16 @@
 				D58CAE9723551190009639F5 /* ResultsViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		D5BA986723677CFE0099D528 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D5BA986823677D180099D528 /* StoreTableView.swift */,
+				D5BA986A23677D490099D528 /* StoreTableViewCell.swift */,
+				D5BA986E23677FC70099D528 /* StoreItemDetailsView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		D5EA30552337182D00F56428 /* Main Tab Bar Controller */ = {
@@ -648,6 +671,7 @@
 				D5EA3060233737C100F56428 /* FontSizes.swift in Sources */,
 				D5EA305E23371E0700F56428 /* SignInView.swift in Sources */,
 				D570D6002333595900AB308B /* MainTabBarViewController.swift in Sources */,
+				D5BA986B23677D490099D528 /* StoreTableViewCell.swift in Sources */,
 				BFD5653D2339926B007ECD97 /* Chapter.swift in Sources */,
 				D5EA30592337187100F56428 /* BaseViewController.swift in Sources */,
 				D570D5FE2333595900AB308B /* AppDelegate.swift in Sources */,
@@ -664,11 +688,14 @@
 				BF2E7AC123545FCB0048A201 /* GameViewController.swift in Sources */,
 				BF2E7AC5235465C10048A201 /* LeaderboardViewController.swift in Sources */,
 				D505BA0E23512C2B0025E975 /* SettingsTableViewCell.swift in Sources */,
+				D5BA986D23677FA30099D528 /* StoreItemDetailsViewController.swift in Sources */,
 				D5469B4A2338247F0047D09D /* Core.swift in Sources */,
 				BFD565422339927C007ECD97 /* ChapterViewController.swift in Sources */,
 				D5469B4F23398AC70047D09D /* User.swift in Sources */,
+				D5BA986F23677FC70099D528 /* StoreItemDetailsView.swift in Sources */,
 				D5726DF42354710D0077BF95 /* GameTableViewCell.swift in Sources */,
 				D505BA0A2351281A0025E975 /* SettingsViewController.swift in Sources */,
+				D5BA98662367779B0099D528 /* StoreItem.swift in Sources */,
 				D52471D023401F3900922564 /* BaseNavigationController.swift in Sources */,
 				D505BA13235181080025E975 /* ChangePasswordViewController.swift in Sources */,
 				D5469B4823377AF20047D09D /* SignInDelegateProtocol.swift in Sources */,
@@ -678,6 +705,7 @@
 				D52471DA2341CC8900922564 /* AppDelegateExtension.swift in Sources */,
 				BF4EDAA42341DC7500E45E90 /* CacheService.swift in Sources */,
 				D52471D223402B2400922564 /* Colors.swift in Sources */,
+				D5BA986923677D180099D528 /* StoreTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

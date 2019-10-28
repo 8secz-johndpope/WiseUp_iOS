@@ -19,6 +19,7 @@ PODS:
   - CYLTabBarController/Core (1.28.3)
   - Differ (1.4.3)
   - Disk (0.6.4)
+  - DropDown (2.3.13)
   - FBSDKCoreKit (5.6.0):
     - FBSDKCoreKit/Basics (= 5.6.0)
     - FBSDKCoreKit/Core (= 5.6.0)
@@ -173,11 +174,6 @@ PODS:
   - GTMSessionFetcher/Core (1.2.2)
   - GTMSessionFetcher/Full (1.2.2):
     - GTMSessionFetcher/Core (= 1.2.2)
-  - IGListKit (3.4.0):
-    - IGListKit/Default (= 3.4.0)
-  - IGListKit/Default (3.4.0):
-    - IGListKit/Diffing
-  - IGListKit/Diffing (3.4.0)
   - InAppSettingsKit (2.14)
   - IQKeyboardManagerSwift (6.4.2)
   - leveldb-library (1.22)
@@ -209,6 +205,7 @@ DEPENDENCIES:
   - CodableFirebase
   - CYLTabBarController
   - Disk
+  - DropDown
   - FBSDKLoginKit
   - Firebase/Analytics
   - Firebase/Auth
@@ -218,7 +215,6 @@ DEPENDENCIES:
   - Firebase/Storage
   - GoogleSignIn
   - GradientLoadingBar
-  - IGListKit
   - InAppSettingsKit
   - IQKeyboardManagerSwift
   - Localize-Swift
@@ -266,7 +262,6 @@ SPEC REPOS:
     - gRPC-Core
     - GTMAppAuth
     - GTMSessionFetcher
-    - IGListKit
     - InAppSettingsKit
     - IQKeyboardManagerSwift
     - leveldb-library
@@ -284,6 +279,7 @@ SPEC REPOS:
     - SwiftRichString
     - UIWindowTransitions
   trunk:
+    - DropDown
     - UICircularProgressRing
 
 SPEC CHECKSUMS:
@@ -294,6 +290,7 @@ SPEC CHECKSUMS:
   CYLTabBarController: cd14c6260a38337600737873a57b3114c7065a8e
   Differ: 6c7477d6187e8c36d02ec342a3c321061b85a0ea
   Disk: dcee5c2e98fb72f9a924cde8da8435b08244a80e
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   FBSDKCoreKit: d6655a343868d4bb5c29a60859bab07c3be14a0b
   FBSDKLoginKit: c5a623de88a6b0cda35b35582921f6cec2efcc36
   Firebase: 9cbe4e5b5eaafa05dc932be58b7c8c3820d71e88
@@ -319,7 +316,6 @@ SPEC CHECKSUMS:
   gRPC-Core: c9aef9a261a1247e881b18059b84d597293c9947
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
-  IGListKit: 7a5d788e9fb746bcd402baa8e8b24bc3bd2a5a07
   InAppSettingsKit: 800853da39388780c15191846688c0974c5b13b5
   IQKeyboardManagerSwift: 79a3ec200dfb41cb66a89b8575417b5378107c5d
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
@@ -338,6 +334,6 @@ SPEC CHECKSUMS:
   UICircularProgressRing: e700fb0505328e88ee53c4ed92bee6d1a5b8bbe3
   UIWindowTransitions: cb662e2ae9e2d1060fcdbe3eb3de9232bedb7612
 
-PODFILE CHECKSUM: 74d999de11e7cda58f88ccff75cc0bb9277495aa
+PODFILE CHECKSUM: 800cdad60691630a2c94163e1b33e7aff5b77815
 
 COCOAPODS: 1.8.3

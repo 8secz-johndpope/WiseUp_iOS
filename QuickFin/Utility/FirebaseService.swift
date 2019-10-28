@@ -21,10 +21,16 @@ class FirebaseService {
     
     let db = Firestore.firestore()
     let users = "users"
+    let storage = Storage.storage()
     
     func logOut() {
         try? Auth.auth().signOut()
     }
+    
+}
+
+// MARK: - Firebase Firestore
+extension FirebaseService {
     
     func readUser(completion: @escaping (FirestoreUserResponse?) -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else {
@@ -109,7 +115,14 @@ class FirebaseService {
             return
         }
     }
+}
+
+// MARK: - Firebase Storage
+extension FirebaseService {
+    
+    func getImage(URL: String) -> UIImage {
+        #warning("TODO: Work with backend folks and implement storage")
+        return "?".emojiToImage()!
+    }
     
 }
-    
-
