@@ -15,4 +15,8 @@ struct User: Codable {
     var exp = Int()
     var fName = String()
     var lName = String()
+    
+    func getName() -> String {
+        return "\(fName) \(lName)"
+    }
 }

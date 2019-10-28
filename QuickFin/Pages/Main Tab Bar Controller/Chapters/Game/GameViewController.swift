@@ -59,7 +59,6 @@ class GameViewController: BaseViewController {
             nextVC.questionNumber = questionNumber + 1
             nextVC.questions = questions
             navigationController?.pushViewController(nextVC, animated: true)
-            print("ttttt")
         }
     }
     
