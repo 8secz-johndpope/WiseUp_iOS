@@ -29,9 +29,9 @@ target 'QuickFin' do
   pod 'SwiftMessages'
   pod 'Motion'
   pod 'GradientLoadingBar'
-  pod 'IGListKit'
   pod 'InAppSettingsKit'
   pod 'UICircularProgressRing'
+  pod 'DropDown'
 
   target 'QuickFinTests' do
     inherit! :search_paths

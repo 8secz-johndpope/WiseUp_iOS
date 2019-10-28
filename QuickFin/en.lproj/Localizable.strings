@@ -57,3 +57,6 @@
 "Next" = "Next";
 "Done" = "Done";
 "Skip" = "Skip";
+
+// MARK: - Store
+"Store" = "Store";

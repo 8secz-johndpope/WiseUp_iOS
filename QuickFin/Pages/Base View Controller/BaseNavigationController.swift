@@ -47,6 +47,10 @@ extension BaseNavigationController {
         navigationBar.tintColor = Colors.DynamicNavigationTitleColor
         navigationBar.standardAppearance = appearance
         navigationBar.scrollEdgeAppearance = appearance
+        navigationBar.layer.shadowColor = UIColor.black.cgColor
+        navigationBar.layer.shadowOpacity = 0.15
+        navigationBar.layer.shadowOffset = CGSize(width: 0, height: 4)
+        navigationBar.layer.masksToBounds = false
     }
     
 }
