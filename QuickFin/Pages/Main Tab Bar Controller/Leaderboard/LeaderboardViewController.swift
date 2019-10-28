@@ -15,11 +15,17 @@ class LeaderboardViewController: BaseViewController {
         super.viewDidLoad()
         navigationItem.title = "Leaderboard".localized()
         setBackground()
+        fetchData()
         initUI()
     }
-        
-    func initUI() {
-        
+    
+    var tableView: UITableView!
+    let reuseID = "leaderboard"
+    var friends = [User]()
+    let timeframeOptions = ["Weekly".localized(), "Monthly".localized(), "All time".localized()]
+    
+    func fetchData() {
+        #warning("TODO: Fetch real data")
+        friends = []
     }
-
 }

@@ -229,7 +229,7 @@ DEPENDENCIES:
   - UIWindowTransitions
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - AppAuth
     - Bond
     - BoringSSL-GRPC
@@ -237,6 +237,7 @@ SPEC REPOS:
     - CYLTabBarController
     - Differ
     - Disk
+    - DropDown
     - FBSDKCoreKit
     - FBSDKLoginKit
     - Firebase
@@ -277,10 +278,8 @@ SPEC REPOS:
     - SwiftDate
     - SwiftMessages
     - SwiftRichString
-    - UIWindowTransitions
-  trunk:
-    - DropDown
     - UICircularProgressRing
+    - UIWindowTransitions
 
 SPEC CHECKSUMS:
   AppAuth: bce82c76043657c99d91e7882e8a9e1a93650cd4
@@ -336,4 +335,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 800cdad60691630a2c94163e1b33e7aff5b77815
 
-COCOAPODS: 1.8.3
+COCOAPODS: 1.7.5

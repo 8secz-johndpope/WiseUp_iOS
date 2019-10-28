@@ -1,15 +1,15 @@
 //
-//  StoreTableViewCell.swift
+//  LeaderboardTableViewCell.swift
 //  QuickFin
 //
-//  Created by Boyuan Xu on 10/28/19.
+//  Created by Boyuan Xu on 10/27/19.
 //  Copyright © 2019 Fidelity Investments. All rights reserved.
 //
 
 import UIKit
 import SnapKit
 
-class StoreTableViewCell: UITableViewCell {
+class LeaderboardTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -39,7 +39,7 @@ class StoreTableViewCell: UITableViewCell {
         return l
     }()
     
-    let numberLabel: UILabel = {
+    let scoreLabel: UILabel = {
         let l = UILabel()
         l.text = "0"
         l.textColor = Colors.DynamicTextColor
@@ -49,7 +49,7 @@ class StoreTableViewCell: UITableViewCell {
 
 }
 
-extension StoreTableViewCell {
+extension LeaderboardTableViewCell {
     
     func initUI() {
         addSubview(thumbnail)
@@ -64,8 +64,8 @@ extension StoreTableViewCell {
             this.leading.equalTo(thumbnail.snp.trailing).offset(10)
             this.centerY.equalToSuperview()
         }
-        addSubview(numberLabel)
-        numberLabel.snp.makeConstraints { (this) in
+        addSubview(scoreLabel)
+        scoreLabel.snp.makeConstraints { (this) in
             this.trailing.equalToSuperview().offset(-20)
             this.centerY.equalToSuperview()
         }

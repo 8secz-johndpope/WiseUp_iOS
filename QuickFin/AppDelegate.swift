@@ -55,10 +55,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         }
         let credential = GoogleAuthProvider.credential(withIDToken: auth.idToken, accessToken: auth.accessToken)
         Auth.auth().signIn(with: credential) { (result, error) in
+            
             if let error = error {
                 ErrorMessageHandler.shared.showMessageModal(theme: .error, title: "Firebase sign in error", body: error.localizedDescription)
                 return
             }
+            
+            FirebaseService.shared.verifyUser(email: Auth.auth().currentUser?.email ?? "")
             // Shouldn't need to do anything here due to the Auth state listener set previously.
         }
     }

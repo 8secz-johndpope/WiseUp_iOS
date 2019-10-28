@@ -58,5 +58,8 @@
 "Done" = "Done";
 "Skip" = "Skip";
 
-// MARK: - Store
-"Store" = "Store";
+// MARK: - Leaderboard
+"Leaderboard" = "Leaderboard";
+"Weekly" = "Weekly";
+"Monthly" = "Monthly";
+"All time" = "All time";
