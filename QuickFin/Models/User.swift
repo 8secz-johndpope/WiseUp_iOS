@@ -9,14 +9,30 @@
 import Foundation
 
 struct User: Codable {
+    
+    var admin = Bool()
     var email = String()
-    var dob = Date()
+    var uid = String()
     var avatar = String()
-    var exp = Int()
+    
+    var completed: [String]
+    var experience = Int()
+    var inProgress = String()
+
     var fName = String()
     var lName = String()
+    
+    init(admin: Bool, email: String, uid: String) {
+        self.admin = admin
+        self.email = email
+        self.uid = uid
+        self.completed = []
+        self.experience = 0
+        self.inProgress = ""
+    }
     
     func getName() -> String {
         return "\(fName) \(lName)"
     }
+    
 }

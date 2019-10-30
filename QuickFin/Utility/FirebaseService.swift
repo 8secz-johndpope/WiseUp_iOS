@@ -21,43 +21,61 @@ class FirebaseService {
     
     let db = Firestore.firestore()
     let users = "users"
-    let storage = Storage.storage()
     
     func logOut() {
         try? Auth.auth().signOut()
     }
     
-}
-
-// MARK: - Firebase Firestore
-extension FirebaseService {
-    
-    func readUser(completion: @escaping (FirestoreUserResponse?) -> Void) {
+    func verifyUser(email: String) {
+        
         guard let uid = Auth.auth().currentUser?.uid else {
-            completion(nil)
+            print("Error getting uid")
             return
         }
+        
         db.collection(users).document(uid).getDocument { (snapshot, error) in
+            
             if let error = error {
-                completion(FirestoreUserResponse(error: error))
+                print(error)
                 return
+            } else {
+                
+                if (!snapshot!.exists) {
+                    
+                    let user = User(admin: false, email: email, uid: String(uid))
+                    let serializedUser = try! FirestoreEncoder().encode(user)
+                    
+                    self.db.collection(self.users).document(uid).setData(serializedUser) { (error) in
+                        return
+                    }
+                }
+                
             }
-            if let snapshot = snapshot {
-                let user = try! FirebaseDecoder().decode(User.self, from: snapshot.data()!)
-                completion(FirestoreUserResponse(user: user))
-                return
-            }
-            completion(FirestoreUserResponse(error: FirebaseError.snapshotError("E_SDNE")))
-            return
         }
     }
     
-    func saveUser(user: User, completion: @escaping (Error?) -> Void) {
-        // Using forced try here since as long as the object conforms to Codable, nothing should go wrong.
-        let serializedUser = try! FirestoreEncoder().encode(user)
-        db.document(users).setData(serializedUser) { (error) in
-            completion(error)
+    func retrieveUser(completion: @escaping (User?) -> Void) {
+        
+        let uid = Auth.auth().currentUser?.uid
+        
+        db.collection(users).document(uid!).getDocument { (querySnapshot, err) in
+            
+            if let err = err {
+                print("Error getting User: \(err)")
+                completion(nil)
+                return
+            }
+            
+            if let querySnapshot = querySnapshot {
+                let user = try! FirebaseDecoder().decode(User.self, from: querySnapshot.data()!)
+                completion(user)
+                return
+            }
+            
+            completion(nil)
+            return
         }
+        
     }
     
     func loadChapters(completion: @escaping ([Chapter], ChapterStats?) -> Void) {
@@ -115,8 +133,9 @@ extension FirebaseService {
             return
         }
     }
+    
 }
-
+    
 // MARK: - Firebase Storage
 extension FirebaseService {
     

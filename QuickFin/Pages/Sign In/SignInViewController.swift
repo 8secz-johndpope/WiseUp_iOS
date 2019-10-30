@@ -29,7 +29,13 @@ class SignInViewController: BaseViewController, LoginButtonDelegate {
                 ErrorMessageHandler.shared.showMessage(theme: .error, title: "Sign in error", body: error.localizedDescription)
                 return
             }
+            
             #warning("TODO: Sync data")
+            
+            #warning("ADD TO USERS TABLE OR VERIFY USERS TABLE EXISTS")
+            
+            FirebaseService.shared.verifyUser(email: email)
+            
         }
     }
     
@@ -42,8 +48,14 @@ class SignInViewController: BaseViewController, LoginButtonDelegate {
                 ErrorMessageHandler.shared.showMessage(theme: .error, title: "Sign up error", body: error.localizedDescription)
                 return
             }
+            
+            FirebaseService.shared.verifyUser(email: email)
         }
+        
         #warning("TODO: Sync data")
+        
+        #warning("ADD TO USERS TABLE OR VERIFY USERS TABLE EXISTS")
+
     }
     
     func forgotPasswordHandler(email: String?) {
@@ -83,6 +95,7 @@ extension SignInViewController {
                     return
                 }
                 // Shouldn't need to do anything here due to the Auth state listener set previously in AppDelegate.
+                FirebaseService.shared.verifyUser(email: Auth.auth().currentUser?.email ?? "")
             }
         } else {
             // User cancelled login
