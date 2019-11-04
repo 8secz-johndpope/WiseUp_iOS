@@ -32,8 +32,14 @@ extension ProfileViewController {
         
         let profileNameView: UITextView = {
             let textView = UITextView()
-            textView.text = "Director Jeff".localized()
-            textView.font = .boldSystemFont(ofSize: 40)
+            
+            if (User.shared.getName() == " ") {
+                textView.text = User.shared.displayName.localized()
+            } else {
+                textView.text = User.shared.getName().localized()
+            }
+            
+            textView.font = .boldSystemFont(ofSize: 32)
             textView.isUserInteractionEnabled = false
             return textView
         }()
@@ -48,7 +54,7 @@ extension ProfileViewController {
         
         let coinsNameView: UITextView = {
             let textView = UITextView()
-            textView.text = "48".localized()
+            textView.text = String(User.shared.coins).localized()
             textView.font = .systemFont(ofSize: 28)
             textView.textColor = UIColor.brown
             textView.isUserInteractionEnabled = false
@@ -65,7 +71,8 @@ extension ProfileViewController {
         
         let rankNameView: UITextView = {
               let textView = UITextView()
-              textView.text = "11".localized()
+            #warning("TODO - Convert to Achievements")
+            textView.text = String(User.shared.achievementCount).localized()
               textView.font = .systemFont(ofSize: 28)
             textView.textColor = UIColor.brown
             textView.isUserInteractionEnabled = false
@@ -82,7 +89,12 @@ extension ProfileViewController {
         
         let xpNameView: UITextView = {
              let textView = UITextView()
-              textView.text = "400/1000".localized()
+            
+            #warning("TODO - LEVEL + Make Exponential")
+            let level = User.shared.experience / 1000
+            let xp = User.shared.experience % 1000
+            
+              textView.text = "\(xp)/1000".localized()
               textView.font = .systemFont(ofSize: 28)
               textView.textColor = UIColor.brown
             textView.isUserInteractionEnabled = false
@@ -108,6 +120,7 @@ extension ProfileViewController {
         view.addSubview(xpNameView)
       
     }
+    
     
 //    func initUI() {
 //

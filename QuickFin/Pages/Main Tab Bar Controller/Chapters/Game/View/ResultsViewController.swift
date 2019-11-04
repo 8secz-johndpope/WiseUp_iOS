@@ -12,10 +12,20 @@ import SnapKit
 
 class ResultsViewController: BaseViewController {
     
-    var points = 0
+    var points: Int?
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        print("In Results VC w/ \(points) points!")
+        
+        User.shared.experience += points!
+        User.shared.coins += points! / 10
+        User.shared.achievementCount += 1
+        
+        FirebaseService.shared.pushUserToFirebase()
+        
         initUI()
     }
     
@@ -26,7 +36,8 @@ class ResultsViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        progressRing.startProgress(to: 69, duration: 2.0)
+        #warning("TODO - Replace w/ Real level data")
+        progressRing.startProgress(to: CGFloat((User.shared.experience % 1000) / 10), duration: 2.0)
     }
     
     @objc func popToRootVC() {
@@ -62,7 +73,7 @@ extension ResultsViewController {
             let l = UILabel()
             l.font = UIFont.systemFont(ofSize: FontSizes.largeNavTitle, weight: .bold)
             #warning("TODO: Replace dummy data with real data")
-            l.text = "+3797 Fiddles"
+            l.text = "+\(points! / 10) Fiddles"
             l.textColor = Colors.DynamicTextColor
             return l
         }()

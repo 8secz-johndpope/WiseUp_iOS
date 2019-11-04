@@ -18,5 +18,8 @@ class ProfileViewController: BaseViewController {
         initUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        initUI()
+    }
 }
 
