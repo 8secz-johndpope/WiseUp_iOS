@@ -12,7 +12,7 @@ class GameViewController: BaseViewController {
     
     var answered = false
     var attempts = 0
-    var points = 0
+    var points: Int!
     var questionNumber: Int!
     var questions: [Question]!
     var currentQuestion: Question!
@@ -55,7 +55,7 @@ class GameViewController: BaseViewController {
             navigationController?.pushViewController(nextVC, animated: true)
         } else {
             let nextVC = GameViewController()
-            nextVC.points = points
+            nextVC.points = points + 100
             nextVC.questionNumber = questionNumber + 1
             nextVC.questions = questions
             navigationController?.pushViewController(nextVC, animated: true)
@@ -68,6 +68,9 @@ class GameViewController: BaseViewController {
     
     func calculatePoints() {
         #warning("TODO: Implementation")
+        if (questionNumber == 1) {
+            points = 100
+        }
     }
     
 }
