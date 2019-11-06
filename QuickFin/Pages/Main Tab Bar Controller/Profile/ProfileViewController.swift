@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ProfileViewController: BaseViewController {
     
@@ -19,7 +20,24 @@ class ProfileViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        initUI()
+        super.viewWillAppear(animated)
+        fetchData()
+    }
+    
+    var xpProgressBarBackgroundView: UIView!
+    var xpProgressBarFiller: UIView!
+    
+    func fetchData() {
+        let xpPercentage = (Double)(User.shared.experience % 1000) / 1000.0
+        UIView.animate(withDuration: 0.4) {
+            self.xpProgressBarFiller.snp.remakeConstraints { (this) in
+                this.leading.equalTo(self.xpProgressBarBackgroundView.snp.leading)
+                this.height.equalTo(10)
+                this.centerY.equalTo(self.xpProgressBarBackgroundView.snp.centerY)
+                this.width.equalTo(self.xpProgressBarBackgroundView.snp.width).multipliedBy(xpPercentage)
+            }
+            self.xpProgressBarFiller.superview?.layoutIfNeeded()
+        }
     }
 }
 
