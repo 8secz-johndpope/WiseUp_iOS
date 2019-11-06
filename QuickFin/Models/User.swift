@@ -10,25 +10,36 @@ import Foundation
 
 struct User: Codable {
     
+    static var shared = User()
+    
     var admin = Bool()
     var email = String()
     var uid = String()
     var avatar = String()
     
+    var coins = Int()
     var completed: [String]
     var experience = Int()
     var inProgress = String()
 
     var fName = String()
     var lName = String()
+    var achievementCount = Int()
+    var displayName = String()
     
-    init(admin: Bool, email: String, uid: String) {
+    init() {
+        self.completed = []
+    }
+    
+    init(admin: Bool, email: String, uid: String, displayName: String) {
         self.admin = admin
         self.email = email
         self.uid = uid
         self.completed = []
         self.experience = 0
         self.inProgress = ""
+        self.displayName = displayName
+        self.achievementCount = 0
     }
     
     func getName() -> String {

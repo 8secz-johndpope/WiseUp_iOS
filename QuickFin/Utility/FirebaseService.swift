@@ -33,6 +33,11 @@ class FirebaseService {
             return
         }
         
+        guard let displayName = Auth.auth().currentUser?.displayName else {
+            print("Error getting display name")
+            return
+        }
+        
         db.collection(users).document(uid).getDocument { (snapshot, error) in
             
             if let error = error {
@@ -42,16 +47,37 @@ class FirebaseService {
                 
                 if (!snapshot!.exists) {
                     
-                    let user = User(admin: false, email: email, uid: String(uid))
-                    let serializedUser = try! FirestoreEncoder().encode(user)
+                    User.shared = User(admin: false, email: email, uid: String(uid), displayName: displayName)
+                    let serializedUser = try! FirestoreEncoder().encode(User.shared)
                     
                     self.db.collection(self.users).document(uid).setData(serializedUser) { (error) in
                         return
                     }
+                } else {
+                    
+                    User.shared = try! FirebaseDecoder().decode(User.self, from: snapshot!.data()!)
+                    return
+                    
                 }
                 
             }
         }
+    }
+    
+    func pushUserToFirebase() {
+        
+        let uid = Auth.auth().currentUser?.uid
+        
+        let serializedUser = try! FirestoreEncoder().encode(User.shared)
+        
+        self.db.collection(users).document(uid!).setData(serializedUser) { (error) in
+            if let error = error {
+                print("Error saving user: \(error)")
+            } else {
+                print("User saved written!")
+            }
+        }
+        
     }
     
     func retrieveUser(completion: @escaping (User?) -> Void) {
@@ -67,8 +93,8 @@ class FirebaseService {
             }
             
             if let querySnapshot = querySnapshot {
-                let user = try! FirebaseDecoder().decode(User.self, from: querySnapshot.data()!)
-                completion(user)
+                User.shared = try! FirebaseDecoder().decode(User.self, from: querySnapshot.data()!)
+                completion(User.shared)
                 return
             }
             
