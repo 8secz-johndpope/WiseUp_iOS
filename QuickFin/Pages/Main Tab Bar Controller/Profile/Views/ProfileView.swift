@@ -22,7 +22,7 @@ extension ProfileViewController {
     }
         
     func initUI() {
-        
+                
         let profileImageView: UIImageView = {
             let imageView = UIImageView()
             imageView.contentMode = .scaleAspectFill
@@ -30,55 +30,61 @@ extension ProfileViewController {
             return imageView
         }()
         
-        let profileNameView: UITextView = {
-            let textView = UITextView()
-            
-            if (User.shared.getName() == " ") {
-                textView.text = User.shared.displayName.localized()
+        let profileNameLabel: UILabel = {
+            let l = UILabel()
+            if User.shared.getName() == " " {
+                l.text = User.shared.displayName
             } else {
-                textView.text = User.shared.getName().localized()
+                l.text = User.shared.getName()
             }
-            
-            textView.font = .boldSystemFont(ofSize: 32)
-            textView.isUserInteractionEnabled = false
-            return textView
-        }()
-                
-        
-        let coinsImageView: UIImageView = {
-            let imageView = UIImageView()
-            imageView.contentMode = .scaleAspectFill
-            imageView.image = UIImage(named: "Coins")
-            return imageView
+            l.font = .boldSystemFont(ofSize: FontSizes.largeNavTitle)
+            l.textColor = Colors.DynamicTextColor
+            return l
         }()
         
-        let coinsNameView: UITextView = {
-            let textView = UITextView()
-            textView.text = String(User.shared.coins).localized()
-            textView.font = .systemFont(ofSize: 28)
-            textView.textColor = UIColor.brown
-            textView.isUserInteractionEnabled = false
-            return textView
-          }()
-        
-        
-        let rankImageView: UIImageView = {
-            let imageView = UIImageView()
-            imageView.contentMode = .scaleAspectFill
-            imageView.image = UIImage(named: "Rank")
-            return imageView
+        let horizontalStackView: UIStackView = {
+            let v = UIStackView()
+            v.axis = .horizontal
+            v.distribution = .fillEqually
+            v.alignment = .center
+            return v
         }()
         
-        let rankNameView: UITextView = {
-              let textView = UITextView()
-            #warning("TODO - Convert to Achievements")
-            textView.text = String(User.shared.achievementCount).localized()
-              textView.font = .systemFont(ofSize: 28)
-            textView.textColor = UIColor.brown
-            textView.isUserInteractionEnabled = false
-              return textView
-          }()
+        let coinContainerView = UIView()
         
+        let coinBalanceNameLabel: UILabel = {
+            let l = UILabel()
+            l.text = "Coin balance".localized()
+            l.font = .boldSystemFont(ofSize: FontSizes.pageTitle)
+            l.textColor = Colors.DynamicTextColor
+            return l
+        }()
+        
+        let coinBalanceLabel: UILabel = {
+            let l = UILabel()
+            l.text = User.shared.coins.description
+            l.font = .systemFont(ofSize: FontSizes.pageTitle)
+            l.textColor = Colors.DynamicTextColor
+            return l
+        }()
+    
+        let achievementContainerView = UIView()
+
+        let achievementNameLabel: UILabel = {
+            let l = UILabel()
+            l.text = "Achievements".localized()
+            l.font = .boldSystemFont(ofSize: FontSizes.pageTitle)
+            l.textColor = Colors.DynamicTextColor
+            return l
+        }()
+        
+        let achievementLabel: UILabel = {
+            let l = UILabel()
+            l.text = User.shared.achievementCount.description
+            l.font = .systemFont(ofSize: FontSizes.pageTitle)
+            l.textColor = Colors.DynamicTextColor
+            return l
+        }()
         
         let xpImageView: UIImageView = {
             let imageView = UIImageView()
@@ -86,6 +92,10 @@ extension ProfileViewController {
             imageView.image = UIImage(named: "XP")
             return imageView
         }()
+        
+        xpProgressBarBackgroundView = UIView()
+        xpProgressBarFiller = UIView()
+        xpProgressBarFiller.backgroundColor = Colors.FidelityGreen
         
         let xpNameView: UITextView = {
              let textView = UITextView()
@@ -101,64 +111,78 @@ extension ProfileViewController {
               return textView
           }()
         
-        
-        profileImageView.frame = CGRect(x: 30, y: 130, width: 80, height: 80)
-        profileNameView.frame = CGRect(x: 120, y: 130, width: 300, height: 80)
-        coinsImageView.frame = CGRect(x: 50, y: 220, width: 40, height: 40)
-        coinsNameView.frame = CGRect(x: 100, y: 215, width: 300, height: 40)
-        rankImageView.frame = CGRect(x: 50, y: 275, width: 40, height: 40)
-        rankNameView.frame = CGRect(x: 100, y: 265, width: 300, height: 40)
-        xpImageView.frame = CGRect(x: 60, y: 330, width: 25, height: 25)
-        xpNameView.frame = CGRect(x: 100, y: 315, width: 300, height: 40)
-        view.addSubview(profileNameView)
         view.addSubview(profileImageView)
-        view.addSubview(coinsImageView)
-        view.addSubview(coinsNameView)
-        view.addSubview(rankImageView)
-        view.addSubview(rankNameView)
+        profileImageView.snp.makeConstraints { (this) in
+            this.top.equalTo(view.snp.topMargin).offset(20)
+            this.centerX.equalToSuperview()
+            this.width.equalTo(150)
+            this.height.equalTo(150)
+        }
+        view.addSubview(profileNameLabel)
+        profileNameLabel.snp.makeConstraints { (this) in
+            this.top.equalTo(profileImageView.snp.bottom)
+            this.centerX.equalToSuperview()
+        }
+        profileImageView.layer.shadowColor = Colors.DynamicTextColor?.cgColor
+        profileImageView.layer.shadowOpacity = 0.3
+        profileImageView.layer.shadowRadius = 5
+        profileImageView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        
         view.addSubview(xpImageView)
-        view.addSubview(xpNameView)
-      
+        xpImageView.snp.makeConstraints { (this) in
+            this.top.equalTo(profileNameLabel.snp.bottom).offset(10)
+            this.leading.equalToSuperview().offset(20)
+        }
+        view.addSubview(xpProgressBarBackgroundView)
+        xpProgressBarBackgroundView.snp.makeConstraints { (this) in
+            this.leading.equalTo(xpImageView.snp.trailing).offset(10)
+            this.trailing.equalToSuperview().offset(-20)
+            this.height.equalTo(10)
+            this.centerY.equalTo(xpImageView.snp.centerY)
+        }
+        view.addSubview(xpProgressBarFiller)
+        xpProgressBarFiller.snp.makeConstraints { (this) in
+            this.leading.equalTo(xpProgressBarBackgroundView.snp.leading)
+            this.height.equalTo(10)
+            this.centerY.equalTo(xpProgressBarBackgroundView.snp.centerY)
+            this.width.equalTo(xpProgressBarBackgroundView.snp.width).multipliedBy(1)
+        }
+        xpProgressBarBackgroundView.layer.borderColor = Colors.DynamicTextColor?.cgColor
+        xpProgressBarBackgroundView.layer.borderWidth = 0.3
+        xpProgressBarBackgroundView.layer.cornerRadius = 5
+        xpProgressBarFiller.layer.cornerRadius = 5
+        xpProgressBarFiller.layer.shadowColor = Colors.FidelityGreen?.cgColor
+        xpProgressBarFiller.layer.shadowOpacity = 0.7
+        xpProgressBarFiller.layer.shadowRadius = 7
+        xpProgressBarFiller.layer.shadowOffset = CGSize(width: 0, height: 1)
+        
+        coinContainerView.addSubview(coinBalanceNameLabel)
+        coinBalanceNameLabel.snp.makeConstraints { (this) in
+            this.top.equalToSuperview()
+            this.centerX.equalToSuperview()
+        }
+        coinContainerView.addSubview(coinBalanceLabel)
+        coinBalanceLabel.snp.makeConstraints { (this) in
+            this.top.equalTo(coinBalanceNameLabel.snp.bottom)
+            this.centerX.equalToSuperview()
+        }
+        achievementContainerView.addSubview(achievementNameLabel)
+        achievementNameLabel.snp.makeConstraints { (this) in
+            this.top.equalToSuperview()
+            this.centerX.equalToSuperview()
+        }
+        achievementContainerView.addSubview(achievementLabel)
+        achievementLabel.snp.makeConstraints { (this) in
+            this.top.equalTo(achievementNameLabel.snp.bottom)
+            this.centerX.equalToSuperview()
+        }
+        horizontalStackView.addArrangedSubview(coinContainerView)
+        horizontalStackView.addArrangedSubview(achievementContainerView)
+        view.addSubview(horizontalStackView)
+        horizontalStackView.snp.makeConstraints { (this) in
+            this.top.equalTo(xpImageView.snp.bottom).offset(20)
+            this.leading.equalToSuperview()
+            this.trailing.equalToSuperview()
+        }
     }
-    
-    
-//    func initUI() {
-//
-//        // MARK: - Sign in section
-//        let signOutView: UIStackView = {
-//            let v = UIStackView()
-//            v.axis = .vertical
-//            v.alignment = .center
-//            v.spacing = 5
-//            return v
-//        }()
-//
-//        let signOutButton: UIButton = {
-//            let b = UIButton()
-//            b.setTitle("Sign Out".localized(), for: .normal)
-//            b.setTitleColor(UIColor.white, for: .normal)
-//            b.backgroundColor = Colors.FidelityGreen
-//            b.reactive.tap.observeNext { [unowned self] (_) in
-//                do {
-//                    try Auth.auth().signOut()
-//                } catch let error as NSError {
-//                    #warning("TODO: Error popup")
-//                    print(error.localizedDescription)
-//                }
-//            }
-//            return b
-//        }()
-//
-//        signOutView.addArrangedSubview(signOutButton)
-//
-//        view.addSubview(signOutView)
-//        signOutView.snp.makeConstraints { (this) in
-//            this.center.equalToSuperview()
-//            this.leading.equalTo(view.snp.leadingMargin)
-//            this.trailing.equalTo(view.snp.trailingMargin)
-//        }
-     
-        
-//    }
-        
 }

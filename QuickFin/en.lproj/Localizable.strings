@@ -60,3 +60,7 @@
 
 // MARK: - Store
 "Store" = "Store";
+
+// MARK: - Profile
+"Coin balance" = "Coin balance";
+"Achievements" = "Achievements";

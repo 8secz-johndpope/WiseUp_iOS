@@ -33,9 +33,6 @@ class SignInViewController: BaseViewController, LoginButtonDelegate {
             #warning("TODO: Sync data")
             
             #warning("ADD TO USERS TABLE OR VERIFY USERS TABLE EXISTS")
-            
-            FirebaseService.shared.verifyUser(email: email)
-            
         }
     }
     
@@ -49,7 +46,6 @@ class SignInViewController: BaseViewController, LoginButtonDelegate {
                 return
             }
             
-            FirebaseService.shared.verifyUser(email: email)
         }
         
         #warning("TODO: Sync data")
