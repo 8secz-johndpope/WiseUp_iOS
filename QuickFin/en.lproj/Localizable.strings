@@ -24,7 +24,7 @@
 "A financial literacy game." = "A financial literacy game.";
 "Email" = "Email";
 "Password" = "Password";
-"Toggle" = "Toggle"; // Lazy fix for UIEdgeInset
+"Toggle" = "Toggle";
 "Sign In" = "Sign In";
 "Sign Up" = "Sign Up";
 "Forgot Password?" = "Forgot Password?";
@@ -62,5 +62,7 @@
 "Store" = "Store";
 
 // MARK: - Profile
-"Coin balance" = "Coin balance";
+"Coins" = "Coins";
 "Achievements" = "Achievements";
+"Change avatar" = "Change avatar";
+
