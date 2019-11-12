@@ -29,7 +29,6 @@ extension ProfileViewController {
             imageView.image = UIImage(named: "Profile Image")
             return imageView
         }()
-        
         let profileNameLabel: UILabel = {
             let l = UILabel()
             if User.shared.getName() == " " {
@@ -51,15 +50,13 @@ extension ProfileViewController {
         }()
         
         let coinContainerView = UIView()
-        
         let coinBalanceNameLabel: UILabel = {
             let l = UILabel()
-            l.text = "Coin balance".localized()
+            l.text = "Coins".localized()
             l.font = .boldSystemFont(ofSize: FontSizes.pageTitle)
             l.textColor = Colors.DynamicTextColor
             return l
         }()
-        
         let coinBalanceLabel: UILabel = {
             let l = UILabel()
             l.text = User.shared.coins.description
@@ -69,7 +66,6 @@ extension ProfileViewController {
         }()
     
         let achievementContainerView = UIView()
-
         let achievementNameLabel: UILabel = {
             let l = UILabel()
             l.text = "Achievements".localized()
@@ -77,7 +73,6 @@ extension ProfileViewController {
             l.textColor = Colors.DynamicTextColor
             return l
         }()
-        
         let achievementLabel: UILabel = {
             let l = UILabel()
             l.text = User.shared.achievementCount.description
@@ -92,24 +87,9 @@ extension ProfileViewController {
             imageView.image = UIImage(named: "XP")
             return imageView
         }()
-        
         xpProgressBarBackgroundView = UIView()
         xpProgressBarFiller = UIView()
         xpProgressBarFiller.backgroundColor = Colors.FidelityGreen
-        
-        let xpNameView: UITextView = {
-             let textView = UITextView()
-            
-            #warning("TODO - LEVEL + Make Exponential")
-            let level = User.shared.experience / 1000
-            let xp = User.shared.experience % 1000
-            
-              textView.text = "\(xp)/1000".localized()
-              textView.font = .systemFont(ofSize: 28)
-              textView.textColor = UIColor.brown
-            textView.isUserInteractionEnabled = false
-              return textView
-          }()
         
         view.addSubview(profileImageView)
         profileImageView.snp.makeConstraints { (this) in
@@ -184,5 +164,34 @@ extension ProfileViewController {
             this.leading.equalToSuperview()
             this.trailing.equalToSuperview()
         }
+        
+        tableView = UITableView(frame: .zero, style: .plain)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(SettingsTableViewCell.self, forCellReuseIdentifier: cellReuseID)
+        
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { (this) in
+            this.top.equalTo(horizontalStackView.snp.bottom).offset(50)
+            this.leading.equalToSuperview()
+            this.trailing.equalToSuperview()
+            this.bottomMargin.equalToSuperview()
+        }
+        print("Height: \(horizontalStackView?????????:??xxxs.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize))")
     }
+}
+
+// MARK: - UITableView
+extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return profileSettings.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath) as! SettingsTableViewCell;
+        cell.titleLabel.text = profileSettings[indexPath.row]
+        return cell
+    }
+    
 }

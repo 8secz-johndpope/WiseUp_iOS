@@ -26,6 +26,13 @@ class ProfileViewController: BaseViewController {
     
     var xpProgressBarBackgroundView: UIView!
     var xpProgressBarFiller: UIView!
+    var tableView: UITableView!
+    let cellReuseID = "profileSettings"
+    let profileSettings = [
+        "Change avatar".localized(),
+        "Consumables".localized(),
+        "Profile settings".localized()
+    ]
     
     func fetchData() {
         let xpPercentage = (Double)(User.shared.experience % 1000) / 1000.0
