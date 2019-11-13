@@ -167,7 +167,7 @@ extension FirebaseService {
     
     func getImage(URL: String) -> UIImage {
         #warning("TODO: Work with backend folks and implement storage")
-        return "?".emojiToImage()!
+        return "🤔".emojiToImage()!
     }
     
 }

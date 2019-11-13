@@ -21,11 +21,10 @@ class StoreTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        initUI()
     }
     
     let thumbnail: UIImageView = {
-        let image = "?".emojiToImage()?.withAlignmentRectInsets(UIEdgeInsets(top: -5, left: -5, bottom: -5, right: -5))
+        let image = "🤔".emojiToImage()?.withAlignmentRectInsets(UIEdgeInsets(top: -5, left: -5, bottom: -5, right: -5))
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFill
         return imageView
@@ -46,6 +45,16 @@ class StoreTableViewCell: UITableViewCell {
         l.font = UIFont.systemFont(ofSize: FontSizes.secondaryTitle)
         return l
     }()
+    
+    let descriptionLabel: UILabel = {
+        let l = UILabel()
+        l.text = "Elpson Fruth"
+        l.textColor = Colors.DynamicTextColor
+        l.font = UIFont.systemFont(ofSize: FontSizes.text)
+        l.numberOfLines = 1
+        l.alpha = 0.7
+        return l
+    }()
 
 }
 
@@ -62,12 +71,18 @@ extension StoreTableViewCell {
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (this) in
             this.leading.equalTo(thumbnail.snp.trailing).offset(10)
-            this.centerY.equalToSuperview()
+            this.bottom.equalTo(snp.centerY)
         }
         addSubview(numberLabel)
         numberLabel.snp.makeConstraints { (this) in
             this.trailing.equalToSuperview().offset(-20)
             this.centerY.equalToSuperview()
+        }
+        addSubview(descriptionLabel)
+        descriptionLabel.snp.makeConstraints { (this) in
+            this.leading.equalTo(titleLabel.snp.leading)
+            this.top.equalTo(titleLabel.snp.bottom)
+            this.trailing.equalTo(numberLabel.snp.leading).offset(-10)
         }
     }
     
