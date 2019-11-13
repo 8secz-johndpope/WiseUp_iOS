@@ -135,8 +135,6 @@ extension SignInViewController {
         signInView.addArrangedSubview(passwordStackView)
         passwordStackView.addArrangedSubview(passwordField)
         passwordStackView.addArrangedSubview(revealPasswordButton)
-//        revealPasswordButton.layer.backgroundColor = Colors.FidelityGreen?.cgColor
-//        revealPasswordButton.layer.cornerRadius = 2
         
         passwordStackView.snp.makeConstraints { (this) in
             this.width.equalTo(emailField.snp.width)
@@ -178,8 +176,8 @@ extension SignInViewController {
             let b = UIButton()
             b.setTitle("Sign Up".localized(), for: .normal)
             b.setTitleColor(Colors.FidelityGreen, for: .normal)
-            _ = b.reactive.tap.observeNext { [weak self] (_) in
-                self?.signUpHandler(email: emailField.text, password: passwordField.text)
+            _ = b.reactive.tap.observeNext { [unowned self] (_) in
+                self.present(SignUpViewController(), animated: true, completion: nil)
             }
             return b
         }()
@@ -187,8 +185,8 @@ extension SignInViewController {
             let b = UIButton()
             b.setTitle("Forgot Password?".localized(), for: .normal)
             b.setTitleColor(Colors.DynamicTextColor, for: .normal)
-            _ = b.reactive.tap.observeNext { [weak self] (_) in
-                self?.forgotPasswordHandler(email: emailField.text)
+            _ = b.reactive.tap.observeNext { [unowned self] (_) in
+                self.present(ForgotPasswordViewController(), animated: true, completion: nil)
             }
             return b
         }()
