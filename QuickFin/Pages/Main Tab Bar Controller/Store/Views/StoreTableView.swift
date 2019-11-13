@@ -48,6 +48,8 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
         cell.thumbnail.image = FirebaseService.shared.getImage(URL: storeItems[indexPath.row].imageURL)
         cell.titleLabel.text = storeItems[indexPath.row].name
         cell.numberLabel.text = storeItems[indexPath.row].cost.description
+        cell.descriptionLabel.text = storeItems[indexPath.row].details
+        cell.initUI()
         return cell
     }
     
@@ -95,6 +97,10 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
     }
     
 }
