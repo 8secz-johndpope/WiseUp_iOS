@@ -11,7 +11,6 @@
 		245D2CABFE2DE4EB6D45A1D6 /* Pods_QuickFinUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8568AC969BE75A987C428194 /* Pods_QuickFinUITests.framework */; };
 		8376102487283190D6D1B6AF /* Pods_QuickFinTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 944AFC84E667E92EEE10DE04 /* Pods_QuickFinTests.framework */; };
 		BF2E7AC123545FCB0048A201 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2E7AC023545FCB0048A201 /* GameViewController.swift */; };
-		BF2E7AC5235465C10048A201 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2E7AC4235465C10048A201 /* LeaderboardViewController.swift */; };
 		BF2E7AC7235466370048A201 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2E7AC6235466370048A201 /* StoreViewController.swift */; };
 		BF4EDAA42341DC7500E45E90 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4EDAA32341DC7500E45E90 /* CacheService.swift */; };
 		BF4EDAA62341E09800E45E90 /* ChapterStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4EDAA52341E09800E45E90 /* ChapterStats.swift */; };
@@ -30,6 +29,8 @@
 		D52471D4234150CA00922564 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D52471D3234150CA00922564 /* Images.xcassets */; };
 		D52471D823415A2D00922564 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52471D723415A2D00922564 /* Images.swift */; };
 		D52471DA2341CC8900922564 /* AppDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52471D92341CC8900922564 /* AppDelegateExtension.swift */; };
+		D5460A64237C687500BBE034 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5460A63237C687500BBE034 /* CustomTableViewCell.swift */; };
+		D5460A66237C687B00BBE034 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5460A65237C687B00BBE034 /* LeaderboardViewController.swift */; };
 		D5469B4823377AF20047D09D /* SignInDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5469B4723377AF20047D09D /* SignInDelegateProtocol.swift */; };
 		D5469B4A2338247F0047D09D /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5469B492338247F0047D09D /* Core.swift */; };
 		D5469B4F23398AC70047D09D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5469B4E23398AC70047D09D /* User.swift */; };
@@ -86,7 +87,6 @@
 		AC9EEAF965A7BA4EDC7018A3 /* Pods-QuickFin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickFin.debug.xcconfig"; path = "Target Support Files/Pods-QuickFin/Pods-QuickFin.debug.xcconfig"; sourceTree = "<group>"; };
 		AF35D85A5A8EAD301D0E9451 /* Pods-QuickFinTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickFinTests.debug.xcconfig"; path = "Target Support Files/Pods-QuickFinTests/Pods-QuickFinTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BF2E7AC023545FCB0048A201 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		BF2E7AC4235465C10048A201 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		BF2E7AC6235466370048A201 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		BF4EDAA32341DC7500E45E90 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 		BF4EDAA52341E09800E45E90 /* ChapterStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterStats.swift; sourceTree = "<group>"; };
@@ -105,6 +105,8 @@
 		D52471D3234150CA00922564 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D52471D723415A2D00922564 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		D52471D92341CC8900922564 /* AppDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtension.swift; sourceTree = "<group>"; };
+		D5460A63237C687500BBE034 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		D5460A65237C687B00BBE034 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		D5469B4723377AF20047D09D /* SignInDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDelegateProtocol.swift; sourceTree = "<group>"; };
 		D5469B492338247F0047D09D /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		D5469B4E23398AC70047D09D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -216,7 +218,8 @@
 		BF2E7AC32354658A0048A201 /* Leaderboard */ = {
 			isa = PBXGroup;
 			children = (
-				BF2E7AC4235465C10048A201 /* LeaderboardViewController.swift */,
+				D5460A63237C687500BBE034 /* CustomTableViewCell.swift */,
+				D5460A65237C687B00BBE034 /* LeaderboardViewController.swift */,
 			);
 			path = Leaderboard;
 			sourceTree = "<group>";
@@ -709,7 +712,6 @@
 				D571186A237BE846005419D4 /* ForgotPasswordViewController.swift in Sources */,
 				D52471D823415A2D00922564 /* Images.swift in Sources */,
 				BF2E7AC123545FCB0048A201 /* GameViewController.swift in Sources */,
-				BF2E7AC5235465C10048A201 /* LeaderboardViewController.swift in Sources */,
 				D505BA0E23512C2B0025E975 /* SettingsTableViewCell.swift in Sources */,
 				D5BA986D23677FA30099D528 /* StoreItemDetailsViewController.swift in Sources */,
 				D5469B4A2338247F0047D09D /* Core.swift in Sources */,
@@ -717,12 +719,14 @@
 				D5469B4F23398AC70047D09D /* User.swift in Sources */,
 				D5711868237BDFCC005419D4 /* SignUpViewController.swift in Sources */,
 				D5BA986F23677FC70099D528 /* StoreItemDetailsView.swift in Sources */,
+				D5460A64237C687500BBE034 /* CustomTableViewCell.swift in Sources */,
 				D5726DF42354710D0077BF95 /* GameTableViewCell.swift in Sources */,
 				D505BA0A2351281A0025E975 /* SettingsViewController.swift in Sources */,
 				D5BA98662367779B0099D528 /* StoreItem.swift in Sources */,
 				D52471D023401F3900922564 /* BaseNavigationController.swift in Sources */,
 				D505BA13235181080025E975 /* ChangePasswordViewController.swift in Sources */,
 				D5469B4823377AF20047D09D /* SignInDelegateProtocol.swift in Sources */,
+				D5460A66237C687B00BBE034 /* LeaderboardViewController.swift in Sources */,
 				BF4EDAA62341E09800E45E90 /* ChapterStats.swift in Sources */,
 				BF2E7AC7235466370048A201 /* StoreViewController.swift in Sources */,
 				D5469B5123398E170047D09D /* FirestoreUserResponse.swift in Sources */,
