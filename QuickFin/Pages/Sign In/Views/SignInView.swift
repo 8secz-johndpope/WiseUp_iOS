@@ -34,27 +34,26 @@ extension SignInViewController {
             return l
         }()
         
-        titleView.addSubview(logoImageView)
-        logoImageView.snp.makeConstraints { (this) in
-            this.top.equalToSuperview()
-            this.leading.equalToSuperview()
+        titleView.addSubview(quickFinSubtitleLabel)
+        quickFinSubtitleLabel.snp.makeConstraints { (this) in
+            this.bottom.equalToSuperview()
+            this.centerX.equalToSuperview()
         }
         titleView.addSubview(quickFinTitleLabel)
         quickFinTitleLabel.snp.makeConstraints { (this) in
-            this.top.equalTo(logoImageView.snp.bottom)
-            this.leading.equalTo(logoImageView.snp.leading)
+            this.bottom.equalTo(quickFinSubtitleLabel.snp.top)
+            this.centerX.equalToSuperview()
         }
-        titleView.addSubview(quickFinSubtitleLabel)
-        quickFinSubtitleLabel.snp.makeConstraints { (this) in
-            this.top.equalTo(quickFinTitleLabel.snp.bottom)
-            this.leading.equalTo(quickFinTitleLabel.snp.leading)
+        titleView.addSubview(logoImageView)
+        logoImageView.snp.makeConstraints { (this) in
+            this.bottom.equalTo(quickFinTitleLabel.snp.top)
+            this.centerX.equalToSuperview()
         }
         
+        
+        
         view.addSubview(titleView)
-        titleView.snp.makeConstraints { (this) in
-            this.top.equalTo(view.snp.topMargin).offset(10)
-            this.leading.equalTo(view.snp.leadingMargin)
-        }
+        // Making constraints later
         
         // MARK: - Sign in section
         let signInView: UIStackView = {
@@ -95,10 +94,8 @@ extension SignInViewController {
         }()
         let revealPasswordButton: UIButton = {
             let b = UIButton()
-            b.setTitle("Toggle".localized(), for: .normal)
-            b.setTitleColor(UIColor.white, for: .normal)
-            b.titleLabel?.font = UIFont.systemFont(ofSize: FontSizes.text)
-            b.contentEdgeInsets = UIEdgeInsets(top: 5, left: 6, bottom: 5, right: 6)
+            b.setImage(#imageLiteral(resourceName: "Eye"), for: .normal)
+            b.alpha = 0.5
             _ = b.reactive.tap.observeNext { (_) in
                 passwordField.isSecureTextEntry.toggle()
             }
@@ -138,8 +135,8 @@ extension SignInViewController {
         signInView.addArrangedSubview(passwordStackView)
         passwordStackView.addArrangedSubview(passwordField)
         passwordStackView.addArrangedSubview(revealPasswordButton)
-        revealPasswordButton.layer.backgroundColor = Colors.FidelityGreen?.cgColor
-        revealPasswordButton.layer.cornerRadius = 2
+//        revealPasswordButton.layer.backgroundColor = Colors.FidelityGreen?.cgColor
+//        revealPasswordButton.layer.cornerRadius = 2
         
         passwordStackView.snp.makeConstraints { (this) in
             this.width.equalTo(emailField.snp.width)
@@ -161,6 +158,14 @@ extension SignInViewController {
             this.trailing.equalTo(view.snp.trailingMargin)
         }
         signInView.setCustomSpacing(20, after: passwordStackView)
+        
+        // Adding title view above email fields
+        titleView.snp.makeConstraints { (this) in
+            this.top.equalTo(logoImageView.snp.top)
+            this.bottom.equalTo(signInView.snp.top)
+            this.width.equalTo(quickFinSubtitleLabel.snp.width)
+            this.centerX.equalToSuperview()
+        }
         
         // MARK: - Sign up & forgot password
         let bottomView: UIStackView = {

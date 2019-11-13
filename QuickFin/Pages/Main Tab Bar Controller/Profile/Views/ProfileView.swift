@@ -177,7 +177,7 @@ extension ProfileViewController {
             this.trailing.equalToSuperview()
             this.bottomMargin.equalToSuperview()
         }
-        print("Height: \(horizontalStackView?????????:??xxxs.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize))")
+        print("Height: \(horizontalStackView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize))")
     }
 }
 
