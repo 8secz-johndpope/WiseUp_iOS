@@ -36,6 +36,10 @@
 // MARK: - Sign Up Screen
 "Create Account" = "Create Account";
 "Confirm Password" = "Confirm Password";
+"Passwords don't match." = "Passwords don't match.";
+
+// MARK: - Forgot Password
+"Reset Password" = "Reset Password";
 
 // MARK: - Main tab bar controller
 "Chapters" = "Chapters";

@@ -50,36 +50,6 @@ class SignInViewController: BaseViewController, LoginButtonDelegate {
             #warning("ADD TO USERS TABLE OR VERIFY USERS TABLE EXISTS")
         }
     }
-    
-    func signUpHandler(email: String?, password: String?) {
-        guard let email = email, let password = password else {
-            return
-        }
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            if let error = error {
-                ErrorMessageHandler.shared.showMessage(theme: .error, title: "Sign up error", body: error.localizedDescription)
-                return
-            }
-            
-        }
-        
-        #warning("TODO: Sync data")
-        
-        #warning("ADD TO USERS TABLE OR VERIFY USERS TABLE EXISTS")
-
-    }
-    
-    func forgotPasswordHandler(email: String?) {
-        guard let email = email else {
-            return
-        }
-        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
-            if let error = error {
-                ErrorMessageHandler.shared.showMessage(theme: .error, title: "Password reset error", body: error.localizedDescription)
-                return
-            }
-        }
-    }
 }
 
 // MARK: - Delegate pattern to automatically sign in
