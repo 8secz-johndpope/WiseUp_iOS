@@ -47,7 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if error != nil {
-            ErrorMessageHandler.shared.showMessageModal(theme: .warning, title: "Google sign in", body: "Action cancelled.")
             return
         }
         guard let auth = user.authentication else {

@@ -29,6 +29,9 @@
 "Sign Up" = "Sign Up";
 "Forgot Password?" = "Forgot Password?";
 "Google sign in" = "Google sign in";
+"User does not exist." = "User does not exist.";
+"Incorrect password." = "Incorrect password.";
+"Please complete the fields." = "Please complete the fields.";
 
 // MARK: - Sign Up Screen
 "Create Account" = "Create Account";

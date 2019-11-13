@@ -24,9 +24,24 @@ class SignInViewController: BaseViewController, LoginButtonDelegate {
         guard let email = email, let password = password else {
             return
         }
+        if email.isEmpty || password.isEmpty {
+            ErrorMessageHandler.shared.showMessage(theme: .error, title: "Sign in error", body: "Please complete the fields.".localized())
+            return
+        }
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if let error = error {
-                ErrorMessageHandler.shared.showMessage(theme: .error, title: "Sign in error", body: error.localizedDescription)
+                let errorCode = AuthErrorCode(rawValue: error._code)
+                switch errorCode {
+                case .userNotFound:
+                    ErrorMessageHandler.shared.showMessage(theme: .error, title: "Sign in error", body: "User does not exist.".localized())
+                    break
+                case .wrongPassword:
+                    ErrorMessageHandler.shared.showMessage(theme: .error, title: "Sign in error", body: "Incorrect password.".localized())
+                    break
+                default:
+                    ErrorMessageHandler.shared.showMessage(theme: .error, title: "Sign in error", body: error.localizedDescription)
+                    break
+                }
                 return
             }
             
