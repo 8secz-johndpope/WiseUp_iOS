@@ -36,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                     FirebaseService.shared.verifyUser(email: Auth.auth().currentUser?.email ?? "")
                     window.setRootViewControllerWithAnimation(target: self.makeMainTabBarController())
                 } else {
+                    UserShared.shared.clearData()
                     LoginManager().logOut()
                     GIDSignIn.sharedInstance()?.signOut()
                     window.setRootViewControllerWithAnimation(target: SignInViewController())

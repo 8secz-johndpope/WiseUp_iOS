@@ -26,6 +26,8 @@ class ProfileViewController: BaseViewController {
     }
     
     var profileImageView: UIImageView!
+    var coinBalanceLabel: UILabel!
+    var achievementLabel: UILabel!
     var xpProgressBarBackgroundView: UIView!
     var xpProgressBarFiller: UIView!
     var tableView: UITableView!
@@ -38,7 +40,9 @@ class ProfileViewController: BaseViewController {
     let profileSettingIcons: [UIImage] = [#imageLiteral(resourceName: "Change Avatar"), #imageLiteral(resourceName: "Consumables"), #imageLiteral(resourceName: "Settings")]
     
     func fetchData() {
-        let xpPercentage = (Double)(User.shared.experience % 1000) / 1000.0
+        let xpPercentage = (Double)(UserShared.shared.experience % 1000) / 1000.0
+        coinBalanceLabel.text = UserShared.shared.coins.description
+        achievementLabel.text = UserShared.shared.achievementCount.description
         UIView.animate(withDuration: 0.4) {
             self.xpProgressBarFiller.snp.remakeConstraints { (this) in
                 this.leading.equalTo(self.xpProgressBarBackgroundView.snp.leading)
