@@ -33,10 +33,7 @@ class FirebaseService {
             return
         }
         
-        guard let displayName = Auth.auth().currentUser?.displayName else {
-            print("Error getting display name")
-            return
-        }
+        let displayName = Auth.auth().currentUser?.displayName
         
         db.collection(users).document(uid).getDocument { (snapshot, error) in
             
@@ -47,15 +44,15 @@ class FirebaseService {
                 
                 if (!snapshot!.exists) {
                     
-                    User.shared = User(admin: false, email: email, uid: String(uid), displayName: displayName)
-                    let serializedUser = try! FirestoreEncoder().encode(User.shared)
+                    UserShared.shared = UserShared(admin: false, email: email, uid: String(uid), displayName: displayName ?? "")
+                    let serializedUser = try! FirestoreEncoder().encode(UserShared.shared)
                     
                     self.db.collection(self.users).document(uid).setData(serializedUser) { (error) in
                         return
                     }
                 } else {
                     
-                    User.shared = try! FirebaseDecoder().decode(User.self, from: snapshot!.data()!)
+                    UserShared.shared = try! FirebaseDecoder().decode(UserShared.self, from: snapshot!.data()!)
                     return
                     
                 }
@@ -68,7 +65,7 @@ class FirebaseService {
         
         let uid = Auth.auth().currentUser?.uid
         
-        let serializedUser = try! FirestoreEncoder().encode(User.shared)
+        let serializedUser = try! FirestoreEncoder().encode(UserShared.shared)
         
         self.db.collection(users).document(uid!).setData(serializedUser) { (error) in
             if let error = error {
@@ -80,7 +77,7 @@ class FirebaseService {
         
     }
     
-    func retrieveUser(completion: @escaping (User?) -> Void) {
+    func retrieveUser(completion: @escaping (UserShared?) -> Void) {
         
         let uid = Auth.auth().currentUser?.uid
         
@@ -93,8 +90,8 @@ class FirebaseService {
             }
             
             if let querySnapshot = querySnapshot {
-                User.shared = try! FirebaseDecoder().decode(User.self, from: querySnapshot.data()!)
-                completion(User.shared)
+                UserShared.shared = try! FirebaseDecoder().decode(UserShared.self, from: querySnapshot.data()!)
+                completion(UserShared.shared)
                 return
             }
             
