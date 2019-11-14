@@ -1,14 +1,16 @@
 //
-//  User.swift
+//  UserShared.swift
 //  QuickFin
 //
-//  Created by Boyuan Xu on 9/23/19.
+//  Created by Connor Buckley on 11/13/19.
 //  Copyright © 2019 Fidelity Investments. All rights reserved.
 //
 
 import Foundation
 
-struct User: Codable {
+struct UserShared: Codable {
+    
+    static var shared = UserShared()
     
     var admin = Bool()
     var email = String()
@@ -58,4 +60,20 @@ struct User: Codable {
         }
     }
     
+    mutating func clearData() {
+        admin = false
+        email = ""
+        uid = ""
+        avatar = ""
+        coins = 0
+        completed = []
+        achievementsCompleted = []
+        experience = 0
+        inProgress = ""
+        fName = ""
+        lName = ""
+        achievementCount = 0
+        displayName = ""
+    }
 }
+

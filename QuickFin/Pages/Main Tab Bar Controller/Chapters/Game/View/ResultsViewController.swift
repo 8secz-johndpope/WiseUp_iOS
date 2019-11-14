@@ -22,8 +22,8 @@ class ResultsViewController: BaseViewController {
         
         print("In Results VC w/ \(points) points!")
         
-        User.shared.experience += points!
-        User.shared.coins += points! / 10
+        UserShared.shared.experience += points!
+        UserShared.shared.coins += points! / 10
         
         checkAchievements()
 
@@ -40,7 +40,7 @@ class ResultsViewController: BaseViewController {
            
            let AchievementName = chapterName! + "PerfectChapter"
            
-           if (User.shared.triggerAchievement(AchievementName: AchievementName)) {
+           if (UserShared.shared.triggerAchievement(AchievementName: AchievementName)) {
                AchievementMessageHandler.shared.showMessage(theme: .success, title: "Achievement", body: AchievementName.localized())
            }
            
@@ -50,7 +50,7 @@ class ResultsViewController: BaseViewController {
 
         let AchievementName = chapterName! + "CompleteChapter"
 
-        if (User.shared.triggerAchievement(AchievementName: AchievementName)) {
+        if (UserShared.shared.triggerAchievement(AchievementName: AchievementName)) {
            AchievementMessageHandler.shared.showMessage(theme: .success, title: "Achievement", body: AchievementName.localized())
         }
         
@@ -64,7 +64,7 @@ class ResultsViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         #warning("TODO - Replace w/ Real level data")
-        progressRing.startProgress(to: CGFloat((User.shared.experience % 1000) / 10), duration: 2.0)
+        progressRing.startProgress(to: CGFloat((UserShared.shared.experience % 1000) / 10), duration: 2.0)
     }
     
     @objc func popToRootVC() {

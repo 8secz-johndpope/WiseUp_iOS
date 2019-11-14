@@ -13,7 +13,7 @@ extension GameViewController {
     
     func initNav() {
         title = "Question".localized() + " \(questionNumber!)"
-        navigationItem.setRightBarButton(UIBarButtonItem(title: "Skip".localized(), style: .plain, target: self, action: #selector(proceedToNextVC)), animated: true)
+        navigationItem.setRightBarButton(UIBarButtonItem(title: "Skip".localized(), style: .plain, target: self, action: #selector(skip)), animated: true)
         navigationItem.leftItemsSupplementBackButton = true
     }
     

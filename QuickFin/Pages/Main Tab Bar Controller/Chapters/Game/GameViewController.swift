@@ -47,7 +47,13 @@ class GameViewController: BaseViewController {
         currentQuestion = questions[questionNumber-1]
     }
     
-    @objc func proceedToNextVC() {
+    @objc func skip() {
+        // Do something
+        attempts += 1
+        proceedToNextVC()
+    }
+    
+    func proceedToNextVC() {
         tableView.isUserInteractionEnabled = false
         calculatePoints()
         if questionNumber == questions.count {
