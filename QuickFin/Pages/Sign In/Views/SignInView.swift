@@ -95,6 +95,7 @@ extension SignInViewController {
         let revealPasswordButton: UIButton = {
             let b = UIButton()
             b.setImage(#imageLiteral(resourceName: "Eye"), for: .normal)
+            b.tintColor = Colors.DynamicTextColor
             b.alpha = 0.5
             _ = b.reactive.tap.observeNext { (_) in
                 passwordField.isSecureTextEntry.toggle()

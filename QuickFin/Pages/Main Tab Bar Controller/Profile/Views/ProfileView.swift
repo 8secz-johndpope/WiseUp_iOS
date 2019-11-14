@@ -12,7 +12,7 @@ import SnapKit
 extension ProfileViewController {
     
     func initNavBar() {
-        let settingsItem = UIBarButtonItem(image: "🛠".emojiToImage(), style: .plain, target: self, action: #selector(openSettings))
+        let settingsItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Settings"), style: .plain, target: self, action: #selector(openSettings))
         navigationItem.setRightBarButton(settingsItem, animated: true)
     }
     
@@ -23,10 +23,10 @@ extension ProfileViewController {
         
     func initUI() {
                 
-        let profileImageView: UIImageView = {
+        profileImageView = {
             let imageView = UIImageView()
             imageView.contentMode = .scaleAspectFill
-            imageView.image = UIImage(named: "Profile Image")
+            imageView.image = #imageLiteral(resourceName: "Blank User Icon")
             return imageView
         }()
         let profileNameLabel: UILabel = {
@@ -103,10 +103,8 @@ extension ProfileViewController {
             this.top.equalTo(profileImageView.snp.bottom)
             this.centerX.equalToSuperview()
         }
-        profileImageView.layer.shadowColor = Colors.DynamicTextColor?.cgColor
-        profileImageView.layer.shadowOpacity = 0.3
-        profileImageView.layer.shadowRadius = 5
-        profileImageView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        profileImageView.layer.cornerRadius = 75
+        profileImageView.layer.masksToBounds = true
         
         view.addSubview(xpImageView)
         xpImageView.snp.makeConstraints { (this) in
@@ -191,6 +189,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath) as! SettingsTableViewCell;
         cell.titleLabel.text = profileSettings[indexPath.row]
+        cell.icon.image = profileSettingIcons[indexPath.row]
         return cell
     }
     

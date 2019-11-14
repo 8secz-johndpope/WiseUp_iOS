@@ -13,12 +13,14 @@ class SettingsTableViewCell: UITableViewCell {
     
     var icon: UIImageView = {
         let i = UIImageView(image: "🤔".emojiToImage())
+        i.tintColor = Colors.DynamicTextColor
         return i
     }()
     
     var titleLabel: UILabel = {
         let l = UILabel()
         l.text = "--"
+        l.textColor = Colors.DynamicTextColor
         return l
     }()
 
