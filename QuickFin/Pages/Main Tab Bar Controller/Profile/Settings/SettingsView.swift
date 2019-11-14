@@ -40,6 +40,11 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath) as! SettingsTableViewCell;
         cell.titleLabel.text = settingsMenu[indexPath.row]
+        cell.icon.image = settingsMenuIcons[indexPath.row]
+        if settingsMenu[indexPath.row] == "Log Out".localized() {
+            cell.titleLabel.textColor = .red
+            cell.icon.tintColor = .red
+        }
         return cell
     }
     

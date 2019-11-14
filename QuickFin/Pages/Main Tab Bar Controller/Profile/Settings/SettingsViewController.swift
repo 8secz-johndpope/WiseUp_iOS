@@ -17,8 +17,9 @@ class SettingsViewController: BaseViewController {
                         "Game Settings".localized(),
                         "Privacy Notice".localized(),
                         "About".localized(),
-                        "Log Out".localized()]
-    
+                        "Log Out".localized()
+    ]
+    let settingsMenuIcons: [UIImage] = [#imageLiteral(resourceName: "Change Password"), #imageLiteral(resourceName: "Settings"), #imageLiteral(resourceName: "Privacy Notice"), #imageLiteral(resourceName: "Notice"), #imageLiteral(resourceName: "Logout")]
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()

@@ -25,6 +25,7 @@ class ProfileViewController: BaseViewController {
         fetchData()
     }
     
+    var profileImageView: UIImageView!
     var xpProgressBarBackgroundView: UIView!
     var xpProgressBarFiller: UIView!
     var tableView: UITableView!
@@ -34,6 +35,7 @@ class ProfileViewController: BaseViewController {
         "Consumables".localized(),
         "Profile settings".localized()
     ]
+    let profileSettingIcons: [UIImage] = [#imageLiteral(resourceName: "Change Avatar"), #imageLiteral(resourceName: "Consumables"), #imageLiteral(resourceName: "Settings")]
     
     func fetchData() {
         let xpPercentage = (Double)(User.shared.experience % 1000) / 1000.0
