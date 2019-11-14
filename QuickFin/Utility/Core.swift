@@ -8,11 +8,13 @@
 
 import Foundation
 
-class Core {
+class Core: Codable {
     
     static var shared = Core()
     private init() {}
     
     var coldStart = true
     
+    
 }
+

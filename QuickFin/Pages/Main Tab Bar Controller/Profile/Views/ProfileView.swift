@@ -31,10 +31,10 @@ extension ProfileViewController {
         }()
         let profileNameLabel: UILabel = {
             let l = UILabel()
-            if User.shared.getName() == " " {
-                l.text = User.shared.displayName
+            if UserShared.shared.getName() == " " {
+                l.text = UserShared.shared.displayName
             } else {
-                l.text = User.shared.getName()
+                l.text = UserShared.shared.getName()
             }
             l.font = .boldSystemFont(ofSize: FontSizes.largeNavTitle)
             l.textColor = Colors.DynamicTextColor
@@ -57,9 +57,9 @@ extension ProfileViewController {
             l.textColor = Colors.DynamicTextColor
             return l
         }()
-        let coinBalanceLabel: UILabel = {
+        coinBalanceLabel = {
             let l = UILabel()
-            l.text = User.shared.coins.description
+            l.text = UserShared.shared.coins.description
             l.font = .systemFont(ofSize: FontSizes.pageTitle)
             l.textColor = Colors.DynamicTextColor
             return l
@@ -73,9 +73,9 @@ extension ProfileViewController {
             l.textColor = Colors.DynamicTextColor
             return l
         }()
-        let achievementLabel: UILabel = {
+        achievementLabel = {
             let l = UILabel()
-            l.text = User.shared.achievementCount.description
+            l.text = UserShared.shared.achievementCount.description
             l.font = .systemFont(ofSize: FontSizes.pageTitle)
             l.textColor = Colors.DynamicTextColor
             return l

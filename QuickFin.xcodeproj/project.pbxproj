@@ -15,6 +15,7 @@
 		BF4EDAA42341DC7500E45E90 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4EDAA32341DC7500E45E90 /* CacheService.swift */; };
 		BF4EDAA62341E09800E45E90 /* ChapterStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4EDAA52341E09800E45E90 /* ChapterStats.swift */; };
 		BF5A2E93237BEBB800C7EB87 /* AchievementMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5A2E92237BEBB800C7EB87 /* AchievementMessageHandler.swift */; };
+		BF5A2E95237C8F4300C7EB87 /* UserShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5A2E94237C8F4300C7EB87 /* UserShared.swift */; };
 		BFD5653D2339926B007ECD97 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD5653B2339926B007ECD97 /* Chapter.swift */; };
 		BFD5653E2339926B007ECD97 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD5653C2339926B007ECD97 /* Question.swift */; };
 		BFD565422339927C007ECD97 /* ChapterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD5653F2339927C007ECD97 /* ChapterViewController.swift */; };
@@ -92,6 +93,7 @@
 		BF4EDAA32341DC7500E45E90 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 		BF4EDAA52341E09800E45E90 /* ChapterStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterStats.swift; sourceTree = "<group>"; };
 		BF5A2E92237BEBB800C7EB87 /* AchievementMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementMessageHandler.swift; sourceTree = "<group>"; };
+		BF5A2E94237C8F4300C7EB87 /* UserShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserShared.swift; sourceTree = "<group>"; };
 		BFD5653B2339926B007ECD97 /* Chapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		BFD5653C2339926B007ECD97 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		BFD5653F2339927C007ECD97 /* ChapterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterViewController.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				D5469B4E23398AC70047D09D /* User.swift */,
+				BF5A2E94237C8F4300C7EB87 /* UserShared.swift */,
 				D5469B5023398E170047D09D /* FirestoreUserResponse.swift */,
 				BFD5653B2339926B007ECD97 /* Chapter.swift */,
 				BFD5653C2339926B007ECD97 /* Question.swift */,
@@ -714,6 +717,7 @@
 				D5737F76235ADE6300756298 /* ErrorMessageHandler.swift in Sources */,
 				BFD5653E2339926B007ECD97 /* Question.swift in Sources */,
 				D571186A237BE846005419D4 /* ForgotPasswordViewController.swift in Sources */,
+				BF5A2E95237C8F4300C7EB87 /* UserShared.swift in Sources */,
 				D52471D823415A2D00922564 /* Images.swift in Sources */,
 				BF2E7AC123545FCB0048A201 /* GameViewController.swift in Sources */,
 				D505BA0E23512C2B0025E975 /* SettingsTableViewCell.swift in Sources */,
