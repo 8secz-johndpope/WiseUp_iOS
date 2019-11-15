@@ -34,7 +34,7 @@ class ProfileViewController: BaseViewController {
     let profileSettings = [
         "Change Avatar".localized(),
         "Items".localized(),
-        "Profile Settings".localized()
+        "Settings".localized()
     ]
     let profileSettingIcons: [UIImage] = [#imageLiteral(resourceName: "Change Avatar"), #imageLiteral(resourceName: "Consumables"), #imageLiteral(resourceName: "Settings")]
     

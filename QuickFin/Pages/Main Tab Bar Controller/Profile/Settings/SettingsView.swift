@@ -61,6 +61,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         case "Privacy Notice".localized():
             navigationController?.pushViewController(PrivacyNoticeViewController(), animated: true)
             break
+        case "About".localized():
+            navigationController?.pushViewController(AboutViewController(), animated: true)
+            break
         default:
             break
         }
