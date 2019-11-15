@@ -11,12 +11,7 @@ import SnapKit
 
 extension ProfileViewController {
     
-    func initNavBar() {
-        let settingsItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Settings"), style: .plain, target: self, action: #selector(openSettings))
-        navigationItem.setRightBarButton(settingsItem, animated: true)
-    }
-    
-    @objc func openSettings() {
+    func openSettings() {
         let settingsVC = BaseNavigationController(rootViewController: SettingsViewController(), prefersLargeTitles: false)
         present(settingsVC, animated: true, completion: nil)
     }
@@ -191,6 +186,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         cell.titleLabel.text = profileSettings[indexPath.row]
         cell.icon.image = profileSettingIcons[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if profileSettings[indexPath.row] == "Profile settings".localized() {
+            openSettings()
+        }
     }
     
 }

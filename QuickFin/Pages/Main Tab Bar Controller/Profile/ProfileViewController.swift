@@ -15,7 +15,6 @@ class ProfileViewController: BaseViewController {
         super.viewDidLoad()
         navigationItem.title = "Profile".localized()
         setBackground()
-        initNavBar()
         initUI()
     }
     
@@ -34,7 +33,7 @@ class ProfileViewController: BaseViewController {
     let cellReuseID = "profileSettings"
     let profileSettings = [
         "Change avatar".localized(),
-        "Consumables".localized(),
+        "Items".localized(),
         "Profile settings".localized()
     ]
     let profileSettingIcons: [UIImage] = [#imageLiteral(resourceName: "Change Avatar"), #imageLiteral(resourceName: "Consumables"), #imageLiteral(resourceName: "Settings")]
