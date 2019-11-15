@@ -160,6 +160,8 @@ Address:
 extension PrivacyNoticeViewController {
     
     func initUI() {
+        title = "Privacy Notice".localized()
+        
         let privacyNoticeTextView: UITextView = {
             let v = UITextView()
             v.isEditable = false
