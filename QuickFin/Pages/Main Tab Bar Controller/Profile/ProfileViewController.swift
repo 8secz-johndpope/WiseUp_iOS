@@ -32,9 +32,9 @@ class ProfileViewController: BaseViewController {
     var tableView: UITableView!
     let cellReuseID = "profileSettings"
     let profileSettings = [
-        "Change avatar".localized(),
+        "Change Avatar".localized(),
         "Items".localized(),
-        "Profile settings".localized()
+        "Profile Settings".localized()
     ]
     let profileSettingIcons: [UIImage] = [#imageLiteral(resourceName: "Change Avatar"), #imageLiteral(resourceName: "Consumables"), #imageLiteral(resourceName: "Settings")]
     

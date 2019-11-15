@@ -50,6 +50,7 @@
 		D5726DF123546F170077BF95 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5726DF023546F170077BF95 /* GameView.swift */; };
 		D5726DF42354710D0077BF95 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5726DF32354710D0077BF95 /* GameTableViewCell.swift */; };
 		D5737F76235ADE6300756298 /* ErrorMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5737F75235ADE6300756298 /* ErrorMessageHandler.swift */; };
+		D57ED5C3237E819500EC1E87 /* PrivacyNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57ED5C2237E819500EC1E87 /* PrivacyNoticeViewController.swift */; };
 		D58CAE9823551190009639F5 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58CAE9723551190009639F5 /* ResultsViewController.swift */; };
 		D5BA98662367779B0099D528 /* StoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA98652367779B0099D528 /* StoreItem.swift */; };
 		D5BA986923677D180099D528 /* StoreTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA986823677D180099D528 /* StoreTableView.swift */; };
@@ -134,6 +135,7 @@
 		D5726DF023546F170077BF95 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		D5726DF32354710D0077BF95 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
 		D5737F75235ADE6300756298 /* ErrorMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageHandler.swift; sourceTree = "<group>"; };
+		D57ED5C2237E819500EC1E87 /* PrivacyNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyNoticeViewController.swift; sourceTree = "<group>"; };
 		D58CAE9723551190009639F5 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		D5BA98652367779B0099D528 /* StoreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItem.swift; sourceTree = "<group>"; };
 		D5BA986823677D180099D528 /* StoreTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTableView.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 		D505BA0F235180C10025E975 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				D57ED5C1237E818400EC1E87 /* Privacy Notice */,
 				D505BA11235180D60025E975 /* Change Password */,
 				D505BA0B235128330025E975 /* SettingsView.swift */,
 				D505BA092351281A0025E975 /* SettingsViewController.swift */,
@@ -404,6 +407,14 @@
 				D58CAE9723551190009639F5 /* ResultsViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		D57ED5C1237E818400EC1E87 /* Privacy Notice */ = {
+			isa = PBXGroup;
+			children = (
+				D57ED5C2237E819500EC1E87 /* PrivacyNoticeViewController.swift */,
+			);
+			path = "Privacy Notice";
 			sourceTree = "<group>";
 		};
 		D5BA986723677CFE0099D528 /* Views */ = {
@@ -736,6 +747,7 @@
 				D5469B4823377AF20047D09D /* SignInDelegateProtocol.swift in Sources */,
 				D5460A66237C687B00BBE034 /* LeaderboardViewController.swift in Sources */,
 				BF4EDAA62341E09800E45E90 /* ChapterStats.swift in Sources */,
+				D57ED5C3237E819500EC1E87 /* PrivacyNoticeViewController.swift in Sources */,
 				BF2E7AC7235466370048A201 /* StoreViewController.swift in Sources */,
 				D5469B5123398E170047D09D /* FirestoreUserResponse.swift in Sources */,
 				D52471DA2341CC8900922564 /* AppDelegateExtension.swift in Sources */,
