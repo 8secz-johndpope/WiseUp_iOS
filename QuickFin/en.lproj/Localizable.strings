@@ -58,6 +58,8 @@
 "New password" = "New password";
 "Confirm new password" = "Confirm new password";
 "New passwords don't match!" = "New passwords don't match!";
+"You will be logged out." = "You will be logged out.";
+"New password must be longer than 6 characters." = "New password must be longer than 6 characters.";
 
 // MARK: - Game
 "Question" = "Question";
@@ -72,4 +74,5 @@
 "Coins" = "Coins";
 "Achievements" = "Achievements";
 "Change avatar" = "Change avatar";
-
+"Items" = "Items";
+"Profile settings" = "Profile settings";
