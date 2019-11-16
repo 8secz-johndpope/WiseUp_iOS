@@ -55,6 +55,7 @@
 "Change Username" = "Change Username";
 "Hints" = "Hints";
 "Accounts linked." = "Accounts linked.";
+"Link account failed." = "Link account failed.";
 
 // MARK: - Settings -> Change Password
 "Old password" = "Old password";
