@@ -14,7 +14,7 @@ class SettingsViewController: BaseViewController {
     var tableView: UITableView!
     let cellReuseID = "settings";
     let settingsMenu = ["Change Password".localized(),
-                        "Game Settings".localized(),
+                        "Application Settings".localized(),
                         "Privacy Notice".localized(),
                         "About".localized(),
                         "Log Out".localized()

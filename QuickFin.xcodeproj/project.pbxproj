@@ -54,6 +54,9 @@
 		D57ED5C6237E8C0300EC1E87 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57ED5C5237E8C0300EC1E87 /* AboutViewController.swift */; };
 		D57ED5C8237E8CA200EC1E87 /* AboutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57ED5C7237E8CA200EC1E87 /* AboutTableViewCell.swift */; };
 		D58CAE9823551190009639F5 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58CAE9723551190009639F5 /* ResultsViewController.swift */; };
+		D59FEA3D237F969D00C65A2F /* ApplicationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59FEA3C237F969D00C65A2F /* ApplicationSettingsViewController.swift */; };
+		D59FEA40237F9B1400C65A2F /* ChangeUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59FEA3F237F9B1400C65A2F /* ChangeUsernameViewController.swift */; };
+		D59FEA42237F9BAC00C65A2F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59FEA41237F9BAC00C65A2F /* Extensions.swift */; };
 		D5BA98662367779B0099D528 /* StoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA98652367779B0099D528 /* StoreItem.swift */; };
 		D5BA986923677D180099D528 /* StoreTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA986823677D180099D528 /* StoreTableView.swift */; };
 		D5BA986B23677D490099D528 /* StoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA986A23677D490099D528 /* StoreTableViewCell.swift */; };
@@ -141,6 +144,9 @@
 		D57ED5C5237E8C0300EC1E87 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		D57ED5C7237E8CA200EC1E87 /* AboutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewCell.swift; sourceTree = "<group>"; };
 		D58CAE9723551190009639F5 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		D59FEA3C237F969D00C65A2F /* ApplicationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSettingsViewController.swift; sourceTree = "<group>"; };
+		D59FEA3F237F9B1400C65A2F /* ChangeUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUsernameViewController.swift; sourceTree = "<group>"; };
+		D59FEA41237F9BAC00C65A2F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D5BA98652367779B0099D528 /* StoreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItem.swift; sourceTree = "<group>"; };
 		D5BA986823677D180099D528 /* StoreTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTableView.swift; sourceTree = "<group>"; };
 		D5BA986A23677D490099D528 /* StoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTableViewCell.swift; sourceTree = "<group>"; };
@@ -237,6 +243,7 @@
 		D505BA0F235180C10025E975 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				D59FEA3B237F968400C65A2F /* Application Settings */,
 				D57ED5C4237E88C800EC1E87 /* About */,
 				D57ED5C1237E818400EC1E87 /* Privacy Notice */,
 				D505BA11235180D60025E975 /* Change Password */,
@@ -374,6 +381,7 @@
 				D52471D723415A2D00922564 /* Images.swift */,
 				D5737F75235ADE6300756298 /* ErrorMessageHandler.swift */,
 				BF5A2E92237BEBB800C7EB87 /* AchievementMessageHandler.swift */,
+				D59FEA41237F9BAC00C65A2F /* Extensions.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -429,6 +437,23 @@
 				D57ED5C7237E8CA200EC1E87 /* AboutTableViewCell.swift */,
 			);
 			path = About;
+			sourceTree = "<group>";
+		};
+		D59FEA3B237F968400C65A2F /* Application Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D59FEA3E237F9B0200C65A2F /* Change Username */,
+				D59FEA3C237F969D00C65A2F /* ApplicationSettingsViewController.swift */,
+			);
+			path = "Application Settings";
+			sourceTree = "<group>";
+		};
+		D59FEA3E237F9B0200C65A2F /* Change Username */ = {
+			isa = PBXGroup;
+			children = (
+				D59FEA3F237F9B1400C65A2F /* ChangeUsernameViewController.swift */,
+			);
+			path = "Change Username";
 			sourceTree = "<group>";
 		};
 		D5BA986723677CFE0099D528 /* Views */ = {
@@ -734,6 +759,7 @@
 				D570D5FE2333595900AB308B /* AppDelegate.swift in Sources */,
 				D5726DF123546F170077BF95 /* GameView.swift in Sources */,
 				D57ED5C8237E8CA200EC1E87 /* AboutTableViewCell.swift in Sources */,
+				D59FEA40237F9B1400C65A2F /* ChangeUsernameViewController.swift in Sources */,
 				D58CAE9823551190009639F5 /* ResultsViewController.swift in Sources */,
 				BFD565442339927C007ECD97 /* ProfileViewController.swift in Sources */,
 				D5EA305B23371D5600F56428 /* SignInViewController.swift in Sources */,
@@ -746,6 +772,7 @@
 				D571186A237BE846005419D4 /* ForgotPasswordViewController.swift in Sources */,
 				BF5A2E95237C8F4300C7EB87 /* UserShared.swift in Sources */,
 				D52471D823415A2D00922564 /* Images.swift in Sources */,
+				D59FEA3D237F969D00C65A2F /* ApplicationSettingsViewController.swift in Sources */,
 				BF2E7AC123545FCB0048A201 /* GameViewController.swift in Sources */,
 				D505BA0E23512C2B0025E975 /* SettingsTableViewCell.swift in Sources */,
 				D5BA986D23677FA30099D528 /* StoreItemDetailsViewController.swift in Sources */,
@@ -770,6 +797,7 @@
 				BF4EDAA42341DC7500E45E90 /* CacheService.swift in Sources */,
 				D52471D223402B2400922564 /* Colors.swift in Sources */,
 				D5BA986923677D180099D528 /* StoreTableView.swift in Sources */,
+				D59FEA42237F9BAC00C65A2F /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

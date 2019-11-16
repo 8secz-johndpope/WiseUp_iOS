@@ -64,6 +64,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         case "About".localized():
             navigationController?.pushViewController(AboutViewController(), animated: true)
             break
+        case "Application Settings".localized():
+            navigationController?.pushViewController(ApplicationSettingsViewController(), animated: true)
+            break
         default:
             break
         }

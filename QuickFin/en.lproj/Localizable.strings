@@ -48,10 +48,11 @@
 // MARK: - Settings
 "Settings" = "Settings";
 "Change Password" = "Change Password";
-"Game Settings" = "Game Settings";
+"Application Settings" = "Application Settings";
 "Privacy Notice" = "Privacy Notice";
 "About" = "About";
 "Log Out" = "Log Out";
+"Change Username" = "Change Username";
 
 // MARK: - Settings -> Change Password
 "Old password" = "Old password";
