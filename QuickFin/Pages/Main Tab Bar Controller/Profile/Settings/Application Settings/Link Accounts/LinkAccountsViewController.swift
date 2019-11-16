@@ -1,5 +1,5 @@
 //
-//  ApplicationSettingsViewController.swift
+//  LinkAccountsViewController.swift
 //  QuickFin
 //
 //  Created by Boyuan Xu on 11/15/19.
@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class ApplicationSettingsViewController: BaseViewController {
+class LinkAccountsViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,24 +17,22 @@ class ApplicationSettingsViewController: BaseViewController {
     }
     
     var tableView: UITableView!
-    let cellReuseID = "applicationSettings"
+    let cellReuseID = "linkAccount"
     let menu = [
-        "Change Username",
-        "Hints",
-        "Language",
-        "Link Accounts",
-        "Notifications"
+        "Link with Email".localized(),
+        "Link with Facebook".localized(),
+        "Link with Google".localized()
     ]
 }
 
 // MARK: - UI
-extension ApplicationSettingsViewController: UITableViewDelegate, UITableViewDataSource {
+extension LinkAccountsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func initUI() {
-        title = "Application Settings".localized()
+        title = "Link Accounts".localized()
         tableView = UITableView(frame: .zero, style: .insetGrouped)
-        tableView.delegate = self
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseID)
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (this) in
@@ -51,28 +49,19 @@ extension ApplicationSettingsViewController: UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath)
-        cell.textLabel?.text = menu[indexPath.row].localized()
-        cell.textLabel?.textColor = Colors.DynamicTextColor
+        cell.textLabel?.text = menu[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        switch menu[indexPath.row] {
-        case "Change Username".localized():
-            navigationController?.pushViewController(ChangeUsernameViewController(), animated: true)
-            break
-        case "Hints".localized():
-            navigationController?.pushViewController(HintsViewController(), animated: true)
-            break
-        case "Notifications".localized():
-            navigationController?.pushViewController(NotificationsViewController(), animated: true)
-            break
-        case "Link Accounts".localized():
-            navigationController?.pushViewController(LinkAccountsViewController(), animated: true)
+        switch indexPath.row {
+        case 0:
+            navigationController?.pushViewController(EmailLinkViewController(), animated: true)
             break
         default:
             break
         }
     }
+    
 }
