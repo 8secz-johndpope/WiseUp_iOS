@@ -15,4 +15,4 @@ jobs:
         pod install
       shell: bash
     - name: Build
-      run: xcodebuild -scheme "QuickFin" build
+      run: xcodebuild -scheme "QuickFin" -allowProvisioningUpdates build
