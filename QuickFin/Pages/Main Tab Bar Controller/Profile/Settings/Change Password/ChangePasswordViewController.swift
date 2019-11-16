@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SkyFloatingLabelTextField
 import ReactiveKit
 import Firebase
 
@@ -101,16 +100,5 @@ extension ChangePasswordViewController {
         changePasswordButton.layer.cornerRadius = 2
     }
     
-    private func makeTextField(title: String, isSecure: Bool) -> SkyFloatingLabelTextField {
-        let tf = SkyFloatingLabelTextField()
-        tf.title = title.localized()
-        tf.placeholder = title.localized()
-        tf.errorColor = UIColor.red
-        tf.textColor = Colors.DynamicTextColor
-        tf.selectedTitleColor = Colors.FidelityGreen!
-        tf.selectedLineColor = Colors.FidelityGreen!
-        tf.isSecureTextEntry = isSecure
-        return tf
-    }
-    
 }
+
