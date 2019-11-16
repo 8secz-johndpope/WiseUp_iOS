@@ -8,6 +8,8 @@
 
 import UIKit
 import SnapKit
+import FirebaseAuth
+import FBSDKLoginKit
 
 class LinkAccountsViewController: BaseViewController {
 
@@ -59,8 +61,39 @@ extension LinkAccountsViewController: UITableViewDataSource, UITableViewDelegate
         case 0:
             navigationController?.pushViewController(EmailLinkViewController(), animated: true)
             break
+        case 1:
+            FBLoginHandler { (result) in
+                if let result = result {
+                    let credential = FacebookAuthProvider.credential(withAccessToken: result.token!.tokenString)
+                    Auth.auth().currentUser?.link(with: credential, completion: { (result, error) in
+                        if let error = error {
+                            ErrorMessageHandler.shared.showMessageModal(theme: .error, title: "Error".localized(), body: error.localizedDescription)
+                            return
+                        }
+                        ErrorMessageHandler.shared.showMessageModal(theme: .success, title: "Success".localized(), body: "Accounts linked.".localized())
+                    })
+                }
+                ErrorMessageHandler.shared.showMessageModal(theme: .error, title: "Error".localized(), body: "Link account failed.".localized())
+            }
+            break
         default:
             break
+        }
+    }
+    
+}
+
+// MARK: - FB Login Handler
+extension LinkAccountsViewController {
+    
+    func FBLoginHandler(completion: @escaping (LoginManagerLoginResult?) -> Void) {
+        let loginManager = LoginManager()
+        loginManager.logIn(permissions: ["email"], from: self) { (result, error) in
+            if let error = error {
+                ErrorMessageHandler.shared.showMessageModal(theme: .error, title: "Error".localized(), body: error.localizedDescription)
+                completion(nil)
+            }
+            completion(result)
         }
     }
     
