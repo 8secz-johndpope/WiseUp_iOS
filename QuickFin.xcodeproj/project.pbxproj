@@ -60,6 +60,8 @@
 		D59FEA45237FA07300C65A2F /* HintsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59FEA44237FA07300C65A2F /* HintsViewController.swift */; };
 		D59FEA47237FA14000C65A2F /* GenericToggleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59FEA46237FA14000C65A2F /* GenericToggleTableViewCell.swift */; };
 		D59FEA4A237FA50800C65A2F /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59FEA49237FA50800C65A2F /* NotificationsViewController.swift */; };
+		D59FEA4D237FA6A000C65A2F /* LinkAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59FEA4C237FA6A000C65A2F /* LinkAccountsViewController.swift */; };
+		D59FEA4F237FDF3B00C65A2F /* EmailLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59FEA4E237FDF3B00C65A2F /* EmailLinkViewController.swift */; };
 		D5BA98662367779B0099D528 /* StoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA98652367779B0099D528 /* StoreItem.swift */; };
 		D5BA986923677D180099D528 /* StoreTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA986823677D180099D528 /* StoreTableView.swift */; };
 		D5BA986B23677D490099D528 /* StoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA986A23677D490099D528 /* StoreTableViewCell.swift */; };
@@ -153,6 +155,8 @@
 		D59FEA44237FA07300C65A2F /* HintsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintsViewController.swift; sourceTree = "<group>"; };
 		D59FEA46237FA14000C65A2F /* GenericToggleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericToggleTableViewCell.swift; sourceTree = "<group>"; };
 		D59FEA49237FA50800C65A2F /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		D59FEA4C237FA6A000C65A2F /* LinkAccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkAccountsViewController.swift; sourceTree = "<group>"; };
+		D59FEA4E237FDF3B00C65A2F /* EmailLinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLinkViewController.swift; sourceTree = "<group>"; };
 		D5BA98652367779B0099D528 /* StoreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItem.swift; sourceTree = "<group>"; };
 		D5BA986823677D180099D528 /* StoreTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTableView.swift; sourceTree = "<group>"; };
 		D5BA986A23677D490099D528 /* StoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTableViewCell.swift; sourceTree = "<group>"; };
@@ -450,6 +454,7 @@
 			children = (
 				D59FEA3E237F9B0200C65A2F /* Change Username */,
 				D59FEA43237FA06400C65A2F /* Hints */,
+				D59FEA4B237FA68E00C65A2F /* Link Accounts */,
 				D59FEA48237FA4DE00C65A2F /* Notifications */,
 				D59FEA3C237F969D00C65A2F /* ApplicationSettingsViewController.swift */,
 				D59FEA46237FA14000C65A2F /* GenericToggleTableViewCell.swift */,
@@ -479,6 +484,15 @@
 				D59FEA49237FA50800C65A2F /* NotificationsViewController.swift */,
 			);
 			path = Notifications;
+			sourceTree = "<group>";
+		};
+		D59FEA4B237FA68E00C65A2F /* Link Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				D59FEA4E237FDF3B00C65A2F /* EmailLinkViewController.swift */,
+				D59FEA4C237FA6A000C65A2F /* LinkAccountsViewController.swift */,
+			);
+			path = "Link Accounts";
 			sourceTree = "<group>";
 		};
 		D5BA986723677CFE0099D528 /* Views */ = {
@@ -815,8 +829,10 @@
 				D5BA98662367779B0099D528 /* StoreItem.swift in Sources */,
 				D52471D023401F3900922564 /* BaseNavigationController.swift in Sources */,
 				D505BA13235181080025E975 /* ChangePasswordViewController.swift in Sources */,
+				D59FEA4F237FDF3B00C65A2F /* EmailLinkViewController.swift in Sources */,
 				D5469B4823377AF20047D09D /* SignInDelegateProtocol.swift in Sources */,
 				D5460A66237C687B00BBE034 /* LeaderboardViewController.swift in Sources */,
+				D59FEA4D237FA6A000C65A2F /* LinkAccountsViewController.swift in Sources */,
 				BF4EDAA62341E09800E45E90 /* ChapterStats.swift in Sources */,
 				D57ED5C3237E819500EC1E87 /* PrivacyNoticeViewController.swift in Sources */,
 				BF2E7AC7235466370048A201 /* StoreViewController.swift in Sources */,

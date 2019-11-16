@@ -54,6 +54,7 @@
 "Log Out" = "Log Out";
 "Change Username" = "Change Username";
 "Hints" = "Hints";
+"Accounts linked." = "Accounts linked.";
 
 // MARK: - Settings -> Change Password
 "Old password" = "Old password";
