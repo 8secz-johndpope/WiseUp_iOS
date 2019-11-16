@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import FirebaseAuth
 import FBSDKLoginKit
+import GoogleSignIn
 
 class LinkAccountsViewController: BaseViewController {
 
@@ -76,6 +77,9 @@ extension LinkAccountsViewController: UITableViewDataSource, UITableViewDelegate
                 ErrorMessageHandler.shared.showMessageModal(theme: .error, title: "Error".localized(), body: "Link account failed.".localized())
             }
             break
+        case 2:
+            GIDSignInHandler()
+            break
         default:
             break
         }
@@ -97,4 +101,26 @@ extension LinkAccountsViewController {
         }
     }
     
+}
+
+// MARK: - Google Login Handler
+extension LinkAccountsViewController: GIDSignInDelegate {
+    
+    func GIDSignInHandler() {
+        GIDSignIn.sharedInstance()?.delegate = self
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.signIn()
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        guard let auth = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: auth.idToken, accessToken: auth.accessToken)
+        Auth.auth().currentUser?.link(with: credential, completion: { (result, error) in
+            if let error = error {
+                ErrorMessageHandler.shared.showMessageModal(theme: .error, title: "Error".localized(), body: error.localizedDescription)
+                return
+            }
+            ErrorMessageHandler.shared.showMessageModal(theme: .success, title: "Success".localized(), body: "Accounts linked.".localized())
+        })
+    }
 }
