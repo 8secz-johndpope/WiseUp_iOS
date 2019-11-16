@@ -59,6 +59,7 @@
 		D59FEA42237F9BAC00C65A2F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59FEA41237F9BAC00C65A2F /* Extensions.swift */; };
 		D59FEA45237FA07300C65A2F /* HintsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59FEA44237FA07300C65A2F /* HintsViewController.swift */; };
 		D59FEA47237FA14000C65A2F /* GenericToggleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59FEA46237FA14000C65A2F /* GenericToggleTableViewCell.swift */; };
+		D59FEA4A237FA50800C65A2F /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59FEA49237FA50800C65A2F /* NotificationsViewController.swift */; };
 		D5BA98662367779B0099D528 /* StoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA98652367779B0099D528 /* StoreItem.swift */; };
 		D5BA986923677D180099D528 /* StoreTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA986823677D180099D528 /* StoreTableView.swift */; };
 		D5BA986B23677D490099D528 /* StoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA986A23677D490099D528 /* StoreTableViewCell.swift */; };
@@ -151,6 +152,7 @@
 		D59FEA41237F9BAC00C65A2F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D59FEA44237FA07300C65A2F /* HintsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintsViewController.swift; sourceTree = "<group>"; };
 		D59FEA46237FA14000C65A2F /* GenericToggleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericToggleTableViewCell.swift; sourceTree = "<group>"; };
+		D59FEA49237FA50800C65A2F /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		D5BA98652367779B0099D528 /* StoreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItem.swift; sourceTree = "<group>"; };
 		D5BA986823677D180099D528 /* StoreTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTableView.swift; sourceTree = "<group>"; };
 		D5BA986A23677D490099D528 /* StoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTableViewCell.swift; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 			children = (
 				D59FEA3E237F9B0200C65A2F /* Change Username */,
 				D59FEA43237FA06400C65A2F /* Hints */,
+				D59FEA48237FA4DE00C65A2F /* Notifications */,
 				D59FEA3C237F969D00C65A2F /* ApplicationSettingsViewController.swift */,
 				D59FEA46237FA14000C65A2F /* GenericToggleTableViewCell.swift */,
 			);
@@ -468,6 +471,14 @@
 				D59FEA44237FA07300C65A2F /* HintsViewController.swift */,
 			);
 			path = Hints;
+			sourceTree = "<group>";
+		};
+		D59FEA48237FA4DE00C65A2F /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				D59FEA49237FA50800C65A2F /* NotificationsViewController.swift */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 		D5BA986723677CFE0099D528 /* Views */ = {
@@ -766,6 +777,7 @@
 				D5EA3060233737C100F56428 /* FontSizes.swift in Sources */,
 				D5EA305E23371E0700F56428 /* SignInView.swift in Sources */,
 				D570D6002333595900AB308B /* MainTabBarViewController.swift in Sources */,
+				D59FEA4A237FA50800C65A2F /* NotificationsViewController.swift in Sources */,
 				D59FEA47237FA14000C65A2F /* GenericToggleTableViewCell.swift in Sources */,
 				D57ED5C6237E8C0300EC1E87 /* AboutViewController.swift in Sources */,
 				D5BA986B23677D490099D528 /* StoreTableViewCell.swift in Sources */,

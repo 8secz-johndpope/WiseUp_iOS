@@ -65,6 +65,9 @@ extension ApplicationSettingsViewController: UITableViewDelegate, UITableViewDat
         case "Hints".localized():
             navigationController?.pushViewController(HintsViewController(), animated: true)
             break
+        case "Notifications".localized():
+            navigationController?.pushViewController(NotificationsViewController(), animated: true)
+            break
         default:
             break
         }

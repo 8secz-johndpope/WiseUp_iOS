@@ -1,5 +1,5 @@
 //
-//  HintsViewController.swift
+//  NotificationsViewController.swift
 //  QuickFin
 //
 //  Created by Boyuan Xu on 11/15/19.
@@ -7,30 +7,31 @@
 //
 
 import UIKit
+import Bond
 import SnapKit
 
-class HintsViewController: BaseViewController {
+class NotificationsViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
     }
-    
+
     var tableView: UITableView!
-    let cellReuseID = "hintsSettings"
-    let menu = ["Basic hints".localized()]
+    let cellReuseID = "notificationsSettings"
+    let menu = ["Push notifications".localized()]
     
-    @objc func basicHintsToggle() {
-        #warning("TODO: Toggle hints logic")
-        print("Basic hints toggled")
+    @objc func notificationsToggle() {
+        #warning("TODO: Push notifications toggle logic")
+        print("Push notifications toggled")
     }
 }
 
 // MARK: - UI
-extension HintsViewController: UITableViewDelegate, UITableViewDataSource {
+extension NotificationsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func initUI() {
-        title = "Hints".localized()
+        title = "Notifications".localized()
         tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.delegate = self
         tableView.dataSource = self
@@ -51,12 +52,12 @@ extension HintsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath) as! GenericToggleTableViewCell
         cell.leftLabel.text = menu[indexPath.row]
-        #warning("TODO: Hints settings read from local UserDefaults")
+        #warning("TODO: Notification settings read from local UserDefaults")
         cell.rightToggle.setOn(true, animated: false)
         
         switch menu[indexPath.row] {
-        case "Basic hints".localized():
-            cell.rightToggle.addTarget(self, action: #selector(basicHintsToggle), for: .valueChanged)
+        case "Push notifications".localized():
+            cell.rightToggle.addTarget(self, action: #selector(notificationsToggle), for: .valueChanged)
             break
         default:
             break
