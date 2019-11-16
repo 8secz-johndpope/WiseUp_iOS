@@ -53,6 +53,7 @@
 "About" = "About";
 "Log Out" = "Log Out";
 "Change Username" = "Change Username";
+"Hints" = "Hints";
 
 // MARK: - Settings -> Change Password
 "Old password" = "Old password";

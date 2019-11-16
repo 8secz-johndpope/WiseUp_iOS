@@ -62,6 +62,9 @@ extension ApplicationSettingsViewController: UITableViewDelegate, UITableViewDat
         case "Change Username".localized():
             navigationController?.pushViewController(ChangeUsernameViewController(), animated: true)
             break
+        case "Hints".localized():
+            navigationController?.pushViewController(HintsViewController(), animated: true)
+            break
         default:
             break
         }
