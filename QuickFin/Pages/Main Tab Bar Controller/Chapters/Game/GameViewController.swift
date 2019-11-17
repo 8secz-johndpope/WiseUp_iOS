@@ -48,7 +48,6 @@ class GameViewController: BaseViewController {
     }
     
     @objc func skip() {
-        // Do something
         attempts += 1
         proceedToNextVC()
     }
@@ -61,6 +60,7 @@ class GameViewController: BaseViewController {
             nextVC.points = points
             nextVC.attempts = attempts
             nextVC.chapterName = chapterName
+            nextVC.navigationItem.hidesBackButton = true
             navigationController?.pushViewController(nextVC, animated: true)
         } else {
             let nextVC = GameViewController()
