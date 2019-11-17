@@ -56,12 +56,14 @@ extension GameTableViewCell {
     
     func tappped(correct: Bool) {
         if correct {
-            backgroundColor = UIColor.systemBackground
-            titleLabel.textColor = Colors.FidelityGreen
+            titleLabel.font = .boldSystemFont(ofSize: FontSizes.pageTitle)
             layer.shadowColor = Colors.FidelityGreen?.cgColor
+            layer.shadowRadius = 15
+            layer.shadowOpacity = 1
         } else {
             backgroundColor = UIColor.red
             layer.shadowColor = UIColor.red.cgColor
+            alpha = 0.3
         }
     }
     
