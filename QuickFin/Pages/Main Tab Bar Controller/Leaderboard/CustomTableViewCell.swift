@@ -24,7 +24,7 @@ class CustomTableViewCell: UITableViewCell {
     }()
     
     lazy var nameLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 116, y: 8, width: backView.frame.width - 116, height: 30))
+        let label = UILabel(frame: CGRect(x: 116, y: 26, width: backView.frame.width - 116, height: 30))
         label.textAlignment = .left
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.textColor = UIColor.black
@@ -32,13 +32,13 @@ class CustomTableViewCell: UITableViewCell {
     }()
     
     lazy var trophyImage: UIImageView = {
-        let trophyImage = UIImageView(frame: CGRect(x: 236, y: 28, width: 62, height: 62))
+        let trophyImage = UIImageView(frame: CGRect(x: 286, y: 28, width: 62, height: 62))
         trophyImage.contentMode = .scaleAspectFill
         return trophyImage
     }()
     
     lazy var trophyCount: UILabel = {
-        let label = UILabel(frame: CGRect(x: 306, y: 38, width: backView.frame.width - 116, height: 30))
+        let label = UILabel(frame: CGRect(x: 356, y: 38, width: backView.frame.width - 116, height: 30))
         label.textAlignment = .left
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.textColor = UIColor.brown
