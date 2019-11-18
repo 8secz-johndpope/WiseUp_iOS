@@ -26,7 +26,7 @@ class LeaderboardViewController: BaseViewController {
         tableView.backgroundColor = UIColor.clear
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.separatorColor = UIColor.gray
+        tableView.separatorColor = UIColor.clear
         tableView.backgroundColor = UIColor.clear
         self.view.addSubview(tableView)
         
