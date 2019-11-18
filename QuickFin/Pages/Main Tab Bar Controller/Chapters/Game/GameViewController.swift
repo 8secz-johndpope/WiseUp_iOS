@@ -10,6 +10,7 @@ import UIKit
 
 class GameViewController: BaseViewController {
     
+    var chapterName: String?
     var answered = false
     var attempts = 0
     var points: Int!
@@ -46,18 +47,28 @@ class GameViewController: BaseViewController {
         currentQuestion = questions[questionNumber-1]
     }
     
-    @objc func proceedToNextVC() {
+    @objc func skip() {
+        attempts += 1
+        proceedToNextVC()
+    }
+    
+    func proceedToNextVC() {
         tableView.isUserInteractionEnabled = false
         calculatePoints()
         if questionNumber == questions.count {
             let nextVC = ResultsViewController()
             nextVC.points = points
+            nextVC.attempts = attempts
+            nextVC.chapterName = chapterName
+            nextVC.navigationItem.hidesBackButton = true
             navigationController?.pushViewController(nextVC, animated: true)
         } else {
             let nextVC = GameViewController()
             nextVC.points = points + 100
             nextVC.questionNumber = questionNumber + 1
             nextVC.questions = questions
+            nextVC.attempts = attempts
+            nextVC.chapterName = chapterName
             navigationController?.pushViewController(nextVC, animated: true)
         }
     }

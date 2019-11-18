@@ -15,27 +15,33 @@ class ProfileViewController: BaseViewController {
         super.viewDidLoad()
         navigationItem.title = "Profile".localized()
         setBackground()
-        initNavBar()
         initUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        //initUI()
         fetchData()
     }
     
+    var profileImageView: UIImageView!
+    var coinBalanceLabel: UILabel!
+    var achievementLabel: UILabel!
     var xpProgressBarBackgroundView: UIView!
     var xpProgressBarFiller: UIView!
     var tableView: UITableView!
     let cellReuseID = "profileSettings"
     let profileSettings = [
-        "Change avatar".localized(),
-        "Consumables".localized(),
-        "Profile settings".localized()
+        "Change Avatar".localized(),
+        "Items".localized(),
+        "Settings".localized()
     ]
+    let profileSettingIcons: [UIImage] = [#imageLiteral(resourceName: "Change Avatar"), #imageLiteral(resourceName: "Consumables"), #imageLiteral(resourceName: "Settings")]
     
     func fetchData() {
-        let xpPercentage = (Double)(User.shared.experience % 1000) / 1000.0
+        let xpPercentage = (Double)(UserShared.shared.experience % 1000) / 1000.0
+        coinBalanceLabel.text = UserShared.shared.coins.description
+        achievementLabel.text = UserShared.shared.achievementCount.description
         UIView.animate(withDuration: 0.4) {
             self.xpProgressBarFiller.snp.remakeConstraints { (this) in
                 this.leading.equalTo(self.xpProgressBarBackgroundView.snp.leading)

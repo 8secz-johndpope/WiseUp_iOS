@@ -13,7 +13,7 @@ extension GameViewController {
     
     func initNav() {
         title = "Question".localized() + " \(questionNumber!)"
-        navigationItem.setRightBarButton(UIBarButtonItem(title: "Skip".localized(), style: .plain, target: self, action: #selector(proceedToNextVC)), animated: true)
+        navigationItem.setRightBarButton(UIBarButtonItem(title: "Skip".localized(), style: .plain, target: self, action: #selector(skip)), animated: true)
         navigationItem.leftItemsSupplementBackButton = true
     }
     
@@ -79,12 +79,19 @@ extension GameViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if currentQuestion.answer == currentQuestion.answerOptions[indexPath.section] {
+            for cell in tableView.visibleCells {
+                if cell != tableView.cellForRow(at: indexPath) {
+                    (cell as! GameTableViewCell).tappped(correct: false)
+                }
+            }
+            tableView.isUserInteractionEnabled = false
             navigationItem.rightBarButtonItem?.isEnabled = false
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
                 self.proceedToNextVC()
             }
         } else {
             attempts += 1
+            tableView.cellForRow(at: indexPath)?.isUserInteractionEnabled = false
         }
         answered = true
     }

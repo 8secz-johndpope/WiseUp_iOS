@@ -11,30 +11,25 @@ import SnapKit
 
 extension ProfileViewController {
     
-    func initNavBar() {
-        let settingsItem = UIBarButtonItem(image: "🛠".emojiToImage(), style: .plain, target: self, action: #selector(openSettings))
-        navigationItem.setRightBarButton(settingsItem, animated: true)
-    }
-    
-    @objc func openSettings() {
+    func openSettings() {
         let settingsVC = BaseNavigationController(rootViewController: SettingsViewController(), prefersLargeTitles: false)
         present(settingsVC, animated: true, completion: nil)
     }
         
     func initUI() {
                 
-        let profileImageView: UIImageView = {
+        profileImageView = {
             let imageView = UIImageView()
             imageView.contentMode = .scaleAspectFill
-            imageView.image = UIImage(named: "Profile Image")
+            imageView.image = #imageLiteral(resourceName: "Blank User Icon")
             return imageView
         }()
         let profileNameLabel: UILabel = {
             let l = UILabel()
-            if User.shared.getName() == " " {
-                l.text = User.shared.displayName
+            if UserShared.shared.getName() == " " {
+                l.text = UserShared.shared.displayName
             } else {
-                l.text = User.shared.getName()
+                l.text = UserShared.shared.getName()
             }
             l.font = .boldSystemFont(ofSize: FontSizes.largeNavTitle)
             l.textColor = Colors.DynamicTextColor
@@ -57,9 +52,9 @@ extension ProfileViewController {
             l.textColor = Colors.DynamicTextColor
             return l
         }()
-        let coinBalanceLabel: UILabel = {
+        coinBalanceLabel = {
             let l = UILabel()
-            l.text = User.shared.coins.description
+            l.text = UserShared.shared.coins.description
             l.font = .systemFont(ofSize: FontSizes.pageTitle)
             l.textColor = Colors.DynamicTextColor
             return l
@@ -73,9 +68,9 @@ extension ProfileViewController {
             l.textColor = Colors.DynamicTextColor
             return l
         }()
-        let achievementLabel: UILabel = {
+        achievementLabel = {
             let l = UILabel()
-            l.text = User.shared.achievementCount.description
+            l.text = UserShared.shared.achievementCount.description
             l.font = .systemFont(ofSize: FontSizes.pageTitle)
             l.textColor = Colors.DynamicTextColor
             return l
@@ -103,10 +98,8 @@ extension ProfileViewController {
             this.top.equalTo(profileImageView.snp.bottom)
             this.centerX.equalToSuperview()
         }
-        profileImageView.layer.shadowColor = Colors.DynamicTextColor?.cgColor
-        profileImageView.layer.shadowOpacity = 0.3
-        profileImageView.layer.shadowRadius = 5
-        profileImageView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        profileImageView.layer.cornerRadius = 75
+        profileImageView.layer.masksToBounds = true
         
         view.addSubview(xpImageView)
         xpImageView.snp.makeConstraints { (this) in
@@ -191,7 +184,15 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath) as! SettingsTableViewCell;
         cell.titleLabel.text = profileSettings[indexPath.row]
+        cell.icon.image = profileSettingIcons[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if profileSettings[indexPath.row] == "Settings".localized() {
+            openSettings()
+        }
     }
     
 }
