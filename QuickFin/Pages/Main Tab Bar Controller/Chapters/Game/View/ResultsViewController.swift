@@ -13,6 +13,8 @@ import SnapKit
 class ResultsViewController: BaseViewController {
     
     var points: Int?
+    var attempts: Int?
+    var chapterName: String?
 
     override func viewDidLoad() {
         
@@ -20,13 +22,38 @@ class ResultsViewController: BaseViewController {
         
         print("In Results VC w/ \(points) points!")
         
-        User.shared.experience += points!
-        User.shared.coins += points! / 10
-        User.shared.achievementCount += 1
+        UserShared.shared.experience += points!
+        UserShared.shared.coins += points! / 10
         
+        checkAchievements()
+
         FirebaseService.shared.pushUserToFirebase()
         
         initUI()
+    }
+    
+    func checkAchievements() {
+        // 2 achievements to check for - Perfect Chapter + Completed Chapter
+        // Perfect Chapter
+       
+        if (attempts == 0) {
+           
+           let AchievementName = chapterName! + "PerfectChapter"
+           
+           if (UserShared.shared.triggerAchievement(AchievementName: AchievementName)) {
+               AchievementMessageHandler.shared.showMessage(theme: .success, title: "Achievement", body: AchievementName.localized())
+           }
+           
+        }
+        
+        // Completed Chapter
+
+        let AchievementName = chapterName! + "CompleteChapter"
+
+        if (UserShared.shared.triggerAchievement(AchievementName: AchievementName)) {
+           AchievementMessageHandler.shared.showMessage(theme: .success, title: "Achievement", body: AchievementName.localized())
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,7 +64,7 @@ class ResultsViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         #warning("TODO - Replace w/ Real level data")
-        progressRing.startProgress(to: CGFloat((User.shared.experience % 1000) / 10), duration: 2.0)
+        progressRing.startProgress(to: CGFloat((UserShared.shared.experience % 1000) / 10), duration: 2.0)
     }
     
     @objc func popToRootVC() {

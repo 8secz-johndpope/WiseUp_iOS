@@ -75,6 +75,7 @@ class ChapterViewController: UICollectionViewController, UICollectionViewDelegat
         let gameVC = GameViewController()
         gameVC.questionNumber = 1
         gameVC.questions = chapter?.questions
+        gameVC.chapterName = chapter?.name
         navigationController?.pushViewController(gameVC, animated: true)
     }
     

@@ -10,8 +10,6 @@ import Foundation
 
 struct User: Codable {
     
-    static var shared = User()
-    
     var admin = Bool()
     var email = String()
     var uid = String()
@@ -19,6 +17,7 @@ struct User: Codable {
     
     var coins = Int()
     var completed: [String]
+    var achievementsCompleted: [String]
     var experience = Int()
     var inProgress = String()
 
@@ -29,6 +28,7 @@ struct User: Codable {
     
     init() {
         self.completed = []
+        self.achievementsCompleted = []
     }
     
     init(admin: Bool, email: String, uid: String, displayName: String) {
@@ -36,6 +36,7 @@ struct User: Codable {
         self.email = email
         self.uid = uid
         self.completed = []
+        self.achievementsCompleted = []
         self.experience = 0
         self.inProgress = ""
         self.displayName = displayName
@@ -44,6 +45,17 @@ struct User: Codable {
     
     func getName() -> String {
         return "\(fName) \(lName)"
+    }
+    
+    mutating func triggerAchievement(AchievementName: String) -> Bool {
+        
+        if (achievementsCompleted.contains(AchievementName)) {
+            return false
+        } else {
+            achievementCount += 1
+            achievementsCompleted.append(AchievementName)
+            return true
+        }
     }
     
 }
