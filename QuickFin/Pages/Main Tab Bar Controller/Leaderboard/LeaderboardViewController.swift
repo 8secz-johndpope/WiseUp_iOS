@@ -8,28 +8,18 @@
 
 import UIKit
 import Localize_Swift
-
-//class UserModal {
-//    var userImage: UIImage?
-//    var name: String?
-//
-//
-//    init (userImage: UIImage, name: String) {
-//        self.userImage = userImage
-//        self.name = name
-//
-//    }
-//}
+import Firebase
+import CodableFirebase
 
 class LeaderboardViewController: BaseViewController {
     
     var tableView = UITableView()
     
-    //var userModal = [UserModal]()
     
     var userImages = [UIImage]()
     var userNames = [String]()
     var trophyCounts = [Int]()
+        
 
     func setTableView() {
         tableView.frame = self.view.frame
@@ -48,45 +38,48 @@ class LeaderboardViewController: BaseViewController {
         super.viewDidLoad()
         navigationItem.title = "Leaderboard".localized()
         setBackground()
-        setTableView()
         
-        //populate userImages array
-        for i in 0...19 {
-            let image = UIImage(named: "Blank User Icon")
-            if image != nil {
-                userImages.append(UIImage(named: "Blank User Icon")!)
+        FirebaseService.shared.getUserData { (usersList) in
+            for user in usersList {
+                print("user's achievementCount: ", user.achievementCount)
+                self.trophyCounts.append(user.achievementCount)
+                if user.displayName.isEmpty {
+                    print("user has no displayName")
+                    self.userNames.append("No DisplayName")
+                }
+                else {
+                    //print("user's displayName: ", user.displayName)
+                    self.userNames.append(user.displayName)
+                }
+
+                
+            }   //end of firebaseService for loop
+
+           // print ("userNames Array on line 58:", self.userNames)
+            //print ("achieveCounts Array on line 59:", self.trophyCounts)
+            
+            //populate userImages list with placeholder blank icons for now
+            for i in 0...self.userNames.count - 1 {
+                let image = UIImage(named: "Blank User Icon")
+                if image != nil {
+                    self.userImages.append(UIImage(named: "Blank User Icon")!)
+                }
+                //print ("photo", userImages[i])
             }
-            print ("photo", userImages[i])
-        }
+            
+            self.setTableView()
+            
+        }   //end of FirebaseService.shared.getUserData
         
-        //populate userNames array
-        for index in 0...19 {
-            userNames.append("Name\(index)")
-            print ("name", userNames[index])
-        }
+    }   //end of viewDidLoad
         
-        for index in 0...19 {
-            trophyCounts.append(index)
-            print ("trophyCount", trophyCounts[index])
-        }
-        
-//        for i in 0...userModal.count {
-//            print ("i: ", i)
-//            var imageString = "\(i).png"
-//            //ImageView.image = UIImage(named: "Profile Image")
-//            userModal.append(UIImage(named: "Profile Image"))
-//        }
-        
-    }
-        
-}
+}       //end of LeaderboardViewController
+
 
 extension LeaderboardViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView (_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //should be the # of desired cells, which is probably the length of one of the arrays
-        //hardcoded to 10 for now
-        print ("size of userImages Array:", String(userImages.count))
-        return 10
+        //should be the # of desired cells, length of one of the user arrays
+        return self.userNames.count
         
     }
     
@@ -103,5 +96,4 @@ extension LeaderboardViewController: UITableViewDelegate, UITableViewDataSource 
         return 118  //changing this causes cells to bunch up vertically
     }
     
-}
-
+}   //end of extension LeaderboardViewController
