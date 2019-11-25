@@ -76,8 +76,11 @@ extension GameViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    //this is called when an answer is clicked
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        // actual answer = the selected answer
         if currentQuestion.answer == currentQuestion.answerOptions[indexPath.section] {
             for cell in tableView.visibleCells {
                 if cell != tableView.cellForRow(at: indexPath) {
@@ -86,10 +89,11 @@ extension GameViewController: UITableViewDataSource, UITableViewDelegate {
             }
             tableView.isUserInteractionEnabled = false
             navigationItem.rightBarButtonItem?.isEnabled = false
+            //wait one second before going to next question
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
                 self.proceedToNextVC()
             }
-        } else {
+        } else { //if a question is answered wrong
             attempts += 1
             tableView.cellForRow(at: indexPath)?.isUserInteractionEnabled = false
         }
