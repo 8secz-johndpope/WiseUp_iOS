@@ -120,14 +120,6 @@ class ChapterCell: UICollectionViewCell {
         }
     }
     
-    var didComplete: Bool = false {
-        didSet {
-            if self.didComplete {
-                setFlag()
-            }
-        }
-    }
-    
     let iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -156,7 +148,7 @@ class ChapterCell: UICollectionViewCell {
             this.leading.equalTo(iconImageView.snp.trailing).offset(20)
         }
         layer.cornerRadius = 5
-        layer.shadowOpacity = 1
+        layer.shadowOpacity = 0.3
         layer.shadowRadius = 5
         layer.shadowOffset = .zero
         layer.shadowPath = UIBezierPath(rect: bounds).cgPath
