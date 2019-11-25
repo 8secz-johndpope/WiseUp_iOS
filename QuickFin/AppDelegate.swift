@@ -42,6 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                     window.setRootViewControllerWithAnimation(target: SignInViewController())
                 }
             }
+            window.setRootViewControllerWithAnimation(target: UIViewController())
         }
         return true
     }
