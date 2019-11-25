@@ -85,7 +85,6 @@ class GameViewController: BaseViewController {
     }
     
     func calculatePoints() {
-        #warning("TODO: Implementation")
         if (questionNumber == 1) {
             points = 100
         }

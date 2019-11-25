@@ -18,6 +18,7 @@ class GameTableViewCell: UITableViewCell {
         l.text = "--"
         l.textColor = .white
         l.numberOfLines = 0
+        l.textAlignment = .center
         return l
     }()
 
@@ -44,6 +45,10 @@ extension GameTableViewCell {
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (this) in
             this.center.equalToSuperview()
+            this.leading.equalToSuperview().offset(10)
+            this.trailing.equalToSuperview().offset(-10)
+            this.top.equalToSuperview().offset(10)
+            this.bottom.equalToSuperview().offset(-10)
         }
         
         backgroundColor = Colors.FidelityGreen
