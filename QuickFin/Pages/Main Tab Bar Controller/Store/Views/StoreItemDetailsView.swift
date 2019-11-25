@@ -20,7 +20,7 @@ extension StoreItemDetailsViewController {
         }()
         let thumbnail: UIImageView = {
             let v = UIImageView(image: image)
-            v.contentMode = .center
+            v.contentMode = .scaleAspectFit
             return v
         }()
         let titleLabel: UILabel = {
@@ -80,9 +80,6 @@ extension StoreItemDetailsViewController {
             this.width.equalTo(view.snp.width).dividedBy(4)
             this.height.equalTo(view.snp.width).dividedBy(4)
         }
-        thumbnail.layer.cornerRadius = 5
-        thumbnail.layer.borderColor = UIColor.gray.cgColor
-        thumbnail.layer.borderWidth = 0.2
         scrollView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (this) in
             this.leading.equalTo(thumbnail.snp.trailing).offset(20)

@@ -187,6 +187,24 @@ class FirebaseService {
         }
     }
     
+    func getUserData(completion: @escaping ([User]) -> Void) {
+        var userArray = [User]()
+        db.collection("users").order(by: "achievementCount", descending: true).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let deserializedUser = try! FirebaseDecoder().decode(User.self,from: document.data())
+                    userArray.append(deserializedUser)
+                }
+                
+                completion(userArray)
+                return
+
+            }
+        }
+    }
+    
     func getStoreTimestamp(completion: @escaping (ChapterStats?) -> Void) {
         
         db.collection("store").document("--stats--").getDocument { (querySnapshot, err) in
