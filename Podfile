@@ -33,7 +33,7 @@ target 'QuickFin' do
   pod 'InAppSettingsKit'
   pod 'UICircularProgressRing'
   pod 'DropDown'
-
+  
   target 'QuickFinTests' do
     inherit! :search_paths
     # Pods for testing
