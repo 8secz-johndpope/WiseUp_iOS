@@ -20,19 +20,15 @@ class ChangeAvatarViewController: UICollectionViewController, UICollectionViewDe
         super.viewDidLoad()
         
         setBackground()
-        
         collectionView.backgroundColor = .systemBackground
-        
         collectionView?.alwaysBounceVertical = true
-        
         collectionView?.register(AvatarCell.self, forCellWithReuseIdentifier: "cellId")
-        
+        (collectionViewLayout as! UICollectionViewFlowLayout).estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         initUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //initUI()
         fetchData()
     }
     
@@ -64,14 +60,6 @@ class ChangeAvatarViewController: UICollectionViewController, UICollectionViewDe
         delegate?.updateProfileImage()
         dismiss(animated: true, completion: nil)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return CGSize(width: view.frame.width / 3, height: 100)
-        
-    }
-    
-    
 }
 
 class AvatarCell: UICollectionViewCell {
@@ -98,14 +86,12 @@ class AvatarCell: UICollectionViewCell {
     }()
     
     func setupViews() {
-        
-        backgroundColor = Colors.DynamicChapterCellBackground
-        
         addSubview(iconImageView)
-        iconImageView.translatesAutoresizingMaskIntoConstraints = false
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-12-[v0(68)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":iconImageView]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-12-[v0(68)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":iconImageView]))
-        
+        iconImageView.snp.makeConstraints { (this) in
+            this.center.equalToSuperview()
+            this.width.equalToSuperview()
+            this.height.equalToSuperview()
+        }
     }
     
 }
