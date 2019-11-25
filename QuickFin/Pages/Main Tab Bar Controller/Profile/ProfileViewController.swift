@@ -51,6 +51,8 @@ class ProfileViewController: BaseViewController {
             }
             self.xpProgressBarFiller.superview?.layoutIfNeeded()
         }
+        
+        updateProfileImage()
     }
 }
 

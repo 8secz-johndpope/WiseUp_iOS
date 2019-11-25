@@ -9,8 +9,9 @@
 import Foundation
 
 struct StoreItem: Codable {
-    var imageURL = String()
+    var imageName = String()
     var name = String()
     var details = String()
     var cost = Int()
+    var type = String()
 }

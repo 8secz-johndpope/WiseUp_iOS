@@ -16,6 +16,7 @@ struct UserShared: Codable {
     var email = String()
     var uid = String()
     var avatar = String()
+    var avatarsOwned: [String]
     
     var coins = Int()
     var completed: [String]
@@ -31,6 +32,8 @@ struct UserShared: Codable {
     init() {
         self.completed = []
         self.achievementsCompleted = []
+        self.avatarsOwned = ["Blank User Icon"]
+        self.avatar = "Blank User Icon"
     }
     
     init(admin: Bool, email: String, uid: String, displayName: String) {
@@ -43,6 +46,9 @@ struct UserShared: Codable {
         self.inProgress = ""
         self.displayName = displayName
         self.achievementCount = 0
+        
+        self.avatarsOwned = ["Blank User Icon"]
+        self.avatar = "Blank User Icon"
     }
     
     func getName() -> String {

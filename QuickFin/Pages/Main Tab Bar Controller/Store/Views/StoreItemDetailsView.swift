@@ -39,15 +39,31 @@ extension StoreItemDetailsViewController {
             l.numberOfLines = 0
             return l
         }()
-        let buyButton: UIButton = {
+        
+        buyButton = {
             let b = UIButton()
-            b.setTitle("Buy for ".localized() + cost.description, for: .normal)
-            b.backgroundColor = Colors.DynamicNavigationBarColor
-            b.setTitleColor(Colors.DynamicNavigationTitleColor, for: .normal)
-            _ = b.reactive.tap.observeNext { [weak self] (_) in
-                self?.buyItem()
+            
+            if !UserShared.shared.avatarsOwned.contains(item.name) {
+                b.setTitle("Buy for ".localized() + cost.description, for: .normal)
+                b.backgroundColor = Colors.DynamicNavigationBarColor
+                b.setTitleColor(Colors.DynamicNavigationTitleColor, for: .normal)
+                _ = b.reactive.tap.observeNext { [weak self] (_) in
+                    self?.buyItem()
+                }
+                return b
             }
-            return b
+            
+            
+            else {
+                b.setTitle("Already Owned".localized(), for: .normal)
+                b.backgroundColor = Colors.DynamicNavigationBarColor
+                b.setTitleColor(Colors.DynamicNavigationTitleColor, for: .normal)
+                _ = b.reactive.tap.observeNext { [weak self] (_) in
+                    self?.buyItem()
+                }
+                return b
+            }
+            
         }()
         
         view.addSubview(scrollView)
@@ -79,14 +95,14 @@ extension StoreItemDetailsViewController {
             this.leading.equalTo(thumbnail.snp.leading)
             this.trailing.equalTo(titleLabel.snp.trailing)
         }
-        scrollView.addSubview(buyButton)
-        buyButton.snp.makeConstraints { (this) in
+        scrollView.addSubview(buyButton!)
+        buyButton!.snp.makeConstraints { (this) in
             this.top.equalTo(detailsLabel.snp.bottom).offset(20)
             this.leading.equalTo(detailsLabel)
             this.trailing.equalTo(detailsLabel)
             this.bottom.equalToSuperview()
         }
-        buyButton.layer.cornerRadius = 5
+        buyButton!.layer.cornerRadius = 5
     }
     
 }
