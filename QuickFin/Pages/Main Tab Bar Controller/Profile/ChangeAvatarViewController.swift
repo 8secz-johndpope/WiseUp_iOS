@@ -58,11 +58,11 @@ class ChangeAvatarViewController: UICollectionViewController, UICollectionViewDe
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let avatarName = UserShared.shared.avatarsOwned[indexPath.item]
         UserShared.shared.avatar = avatarName
         FirebaseService.shared.pushUserToFirebase()
         delegate?.updateProfileImage()
+        dismiss(animated: true, completion: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -74,7 +74,16 @@ class ChangeAvatarViewController: UICollectionViewController, UICollectionViewDe
     
 }
 
-class AvatarCell: BaseCell {
+class AvatarCell: UICollectionViewCell {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     var imageName: String? {
         didSet {
@@ -84,13 +93,13 @@ class AvatarCell: BaseCell {
     
     let iconImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    override func setupViews() {
+    func setupViews() {
         
-        backgroundColor = UIColor.white
+        backgroundColor = Colors.DynamicChapterCellBackground
         
         addSubview(iconImageView)
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
