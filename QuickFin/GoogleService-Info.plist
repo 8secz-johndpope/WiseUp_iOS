@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>31301036149-10th0nlpmbve8vaiivcdac15niu9ehdq.apps.googleusercontent.com</string>
+	<string>31301036149-9saj7o2vjags1aor0ibp41tgdoong0ej.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.31301036149-10th0nlpmbve8vaiivcdac15niu9ehdq</string>
+	<string>com.googleusercontent.apps.31301036149-9saj7o2vjags1aor0ibp41tgdoong0ej</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAgH6i8ypV74kTrEW5YF3X_ml3RqaI5nA8</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.fidelity.QuickFin</string>
+	<string>com.fidelity.QuickFin.notifications</string>
 	<key>PROJECT_ID</key>
 	<string>quickfin-bc9c6</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:31301036149:ios:7dda1e7c14d0fdbc61303c</string>
+	<string>1:31301036149:ios:3f3363dc3c41457c61303c</string>
 	<key>DATABASE_URL</key>
 	<string>https://quickfin-bc9c6.firebaseio.com</string>
 </dict>
