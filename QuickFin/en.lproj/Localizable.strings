@@ -70,6 +70,8 @@
 "Next" = "Next";
 "Done" = "Done";
 "Skip" = "Skip";
+"CompleteChapter" = " - Finished Chapter!";
+"PerfectChapter" = " - Perfect Finish!";
 
 // MARK: - Store
 "Store" = "Store";
@@ -83,3 +85,4 @@
 
 // MARK: - About
 "Version" = "Version";
+
