@@ -76,7 +76,11 @@ class ChapterViewController: BaseViewController, UICollectionViewDelegate, UICol
             cell.name = chapter.name
             cell.imageName = chapter.imageName
             #warning("TODO: Remove testing code")
-            cell.setFlag()
+            if indexPath.row == 0 {
+                cell.setNewFlag()
+            } else {
+                cell.setCompletedFlag()
+            }
         }
         
         return cell
@@ -156,9 +160,18 @@ class ChapterCell: UICollectionViewCell {
         layer.masksToBounds = false
     }
     
-    func setFlag() {
+    func setNewFlag() {
         let triLabelView = TriLabelView(frame: bounds)
-        triLabelView.labelText = "NEW!"
+        triLabelView.labelText = "NEW".localized()
+        triLabelView.position = .TopRight
+        triLabelView.textColor = UIColor.white
+        triLabelView.viewColor = UIColor.systemOrange
+        addSubview(triLabelView)
+    }
+    
+    func setCompletedFlag() {
+        let triLabelView = TriLabelView(frame: bounds)
+        triLabelView.labelText = "ACED".localized()
         triLabelView.position = .TopRight
         triLabelView.textColor = UIColor.white
         triLabelView.viewColor = Colors.FidelityGreen!
