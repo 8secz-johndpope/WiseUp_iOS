@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftMessages
+import Bond
 
 class StoreItemDetailsViewController: BaseViewController {
     
@@ -37,11 +39,23 @@ extension StoreItemDetailsViewController {
             
             buyButton!.setTitle("Already Owned".localized(), for: .normal)
             
-            // Prompt user to equip their new avatar?
-            #warning("TO DO - Prompt user to equip new avatar")
-            
-            
-            
+            let prompt: MessageView = {
+                let mv = MessageView.viewFromNib(layout: .cardView)
+                mv.configureTheme(.success)
+                mv.configureDropShadow()
+                mv.configureContent(title: "Success".localized(), body: "Would you like to equip this avatar?".localized())  // Error messages are typically pre-localized
+                mv.button?.setTitle("Yes".localized(), for: .normal)
+                _ = mv.button?.reactive.tap.observeNext(with: { [unowned self] (_) in
+                    UserShared.shared.avatar = self.item.name
+                    SwiftMessages.hide()
+                    self.dismiss(animated: true, completion: nil)
+                })
+                return mv
+            }()
+            var config = SwiftMessages.Config()
+            config.presentationContext = .window(windowLevel: .statusBar)
+            config.preferredStatusBarStyle = .lightContent
+            SwiftMessages.show(config: config, view: prompt)
         }
         
     }
