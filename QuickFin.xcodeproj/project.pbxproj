@@ -17,6 +17,8 @@
 		BF4EDAA62341E09800E45E90 /* ChapterStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4EDAA52341E09800E45E90 /* ChapterStats.swift */; };
 		BF5A2E93237BEBB800C7EB87 /* AchievementMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5A2E92237BEBB800C7EB87 /* AchievementMessageHandler.swift */; };
 		BF5A2E95237C8F4300C7EB87 /* UserShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5A2E94237C8F4300C7EB87 /* UserShared.swift */; };
+		BF96AACA238BA62E009534B5 /* ChangeAvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96AAC9238BA62E009534B5 /* ChangeAvatarViewController.swift */; };
+		BF96AACC238BCB5A009534B5 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96AACB238BCB5A009534B5 /* Store.swift */; };
 		BFD5653D2339926B007ECD97 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD5653B2339926B007ECD97 /* Chapter.swift */; };
 		BFD5653E2339926B007ECD97 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD5653C2339926B007ECD97 /* Question.swift */; };
 		BFD565422339927C007ECD97 /* ChapterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD5653F2339927C007ECD97 /* ChapterViewController.swift */; };
@@ -109,6 +111,8 @@
 		BF4EDAA52341E09800E45E90 /* ChapterStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterStats.swift; sourceTree = "<group>"; };
 		BF5A2E92237BEBB800C7EB87 /* AchievementMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementMessageHandler.swift; sourceTree = "<group>"; };
 		BF5A2E94237C8F4300C7EB87 /* UserShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserShared.swift; sourceTree = "<group>"; };
+		BF96AAC9238BA62E009534B5 /* ChangeAvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAvatarViewController.swift; sourceTree = "<group>"; };
+		BF96AACB238BCB5A009534B5 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		BFD5653B2339926B007ECD97 /* Chapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		BFD5653C2339926B007ECD97 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		BFD5653F2339927C007ECD97 /* ChapterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterViewController.swift; sourceTree = "<group>"; };
@@ -292,6 +296,7 @@
 				D505BA0F235180C10025E975 /* Settings */,
 				D52471DD234257BF00922564 /* Views */,
 				BFD565412339927C007ECD97 /* ProfileViewController.swift */,
+				BF96AAC9238BA62E009534B5 /* ChangeAvatarViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -322,6 +327,7 @@
 				BFD5653C2339926B007ECD97 /* Question.swift */,
 				BF4EDAA52341E09800E45E90 /* ChapterStats.swift */,
 				D5BA98652367779B0099D528 /* StoreItem.swift */,
+				BF96AACB238BCB5A009534B5 /* Store.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -796,6 +802,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5EA3060233737C100F56428 /* FontSizes.swift in Sources */,
+				BF96AACA238BA62E009534B5 /* ChangeAvatarViewController.swift in Sources */,
 				D5EA305E23371E0700F56428 /* SignInView.swift in Sources */,
 				D570D6002333595900AB308B /* MainTabBarViewController.swift in Sources */,
 				D59FEA4A237FA50800C65A2F /* NotificationsViewController.swift in Sources */,
@@ -830,6 +837,7 @@
 				BFD565422339927C007ECD97 /* ChapterViewController.swift in Sources */,
 				D5469B4F23398AC70047D09D /* User.swift in Sources */,
 				D5711868237BDFCC005419D4 /* SignUpViewController.swift in Sources */,
+				BF96AACC238BCB5A009534B5 /* Store.swift in Sources */,
 				D5BA986F23677FC70099D528 /* StoreItemDetailsView.swift in Sources */,
 				D5460A64237C687500BBE034 /* CustomTableViewCell.swift in Sources */,
 				D5726DF42354710D0077BF95 /* GameTableViewCell.swift in Sources */,

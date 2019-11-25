@@ -14,8 +14,12 @@ class StoreViewController: BaseViewController {
         super.viewDidLoad()
         navigationItem.title = "Store".localized()
         setBackground()
-        fetchData()
         initUI()
+        fetchData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        fetchData()
     }
     
     var tableView: UITableView!
@@ -29,11 +33,20 @@ class StoreViewController: BaseViewController {
     ]
         
     func fetchData() {
-        #warning("TODO: Fetch real data")
-        storeItems = [
-        StoreItem(imageURL: "", name: "EXP Booster 1 Day", details: "This EXP booster 1 Day boosts your EXP earnings for a duration of one Earth day.", cost: 100),
-        StoreItem(imageURL: "", name: "EXP Booster 1 Week", details: "This EXP booster 1 Week boosts your EXP earnings for a duration of one Earth week.", cost: 700)
-        ]
+        
+        // First Get Pre-Cached Chapters (or empty if nothing cached)
+        storeItems = CacheService.shared.getCachedStore()
+        
+        print(storeItems)
+        
+        self.tableView.reloadData()
+        
+        // Second, asynchronously check for updates to chapters and download them if needed
+        CacheService.shared.getStore { [unowned self] (store) in
+            self.storeItems = store
+            self.tableView.reloadData()
+        }
+    
     }
 
 }

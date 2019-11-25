@@ -9,6 +9,8 @@
 import UIKit
 
 class StoreItemDetailsViewController: BaseViewController {
+    
+    var buyButton: UIButton?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,7 +18,7 @@ class StoreItemDetailsViewController: BaseViewController {
     
     var item: StoreItem! {
         didSet {
-            initUI(image: FirebaseService.shared.getImage(URL: self.item.imageURL), title: self.item.name, details: self.item.details, cost: self.item.cost)
+            initUI(image: FirebaseService.shared.getImage(URL: self.item.imageName), title: self.item.name, details: self.item.details, cost: self.item.cost)
         }
     }
     
@@ -25,7 +27,23 @@ class StoreItemDetailsViewController: BaseViewController {
 extension StoreItemDetailsViewController {
     
     func buyItem() {
-        #warning("TODO: Buying item logic")
+        
+        if !UserShared.shared.avatarsOwned.contains(item.name) {
+            
+            //  check if user has enough funds to purchase
+            
+            UserShared.shared.avatarsOwned.append(item.name)
+            FirebaseService.shared.pushUserToFirebase()
+            
+            buyButton!.setTitle("Already Owned".localized(), for: .normal)
+            
+            // Prompt user to equip their new avatar?
+            #warning("TO DO - Prompt user to equip new avatar")
+            
+            
+            
+        }
+        
     }
     
 }

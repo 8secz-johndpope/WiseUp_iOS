@@ -136,6 +136,36 @@ class FirebaseService {
         }
     }
     
+    func loadStore(completion: @escaping ([StoreItem], ChapterStats?) -> Void) {
+        
+        var store = [StoreItem]()
+        
+        db.collection("store").getDocuments() { (querySnapshot, err) in
+            
+            if let err = err {
+                print("Error getting chapters: \(err)")
+                completion([], nil)
+                return
+            } else {
+                
+                var timestamp: ChapterStats = ChapterStats()
+                
+                for doc in querySnapshot!.documents {
+                    
+                    if (doc.documentID == "--stats--") {
+                        timestamp = try! FirebaseDecoder().decode(ChapterStats.self, from: doc.data())
+                    } else {
+                        let store2 = try! FirebaseDecoder().decode(Store.self, from: doc.data())
+                        store = store2.items
+                    }
+                }
+                
+                completion(store, timestamp)
+                return
+            }
+        }
+    }
+    
     func getChapterTimestamp(completion: @escaping (ChapterStats?) -> Void) {
         
         db.collection("chapters").document("--stats--").getDocument { (querySnapshot, err) in
@@ -157,25 +187,28 @@ class FirebaseService {
         }
     }
     
-    
-    
-    func getUserData(completion: @escaping ([User]) -> Void) {
-        var userArray = [User]()
-        db.collection("users").order(by: "achievementCount", descending: true).getDocuments() { (querySnapshot, err) in
+    func getStoreTimestamp(completion: @escaping (ChapterStats?) -> Void) {
+        
+        db.collection("store").document("--stats--").getDocument { (querySnapshot, err) in
+            
             if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    let deserializedUser = try! FirebaseDecoder().decode(User.self,from: document.data())
-                    userArray.append(deserializedUser)
-                }
-                
-                completion(userArray)
+                print("Error getting store: \(err)")
+                completion(nil)
                 return
-
             }
+            
+            if let querySnapshot = querySnapshot {
+                let timestamp = try! FirebaseDecoder().decode(ChapterStats.self, from: querySnapshot.data()!)
+                completion(timestamp)
+                return
+            }
+            
+            completion(nil)
+            return
         }
-    }       //end of getUserData()
+    }
+    
+    
     
 }
     
@@ -183,8 +216,7 @@ class FirebaseService {
 extension FirebaseService {
     
     func getImage(URL: String) -> UIImage {
-        #warning("TODO: Work with backend folks and implement storage")
-        return "🤔".emojiToImage()!
+        return UIImage(named: URL)!
     }
     
 }

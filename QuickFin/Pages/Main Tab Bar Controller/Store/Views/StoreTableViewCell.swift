@@ -82,7 +82,7 @@ extension StoreTableViewCell {
         descriptionLabel.snp.makeConstraints { (this) in
             this.leading.equalTo(titleLabel.snp.leading)
             this.top.equalTo(titleLabel.snp.bottom)
-            this.trailing.equalTo(numberLabel.snp.leading).offset(-10)
+            this.trailing.lessThanOrEqualTo(numberLabel.snp.leading).offset(-10)
         }
     }
     

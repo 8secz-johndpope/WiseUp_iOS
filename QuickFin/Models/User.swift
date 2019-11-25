@@ -14,6 +14,7 @@ struct User: Codable {
     var email = String()
     var uid = String()
     var avatar = String()
+    var avatarsOwned: [String]
     
     var coins = Int()
     var completed: [String]
@@ -29,6 +30,8 @@ struct User: Codable {
     init() {
         self.completed = []
         self.achievementsCompleted = []
+        self.avatarsOwned = ["Blank User Icon"]
+        self.avatar = "Blank User Icon"
     }
     
     init(admin: Bool, email: String, uid: String, displayName: String) {
@@ -41,6 +44,9 @@ struct User: Codable {
         self.inProgress = ""
         self.displayName = displayName
         self.achievementCount = 0
+        
+        self.avatarsOwned = ["Blank User Icon"]
+        self.avatar = "Blank User Icon"
     }
     
     func getName() -> String {
@@ -56,6 +62,22 @@ struct User: Codable {
             achievementsCompleted.append(AchievementName)
             return true
         }
+    }
+    
+    mutating func clearData() {
+        admin = false
+        email = ""
+        uid = ""
+        avatar = ""
+        coins = 0
+        completed = []
+        achievementsCompleted = []
+        experience = 0
+        inProgress = ""
+        fName = ""
+        lName = ""
+        achievementCount = 0
+        displayName = ""
     }
     
 }
