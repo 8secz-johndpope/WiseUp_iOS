@@ -13,4 +13,5 @@ struct Colors {
     static let DynamicNavigationBarColor = UIColor(named: "Dynamic Navigation Bar Color")
     static let DynamicTextColor = UIColor(named: "Dynamic Text Color")
     static let FidelityGreen = UIColor(named: "Fidelity Green")
+    static let DynamicChapterCellBackground = UIColor(named: "Dynamic Chapter Cell Background")
 }

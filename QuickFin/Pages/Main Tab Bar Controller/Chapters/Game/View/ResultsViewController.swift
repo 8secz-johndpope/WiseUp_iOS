@@ -19,9 +19,7 @@ class ResultsViewController: BaseViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        print("In Results VC w/ \(points) points!")
-        
+                
         UserShared.shared.experience += points!
         UserShared.shared.coins += points! / 10
         
@@ -63,7 +61,6 @@ class ResultsViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        #warning("TODO - Replace w/ Real level data")
         progressRing.startProgress(to: CGFloat((UserShared.shared.experience % 1000) / 10), duration: 2.0)
     }
     
@@ -94,6 +91,7 @@ extension ResultsViewController {
             ring.innerRingColor = Colors.FidelityGreen!
             ring.innerRingWidth = 40
             ring.font = UIFont.systemFont(ofSize: FontSizes.circularProgressNumber, weight: .bold)
+            ring.fontColor = Colors.DynamicTextColor!
             return ring
         }()
         expLabel = {

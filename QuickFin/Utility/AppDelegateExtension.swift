@@ -15,7 +15,7 @@ extension AppDelegate {
     func makeMainTabBarController() -> MainTabBarViewController {
         
         // Chapters
-        let chaptersVC = BaseNavigationController(rootViewController: ChapterViewController(collectionViewLayout: UICollectionViewFlowLayout()), prefersLargeTitles: false)
+        let chaptersVC = BaseNavigationController(rootViewController: ChapterViewController(), prefersLargeTitles: false)
         
         // Leaderboard
         let leaderboardVC = BaseNavigationController(rootViewController: LeaderboardViewController(), prefersLargeTitles: false)

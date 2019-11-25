@@ -7,37 +7,48 @@
 //
 
 import UIKit
-import Firebase
 import GradientLoadingBar
+import SnapKit
 
-class ChapterViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class ChapterViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     private let gradientLoadingBar = GradientLoadingBar()
-    
     private let cellId = "cellId"
-    
+    private let widthOffset: CGFloat = 20
     var chapters: [Chapter]?
+    var collectionView: UICollectionView!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
-        navigationItem.title = "Chapters"
-        
+        navigationItem.title = "Chapters".localized()
         setBackground() // Won't work here because the background is a collection view
-        collectionView.backgroundColor = .systemBackground
-        
-        collectionView?.alwaysBounceVertical = true
-        
-        collectionView?.register(ChapterCell.self, forCellWithReuseIdentifier: "cellId")
-        
-        navigationItem.title = "Chapters"
-        
+        initCollectionView()
+        initUI()
         loadChapters()
     }
     
+    func initCollectionView() {
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        collectionView.backgroundColor = .systemBackground
+        collectionView.alwaysBounceVertical = true
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(ChapterCell.self, forCellWithReuseIdentifier: "cellId")
+        collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+        collectionView.layer.masksToBounds = false
+    }
+    
+    func initUI() {
+        view.addSubview(collectionView)
+        collectionView.snp.makeConstraints { (this) in
+            this.centerX.equalToSuperview()
+            this.top.equalToSuperview()
+            this.bottom.equalToSuperview()
+            this.width.equalToSuperview().offset(-widthOffset)
+        }
+    }
+    
     func loadChapters() {
-        
         gradientLoadingBar.fadeIn()
         // First Get Pre-Cached Chapters (or empty if nothing cached)
         self.chapters = CacheService.shared.getCachedChapters()
@@ -49,28 +60,29 @@ class ChapterViewController: UICollectionViewController, UICollectionViewDelegat
             self.collectionView.reloadData()
             self.gradientLoadingBar.fadeOut()
         }
-    
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let count = chapters?.count {
             return count
         }
         return 0
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ChapterCell
         
         if let chapter = chapters?[indexPath.item] {
             cell.name = chapter.name
             cell.imageName = chapter.imageName
+            #warning("TODO: Remove testing code")
+            cell.setFlag()
         }
         
         return cell
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let chapter = chapters?[indexPath.row]
         let gameVC = GameViewController()
         gameVC.questionNumber = 1
@@ -80,12 +92,21 @@ class ChapterViewController: UICollectionViewController, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 100)
+        return CGSize(width: view.frame.width - widthOffset, height: 100)
     }
     
 }
 
-class ChapterCell: BaseCell {
+class ChapterCell: UICollectionViewCell {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     var name: String? {
         didSet {
@@ -99,6 +120,14 @@ class ChapterCell: BaseCell {
         }
     }
     
+    var didComplete: Bool = false {
+        didSet {
+            if self.didComplete {
+                setFlag()
+            }
+        }
+    }
+    
     let iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -107,39 +136,40 @@ class ChapterCell: BaseCell {
     
     let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Chapter Name"
-        label.textColor = UIColor.black
+        label.text = "-"
+        label.textColor = Colors.DynamicTextColor
         return label
     }()
     
-    override func setupViews() {
-        
-        backgroundColor = UIColor.white
-        
-        addSubview(iconImageView)
-        iconImageView.translatesAutoresizingMaskIntoConstraints = false
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-12-[v0(68)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":iconImageView]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-12-[v0(68)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":iconImageView]))
-        
-        
-        addSubview(nameLabel)
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-125-[v0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel]))
-    }
-}
-
-class BaseCell: UICollectionViewCell {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupViews()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     func setupViews() {
-        backgroundColor = UIColor.white
+        backgroundColor = Colors.DynamicChapterCellBackground
+        addSubview(iconImageView)
+        iconImageView.snp.makeConstraints { (this) in
+            this.centerY.equalToSuperview()
+            this.leading.equalToSuperview().offset(20)
+            this.width.equalTo(50)
+            this.height.equalTo(50)
+        }
+        addSubview(nameLabel)
+        nameLabel.snp.makeConstraints { (this) in
+            this.centerY.equalToSuperview()
+            this.leading.equalTo(iconImageView.snp.trailing).offset(20)
+        }
+        layer.cornerRadius = 5
+        layer.shadowOpacity = 1
+        layer.shadowRadius = 5
+        layer.shadowOffset = .zero
+        layer.shadowPath = UIBezierPath(rect: bounds).cgPath
+        layer.shadowColor = UIColor.black.cgColor
+        layer.masksToBounds = false
+    }
+    
+    func setFlag() {
+        let triLabelView = TriLabelView(frame: bounds)
+        triLabelView.labelText = "NEW!"
+        triLabelView.position = .TopRight
+        triLabelView.textColor = UIColor.white
+        triLabelView.viewColor = Colors.FidelityGreen!
+        addSubview(triLabelView)
     }
 }
