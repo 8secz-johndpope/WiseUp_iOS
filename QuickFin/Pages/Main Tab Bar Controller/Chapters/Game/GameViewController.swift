@@ -13,6 +13,8 @@ class GameViewController: BaseViewController {
     var chapterName: String?
     var answered = false
     var attempts = 0
+    var skipped = 0
+    var total = 0
     var points: Int!
     var questionNumber: Int!
     var questions: [Question]!
@@ -49,16 +51,21 @@ class GameViewController: BaseViewController {
     
     @objc func skip() {
         attempts += 1
+        skipped += 1
         proceedToNextVC()
     }
     
     func proceedToNextVC() {
         tableView.isUserInteractionEnabled = false
         calculatePoints()
+        
+        //if this is the last question, go to the results view controller
         if questionNumber == questions.count {
             let nextVC = ResultsViewController()
             nextVC.points = points
             nextVC.attempts = attempts
+            nextVC.total = questions.count
+            nextVC.skipped = skipped
             nextVC.chapterName = chapterName
             nextVC.navigationItem.hidesBackButton = true
             navigationController?.pushViewController(nextVC, animated: true)

@@ -15,6 +15,8 @@ class ResultsViewController: BaseViewController {
     var points: Int?
     var attempts: Int?
     var chapterName: String?
+    var total: Int = 0
+    var skipped: Int = 0
 
     override func viewDidLoad() {
         
@@ -105,13 +107,43 @@ extension ResultsViewController {
         motdLabel = {
             let l = UILabel()
             l.font = UIFont.systemFont(ofSize: FontSizes.navTitle, weight: .bold)
-            #warning("TODO: Replace dummy data with real data")
-            l.text = "Almost there!"
+            if(skipped != 0){
+                l.text = "Skipped \(skipped) of \(total)"
+            }else{
+                l.text = "No questions skipped!"
+            }
             l.textColor = Colors.DynamicTextColor
             return l
         }()
         
-       
+        let next: UIButton = {
+            let next = UIButton(type: .system)
+            next.setTitle("Next", for: .normal)
+            next.tintColor = .black
+            next.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
+            next.contentEdgeInsets = UIEdgeInsets(top: 5,left: 20,bottom: 5,right: 30)
+            next.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -10)
+            next.layer.cornerRadius = 5
+            next.layer.borderWidth = 2
+            next.layer.borderColor = UIColor.black.cgColor
+            next.setImage(UIImage(named: "Next"), for: .normal)
+            return next
+        }()
+        
+        let retry: UIButton = {
+            let retry = UIButton(type: .system)
+            retry.setTitle("Retry", for: .normal)
+            retry.tintColor = .black
+            retry.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
+            retry.contentEdgeInsets = UIEdgeInsets(top: 5,left: 20,bottom: 5,right: 30)
+            retry.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -10)
+            retry.backgroundColor = .clear
+            retry.layer.cornerRadius = 5
+            retry.layer.borderWidth = 2
+            retry.layer.borderColor = UIColor.black.cgColor
+            retry.setImage(UIImage(named: "Go Back"), for: .normal)
+            return retry
+        }()
         
         view.addSubview(progressRing)
         progressRing.snp.makeConstraints { (this) in
@@ -130,5 +162,17 @@ extension ResultsViewController {
             this.top.equalTo(expLabel.snp.bottom).offset(10)
             this.centerX.equalTo(expLabel)
         }
+  /*      view.addSubview(next)
+        next.snp.makeConstraints { (this) in
+            this.top.equalTo(expLabel.snp.bottom).offset(50)
+            this.centerX.equalTo(expLabel)
+        }
+        
+        view.addSubview(retry)
+        retry.snp.makeConstraints { (this) in
+            this.top.equalTo(expLabel.snp.bottom).offset(120)
+            this.centerX.equalTo(expLabel)
+        }
+        */
     }
 }
