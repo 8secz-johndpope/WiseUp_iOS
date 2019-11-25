@@ -38,7 +38,7 @@ class ResultsViewController: BaseViewController {
        
         if (attempts == 0) {
            
-           let AchievementName = chapterName! + "PerfectChapter"
+            let AchievementName = chapterName! + "PerfectChapter".localized();
            
            if (UserShared.shared.triggerAchievement(AchievementName: AchievementName)) {
                AchievementMessageHandler.shared.showMessage(theme: .success, title: "Achievement", body: AchievementName.localized())
@@ -48,7 +48,7 @@ class ResultsViewController: BaseViewController {
         
         // Completed Chapter
 
-        let AchievementName = chapterName! + "CompleteChapter"
+        let AchievementName = chapterName! + "CompleteChapter".localized();
 
         if (UserShared.shared.triggerAchievement(AchievementName: AchievementName)) {
            AchievementMessageHandler.shared.showMessage(theme: .success, title: "Achievement", body: AchievementName.localized())
@@ -112,6 +112,8 @@ extension ResultsViewController {
             l.textColor = Colors.DynamicTextColor
             return l
         }()
+        
+       
         
         view.addSubview(progressRing)
         progressRing.snp.makeConstraints { (this) in
