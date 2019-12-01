@@ -74,8 +74,9 @@
 		D5EA305B23371D5600F56428 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EA305A23371D5600F56428 /* SignInViewController.swift */; };
 		D5EA305E23371E0700F56428 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EA305D23371E0700F56428 /* SignInView.swift */; };
 		D5EA3060233737C100F56428 /* FontSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EA305F233737C100F56428 /* FontSizes.swift */; };
+		D5EBE6742393AC0000690A49 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EBE6732393AC0000690A49 /* ItemsViewController.swift */; };
 		D5F86626238BD14B0079F65D /* TriLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F86625238BD14B0079F65D /* TriLabelView.swift */; };
-		D7AB969357792D2B7E4BA7CE /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		D7AB969357792D2B7E4BA7CE /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,6 +177,7 @@
 		D5EA305A23371D5600F56428 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		D5EA305D23371E0700F56428 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		D5EA305F233737C100F56428 /* FontSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizes.swift; sourceTree = "<group>"; };
+		D5EBE6732393AC0000690A49 /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		D5F86625238BD14B0079F65D /* TriLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriLabelView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,7 +194,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7AB969357792D2B7E4BA7CE /* BuildFile in Frameworks */,
+				D7AB969357792D2B7E4BA7CE /* (null) in Frameworks */,
 				936E21972E905AC0BE87B63A /* Pods_QuickFinTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,6 +299,7 @@
 				D52471DD234257BF00922564 /* Views */,
 				BFD565412339927C007ECD97 /* ProfileViewController.swift */,
 				BF96AAC9238BA62E009534B5 /* ChangeAvatarViewController.swift */,
+				D5EBE6732393AC0000690A49 /* ItemsViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -846,6 +849,7 @@
 				D52471D023401F3900922564 /* BaseNavigationController.swift in Sources */,
 				D505BA13235181080025E975 /* ChangePasswordViewController.swift in Sources */,
 				D59FEA4F237FDF3B00C65A2F /* EmailLinkViewController.swift in Sources */,
+				D5EBE6742393AC0000690A49 /* ItemsViewController.swift in Sources */,
 				D5469B4823377AF20047D09D /* SignInDelegateProtocol.swift in Sources */,
 				D5460A66237C687B00BBE034 /* LeaderboardViewController.swift in Sources */,
 				D59FEA4D237FA6A000C65A2F /* LinkAccountsViewController.swift in Sources */,

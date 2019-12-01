@@ -14,27 +14,8 @@ protocol ProfileViewDelegate: class {
 }
 
 extension ProfileViewController: ProfileViewDelegate {
-    
-    func openSettings() {
-        let settingsVC = BaseNavigationController(rootViewController: SettingsViewController(), prefersLargeTitles: false)
-        present(settingsVC, animated: true, completion: nil)
-    }
-    
-    func openChangeAvatar() {
-        let avatarVC = ChangeAvatarViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        avatarVC.delegate = self
-        let wrappedAvatarVC = BaseNavigationController(rootViewController: avatarVC, prefersLargeTitles: false)
-        
-        present(wrappedAvatarVC, animated: true)
-        
-    }
-    
-    func updateProfileImage() {
-        profileImageView.image = UIImage(named: UserShared.shared.avatar)
-    }
         
     func initUI() {
-                
         profileImageView = {
             let imageView = UIImageView()
             imageView.contentMode = .scaleAspectFill
@@ -207,12 +188,18 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if profileSettings[indexPath.row] == "Settings".localized() {
+        switch profileSettings[indexPath.row] {
+        case "Settings".localized():
             openSettings()
-        }
-        
-        if profileSettings[indexPath.row] == "Change Avatar".localized() {
+            break
+        case "Change Avatar".localized():
             openChangeAvatar()
+            break
+        case "Items".localized():
+            openItems()
+            break
+        default:
+            break
         }
     }
     

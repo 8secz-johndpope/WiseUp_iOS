@@ -52,5 +52,26 @@ class ProfileViewController: BaseViewController {
         }
         updateProfileImage()
     }
+    
+    func openSettings() {
+        let settingsVC = BaseNavigationController(rootViewController: SettingsViewController(), prefersLargeTitles: false)
+        present(settingsVC, animated: true, completion: nil)
+    }
+    
+    func openChangeAvatar() {
+        let avatarVC = ChangeAvatarViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        avatarVC.delegate = self
+        let wrappedAvatarVC = BaseNavigationController(rootViewController: avatarVC, prefersLargeTitles: false)
+        present(wrappedAvatarVC, animated: true)
+    }
+    
+    func openItems() {
+        let itemsVC = BaseNavigationController(rootViewController: ItemsViewController(), prefersLargeTitles: false)
+        present(itemsVC, animated: true, completion: nil)
+    }
+    
+    func updateProfileImage() {
+        profileImageView.image = UIImage(named: UserShared.shared.avatar)
+    }
 }
 
