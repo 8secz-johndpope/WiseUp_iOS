@@ -43,26 +43,51 @@ extension StoreItemDetailsViewController {
         buyButton = {
             let b = UIButton()
             
-            if !UserShared.shared.avatarsOwned.contains(item.name) {
-                b.setTitle("Buy for ".localized() + cost.description, for: .normal)
-                b.backgroundColor = Colors.DynamicNavigationBarColor
-                b.setTitleColor(Colors.DynamicNavigationTitleColor, for: .normal)
-                _ = b.reactive.tap.observeNext { [weak self] (_) in
-                    self?.buyItem()
+            if item.type == "avatar" {
+                if !UserShared.shared.avatarsOwned.contains(item.name) {
+                    b.setTitle("Buy for ".localized() + cost.description, for: .normal)
+                    b.backgroundColor = Colors.DynamicNavigationBarColor
+                    b.setTitleColor(Colors.DynamicNavigationTitleColor, for: .normal)
+                    _ = b.reactive.tap.observeNext { [weak self] (_) in
+                        self?.buyItem()
+                    }
+                    return b
                 }
-                return b
+                
+                
+                else {
+                    b.setTitle("Already Owned".localized(), for: .normal)
+                    b.backgroundColor = Colors.DynamicNavigationBarColor
+                    b.setTitleColor(Colors.DynamicNavigationTitleColor, for: .normal)
+                    _ = b.reactive.tap.observeNext { [weak self] (_) in
+                        self?.buyItem()
+                    }
+                    return b
+                }
+            } else {
+                if !UserShared.shared.itemsOwned.contains(item.name) {
+                    b.setTitle("Buy for ".localized() + cost.description, for: .normal)
+                    b.backgroundColor = Colors.DynamicNavigationBarColor
+                    b.setTitleColor(Colors.DynamicNavigationTitleColor, for: .normal)
+                    _ = b.reactive.tap.observeNext { [weak self] (_) in
+                        self?.buyItem()
+                    }
+                    return b
+                }
+                
+                
+                else {
+                    b.setTitle("Already Owned".localized(), for: .normal)
+                    b.backgroundColor = Colors.DynamicNavigationBarColor
+                    b.setTitleColor(Colors.DynamicNavigationTitleColor, for: .normal)
+                    _ = b.reactive.tap.observeNext { [weak self] (_) in
+                        self?.buyItem()
+                    }
+                    return b
+                }
             }
             
             
-            else {
-                b.setTitle("Already Owned".localized(), for: .normal)
-                b.backgroundColor = Colors.DynamicNavigationBarColor
-                b.setTitleColor(Colors.DynamicNavigationTitleColor, for: .normal)
-                _ = b.reactive.tap.observeNext { [weak self] (_) in
-                    self?.buyItem()
-                }
-                return b
-            }
             
         }()
         

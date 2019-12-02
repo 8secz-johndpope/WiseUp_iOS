@@ -26,8 +26,8 @@ class LeaderboardViewController: BaseViewController {
         tableView.backgroundColor = UIColor.clear
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
         tableView.separatorColor = UIColor.clear
-        tableView.backgroundColor = UIColor.clear
         self.view.addSubview(tableView)
         
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -38,40 +38,40 @@ class LeaderboardViewController: BaseViewController {
         super.viewDidLoad()
         navigationItem.title = "Leaderboard".localized()
         setBackground()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         FirebaseService.shared.getUserData { (usersList) in
             for user in usersList {
-                print("user's achievementCount: ", user.achievementCount)
+                //print("user's achievementCount: ", user.achievementCount)
                 self.trophyCounts.append(user.achievementCount)
                 if user.displayName.isEmpty {
-                    print("user has no displayName")
+                    //print("user has no displayName")
                     self.userNames.append("No DisplayName")
                 }
                 else {
                     //print("user's displayName: ", user.displayName)
                     self.userNames.append(user.displayName)
                 }
-
-                
-            }   //end of firebaseService for loop
-
-           // print ("userNames Array on line 58:", self.userNames)
-            //print ("achieveCounts Array on line 59:", self.trophyCounts)
-            
-            //populate userImages list with placeholder blank icons for now
-            for i in 0...self.userNames.count - 1 {
-                let image = UIImage(named: "Blank User Icon")
-                if image != nil {
+                if user.avatar.isEmpty {
+                    //print ("firebase empty image: ", user.avatar)
                     self.userImages.append(UIImage(named: "Blank User Icon")!)
                 }
-                //print ("photo", userImages[i])
-            }
+                else {
+                    let avatar = user.avatar
+                    //print ("firebase non empty image: ", avatar)
+                    self.userImages.append(UIImage(named: avatar)!)
+                }
+
+            }   //end of firebaseService for loop
             
             self.setTableView()
             
         }   //end of FirebaseService.shared.getUserData
         
-    }   //end of viewDidLoad
+    } //end of viewWillAppear
         
 }       //end of LeaderboardViewController
 

@@ -27,7 +27,7 @@ class CustomTableViewCell: UITableViewCell {
         let label = UILabel(frame: CGRect(x: 116, y: 26, width: backView.frame.width - 116, height: 30))
         label.textAlignment = .left
         label.font = UIFont.boldSystemFont(ofSize: 18)
-        label.textColor = UIColor.black
+        label.textColor = UIColor(named: "Dynamic Text Color")!
         return label
     }()
     
@@ -41,7 +41,7 @@ class CustomTableViewCell: UITableViewCell {
         let label = UILabel(frame: CGRect(x: 356, y: 38, width: backView.frame.width - 116, height: 30))
         label.textAlignment = .left
         label.font = UIFont.boldSystemFont(ofSize: 18)
-        label.textColor = UIColor.brown
+        label.textColor = UIColor(named: "Dynamic Text Color")!
         return label
     }()
 
@@ -73,6 +73,7 @@ class CustomTableViewCell: UITableViewCell {
     }
 
 }
+
 
 
 
