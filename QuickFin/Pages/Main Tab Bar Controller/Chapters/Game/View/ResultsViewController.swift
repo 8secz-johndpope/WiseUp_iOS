@@ -23,7 +23,7 @@ class ResultsViewController: BaseViewController {
         
         super.viewDidLoad()
         
-        switch UserShared.shared.activeItem {
+        switch UserShared.shared.activeItem.name {
         case "Tiny Potion of Knowledge":
             UserShared.shared.experience += Int(Double(points!) * 1.1)
             UserShared.shared.coins += points! / 10
@@ -62,7 +62,7 @@ class ResultsViewController: BaseViewController {
             coinsGained = points! / 10
         }
         
-        UserShared.shared.activeItem = ""
+        UserShared.shared.activeItem = StoreItem()
                 
         checkAchievements()
 
