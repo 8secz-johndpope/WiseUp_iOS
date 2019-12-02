@@ -37,8 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
             // This state listener should persist.
             Auth.auth().addStateDidChangeListener { [unowned self] (_, user) in
                 if user != nil {
-                    FirebaseService.shared.verifyUser(email: Auth.auth().currentUser?.email ?? "")
-                    window.setRootViewControllerWithAnimation(target: self.makeMainTabBarController())
+                    FirebaseService.shared.verifyUser(email: Auth.auth().currentUser?.email ?? "") { (error) in
+                        window.setRootViewControllerWithAnimation(target: self.makeMainTabBarController())
+                    }
                 } else {
                     UserShared.shared.clearData()
                     LoginManager().logOut()

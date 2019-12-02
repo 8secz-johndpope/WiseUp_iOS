@@ -76,7 +76,9 @@ extension SignInViewController {
                     return
                 }
                 // Shouldn't need to do anything here due to the Auth state listener set previously in AppDelegate.
-                FirebaseService.shared.verifyUser(email: Auth.auth().currentUser?.email ?? "")
+                FirebaseService.shared.verifyUser(email: Auth.auth().currentUser?.email ?? "") { (error) in
+                    ErrorMessageHandler.shared.showMessage(theme: .error, title: "Error", body: error!.localizedDescription)
+                }
             }
         } else {
             // User cancelled login
