@@ -28,6 +28,7 @@ class ProfileViewController: BaseViewController {
     var achievementLabel: UILabel!
     var xpProgressBarBackgroundView: UIView!
     var xpProgressBarFiller: UIView!
+    var xpLevelLabel: UILabel!
     var tableView: UITableView!
     let cellReuseID = "profileSettings"
     let profileSettings = [
@@ -39,6 +40,7 @@ class ProfileViewController: BaseViewController {
     
     func fetchData() {
         let xpPercentage = (Double)(UserShared.shared.experience % 1000) / 1000.0
+        xpLevelLabel.text = (UserShared.shared.experience / 1000).description
         coinBalanceLabel.text = UserShared.shared.coins.description
         achievementLabel.text = UserShared.shared.achievementCount.description
         UIView.animate(withDuration: 0.4) {
