@@ -38,12 +38,18 @@ class LeaderboardViewController: BaseViewController {
         super.viewDidLoad()
         navigationItem.title = "Leaderboard".localized()
         setBackground()
+        setTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         FirebaseService.shared.getUserData { (usersList) in
+            
+            self.userNames = []
+            self.userImages = []
+            self.trophyCounts = []
+            
             for user in usersList {
                 //print("user's achievementCount: ", user.achievementCount)
                 self.trophyCounts.append(user.achievementCount)
@@ -67,7 +73,7 @@ class LeaderboardViewController: BaseViewController {
 
             }   //end of firebaseService for loop
             
-            self.setTableView()
+            self.tableView.reloadData()
             
         }   //end of FirebaseService.shared.getUserData
         
