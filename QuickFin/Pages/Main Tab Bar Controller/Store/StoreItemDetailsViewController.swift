@@ -30,32 +30,99 @@ extension StoreItemDetailsViewController {
     
     func buyItem() {
         
-        if !UserShared.shared.avatarsOwned.contains(item.name) {
+        if item.type == "avatar" {
             
-            //  check if user has enough funds to purchase
+            if !UserShared.shared.avatarsOwned.contains(item.name) {
             
-            UserShared.shared.avatarsOwned.append(item.name)
-            FirebaseService.shared.pushUserToFirebase()
+                //  check if user has enough funds to purchase
             
-            buyButton!.setTitle("Already Owned".localized(), for: .normal)
+                if !(UserShared.shared.coins >= item.cost) {
+                    
+                    let prompt: MessageView = {
+                        let mv = MessageView.viewFromNib(layout: .cardView)
+                        mv.configureTheme(.error)
+                        mv.configureDropShadow()
+                        mv.configureContent(title: "Error!".localized(), body: "Not Enough Coins".localized())  // Error messages are typically pre-localized
+                        mv.button?.setTitle("Okay".localized(), for: .normal)
+                       
+                        _ = mv.button?.reactive.tap.observeNext(with: { (_) in
+                                  SwiftMessages.hide()
+                       })
+                        return mv
+                    }()
+                    var config = SwiftMessages.Config()
+                    config.presentationContext = .window(windowLevel: .statusBar)
+                    config.preferredStatusBarStyle = .lightContent
+                    SwiftMessages.show(config: config, view: prompt)
+                    
+                    print("Not enough coins for avatar")
+                    
+                } else {
+                    
+                    UserShared.shared.coins -= item.cost
+                    UserShared.shared.avatarsOwned.append(item.name)
+                    FirebaseService.shared.pushUserToFirebase()
+                    
+                    buyButton!.setTitle("Already Owned".localized(), for: .normal)
+                    
+                    let prompt: MessageView = {
+                        let mv = MessageView.viewFromNib(layout: .cardView)
+                        mv.configureTheme(.success)
+                        mv.configureDropShadow()
+                        mv.configureContent(title: "Success".localized(), body: "Would you like to equip this avatar?".localized())  // Error messages are typically pre-localized
+                        mv.button?.setTitle("Yes".localized(), for: .normal)
+                        _ = mv.button?.reactive.tap.observeNext(with: { [unowned self] (_) in
+                            UserShared.shared.avatar = self.item.name
+                            SwiftMessages.hide()
+                            self.dismiss(animated: true, completion: nil)
+                        })
+                        return mv
+                    }()
+                    var config = SwiftMessages.Config()
+                    config.presentationContext = .window(windowLevel: .statusBar)
+                    config.preferredStatusBarStyle = .lightContent
+                    SwiftMessages.show(config: config, view: prompt)
+                }
+                
+            }
             
-            let prompt: MessageView = {
-                let mv = MessageView.viewFromNib(layout: .cardView)
-                mv.configureTheme(.success)
-                mv.configureDropShadow()
-                mv.configureContent(title: "Success".localized(), body: "Would you like to equip this avatar?".localized())  // Error messages are typically pre-localized
-                mv.button?.setTitle("Yes".localized(), for: .normal)
-                _ = mv.button?.reactive.tap.observeNext(with: { [unowned self] (_) in
-                    UserShared.shared.avatar = self.item.name
-                    SwiftMessages.hide()
-                    self.dismiss(animated: true, completion: nil)
-                })
-                return mv
-            }()
-            var config = SwiftMessages.Config()
-            config.presentationContext = .window(windowLevel: .statusBar)
-            config.preferredStatusBarStyle = .lightContent
-            SwiftMessages.show(config: config, view: prompt)
+        } else {
+            
+            if !UserShared.shared.itemsOwned.contains(item.name) {
+            
+                //  check if user has enough funds to purchase
+            
+                if !(UserShared.shared.coins >= item.cost) {
+                    
+                     let prompt: MessageView = {
+                         let mv = MessageView.viewFromNib(layout: .cardView)
+                         mv.configureTheme(.error)
+                         mv.configureDropShadow()
+                         mv.configureContent(title: "Error!".localized(), body: "Not Enough Coins".localized())  // Error messages are typically pre-localized
+                         mv.button?.setTitle("Okay".localized(), for: .normal)
+                        
+                         _ = mv.button?.reactive.tap.observeNext(with: { (_) in
+                                   SwiftMessages.hide()
+                        })
+                         return mv
+                     }()
+                     var config = SwiftMessages.Config()
+                     config.presentationContext = .window(windowLevel: .statusBar)
+                     config.preferredStatusBarStyle = .lightContent
+                     SwiftMessages.show(config: config, view: prompt)
+                    
+                     print("Not enough coins for consumable")
+                    
+                } else {
+                    
+                    UserShared.shared.coins -= item.cost
+                    UserShared.shared.itemsOwned.append(item.name)
+                    FirebaseService.shared.pushUserToFirebase()
+                    
+                    buyButton!.setTitle("Already Owned".localized(), for: .normal)
+                
+                }
+            }
         }
         
     }

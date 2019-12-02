@@ -20,7 +20,7 @@ extension StoreViewController {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (this) in
             this.leading.equalToSuperview()
-            this.top.equalTo(view.snp.topMargin)
+            this.top.equalTo(view.snp.topMargin).offset(55)
             this.bottom.equalTo(view.snp.bottomMargin)
             this.trailing.equalToSuperview()
         }
@@ -60,43 +60,6 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
         present(detailsVC, animated: true) {
             #warning("TODO: Refresh data")
         }
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = UIView()
-        header.backgroundColor = Colors.DynamicNavigationBarColor
-        let timeframeButton: UIButton = {
-            let b = UIButton()
-            b.setTitle(storeSortingOptions[0], for: .normal)
-            b.setTitleColor(Colors.DynamicNavigationTitleColor, for: .normal)
-            b.setImage("↓".emojiToImage(), for: .normal)
-            b.titleLabel?.font = UIFont.systemFont(ofSize: FontSizes.text)
-            b.contentEdgeInsets = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
-            return b
-        }()
-        let timeframeDropdown: DropDown = {
-            let d = DropDown()
-            d.anchorView = timeframeButton
-            d.dataSource = storeSortingOptions
-            d.selectionAction = { (index: Int, item: String) in
-                timeframeButton.setTitle(item, for: .normal)
-                #warning("TODO: Update leaderboard based on new timeframe option")
-            }
-            d.dismissMode = .automatic
-            return d
-        }()
-        _ = timeframeButton.reactive.tap.observeNext { (_) in
-            timeframeDropdown.show()
-        }
-        
-        header.addSubview(timeframeButton)
-        timeframeButton.snp.makeConstraints { (this) in
-            this.trailing.equalToSuperview().offset(-20)
-            this.centerY.equalToSuperview()
-            this.height.equalToSuperview()
-        }
-        
-        return header
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
