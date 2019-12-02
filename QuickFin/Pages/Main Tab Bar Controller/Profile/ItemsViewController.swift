@@ -8,7 +8,11 @@
 
 import UIKit
 
-class ItemsViewController: StoreViewController {
+protocol ItemsViewDelegate: class {
+    func didConsume()
+}
+
+class ItemsViewController: StoreViewController, ItemsViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +27,11 @@ class ItemsViewController: StoreViewController {
             this.trailing.equalToSuperview()
         }
         
+    }
+    
+    func didConsume() {
+        fetchData()
+        tableView.reloadData()
     }
     
     override func fetchData() {
@@ -62,6 +71,15 @@ class ItemsViewController: StoreViewController {
             self.tableView.reloadData()
         }
         
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let detailsVC = StoreItemDetailsViewController()
+        detailsVC.item = storeItems[indexPath.row]
+        detailsVC.showConsume = true
+        detailsVC.itemsViewDelegate = self
+        present(detailsVC, animated: true) {}
     }
 
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct StoreItem: Codable {
+struct StoreItem: Codable, Equatable {
     var imageName = String()
     var name = String()
     var details = String()
