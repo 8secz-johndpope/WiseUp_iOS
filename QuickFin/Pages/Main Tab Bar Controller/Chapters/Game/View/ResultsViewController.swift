@@ -27,19 +27,19 @@ class ResultsViewController: BaseViewController {
             switch activeItem.name {
             case "Tiny Potion of Knowledge":
                 UserShared.shared.experience += Int(Double(points!) * 1.1)
-                UserShared.shared.coins += points! / 10
+                UserShared.shared.coins += points!
                 coinsGained = points!
             case "Potion of Knowledge":
                 UserShared.shared.experience += Int(Double(points!) * 1.3)
-                UserShared.shared.coins += points! / 10
+                UserShared.shared.coins += points!
                 coinsGained = points!
             case "Large Potion of Knowledge":
                 UserShared.shared.experience += Int(Double(points!) * 1.5)
-                UserShared.shared.coins += points! / 10
+                UserShared.shared.coins += points!
                 coinsGained = points!
             case "Legendary Potion of Knowledge":
                 UserShared.shared.experience += Int(Double(points!) * 2)
-                UserShared.shared.coins += points! / 10
+                UserShared.shared.coins += points!
                 coinsGained = points!
             case "Tiny Potion of Riches":
                 UserShared.shared.experience += points!
@@ -59,7 +59,7 @@ class ResultsViewController: BaseViewController {
                 coinsGained = Int(Double(points!) * 2)
             default:
                 UserShared.shared.experience += points!
-                UserShared.shared.coins += points! / 10
+                UserShared.shared.coins += points!
                 coinsGained = points!
             }
         }

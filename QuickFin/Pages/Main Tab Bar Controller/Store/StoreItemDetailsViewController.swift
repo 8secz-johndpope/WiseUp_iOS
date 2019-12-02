@@ -92,6 +92,7 @@ extension StoreItemDetailsViewController {
                         mv.button?.setTitle("Yes".localized(), for: .normal)
                         _ = mv.button?.reactive.tap.observeNext(with: { [unowned self] (_) in
                             UserShared.shared.avatar = self.item.name
+                            FirebaseService.shared.pushUserToFirebase()
                             SwiftMessages.hide()
                             self.dismiss(animated: true, completion: nil)
                         })
