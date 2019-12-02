@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Bond
 
 // MARK: - UI
 extension GameViewController {
@@ -46,6 +47,25 @@ extension GameViewController {
             this.trailing.equalTo(view.snp.trailing).offset(-20)
             this.top.equalTo(progressBar.snp.bottom)
             this.bottom.equalToSuperview()
+        }
+        
+        if let activeItem = UserShared.shared.activeItem {
+            let activeItemIcon: UIButton = {
+                let v = UIButton()
+                v.setImage(UIImage(named: activeItem.imageName), for: .normal)
+                _ = v.reactive.tap.observeNext { (_) in
+                    ErrorMessageHandler.shared.showActiveItem(body: "\(activeItem.name): \(activeItem.details)")
+                }
+                v.alpha = 0.5
+                return v
+            }()
+            view.addSubview(activeItemIcon)
+            activeItemIcon.snp.makeConstraints { (this) in
+                this.bottom.equalTo(view.snp.bottomMargin).offset(-10)
+                this.trailing.equalToSuperview().offset(-10)
+                this.width.equalTo(50)
+                this.height.equalTo(50)
+            }
         }
         
     }
