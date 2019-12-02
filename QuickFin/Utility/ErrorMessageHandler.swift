@@ -59,6 +59,9 @@ class ErrorMessageHandler {
         var config = SwiftMessages.Config()
         config.presentationStyle = .bottom
         config.duration = .forever
+        
+        view.layoutMarginAdditions = UIEdgeInsets(top: 20, left: 20, bottom: 50, right: 20)
+        
         SwiftMessages.show(config: config, view: view)
     }
     
