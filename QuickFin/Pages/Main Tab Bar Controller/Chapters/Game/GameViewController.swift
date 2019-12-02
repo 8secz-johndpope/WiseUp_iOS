@@ -8,7 +8,11 @@
 
 import UIKit
 
-class GameViewController: BaseViewController {
+protocol GameDelegate: class {
+    func proceedToNextVC()
+}
+
+class GameViewController: BaseViewController, GameDelegate {
     
     var chapterName: String?
     var answered = false

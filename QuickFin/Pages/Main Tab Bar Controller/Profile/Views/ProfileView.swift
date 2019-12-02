@@ -84,6 +84,13 @@ extension ProfileViewController: ProfileViewDelegate {
         xpProgressBarFiller = UIView()
         xpProgressBarFiller.backgroundColor = Colors.FidelityGreen
         
+        xpLevelLabel = {
+            let l = UILabel()
+            l.textColor = Colors.FidelityGreen
+            l.font = UIFont.boldSystemFont(ofSize: FontSizes.xpLevel)
+            return l
+        }()
+        
         view.addSubview(profileImageView)
         profileImageView.snp.makeConstraints { (this) in
             this.top.equalTo(view.snp.topMargin).offset(20)
@@ -104,10 +111,15 @@ extension ProfileViewController: ProfileViewDelegate {
             this.top.equalTo(profileNameLabel.snp.bottom).offset(10)
             this.leading.equalToSuperview().offset(20)
         }
+        view.addSubview(xpLevelLabel)
+        xpLevelLabel.snp.makeConstraints { (this) in
+            this.trailing.equalToSuperview().offset(-20)
+            this.centerY.equalTo(xpImageView.snp.centerY)
+        }
         view.addSubview(xpProgressBarBackgroundView)
         xpProgressBarBackgroundView.snp.makeConstraints { (this) in
             this.leading.equalTo(xpImageView.snp.trailing).offset(10)
-            this.trailing.equalToSuperview().offset(-20)
+            this.trailing.equalTo(xpLevelLabel.snp.leading).offset(-20)
             this.height.equalTo(10)
             this.centerY.equalTo(xpImageView.snp.centerY)
         }

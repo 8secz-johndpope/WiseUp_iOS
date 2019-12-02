@@ -14,6 +14,7 @@ class ErrorMessageHandler {
     
     static var shared = ErrorMessageHandler()
     private init() {}
+    weak var gameDelegate: GameDelegate?
     
     private func getView(theme: Theme, title: String, body: String, buttonTitle: String? = nil) -> MessageView {
         let errorView = MessageView.viewFromNib(layout: .cardView)
@@ -50,9 +51,10 @@ class ErrorMessageHandler {
         view.configureDropShadow()
         view.configureContent(title: "Insights\n".localized(), body: body.localized())
         view.titleLabel?.font = UIFont.boldSystemFont(ofSize: FontSizes.insightsTitle)
-        view.button?.setTitle("Hide".localized(), for: .normal)
-        _ = view.button?.reactive.tap.observeNext(with: { (_) in
+        view.button?.setTitle("Next".localized(), for: .normal)
+        _ = view.button?.reactive.tap.observeNext(with: { [unowned self] (_) in
             SwiftMessages.hide()
+            self.gameDelegate?.proceedToNextVC()
         })
         var config = SwiftMessages.Config()
         config.presentationStyle = .bottom

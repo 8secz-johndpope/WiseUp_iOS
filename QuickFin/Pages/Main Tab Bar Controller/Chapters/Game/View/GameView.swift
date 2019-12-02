@@ -91,13 +91,9 @@ extension GameViewController: UITableViewDataSource, UITableViewDelegate {
             }
             tableView.isUserInteractionEnabled = false
             navigationItem.rightBarButtonItem?.isEnabled = false
-            
+            ErrorMessageHandler.shared.gameDelegate = self
             ErrorMessageHandler.shared.showMessageOnCorrectChoice(body: "Satoshi Nakamoto is the name used by the pseudonymous person or persons who developed bitcoin, authored the bitcoin white paper, and created and deployed bitcoin's original reference implementation. As part of the implementation, Nakamoto also devised the first blockchain database.")
             
-            //wait one second before going to next question
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
-                self.proceedToNextVC()
-            }
         } else { //if a question is answered wrong
             attempts += 1
             tableView.cellForRow(at: indexPath)?.isUserInteractionEnabled = false
