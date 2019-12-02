@@ -43,7 +43,7 @@ extension StoreItemDetailsViewController {
     
     func consumeItem() {
         UserShared.shared.itemsOwned = UserShared.shared.itemsOwned.filter({ $0 != item.name })
-        UserShared.shared.activeItem = item.name
+        UserShared.shared.activeItem = item
         FirebaseService.shared.pushUserToFirebase()
     }
     
