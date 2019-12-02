@@ -23,43 +23,45 @@ class ResultsViewController: BaseViewController {
         
         super.viewDidLoad()
         
-        switch UserShared.shared.activeItem.name {
-        case "Tiny Potion of Knowledge":
-            UserShared.shared.experience += Int(Double(points!) * 1.1)
-            UserShared.shared.coins += points! / 10
-            coinsGained = points! / 10
-        case "Potion of Knowledge":
-            UserShared.shared.experience += Int(Double(points!) * 1.3)
-            UserShared.shared.coins += points! / 10
-            coinsGained = points! / 10
-        case "Large Potion of Knowledge":
-            UserShared.shared.experience += Int(Double(points!) * 1.5)
-            UserShared.shared.coins += points! / 10
-            coinsGained = points! / 10
-        case "Legendary Potion of Knowledge":
-            UserShared.shared.experience += Int(Double(points!) * 2)
-            UserShared.shared.coins += points! / 10
-            coinsGained = points! / 10
-        case "Tiny Potion of Riches":
-            UserShared.shared.experience += points!
-            UserShared.shared.coins += Int(Double(points! / 10) * 1.1)
-            coinsGained = Int(Double(points! / 10) * 1.1)
-        case "Potion of Riches":
-            UserShared.shared.experience += points!
-            UserShared.shared.coins += Int(Double(points! / 10) * 1.3)
-            coinsGained = Int(Double(points! / 10) * 1.3)
-        case "Large Potion of Riches":
-            UserShared.shared.experience += points!
-            UserShared.shared.coins += Int(Double(points! / 10) * 1.5)
-            coinsGained = Int(Double(points! / 10) * 1.5)
-        case "Legendary Potion of Riches":
-            UserShared.shared.experience += points!
-            UserShared.shared.coins += Int(Double(points! / 10) * 2)
-            coinsGained = Int(Double(points! / 10) * 2)
-        default:
-            UserShared.shared.experience += points!
-            UserShared.shared.coins += points! / 10
-            coinsGained = points! / 10
+        if let activeItem = UserShared.shared.activeItem {
+            switch activeItem.name {
+            case "Tiny Potion of Knowledge":
+                UserShared.shared.experience += Int(Double(points!) * 1.1)
+                UserShared.shared.coins += points! / 10
+                coinsGained = points! / 10
+            case "Potion of Knowledge":
+                UserShared.shared.experience += Int(Double(points!) * 1.3)
+                UserShared.shared.coins += points! / 10
+                coinsGained = points! / 10
+            case "Large Potion of Knowledge":
+                UserShared.shared.experience += Int(Double(points!) * 1.5)
+                UserShared.shared.coins += points! / 10
+                coinsGained = points! / 10
+            case "Legendary Potion of Knowledge":
+                UserShared.shared.experience += Int(Double(points!) * 2)
+                UserShared.shared.coins += points! / 10
+                coinsGained = points! / 10
+            case "Tiny Potion of Riches":
+                UserShared.shared.experience += points!
+                UserShared.shared.coins += Int(Double(points! / 10) * 1.1)
+                coinsGained = Int(Double(points! / 10) * 1.1)
+            case "Potion of Riches":
+                UserShared.shared.experience += points!
+                UserShared.shared.coins += Int(Double(points! / 10) * 1.3)
+                coinsGained = Int(Double(points! / 10) * 1.3)
+            case "Large Potion of Riches":
+                UserShared.shared.experience += points!
+                UserShared.shared.coins += Int(Double(points! / 10) * 1.5)
+                coinsGained = Int(Double(points! / 10) * 1.5)
+            case "Legendary Potion of Riches":
+                UserShared.shared.experience += points!
+                UserShared.shared.coins += Int(Double(points! / 10) * 2)
+                coinsGained = Int(Double(points! / 10) * 2)
+            default:
+                UserShared.shared.experience += points!
+                UserShared.shared.coins += points! / 10
+                coinsGained = points! / 10
+            }
         }
         
         UserShared.shared.activeItem = StoreItem()

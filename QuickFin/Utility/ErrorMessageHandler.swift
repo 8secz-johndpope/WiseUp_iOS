@@ -66,4 +66,25 @@ class ErrorMessageHandler {
         SwiftMessages.show(config: config, view: view)
     }
     
+    func showActiveItem(body: String) {
+        let view = MessageView.viewFromNib(layout: .tabView)
+        view.configureTheme(.success)
+        view.configureDropShadow()
+        view.configureContent(title: "Active Item\n".localized(), body: body.localized())
+        view.titleLabel?.font = UIFont.boldSystemFont(ofSize: FontSizes.insightsTitle)
+        view.button?.setTitle("Hide".localized(), for: .normal)
+        _ = view.button?.reactive.tap.observeNext(with: { [unowned self] (_) in
+            SwiftMessages.hide()
+            self.gameDelegate?.proceedToNextVC()
+        })
+        var config = SwiftMessages.Config()
+        config.presentationStyle = .bottom
+        config.duration = .forever
+        
+        view.layoutMarginAdditions = UIEdgeInsets(top: 20, left: 20, bottom: 50, right: 20)
+        
+        config.interactiveHide = false
+        SwiftMessages.show(config: config, view: view)
+    }
+    
 }
