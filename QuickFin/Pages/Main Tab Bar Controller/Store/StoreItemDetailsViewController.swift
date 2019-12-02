@@ -24,9 +24,27 @@ class StoreItemDetailsViewController: BaseViewController {
         }
     }
     
+    weak var itemsViewDelegate: ItemsViewDelegate!
+    
+    var showConsume: Bool? {
+        didSet {
+            buyButton?.setTitle("Use".localized(), for: .normal)
+            _ = buyButton?.reactive.tap.observeNext(with: { [unowned self] (_) in
+                self.consumeItem()
+                self.itemsViewDelegate.didConsume()
+                self.dismiss(animated: true, completion: nil)
+            })
+        }
+    }
+    
 }
 
 extension StoreItemDetailsViewController {
+    
+    func consumeItem() {
+        UserShared.shared.itemsOwned = UserShared.shared.itemsOwned.filter({ $0 != item.name })
+        FirebaseService.shared.pushUserToFirebase()
+    }
     
     func buyItem() {
         
