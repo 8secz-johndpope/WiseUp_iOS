@@ -62,6 +62,7 @@ class ErrorMessageHandler {
         
         view.layoutMarginAdditions = UIEdgeInsets(top: 20, left: 20, bottom: 50, right: 20)
         
+        config.interactiveHide = false
         SwiftMessages.show(config: config, view: view)
     }
     
