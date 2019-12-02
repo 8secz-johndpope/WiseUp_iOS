@@ -26,7 +26,7 @@ class FirebaseService {
         try? Auth.auth().signOut()
     }
     
-    func verifyUser(email: String) {
+    func verifyUser(email: String, completion: @escaping (Error?) -> Void) {
         
         guard let uid = Auth.auth().currentUser?.uid else {
             print("Error getting uid")
@@ -39,7 +39,7 @@ class FirebaseService {
             
             if let error = error {
                 print(error)
-                return
+                completion(error)
             } else {
                 
                 if (!snapshot!.exists) {
@@ -48,12 +48,12 @@ class FirebaseService {
                     let serializedUser = try! FirestoreEncoder().encode(UserShared.shared)
                     
                     self.db.collection(self.users).document(uid).setData(serializedUser) { (error) in
-                        return
+                        completion(nil)
                     }
                 } else {
                     
                     UserShared.shared = try! FirebaseDecoder().decode(UserShared.self, from: snapshot!.data()!)
-                    return
+                    completion(nil)
                     
                 }
                 
