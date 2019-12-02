@@ -30,7 +30,6 @@ class ChapterViewController: BaseViewController, UICollectionViewDelegate, UICol
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView.reloadData()
-        print("here")
     }
     
     func initCollectionView() {

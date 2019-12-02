@@ -28,7 +28,8 @@ extension StoreItemDetailsViewController {
             l.text = title
             l.textColor = Colors.DynamicTextColor
             l.font = UIFont.systemFont(ofSize: FontSizes.largeNavTitle, weight: .bold)
-            l.numberOfLines = 0
+            l.numberOfLines = 2
+            l.adjustsFontSizeToFitWidth = true
             return l
         }()
         let detailsLabel: UILabel = {
