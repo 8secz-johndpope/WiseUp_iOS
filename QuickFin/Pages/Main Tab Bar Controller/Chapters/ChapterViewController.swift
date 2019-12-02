@@ -27,6 +27,12 @@ class ChapterViewController: BaseViewController, UICollectionViewDelegate, UICol
         loadChapters()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
+        print("here")
+    }
+    
     func initCollectionView() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.backgroundColor = .systemBackground
@@ -75,11 +81,13 @@ class ChapterViewController: BaseViewController, UICollectionViewDelegate, UICol
         if let chapter = chapters?[indexPath.item] {
             cell.name = chapter.name
             cell.imageName = chapter.imageName
-            #warning("TODO: Remove testing code")
-            if indexPath.row == 0 {
+            
+            if UserShared.shared.achievementsCompleted.contains(chapter.name + "PerfectChapter".localized()) {
+                cell.setAcedFlag()
+            } else if !UserShared.shared.achievementsCompleted.contains("CompleteChapter".localized()) {
                 cell.setNewFlag()
             } else {
-                cell.setCompletedFlag()
+                cell.removeFlag()
             }
         }
         
@@ -166,15 +174,23 @@ class ChapterCell: UICollectionViewCell {
         triLabelView.position = .TopRight
         triLabelView.textColor = UIColor.white
         triLabelView.viewColor = UIColor.systemOrange
+        triLabelView.tag = 7
         addSubview(triLabelView)
     }
     
-    func setCompletedFlag() {
+    func setAcedFlag() {
         let triLabelView = TriLabelView(frame: bounds)
         triLabelView.labelText = "ACED".localized()
         triLabelView.position = .TopRight
         triLabelView.textColor = UIColor.white
         triLabelView.viewColor = Colors.FidelityGreen!
+        triLabelView.tag = 7
         addSubview(triLabelView)
+    }
+    
+    func removeFlag() {
+        if let viewWithTag = viewWithTag(7) {
+            viewWithTag.removeFromSuperview()
+        }
     }
 }
