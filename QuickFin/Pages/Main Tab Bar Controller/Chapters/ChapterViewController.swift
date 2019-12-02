@@ -83,11 +83,7 @@ class ChapterViewController: BaseViewController, UICollectionViewDelegate, UICol
             
             if UserShared.shared.achievementsCompleted.contains(chapter.name + "PerfectChapter".localized()) {
                 cell.setAcedFlag()
-            } else if !UserShared.shared.achievementsCompleted.contains("CompleteChapter".localized()) {
-                cell.setNewFlag()
-            } else {
-                cell.removeFlag()
-            }
+            } 
         }
         
         return cell
