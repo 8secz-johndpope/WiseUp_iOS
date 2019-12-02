@@ -59,6 +59,7 @@ class ErrorMessageHandler {
         var config = SwiftMessages.Config()
         config.presentationStyle = .bottom
         config.duration = .forever
+        config.interactiveHide = false
         SwiftMessages.show(config: config, view: view)
     }
     
