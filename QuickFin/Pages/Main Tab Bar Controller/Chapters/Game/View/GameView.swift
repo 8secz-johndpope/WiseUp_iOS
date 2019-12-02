@@ -28,6 +28,8 @@ extension GameViewController {
         
         let progressBar: UIProgressView = {
             let p = UIProgressView(progressViewStyle: .default)
+            p.progress = Float(questionNumber-1)/Float(questions.count)
+            p.progressTintColor = Colors.FidelityGreen
             return p
         }()
         
