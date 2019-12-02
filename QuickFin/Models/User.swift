@@ -16,6 +16,7 @@ struct User: Codable {
     var avatar = String()
     var avatarsOwned: [String]
     var itemsOwned: [String]
+    var activeItem = String()
     
     var coins = Int()
     var completed: [String]

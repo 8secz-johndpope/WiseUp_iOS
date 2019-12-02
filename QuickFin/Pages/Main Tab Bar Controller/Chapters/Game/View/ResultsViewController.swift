@@ -17,14 +17,53 @@ class ResultsViewController: BaseViewController {
     var chapterName: String?
     var total: Int = 0
     var skipped: Int = 0
+    var coinsGained: Int = 0
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
-                
-        UserShared.shared.experience += points!
-        UserShared.shared.coins += points! / 10
         
+        switch UserShared.shared.activeItem {
+        case "Tiny Potion of Knowledge":
+            UserShared.shared.experience += Int(Double(points!) * 1.1)
+            UserShared.shared.coins += points! / 10
+            coinsGained = points! / 10
+        case "Potion of Knowledge":
+            UserShared.shared.experience += Int(Double(points!) * 1.3)
+            UserShared.shared.coins += points! / 10
+            coinsGained = points! / 10
+        case "Large Potion of Knowledge":
+            UserShared.shared.experience += Int(Double(points!) * 1.5)
+            UserShared.shared.coins += points! / 10
+            coinsGained = points! / 10
+        case "Legendary Potion of Knowledge":
+            UserShared.shared.experience += Int(Double(points!) * 2)
+            UserShared.shared.coins += points! / 10
+            coinsGained = points! / 10
+        case "Tiny Potion of Riches":
+            UserShared.shared.experience += points!
+            UserShared.shared.coins += Int(Double(points! / 10) * 1.1)
+            coinsGained = Int(Double(points! / 10) * 1.1)
+        case "Potion of Riches":
+            UserShared.shared.experience += points!
+            UserShared.shared.coins += Int(Double(points! / 10) * 1.3)
+            coinsGained = Int(Double(points! / 10) * 1.3)
+        case "Large Potion of Riches":
+            UserShared.shared.experience += points!
+            UserShared.shared.coins += Int(Double(points! / 10) * 1.5)
+            coinsGained = Int(Double(points! / 10) * 1.5)
+        case "Legendary Potion of Riches":
+            UserShared.shared.experience += points!
+            UserShared.shared.coins += Int(Double(points! / 10) * 2)
+            coinsGained = Int(Double(points! / 10) * 2)
+        default:
+            UserShared.shared.experience += points!
+            UserShared.shared.coins += points! / 10
+            coinsGained = points! / 10
+        }
+        
+        UserShared.shared.activeItem = ""
+                
         checkAchievements()
 
         FirebaseService.shared.pushUserToFirebase()
@@ -100,7 +139,7 @@ extension ResultsViewController {
             let l = UILabel()
             l.font = UIFont.systemFont(ofSize: FontSizes.largeNavTitle, weight: .bold)
             #warning("TODO: Replace dummy data with real data")
-            l.text = "+\(points! / 10) Fiddles"
+            l.text = "+\(coinsGained) Coins"
             l.textColor = Colors.DynamicTextColor
             return l
         }()
