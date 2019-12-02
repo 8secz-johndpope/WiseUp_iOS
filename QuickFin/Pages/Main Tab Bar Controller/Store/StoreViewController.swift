@@ -8,6 +8,13 @@
 
 import UIKit
 
+class CustomSegmentedControl: UISegmentedControl {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.cornerRadius = 0
+    }
+}
+
 class StoreViewController: BaseViewController {
     
     override func viewDidLoad() {
@@ -23,6 +30,7 @@ class StoreViewController: BaseViewController {
         fetchData()
     }
     
+    
     var tableView: UITableView!
     let reuseID = "store"
     var storeItems = [StoreItem]()
@@ -36,17 +44,15 @@ class StoreViewController: BaseViewController {
     var avatarItems = [StoreItem]()
     var consumableItems = [StoreItem]()
     
-    let segmentedControl = UISegmentedControl(items: ["Avatars", "Items"])
+    let segmentedControl = CustomSegmentedControl(items: ["Avatars", "Items"])
     
     func addControl()  {
-        
-        //segmentedControl.frame = CGRect(x: 35, y: 200, width: 250, height: 50)
-        
+                
         segmentedControl.addTarget(self, action: #selector(segmentAction(_:)), for: .valueChanged)
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.backgroundColor = Colors.DynamicNavigationBarColor
-        
-        segmentedControl.layer.cornerRadius = 0.0
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Colors.DynamicNavigationTitleColor!], for: .normal)
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Colors.FidelityGreen!], for: .selected)
         segmentedControl.layer.borderColor = UIColor.white.cgColor
         segmentedControl.layer.borderWidth = 0.0
         segmentedControl.layer.masksToBounds = true
@@ -56,8 +62,7 @@ class StoreViewController: BaseViewController {
         segmentedControl.snp.makeConstraints { (this) in
             this.leading.equalToSuperview()
             this.top.equalTo(view.snp.topMargin)
-            this.bottom.equalTo(view.snp.topMargin).offset(50)
-            //this.bottom.equalTo(view.snp.bottomMargin)
+            this.height.equalTo(40)
             this.trailing.equalToSuperview()
         }
 
