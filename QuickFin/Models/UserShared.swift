@@ -24,6 +24,7 @@ struct UserShared: Codable {
     var achievementsCompleted: [String]
     var experience = Int()
     var inProgress = String()
+    var activeItem = String()
 
     var fName = String()
     var lName = String()
