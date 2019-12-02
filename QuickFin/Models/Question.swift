@@ -13,4 +13,5 @@ class Question: Codable {
     let answerOptions: [String]
     let question: String
     let score: Int
+    let correctAnswerMessage: String
 }
