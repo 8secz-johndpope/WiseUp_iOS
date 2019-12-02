@@ -16,7 +16,7 @@ struct User: Codable {
     var avatar = String()
     var avatarsOwned: [String]
     var itemsOwned: [String]
-    var activeItem = String()
+    var activeItem: StoreItem
     
     var coins = Int()
     var completed: [String]
@@ -35,6 +35,8 @@ struct User: Codable {
         self.avatarsOwned = ["Blank User Icon"]
         self.avatar = "Blank User Icon"
         self.itemsOwned = []
+        
+        self.activeItem = StoreItem()
     }
     
     init(admin: Bool, email: String, uid: String, displayName: String) {
@@ -51,6 +53,8 @@ struct User: Codable {
         self.itemsOwned = []
         self.avatarsOwned = ["Blank User Icon"]
         self.avatar = "Blank User Icon"
+        
+        self.activeItem = StoreItem()
     }
     
     func getName() -> String {

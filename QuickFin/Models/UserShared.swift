@@ -24,7 +24,7 @@ struct UserShared: Codable {
     var achievementsCompleted: [String]
     var experience = Int()
     var inProgress = String()
-    var activeItem = String()
+    var activeItem: StoreItem
 
     var fName = String()
     var lName = String()
@@ -37,6 +37,7 @@ struct UserShared: Codable {
         self.avatarsOwned = ["Blank User Icon"]
         self.avatar = "Blank User Icon"
         self.itemsOwned = []
+        self.activeItem = StoreItem()
     }
     
     init(admin: Bool, email: String, uid: String, displayName: String) {
@@ -49,6 +50,8 @@ struct UserShared: Codable {
         self.inProgress = ""
         self.displayName = displayName
         self.achievementCount = 0
+        
+        self.activeItem = StoreItem()
         
         self.itemsOwned = []
         self.avatarsOwned = ["Blank User Icon"]
