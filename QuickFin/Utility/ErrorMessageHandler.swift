@@ -44,4 +44,20 @@ class ErrorMessageHandler {
         SwiftMessages.show(config: config, view: errorView)
     }
     
+    func showMessageOnCorrectChoice(body: String) {
+        let view = MessageView.viewFromNib(layout: .tabView)
+        view.configureTheme(.success)
+        view.configureDropShadow()
+        view.configureContent(title: "Insights\n".localized(), body: body.localized())
+        view.titleLabel?.font = UIFont.boldSystemFont(ofSize: FontSizes.insightsTitle)
+        view.button?.setTitle("Hide".localized(), for: .normal)
+        _ = view.button?.reactive.tap.observeNext(with: { (_) in
+            SwiftMessages.hide()
+        })
+        var config = SwiftMessages.Config()
+        config.presentationStyle = .bottom
+        config.duration = .forever
+        SwiftMessages.show(config: config, view: view)
+    }
+    
 }
