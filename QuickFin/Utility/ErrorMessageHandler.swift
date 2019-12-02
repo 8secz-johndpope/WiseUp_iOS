@@ -73,9 +73,8 @@ class ErrorMessageHandler {
         view.configureContent(title: "Active Item\n".localized(), body: body.localized())
         view.titleLabel?.font = UIFont.boldSystemFont(ofSize: FontSizes.insightsTitle)
         view.button?.setTitle("Hide".localized(), for: .normal)
-        _ = view.button?.reactive.tap.observeNext(with: { [unowned self] (_) in
+        _ = view.button?.reactive.tap.observeNext(with: { (_) in
             SwiftMessages.hide()
-            self.gameDelegate?.proceedToNextVC()
         })
         var config = SwiftMessages.Config()
         config.presentationStyle = .bottom
