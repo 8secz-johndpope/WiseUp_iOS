@@ -9,6 +9,7 @@
 import UIKit
 
 struct FontSizes {
+    static let insightsTitle: CGFloat = 25
     static let largeNavTitle: CGFloat = 34
     static let navTitle: CGFloat = 17
     static let pageTitle: CGFloat = 17

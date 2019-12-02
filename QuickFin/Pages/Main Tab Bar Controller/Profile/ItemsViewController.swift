@@ -31,7 +31,6 @@ class ItemsViewController: StoreViewController, ItemsViewDelegate {
     
     func didConsume() {
         fetchData()
-        tableView.reloadData()
     }
     
     override func fetchData() {
