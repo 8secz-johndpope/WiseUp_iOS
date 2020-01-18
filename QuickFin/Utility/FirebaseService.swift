@@ -234,7 +234,7 @@ class FirebaseService {
 extension FirebaseService {
     
     func getImage(URL: String) -> UIImage {
-        return UIImage(named: URL)!
+        return UIImage(named: URL) ?? UIImage(named: "Blank User Icon")!
     }
     
 }
