@@ -68,7 +68,7 @@ class LeaderboardViewController: BaseViewController {
                 else {
                     let avatar = user.avatar
                     //print ("firebase non empty image: ", avatar)
-                    self.userImages.append(UIImage(named: avatar)!)
+                    self.userImages.append(UIImage(named: avatar) ?? UIImage(named: "Blank User Icon")!)
                 }
 
             }   //end of firebaseService for loop
