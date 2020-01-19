@@ -186,7 +186,13 @@ class FirebaseService {
         completion([
             User(admin: false, email: "test1@test.com", uid: "1111", displayName: "Test subject 1"),
             User(admin: false, email: "test2@test.com", uid: "2222", displayName: "Test subject 2"),
+            User(admin: false, email: "test3@test.com", uid: "3333", displayName: "Subject test 3"),
         ])
+    }
+    
+    func removeFriend(friend: User, completion: @escaping (Bool) -> Void) {
+        #warning("TODO: Implement")
+        completion(true)
     }
 }
     

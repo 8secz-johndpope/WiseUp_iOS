@@ -72,6 +72,7 @@
 "Skip" = "Skip";
 "CompleteChapter" = " - Finished Chapter!";
 "PerfectChapter" = " - Perfect Finish!";
+"Hide" = "Hide";
 
 // MARK: - Store
 "Store" = "Store";
@@ -86,3 +87,5 @@
 // MARK: - About
 "Version" = "Version";
 
+// MARK: - Friends
+"Failed to delete friend!" = "Failed to delete friend!";

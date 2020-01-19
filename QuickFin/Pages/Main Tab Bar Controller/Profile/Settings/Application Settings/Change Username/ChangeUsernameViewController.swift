@@ -41,7 +41,7 @@ extension ChangeUsernameViewController {
             b.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
             _ = b.reactive.tap.observeNext { (_) in
                 if newUsernameTextField.text?.isEmpty ?? true {
-                    ErrorMessageHandler.shared.showMessage(theme: .error, title: "Error".localized(), body: "Please complete the fields.".localized())
+                    ErrorMessageHandler.shared.showMessage(theme: .error, title: Text.Error, body: "Please complete the fields.".localized())
                 }
                 if let newUsername = newUsernameTextField.text {
                     #warning("TODO: Change username in Firebase")

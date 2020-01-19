@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import SwipeCellKit
+import GradientLoadingBar
 
 class FriendsTableViewController: BaseViewController {
     
@@ -38,7 +39,13 @@ class FriendsTableViewController: BaseViewController {
         })
     }
     
+    func resetIndex() {
+        friendsDictionary = [String: [User]]()
+        friendSectionTitles = [String]()
+    }
+    
     func processIndex() {
+        resetIndex()
         for friend in friends {
             let friendInitial = String(friend.displayName.prefix(1))
             if var friendValues = friendsDictionary[friendInitial] {
@@ -50,6 +57,28 @@ class FriendsTableViewController: BaseViewController {
         }
         friendSectionTitles = [String](friendsDictionary.keys)
         friendSectionTitles.sort(by: { $0 < $1 })
+    }
+    
+    func getFriendObject(indexPath: IndexPath) -> User {
+        let friendInitial = friendSectionTitles[indexPath.section]
+        if let friendValues = friendsDictionary[friendInitial] {
+            return friendValues[indexPath.row]
+        }
+        return User()
+    }
+    
+    func deleteFriend(indexPath: IndexPath) {
+        GradientLoadingBar.shared.fadeIn()
+        FirebaseService.shared.removeFriend(friend: getFriendObject(indexPath: indexPath)) { (success) in
+            if success {
+                self.friends = self.friends.filter() { $0 != self.getFriendObject(indexPath: indexPath) }
+                self.processIndex()
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            } else {
+                ErrorMessageHandler.shared.showMessage(theme: .error, title: Text.Error, body: Text.FriendDeletionErrorMessage)
+            }
+            GradientLoadingBar.shared.fadeOut()
+        }
     }
     
 }
@@ -103,24 +132,31 @@ extension FriendsTableViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath) as! FriendsTableViewCell
         cell.delegate = self
-        let friend = friends[indexPath.row]
+        let friend = getFriendObject(indexPath: indexPath)
         cell.profileImageView.image = UIImage(named: friend.avatar)
         cell.usernameLabel.text = friend.displayName
         return cell
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        guard orientation == .right else { return nil }
-        
-        let deleteAction = SwipeAction(style: .destructive, title: Text.Delete) { (action, indexPath) in
-            print("[DEBUG] Delete pressed on user \(self.friends[indexPath.row])")
+        var actions = [SwipeAction]()
+        if orientation == .left {
+            let deleteAction = SwipeAction(style: .destructive, title: Text.Delete) { (action, indexPath) in
+                self.deleteFriend(indexPath: indexPath)
+            }
+            actions.append(deleteAction)
+        } else {
+            let inviteAction = SwipeAction(style: .default, title: Text.Invite) { (action, indexPath) in
+                print("[DEBUG] Invite pressed on user \(self.friends[indexPath.row])")
+            }
+            actions.append(inviteAction)
         }
-        
-        let inviteAction = SwipeAction(style: .default, title: Text.Invite) { (action, indexPath) in
-            print("[DEBUG] Invite pressed on user \(self.friends[indexPath.row])")
-        }
-        
-        return [deleteAction, inviteAction]
+        return actions
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        #warning("TODO: Display friend info?")
     }
     
 }
