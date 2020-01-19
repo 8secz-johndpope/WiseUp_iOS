@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MYTableViewIndex
 import SnapKit
 import SwipeCellKit
 
@@ -24,17 +23,33 @@ class FriendsTableViewController: BaseViewController {
     }
     
     var friends = [User]()
+    var friendsDictionary = [String: [User]]()
+    var friendSectionTitles = [String]()
     var tableView: UITableView!
     let cellReuseID = "friend"
-    var tableViewIndexController: TableViewIndexController!
     
     func fetchFriends() {
         FirebaseService.shared.getFriends(completion: { (friendsArray) in
             if let friendsArray = friendsArray {
                 self.friends = friendsArray
+                self.processIndex()
                 self.tableView.reloadData()
             }
         })
+    }
+    
+    func processIndex() {
+        for friend in friends {
+            let friendInitial = String(friend.displayName.prefix(1))
+            if var friendValues = friendsDictionary[friendInitial] {
+                friendValues.append(friend)
+                friendsDictionary[friendInitial] = friendValues
+            } else {
+                friendsDictionary[friendInitial] = [friend]
+            }
+        }
+        friendSectionTitles = [String](friendsDictionary.keys)
+        friendSectionTitles.sort(by: { $0 < $1 })
     }
     
 }
@@ -44,12 +59,10 @@ extension FriendsTableViewController {
     
     func initUI() {
         title = Text.FriendsNavTitle
-        tableView = UITableView(frame: .zero, style: .grouped)
+        tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(FriendsTableViewCell.self, forCellReuseIdentifier: cellReuseID)
-        tableViewIndexController = TableViewIndexController(scrollView: tableView)
-        tableViewIndexController.tableViewIndex.dataSource = self
         
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (this) in
@@ -67,8 +80,24 @@ extension FriendsTableViewController: UITableViewDelegate, UITableViewDataSource
         return 70
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return friendSectionTitles.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return friendSectionTitles[section]
+    }
+    
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return friendSectionTitles
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friends.count
+        let friendInitial = friendSectionTitles[section]
+        if let friendValues = friendsDictionary[friendInitial] {
+            return friendValues.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -92,22 +121,6 @@ extension FriendsTableViewController: UITableViewDelegate, UITableViewDataSource
         }
         
         return [deleteAction, inviteAction]
-    }
-    
-}
-
-extension FriendsTableViewController: TableViewIndexDelegate, TableViewIndexDataSource {
-    
-    func indexItems(for tableViewIndex: TableViewIndex) -> [UIView] {
-        return UILocalizedIndexedCollation.current().sectionIndexTitles.map{ title -> UIView in
-            return StringItem(text: title)
-        }
-    }
-    
-    func tableViewIndex(_ tableViewIndex: TableViewIndex, didSelect item: UIView, at index: Int) -> Bool {
-        let indexPath = IndexPath(row: tableView.numberOfRows(inSection: index), section: index)
-        tableView.scrollToRow(at: indexPath, at: .top, animated: false)
-        return true // return true to produce haptic feedback on capable devices
     }
     
 }
