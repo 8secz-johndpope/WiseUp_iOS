@@ -33,6 +33,8 @@ target 'QuickFin' do
   pod 'InAppSettingsKit'
   pod 'UICircularProgressRing'
   pod 'DropDown'
+  pod 'MYTableViewIndex'
+  pod 'SwipeCellKit'
   
   target 'QuickFinTests' do
     inherit! :search_paths
