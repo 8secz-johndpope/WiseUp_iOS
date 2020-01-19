@@ -32,8 +32,8 @@ struct User: Codable {
     init() {
         self.completed = []
         self.achievementsCompleted = []
-        self.avatarsOwned = ["Blank User Icon"]
-        self.avatar = "Blank User Icon"
+        self.avatarsOwned = [Text.UserImageNamePlaceholder]
+        self.avatar = Text.UserImageNamePlaceholder
         self.itemsOwned = []
         
         self.activeItem = StoreItem()
@@ -51,8 +51,8 @@ struct User: Codable {
         self.achievementCount = 0
         
         self.itemsOwned = []
-        self.avatarsOwned = ["Blank User Icon"]
-        self.avatar = "Blank User Icon"
+        self.avatarsOwned = [Text.UserImageNamePlaceholder]
+        self.avatar = Text.UserImageNamePlaceholder
         
         self.activeItem = StoreItem()
     }

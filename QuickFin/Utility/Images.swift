@@ -17,6 +17,7 @@ struct Images {
     static let profile = #imageLiteral(resourceName: "Profile")
     static let storeUnselected = #imageLiteral(resourceName: "Store Unselected")
     static let store = #imageLiteral(resourceName: "Store")
+    static let userPlaceholder = #imageLiteral(resourceName: "Blank User Icon")
 }
 
 extension String {

@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Global current user
 struct UserShared: Codable {
     
     static var shared = UserShared()
@@ -34,8 +35,8 @@ struct UserShared: Codable {
     init() {
         self.completed = []
         self.achievementsCompleted = []
-        self.avatarsOwned = ["Blank User Icon"]
-        self.avatar = "Blank User Icon"
+        self.avatarsOwned = [Text.UserImageNamePlaceholder]
+        self.avatar = Text.UserImageNamePlaceholder
         self.itemsOwned = []
         self.activeItem = StoreItem()
     }
@@ -54,8 +55,8 @@ struct UserShared: Codable {
         self.activeItem = StoreItem()
         
         self.itemsOwned = []
-        self.avatarsOwned = ["Blank User Icon"]
-        self.avatar = "Blank User Icon"
+        self.avatarsOwned = [Text.UserImageNamePlaceholder]
+        self.avatar = Text.UserImageNamePlaceholder
     }
     
     func getName() -> String {
