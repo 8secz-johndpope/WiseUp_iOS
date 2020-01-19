@@ -68,13 +68,13 @@ extension LinkAccountsViewController: UITableViewDataSource, UITableViewDelegate
                     let credential = FacebookAuthProvider.credential(withAccessToken: result.token!.tokenString)
                     Auth.auth().currentUser?.link(with: credential, completion: { (result, error) in
                         if let error = error {
-                            ErrorMessageHandler.shared.showMessageModal(theme: .error, title: "Error".localized(), body: error.localizedDescription)
+                            ErrorMessageHandler.shared.showMessageModal(theme: .error, title: Text.Error, body: error.localizedDescription)
                             return
                         }
                         ErrorMessageHandler.shared.showMessageModal(theme: .success, title: "Success".localized(), body: "Accounts linked.".localized())
                     })
                 }
-                ErrorMessageHandler.shared.showMessageModal(theme: .error, title: "Error".localized(), body: "Link account failed.".localized())
+                ErrorMessageHandler.shared.showMessageModal(theme: .error, title: Text.Error, body: "Link account failed.".localized())
             }
             break
         case 2:
@@ -94,7 +94,7 @@ extension LinkAccountsViewController {
         let loginManager = LoginManager()
         loginManager.logIn(permissions: ["email"], from: self) { (result, error) in
             if let error = error {
-                ErrorMessageHandler.shared.showMessageModal(theme: .error, title: "Error".localized(), body: error.localizedDescription)
+                ErrorMessageHandler.shared.showMessageModal(theme: .error, title: Text.Error, body: error.localizedDescription)
                 completion(nil)
             }
             completion(result)
@@ -117,7 +117,7 @@ extension LinkAccountsViewController: GIDSignInDelegate {
         let credential = GoogleAuthProvider.credential(withIDToken: auth.idToken, accessToken: auth.accessToken)
         Auth.auth().currentUser?.link(with: credential, completion: { (result, error) in
             if let error = error {
-                ErrorMessageHandler.shared.showMessageModal(theme: .error, title: "Error".localized(), body: error.localizedDescription)
+                ErrorMessageHandler.shared.showMessageModal(theme: .error, title: Text.Error, body: error.localizedDescription)
                 return
             }
             ErrorMessageHandler.shared.showMessageModal(theme: .success, title: "Success".localized(), body: "Accounts linked.".localized())

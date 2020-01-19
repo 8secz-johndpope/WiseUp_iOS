@@ -399,16 +399,16 @@
 		D570D62D233368BB00AB308B /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				BF5A2E92237BEBB800C7EB87 /* AchievementMessageHandler.swift */,
 				D52471D92341CC8900922564 /* AppDelegateExtension.swift */,
+				BF4EDAA32341DC7500E45E90 /* CacheService.swift */,
 				D52471D123402B2400922564 /* Colors.swift */,
 				D5469B492338247F0047D09D /* Core.swift */,
-				BF4EDAA32341DC7500E45E90 /* CacheService.swift */,
+				D5737F75235ADE6300756298 /* ErrorMessageHandler.swift */,
+				D59FEA41237F9BAC00C65A2F /* Extensions.swift */,
 				D570D62F233368DD00AB308B /* FirebaseService.swift */,
 				D5EA305F233737C100F56428 /* FontSizes.swift */,
 				D52471D723415A2D00922564 /* Images.swift */,
-				D5737F75235ADE6300756298 /* ErrorMessageHandler.swift */,
-				BF5A2E92237BEBB800C7EB87 /* AchievementMessageHandler.swift */,
-				D59FEA41237F9BAC00C65A2F /* Extensions.swift */,
 				D54E5BA823D3F5BA00E31A39 /* Text.swift */,
 				D5F86625238BD14B0079F65D /* TriLabelView.swift */,
 			);

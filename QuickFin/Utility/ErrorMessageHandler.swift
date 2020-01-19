@@ -24,7 +24,7 @@ class ErrorMessageHandler {
         if let buttonTitle = buttonTitle {
             errorView.button?.setTitle(buttonTitle.localized(), for: .normal)
         } else {
-            errorView.button?.setTitle("Okay".localized(), for: .normal)
+            errorView.button?.setTitle(Text.Okay.localized(), for: .normal)
         }
         _ = errorView.button?.reactive.tap.observeNext(with: { (_) in
             SwiftMessages.hide()
@@ -33,12 +33,12 @@ class ErrorMessageHandler {
     }
     
     func showMessage(theme: Theme, title: String, body: String, buttonTitle: String? = nil) {
-        let errorView = getView(theme: theme, title: title, body: body, buttonTitle: buttonTitle)
+        let errorView = getView(theme: theme, title: title, body: body.localized(), buttonTitle: buttonTitle)
         SwiftMessages.show(view: errorView)
     }
     
     func showMessageModal(theme: Theme, title: String, body: String, buttonTitle: String? = nil) {
-        let errorView = getView(theme: theme, title: title, body: body, buttonTitle: buttonTitle)
+        let errorView = getView(theme: theme, title: title, body: body.localized(), buttonTitle: buttonTitle)
         var config = SwiftMessages.Config()
         config.presentationContext = .window(windowLevel: .statusBar)
         config.preferredStatusBarStyle = .lightContent
@@ -49,9 +49,9 @@ class ErrorMessageHandler {
         let view = MessageView.viewFromNib(layout: .tabView)
         view.configureTheme(.success)
         view.configureDropShadow()
-        view.configureContent(title: "Insights\n".localized(), body: body.localized())
+        view.configureContent(title: Text.Insights.localized(), body: body.localized())
         view.titleLabel?.font = UIFont.boldSystemFont(ofSize: FontSizes.insightsTitle)
-        view.button?.setTitle("Next".localized(), for: .normal)
+        view.button?.setTitle(Text.Next.localized(), for: .normal)
         _ = view.button?.reactive.tap.observeNext(with: { [unowned self] (_) in
             SwiftMessages.hide()
             self.gameDelegate?.proceedToNextVC()
@@ -70,9 +70,9 @@ class ErrorMessageHandler {
         let view = MessageView.viewFromNib(layout: .tabView)
         view.configureTheme(.success)
         view.configureDropShadow()
-        view.configureContent(title: "Active Item\n".localized(), body: body.localized())
+        view.configureContent(title: Text.ActiveItem.localized(), body: body.localized())
         view.titleLabel?.font = UIFont.boldSystemFont(ofSize: FontSizes.insightsTitle)
-        view.button?.setTitle("Hide".localized(), for: .normal)
+        view.button?.setTitle(Text.Hide.localized(), for: .normal)
         _ = view.button?.reactive.tap.observeNext(with: { (_) in
             SwiftMessages.hide()
         })
