@@ -89,3 +89,6 @@
 
 // MARK: - Friends
 "Failed to delete friend!" = "Failed to delete friend!";
+"Success" = "Success";
+"Failed" = "Failed";
+"Something went wrong." = "Something went wrong.";

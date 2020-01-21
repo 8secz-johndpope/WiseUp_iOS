@@ -54,7 +54,7 @@ extension GameViewController {
                 let v = UIButton()
                 v.setImage(UIImage(named: activeItem.imageName), for: .normal)
                 _ = v.reactive.tap.observeNext { (_) in
-                    ErrorMessageHandler.shared.showActiveItem(body: "\(activeItem.name): \(activeItem.details)")
+                    MessageHandler.shared.showActiveItem(body: "\(activeItem.name): \(activeItem.details)")
                 }
                 v.alpha = 0.5
                 return v
@@ -111,8 +111,8 @@ extension GameViewController: UITableViewDataSource, UITableViewDelegate {
             }
             tableView.isUserInteractionEnabled = false
             navigationItem.rightBarButtonItem?.isEnabled = false
-            ErrorMessageHandler.shared.gameDelegate = self
-            ErrorMessageHandler.shared.showMessageOnCorrectChoice(body: currentQuestion.correctAnswerMessage)
+            MessageHandler.shared.gameDelegate = self
+            MessageHandler.shared.showMessageOnCorrectChoice(body: currentQuestion.correctAnswerMessage)
             
         } else { //if a question is answered wrong
             attempts += 1

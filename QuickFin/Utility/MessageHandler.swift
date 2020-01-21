@@ -10,9 +10,9 @@ import UIKit
 import SwiftMessages
 import Localize_Swift
 
-class ErrorMessageHandler {
+class MessageHandler {
     
-    static var shared = ErrorMessageHandler()
+    static var shared = MessageHandler()
     private init() {}
     weak var gameDelegate: GameDelegate?
     
@@ -20,7 +20,7 @@ class ErrorMessageHandler {
         let errorView = MessageView.viewFromNib(layout: .cardView)
         errorView.configureTheme(theme)
         errorView.configureDropShadow()
-        errorView.configureContent(title: title.localized(), body: body)  // Error messages are typically pre-localized
+        errorView.configureContent(title: title.localized(), body: body.localized())
         if let buttonTitle = buttonTitle {
             errorView.button?.setTitle(buttonTitle.localized(), for: .normal)
         } else {
@@ -33,12 +33,12 @@ class ErrorMessageHandler {
     }
     
     func showMessage(theme: Theme, title: String, body: String, buttonTitle: String? = nil) {
-        let errorView = getView(theme: theme, title: title, body: body.localized(), buttonTitle: buttonTitle)
+        let errorView = getView(theme: theme, title: title, body: body, buttonTitle: buttonTitle)
         SwiftMessages.show(view: errorView)
     }
     
     func showMessageModal(theme: Theme, title: String, body: String, buttonTitle: String? = nil) {
-        let errorView = getView(theme: theme, title: title, body: body.localized(), buttonTitle: buttonTitle)
+        let errorView = getView(theme: theme, title: title, body: body, buttonTitle: buttonTitle)
         var config = SwiftMessages.Config()
         config.presentationContext = .window(windowLevel: .statusBar)
         config.preferredStatusBarStyle = .lightContent

@@ -41,6 +41,7 @@
 		D54E5BA923D3F5BA00E31A39 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54E5BA823D3F5BA00E31A39 /* Text.swift */; };
 		D54E5BAC23D401CE00E31A39 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54E5BAB23D401CE00E31A39 /* FriendsTableViewController.swift */; };
 		D54E5BAE23D4085B00E31A39 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54E5BAD23D4085B00E31A39 /* FriendsTableViewCell.swift */; };
+		D5708F8B23D6D857008D7B2C /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5708F8A23D6D857008D7B2C /* AddFriendViewController.swift */; };
 		D570D5FE2333595900AB308B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D570D5FD2333595900AB308B /* AppDelegate.swift */; };
 		D570D6002333595900AB308B /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D570D5FF2333595900AB308B /* MainTabBarViewController.swift */; };
 		D570D6052333595B00AB308B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D570D6042333595B00AB308B /* Colors.xcassets */; };
@@ -52,7 +53,7 @@
 		D571186A237BE846005419D4 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5711869237BE846005419D4 /* ForgotPasswordViewController.swift */; };
 		D5726DF123546F170077BF95 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5726DF023546F170077BF95 /* GameView.swift */; };
 		D5726DF42354710D0077BF95 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5726DF32354710D0077BF95 /* GameTableViewCell.swift */; };
-		D5737F76235ADE6300756298 /* ErrorMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5737F75235ADE6300756298 /* ErrorMessageHandler.swift */; };
+		D5737F76235ADE6300756298 /* MessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5737F75235ADE6300756298 /* MessageHandler.swift */; };
 		D57ED5C3237E819500EC1E87 /* PrivacyNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57ED5C2237E819500EC1E87 /* PrivacyNoticeViewController.swift */; };
 		D57ED5C6237E8C0300EC1E87 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57ED5C5237E8C0300EC1E87 /* AboutViewController.swift */; };
 		D57ED5C8237E8CA200EC1E87 /* AboutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57ED5C7237E8CA200EC1E87 /* AboutTableViewCell.swift */; };
@@ -139,6 +140,7 @@
 		D54E5BA823D3F5BA00E31A39 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		D54E5BAB23D401CE00E31A39 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		D54E5BAD23D4085B00E31A39 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
+		D5708F8A23D6D857008D7B2C /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		D570D5FA2333595900AB308B /* QuickFin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickFin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D570D5FD2333595900AB308B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D570D5FF2333595900AB308B /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
@@ -156,7 +158,7 @@
 		D5711869237BE846005419D4 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		D5726DF023546F170077BF95 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		D5726DF32354710D0077BF95 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
-		D5737F75235ADE6300756298 /* ErrorMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageHandler.swift; sourceTree = "<group>"; };
+		D5737F75235ADE6300756298 /* MessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHandler.swift; sourceTree = "<group>"; };
 		D57ED5C2237E819500EC1E87 /* PrivacyNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyNoticeViewController.swift; sourceTree = "<group>"; };
 		D57ED5C5237E8C0300EC1E87 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		D57ED5C7237E8CA200EC1E87 /* AboutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewCell.swift; sourceTree = "<group>"; };
@@ -331,10 +333,19 @@
 		D54E5BAA23D4017E00E31A39 /* Friends */ = {
 			isa = PBXGroup;
 			children = (
+				D5708F8923D6D839008D7B2C /* Add Friend */,
 				D54E5BAB23D401CE00E31A39 /* FriendsTableViewController.swift */,
 				D54E5BAD23D4085B00E31A39 /* FriendsTableViewCell.swift */,
 			);
 			path = Friends;
+			sourceTree = "<group>";
+		};
+		D5708F8923D6D839008D7B2C /* Add Friend */ = {
+			isa = PBXGroup;
+			children = (
+				D5708F8A23D6D857008D7B2C /* AddFriendViewController.swift */,
+			);
+			path = "Add Friend";
 			sourceTree = "<group>";
 		};
 		D570D5F12333595900AB308B = {
@@ -404,11 +415,11 @@
 				BF4EDAA32341DC7500E45E90 /* CacheService.swift */,
 				D52471D123402B2400922564 /* Colors.swift */,
 				D5469B492338247F0047D09D /* Core.swift */,
-				D5737F75235ADE6300756298 /* ErrorMessageHandler.swift */,
 				D59FEA41237F9BAC00C65A2F /* Extensions.swift */,
 				D570D62F233368DD00AB308B /* FirebaseService.swift */,
 				D5EA305F233737C100F56428 /* FontSizes.swift */,
 				D52471D723415A2D00922564 /* Images.swift */,
+				D5737F75235ADE6300756298 /* MessageHandler.swift */,
 				D54E5BA823D3F5BA00E31A39 /* Text.swift */,
 				D5F86625238BD14B0079F65D /* TriLabelView.swift */,
 			);
@@ -819,6 +830,7 @@
 				D5EA30592337187100F56428 /* BaseViewController.swift in Sources */,
 				D570D5FE2333595900AB308B /* AppDelegate.swift in Sources */,
 				D5726DF123546F170077BF95 /* GameView.swift in Sources */,
+				D5708F8B23D6D857008D7B2C /* AddFriendViewController.swift in Sources */,
 				D57ED5C8237E8CA200EC1E87 /* AboutTableViewCell.swift in Sources */,
 				D59FEA40237F9B1400C65A2F /* ChangeUsernameViewController.swift in Sources */,
 				D54E5BAE23D4085B00E31A39 /* FriendsTableViewCell.swift in Sources */,
@@ -832,7 +844,7 @@
 				D505BA0C235128330025E975 /* SettingsView.swift in Sources */,
 				D570D630233368DD00AB308B /* FirebaseService.swift in Sources */,
 				BF5A2E93237BEBB800C7EB87 /* AchievementMessageHandler.swift in Sources */,
-				D5737F76235ADE6300756298 /* ErrorMessageHandler.swift in Sources */,
+				D5737F76235ADE6300756298 /* MessageHandler.swift in Sources */,
 				BFD5653E2339926B007ECD97 /* Question.swift in Sources */,
 				D571186A237BE846005419D4 /* ForgotPasswordViewController.swift in Sources */,
 				BF5A2E95237C8F4300C7EB87 /* UserShared.swift in Sources */,

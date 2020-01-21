@@ -65,8 +65,8 @@ extension SignInViewController {
         }()
         let emailField: SkyFloatingLabelTextField = {
             let tf = SkyFloatingLabelTextField()
-            tf.title = "Email".localized()
-            tf.placeholder = "Email".localized()
+            tf.title = Text.Email.localized()
+            tf.placeholder = Text.Email.localized()
             tf.textColor = Colors.DynamicTextColor
             tf.selectedTitleColor = Colors.FidelityGreen!
             tf.selectedLineColor = Colors.FidelityGreen!
@@ -84,8 +84,8 @@ extension SignInViewController {
         }()
         let passwordField: SkyFloatingLabelTextField = {
             let tf = SkyFloatingLabelTextField()
-            tf.title = "Password".localized()
-            tf.placeholder = "Password".localized()
+            tf.title = Text.Password.localized()
+            tf.placeholder = Text.Password.localized()
             tf.textColor = Colors.DynamicTextColor
             tf.selectedTitleColor = Colors.FidelityGreen!
             tf.selectedLineColor = Colors.FidelityGreen!
@@ -104,7 +104,7 @@ extension SignInViewController {
         }()
         let signInButton: UIButton = {
             let b = UIButton()
-            b.setTitle("Sign In".localized(), for: .normal)
+            b.setTitle(Text.SignIn.localized(), for: .normal)
             b.setTitleColor(UIColor.white, for: .normal)
             b.backgroundColor = Colors.FidelityGreen!
             _ = b.reactive.tap.observeNext { [unowned self] (_) in
@@ -175,7 +175,7 @@ extension SignInViewController {
         }()
         let signUpButton: UIButton = {
             let b = UIButton()
-            b.setTitle("Sign Up".localized(), for: .normal)
+            b.setTitle(Text.SignUp.localized(), for: .normal)
             b.setTitleColor(Colors.FidelityGreen, for: .normal)
             _ = b.reactive.tap.observeNext { [unowned self] (_) in
                 self.present(SignUpViewController(), animated: true, completion: nil)
@@ -184,7 +184,7 @@ extension SignInViewController {
         }()
         let forgotPasswordButton: UIButton = {
             let b = UIButton()
-            b.setTitle("Forgot Password?".localized(), for: .normal)
+            b.setTitle(Text.ForgotPasswordQ.localized(), for: .normal)
             b.setTitleColor(Colors.DynamicTextColor, for: .normal)
             _ = b.reactive.tap.observeNext { [unowned self] (_) in
                 self.present(ForgotPasswordViewController(), animated: true, completion: nil)

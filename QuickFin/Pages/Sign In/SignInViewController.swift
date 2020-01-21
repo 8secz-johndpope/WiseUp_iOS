@@ -25,7 +25,7 @@ class SignInViewController: BaseViewController, LoginButtonDelegate {
             return
         }
         if email.isEmpty || password.isEmpty {
-            ErrorMessageHandler.shared.showMessage(theme: .error, title: "Sign in error", body: "Please complete the fields.".localized())
+            MessageHandler.shared.showMessage(theme: .error, title: "Sign in error", body: "Please complete the fields.".localized())
             return
         }
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
@@ -33,13 +33,13 @@ class SignInViewController: BaseViewController, LoginButtonDelegate {
                 let errorCode = AuthErrorCode(rawValue: error._code)
                 switch errorCode {
                 case .userNotFound:
-                    ErrorMessageHandler.shared.showMessage(theme: .error, title: "Sign in error", body: "User does not exist.".localized())
+                    MessageHandler.shared.showMessage(theme: .error, title: "Sign in error", body: "User does not exist.".localized())
                     break
                 case .wrongPassword:
-                    ErrorMessageHandler.shared.showMessage(theme: .error, title: "Sign in error", body: "Incorrect password.".localized())
+                    MessageHandler.shared.showMessage(theme: .error, title: "Sign in error", body: "Incorrect password.".localized())
                     break
                 default:
-                    ErrorMessageHandler.shared.showMessage(theme: .error, title: "Sign in error", body: error.localizedDescription)
+                    MessageHandler.shared.showMessage(theme: .error, title: "Sign in error", body: error.localizedDescription)
                     break
                 }
                 return
@@ -65,19 +65,19 @@ extension SignInViewController {
     
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         if let error = error {
-            ErrorMessageHandler.shared.showMessage(theme: .error, title: "Facebook sign in error", body: error.localizedDescription)
+            MessageHandler.shared.showMessage(theme: .error, title: "Facebook sign in error", body: error.localizedDescription)
             return
         }
         if let token = AccessToken.current {
             let credential = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
             Auth.auth().signIn(with: credential) { (result, error) in
                 if let error = error {
-                    ErrorMessageHandler.shared.showMessage(theme: .error, title: "Facebook sign in error", body: error.localizedDescription)
+                    MessageHandler.shared.showMessage(theme: .error, title: "Facebook sign in error", body: error.localizedDescription)
                     return
                 }
                 // Shouldn't need to do anything here due to the Auth state listener set previously in AppDelegate.
                 FirebaseService.shared.verifyUser(email: Auth.auth().currentUser?.email ?? "") { (error) in
-                    ErrorMessageHandler.shared.showMessage(theme: .error, title: Text.Error, body: error!.localizedDescription)
+                    MessageHandler.shared.showMessage(theme: .error, title: Text.Error, body: error!.localizedDescription)
                 }
             }
         } else {
@@ -90,7 +90,7 @@ extension SignInViewController {
         do {
             try Auth.auth().signOut()
         } catch let error as NSError {
-            ErrorMessageHandler.shared.showMessage(theme: .error, title: "Sign out error", body: error.localizedDescription)
+            MessageHandler.shared.showMessage(theme: .error, title: "Sign out error", body: error.localizedDescription)
         }
     }
 

@@ -75,10 +75,14 @@ class FriendsTableViewController: BaseViewController {
                 self.processIndex()
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)
             } else {
-                ErrorMessageHandler.shared.showMessage(theme: .error, title: Text.Error, body: Text.FriendDeletionErrorMessage)
+                MessageHandler.shared.showMessage(theme: .error, title: Text.Error, body: Text.FriendDeletionErrorMessage)
             }
             GradientLoadingBar.shared.fadeOut()
         }
+    }
+    
+    @objc func addFriend() {
+        present(AddFriendViewController(), animated: true, completion: nil)
     }
     
 }
@@ -100,6 +104,8 @@ extension FriendsTableViewController {
             this.top.equalToSuperview()
             this.bottom.equalToSuperview()
         }
+        
+        navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addFriend)), animated: true)
     }
 }
 
