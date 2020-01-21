@@ -194,6 +194,11 @@ class FirebaseService {
         #warning("TODO: Implement")
         completion(true)
     }
+    
+    func addFriend(email: String, completion: @escaping (Bool) -> Void) {
+        #warning("TODO: Implement")
+        completion(true)
+    }
 }
     
 // MARK: - Firebase Storage

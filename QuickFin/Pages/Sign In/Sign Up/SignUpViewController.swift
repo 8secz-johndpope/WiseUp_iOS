@@ -22,7 +22,7 @@ class SignUpViewController: BaseViewController {
     func signUpHandler(email: String, password: String) {
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             if let error = error {
-                ErrorMessageHandler.shared.showMessage(theme: .error, title: "Sign up error", body: error.localizedDescription)
+                MessageHandler.shared.showMessage(theme: .error, title: "Sign up error", body: error.localizedDescription)
                 return
             }
         }
@@ -81,7 +81,7 @@ extension SignUpViewController {
             _ = b.reactive.tap.observeNext { [unowned self] (_) in
                 if let email = emailField.text, let password = passwordField.text, let confirmPassword = confirmPasswordField.text {
                     if password != confirmPassword {
-                        ErrorMessageHandler.shared.showMessage(theme: .error, title: "Sign up error", body: "Passwords don't match.".localized())
+                        MessageHandler.shared.showMessage(theme: .error, title: "Sign up error", body: "Passwords don't match.".localized())
                         return
                     }
                     self.signUpHandler(email: email, password: password)
