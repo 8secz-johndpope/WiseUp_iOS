@@ -93,3 +93,7 @@
 "Failed" = "Failed";
 "Something went wrong." = "Something went wrong.";
 "(Pending)" = "(Pending)";
+"A user with the specified email is not available." = "A user with the specified email is not available.";
+"Your friend list is corrupt. Please contact support." = "Your friend list is corrupt. Please contact support.";
+"You are already friends! :)" = "You are already friends! :)";
+"You have already sent a friend request." = "You have already sent a friend request.";

@@ -145,7 +145,7 @@ extension FriendsTableViewController: UITableViewDelegate, UITableViewDataSource
         cell.usernameLabel.text = friend.displayName
         if friend.isFriendPending() {
             cell.isUserInteractionEnabled = false
-            cell.usernameLabel.text! += " \(Text.Pending)"
+            cell.usernameLabel.text = "\(Text.Pending) " + (cell.usernameLabel.text ?? "")
             cell.usernameLabel.alpha = 0.5
         }
         return cell

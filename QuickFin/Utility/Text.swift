@@ -37,4 +37,8 @@ struct Text {
     static let Failed = "Failed"
     static let SomethingWentWrong = "Something went wrong."
     static let Pending = "(Pending)"
+    static let FriendNotFound = "A user with the specified email is not available."
+    static let FriendListCorrupt = "Your friend list is corrupt. Please contact support."
+    static let FriendsAlready = "You are already friends! :)"
+    static let FriendRequestSentAlready = "You have already sent a friend request."
 }
