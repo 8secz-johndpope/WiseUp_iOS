@@ -21,13 +21,13 @@ class ChangePasswordViewController: BaseViewController {
         let credentials = EmailAuthProvider.credential(withEmail: email, password: currentPassword)
         Auth.auth().currentUser?.reauthenticate(with: credentials, completion: { (result, error) in
             if let error = error {
-                ErrorMessageHandler.shared.showMessageModal(theme: .error, title: "Update password error".localized(), body: error.localizedDescription + " " + "You will be logged out.".localized())
+                MessageHandler.shared.showMessageModal(theme: .error, title: "Update password error".localized(), body: error.localizedDescription + " " + "You will be logged out.".localized())
                 try? Auth.auth().signOut()
                 return
             }
             Auth.auth().currentUser?.updatePassword(to: newPassword, completion: { (error) in
                 if let error = error {
-                    ErrorMessageHandler.shared.showMessageModal(theme: .error, title: "Update password error", body: error.localizedDescription)
+                    MessageHandler.shared.showMessageModal(theme: .error, title: "Update password error", body: error.localizedDescription)
                 }
             })
         })
@@ -66,15 +66,15 @@ extension ChangePasswordViewController {
             b.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
             _ = b.reactive.tap.observeNext { [unowned self] (_) in
                 if emailTextField.text?.isEmpty ?? false || currentPasswordTextField.text?.isEmpty ?? false || newPasswordTextField.text?.isEmpty ?? false {
-                    ErrorMessageHandler.shared.showMessageModal(theme: .error, title: "Update password error".localized(), body: "Please complete the fields.".localized())
+                    MessageHandler.shared.showMessageModal(theme: .error, title: "Update password error".localized(), body: "Please complete the fields.".localized())
                     return
                 }
                 if newPasswordTextField.text != confirmNewPasswordTextField.text {
-                    ErrorMessageHandler.shared.showMessageModal(theme: .error, title: "Update password error".localized(), body: "Passwords do not match!".localized())
+                    MessageHandler.shared.showMessageModal(theme: .error, title: "Update password error".localized(), body: "Passwords do not match!".localized())
                     return
                 }
                 if newPasswordTextField.text?.count ?? 0 < 6 {
-                    ErrorMessageHandler.shared.showMessageModal(theme: .error, title: "Update password error".localized(), body: "New password must be longer than 6 characters.".localized())
+                    MessageHandler.shared.showMessageModal(theme: .error, title: "Update password error".localized(), body: "New password must be longer than 6 characters.".localized())
                     return
                 }
                 if let email = emailTextField.text, let currentPassword = currentPasswordTextField.text, let newPassword = confirmNewPasswordTextField.text {

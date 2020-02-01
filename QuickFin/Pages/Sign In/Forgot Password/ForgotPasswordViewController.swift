@@ -22,7 +22,7 @@ class ForgotPasswordViewController: BaseViewController {
     func resetPassword(email: String) {
         Auth.auth().sendPasswordReset(withEmail: email) { (error) in
             if let error = error {
-                ErrorMessageHandler.shared.showMessage(theme: .error, title: "Reset Password".localized(), body: error.localizedDescription)
+                MessageHandler.shared.showMessage(theme: .error, title: "Reset Password".localized(), body: error.localizedDescription)
                 return
             }
         }
