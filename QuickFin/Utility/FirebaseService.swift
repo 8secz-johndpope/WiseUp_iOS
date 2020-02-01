@@ -201,13 +201,17 @@ class FirebaseService {
                                 if let error = error {
                                     completion((nil, error))
                                 } else {
-                                    let user = try! FirebaseDecoder().decode(User.self, from: snapshot!.data())
+                                    var user = try! FirebaseDecoder().decode(User.self, from: snapshot!.data()!)
+                                    if friend.pending {
+                                        user.uid = user.email
+                                        user.displayName = user.email
+                                    }
                                     friendsArray.append(user)
                                 }
                                 group.leave()
                             }
                         } else {
-                            completion((nil, NSError(domain: "", code: 7, userInfo: [ NSLocalizedDescriptionKey: "Your friend profile is corrupt. Please contact support."])))
+                            completion((nil, NSError(domain: "", code: 7, userInfo: [NSLocalizedDescriptionKey: "Your friend profile is corrupt. Please contact support."])))
                         }
                     }
                     group.notify(queue: .main) {
