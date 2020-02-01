@@ -17,8 +17,9 @@ class StoreItemDetailsViewController: BaseViewController{
         let confirmAction = UIAlertAction(title: "Ok", style: .default) { (_) in
             if let txtField = alertController.textFields?.first, let stock_choice = txtField.text {
                 self.stock_quantity = Int(stock_choice) ?? 0
-                print("Stock Amount is " + stock_choice)
+                print(self.stock_quantity)
             }
+            self.buyItem()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
         alertController.addTextField { (textField) in
@@ -27,6 +28,7 @@ class StoreItemDetailsViewController: BaseViewController{
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
+        
     }
     
     var buyButton: UIButton?
@@ -124,7 +126,8 @@ extension StoreItemDetailsViewController {
             }
             
         } else if item.type == "stock" {
-            if !(UserShared.shared.coins >= item.cost) {
+            
+            if !(UserShared.shared.coins >= item.cost * stock_quantity) {
                 let prompt: MessageView = {
                     let mv = MessageView.viewFromNib(layout: .cardView)
                     mv.configureTheme(.error)
@@ -144,19 +147,17 @@ extension StoreItemDetailsViewController {
             
                 print("Not enough coins for stock")
             } else {
-                setStockQuantity()
-                let view = MessageView.viewFromNib(layout: .cardView)
-                SwiftMessages.show(view: view)
+                
                 var stock = Stock()
                 stock.name = item.name
                 stock.buyInPrice = item.cost
                 stock.currentPrice = item.cost
                 stock.details = item.details
-                stock.numOfShare = stock_quantity //user input
+                stock.imageName = item.imageName
+                stock.numOfShare = stock_quantity
                 stock.uid = UserShared.shared.uid
                 
-                UserShared.shared.coins -= item.cost
-
+                UserShared.shared.coins -= item.cost * stock_quantity
                 FirebaseService.shared.buyStock(stockObject: stock) { (e) in }
             }
             

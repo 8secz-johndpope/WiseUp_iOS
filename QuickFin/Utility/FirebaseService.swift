@@ -292,9 +292,25 @@ class FirebaseService {
         completion(nil)
     }
     
-}
+    func getStock(completion: @escaping (([Stock]?, Error?)) -> Void) {
+        var stockArray = [Stock]()
+        if let uid = Auth.auth().currentUser?.uid {
+            db.collection("stock-market").whereField("uid", isEqualTo: uid).getDocuments { (snapshot, error) in
+                if let error = error {
+                    completion((nil, error))
+                } else {
+                    for document in snapshot!.documents {
+                        let stock = try! FirebaseDecoder().decode(Stock.self, from: document.data())
+                        print(stock.name)
+                        stockArray.append(stock)
+                    }
+                }
+                completion((stockArray, nil))
+            }
+        }
+    }
     
-
+}
 
 
 // MARK: - Firebase Storage
