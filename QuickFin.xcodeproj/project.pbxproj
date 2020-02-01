@@ -11,6 +11,7 @@
 		4AF99A7647266D921597CE70 /* Pods_QuickFin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D7BD893A3A0D4C145E0C06 /* Pods_QuickFin.framework */; };
 		936E21972E905AC0BE87B63A /* Pods_QuickFinTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABABE90F0C260AFB0EA2199 /* Pods_QuickFinTests.framework */; };
 		951B4C1A23E54BA0007CDF9D /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951B4C1923E54BA0007CDF9D /* Friend.swift */; };
+		95FFDFC923E585D000F04378 /* PendingRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FFDFC823E585D000F04378 /* PendingRequestViewController.swift */; };
 		A3646E4D4BC74F28ED688773 /* Pods_QuickFinUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57398B24A77A5C84540D2843 /* Pods_QuickFinUITests.framework */; };
 		BF2E7AC123545FCB0048A201 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2E7AC023545FCB0048A201 /* GameViewController.swift */; };
 		BF2E7AC7235466370048A201 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2E7AC6235466370048A201 /* StoreViewController.swift */; };
@@ -112,6 +113,7 @@
 		896BD25CA2A72A58BB25B87A /* Pods-QuickFinTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickFinTests.debug.xcconfig"; path = "Target Support Files/Pods-QuickFinTests/Pods-QuickFinTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9248079636F91979E99C1BF2 /* Pods-QuickFinTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickFinTests.release.xcconfig"; path = "Target Support Files/Pods-QuickFinTests/Pods-QuickFinTests.release.xcconfig"; sourceTree = "<group>"; };
 		951B4C1923E54BA0007CDF9D /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		95FFDFC823E585D000F04378 /* PendingRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingRequestViewController.swift; sourceTree = "<group>"; };
 		BF2E7AC023545FCB0048A201 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		BF2E7AC6235466370048A201 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		BF4EDAA32341DC7500E45E90 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
@@ -343,19 +345,12 @@
 		D54E5BAA23D4017E00E31A39 /* Friends */ = {
 			isa = PBXGroup;
 			children = (
-				D5708F8923D6D839008D7B2C /* Add Friend */,
+				D5708F8A23D6D857008D7B2C /* AddFriendViewController.swift */,
 				D54E5BAB23D401CE00E31A39 /* FriendsTableViewController.swift */,
 				D54E5BAD23D4085B00E31A39 /* FriendsTableViewCell.swift */,
+				95FFDFC823E585D000F04378 /* PendingRequestViewController.swift */,
 			);
 			path = Friends;
-			sourceTree = "<group>";
-		};
-		D5708F8923D6D839008D7B2C /* Add Friend */ = {
-			isa = PBXGroup;
-			children = (
-				D5708F8A23D6D857008D7B2C /* AddFriendViewController.swift */,
-			);
-			path = "Add Friend";
 			sourceTree = "<group>";
 		};
 		D570D5F12333595900AB308B = {
@@ -885,6 +880,7 @@
 				D57ED5C3237E819500EC1E87 /* PrivacyNoticeViewController.swift in Sources */,
 				BF2E7AC7235466370048A201 /* StoreViewController.swift in Sources */,
 				D5469B5123398E170047D09D /* FirestoreUserResponse.swift in Sources */,
+				95FFDFC923E585D000F04378 /* PendingRequestViewController.swift in Sources */,
 				D52471DA2341CC8900922564 /* AppDelegateExtension.swift in Sources */,
 				BF4EDAA42341DC7500E45E90 /* CacheService.swift in Sources */,
 				D52471D223402B2400922564 /* Colors.swift in Sources */,

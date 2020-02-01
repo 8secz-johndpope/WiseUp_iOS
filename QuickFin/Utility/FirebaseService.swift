@@ -183,6 +183,25 @@ class FirebaseService {
         }
     }
     
+    func getPendingFriendRequest(friendUID: String, completion: @escaping ((Friend?, Error?)) -> Void) {
+        db.collection("friends").whereField("uids", arrayContains: friendUID).getDocuments { (snapshot, error) in
+            if let error = error {
+                completion((nil, error))
+                return
+            }
+            if let snapshot = snapshot {
+                for document in snapshot.documents {
+                    let friend = try! FirebaseDecoder().decode(Friend.self, from: document.data())
+                    if friend.uids[1] == UserShared.shared.uid {
+                        completion((friend, nil))
+                        return
+                    }
+                }
+                completion((nil, nil))
+            }
+        }
+    }
+    
     /// Gets all friends of the current user, including pending ones.
     /// - Parameter completion: returns an array of friends (never nil) or an error.
     func getFriends(completion: @escaping (([User]?, Error?)) -> Void) {
