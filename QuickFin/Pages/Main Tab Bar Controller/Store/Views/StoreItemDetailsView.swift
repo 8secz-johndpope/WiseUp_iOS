@@ -70,7 +70,7 @@ extension StoreItemDetailsViewController {
                 
                 b.setTitleColor(Colors.DynamicNavigationTitleColor, for: .normal)
                 _ = b.reactive.tap.observeNext { [weak self] (_) in
-                    self?.buyItem()
+                    self?.setStockQuantity()
                 }
                 return b
                 

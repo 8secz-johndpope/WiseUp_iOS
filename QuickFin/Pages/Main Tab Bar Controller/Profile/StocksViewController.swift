@@ -31,12 +31,29 @@ class StocksViewController: StoreViewController, ItemsViewDelegate {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        //
+    }
+    
     func didConsume() {
         fetchData()
     }
     
     override func fetchData() {
-        
+        FirebaseService.shared.getStock { (stocks, error) in
+            for stock in stocks! {
+                var sItem = StoreItem()
+                sItem.name = stock.name
+                sItem.details = "Current Price: \(stock.currentPrice) \t Buy In Price:  \(stock.currentPrice) \n \(stock.details)"
+                sItem.imageName = stock.imageName
+                sItem.cost = stock.numOfShare
+                self.stockItems.append(sItem)
+            }
+            
+            self.storeItems = self.stockItems
+            self.tableView.reloadData()
+        }
+
         /*
         // First Get Pre-Cached Chapters (or empty if nothing cached)
         storeItems = CacheService.shared.getCachedStore()
