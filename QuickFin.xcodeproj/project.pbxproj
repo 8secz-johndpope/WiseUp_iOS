@@ -10,6 +10,7 @@
 		0AC8D592238BC6C6000D2E5D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AC8D591238BC6C6000D2E5D /* GoogleService-Info.plist */; };
 		4AF99A7647266D921597CE70 /* Pods_QuickFin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D7BD893A3A0D4C145E0C06 /* Pods_QuickFin.framework */; };
 		936E21972E905AC0BE87B63A /* Pods_QuickFinTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABABE90F0C260AFB0EA2199 /* Pods_QuickFinTests.framework */; };
+		951B4C1A23E54BA0007CDF9D /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951B4C1923E54BA0007CDF9D /* Friend.swift */; };
 		A3646E4D4BC74F28ED688773 /* Pods_QuickFinUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57398B24A77A5C84540D2843 /* Pods_QuickFinUITests.framework */; };
 		BF2E7AC123545FCB0048A201 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2E7AC023545FCB0048A201 /* GameViewController.swift */; };
 		BF2E7AC7235466370048A201 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2E7AC6235466370048A201 /* StoreViewController.swift */; };
@@ -110,6 +111,7 @@
 		6ABABE90F0C260AFB0EA2199 /* Pods_QuickFinTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuickFinTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		896BD25CA2A72A58BB25B87A /* Pods-QuickFinTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickFinTests.debug.xcconfig"; path = "Target Support Files/Pods-QuickFinTests/Pods-QuickFinTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9248079636F91979E99C1BF2 /* Pods-QuickFinTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickFinTests.release.xcconfig"; path = "Target Support Files/Pods-QuickFinTests/Pods-QuickFinTests.release.xcconfig"; sourceTree = "<group>"; };
+		951B4C1923E54BA0007CDF9D /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		BF2E7AC023545FCB0048A201 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		BF2E7AC6235466370048A201 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		BF4EDAA32341DC7500E45E90 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
@@ -323,15 +325,17 @@
 		D5469B4D23398ABB0047D09D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D5469B4E23398AC70047D09D /* User.swift */,
-				BF5A2E94237C8F4300C7EB87 /* UserShared.swift */,
-				D5469B5023398E170047D09D /* FirestoreUserResponse.swift */,
 				BFD5653B2339926B007ECD97 /* Chapter.swift */,
-				BFD5653C2339926B007ECD97 /* Question.swift */,
 				BF4EDAA52341E09800E45E90 /* ChapterStats.swift */,
+				D5469B5023398E170047D09D /* FirestoreUserResponse.swift */,
+				951B4C1923E54BA0007CDF9D /* Friend.swift */,
+				BFD5653C2339926B007ECD97 /* Question.swift */,
 				D5BA98652367779B0099D528 /* StoreItem.swift */,
 				BF96AACB238BCB5A009534B5 /* Store.swift */,
 				E9BE3B5023E5428600CC023F /* Stock.swift */,
+				D5469B4E23398AC70047D09D /* User.swift */,
+				BF5A2E94237C8F4300C7EB87 /* UserShared.swift */,
+
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -862,6 +866,7 @@
 				D505BA0E23512C2B0025E975 /* SettingsTableViewCell.swift in Sources */,
 				D5BA986D23677FA30099D528 /* StoreItemDetailsViewController.swift in Sources */,
 				D5469B4A2338247F0047D09D /* Core.swift in Sources */,
+				951B4C1A23E54BA0007CDF9D /* Friend.swift in Sources */,
 				BFD565422339927C007ECD97 /* ChapterViewController.swift in Sources */,
 				D5469B4F23398AC70047D09D /* User.swift in Sources */,
 				D5711868237BDFCC005419D4 /* SignUpViewController.swift in Sources */,

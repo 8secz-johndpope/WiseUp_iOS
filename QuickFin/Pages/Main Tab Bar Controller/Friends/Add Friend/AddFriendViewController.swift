@@ -50,14 +50,14 @@ extension AddFriendViewController {
                 }
                 if let email = emailTextField.text  {
                     GradientLoadingBar.shared.fadeIn()
-                    FirebaseService.shared.addFriend(email: email) { [unowned self] (success) in
-                        if success {
+                    FirebaseService.shared.addFriend(email: email) { [unowned self] (error) in
+                        GradientLoadingBar.shared.fadeOut()
+                        if let error = error {
+                            MessageHandler.shared.showMessageModal(theme: .error, title: Text.Failed, body: error.localizedDescription)
+                        } else {
                             MessageHandler.shared.showMessageModal(theme: .success, title: Text.Success, body: Text.FriendRequestSent)
                             self.dismiss(animated: true, completion: nil)
-                        } else {
-                            MessageHandler.shared.showMessageModal(theme: .error, title: Text.Failed, body: Text.SomethingWentWrong)
                         }
-                        GradientLoadingBar.shared.fadeOut()
                     }
                 }
             }

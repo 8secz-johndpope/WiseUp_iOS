@@ -30,13 +30,15 @@ class FriendsTableViewController: BaseViewController {
     let cellReuseID = "friend"
     
     func fetchFriends() {
-        FirebaseService.shared.getFriends(completion: { (friendsArray) in
-            if let friendsArray = friendsArray {
-                self.friends = friendsArray
+        FirebaseService.shared.getFriends { [unowned self] (friendsArray, error) in
+            if let error = error {
+                MessageHandler.shared.showMessage(theme: .error, title: Text.Error, body: error.localizedDescription)
+            } else {
+                self.friends = friendsArray!
                 self.processIndex()
                 self.tableView.reloadData()
             }
-        })
+        }
     }
     
     func resetIndex() {
@@ -141,6 +143,11 @@ extension FriendsTableViewController: UITableViewDelegate, UITableViewDataSource
         let friend = getFriendObject(indexPath: indexPath)
         cell.profileImageView.image = UIImage(named: friend.avatar)
         cell.usernameLabel.text = friend.displayName
+        if friend.isFriendPending() {
+            cell.isUserInteractionEnabled = false
+            cell.usernameLabel.text = "\(Text.Pending) " + (cell.usernameLabel.text ?? "")
+            cell.usernameLabel.alpha = 0.5
+        }
         return cell
     }
     
