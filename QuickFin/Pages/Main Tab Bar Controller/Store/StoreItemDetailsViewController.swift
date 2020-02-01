@@ -128,19 +128,21 @@ extension StoreItemDetailsViewController {
             
                 print("Not enough coins for stock")
             } else {
+                let view = MessageView.viewFromNib(layout: .cardView)
+                SwiftMessages.show(view: view)
+                //todo popup
                 var stock = Stock()
                 stock.name = item.name
                 stock.buyInPrice = item.cost
                 stock.currentPrice = item.cost
                 stock.details = item.details
-                stock.numOfShare = 1
+                stock.numOfShare = 1 //user input
                 stock.uid = UserShared.shared.uid
                 
                 UserShared.shared.coins -= item.cost
 
-                
+                FirebaseService.shared.buyStock(stockObject: stock) { (e) in }
             }
-            
             
         } else {
             
