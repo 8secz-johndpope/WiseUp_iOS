@@ -257,6 +257,7 @@
 			children = (
 				D5BA986723677CFE0099D528 /* Views */,
 				BF2E7AC6235466370048A201 /* StoreViewController.swift */,
+				D52471D92341CC8900922564 /* AppDelegateExtension.swift */,
 				D5BA986C23677FA30099D528 /* StoreItemDetailsViewController.swift */,
 			);
 			path = Store;
@@ -335,7 +336,6 @@
 				E9BE3B5023E5428600CC023F /* Stock.swift */,
 				D5469B4E23398AC70047D09D /* User.swift */,
 				BF5A2E94237C8F4300C7EB87 /* UserShared.swift */,
-
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -421,7 +421,6 @@
 			isa = PBXGroup;
 			children = (
 				BF5A2E92237BEBB800C7EB87 /* AchievementMessageHandler.swift */,
-				D52471D92341CC8900922564 /* AppDelegateExtension.swift */,
 				BF4EDAA32341DC7500E45E90 /* CacheService.swift */,
 				D52471D123402B2400922564 /* Colors.swift */,
 				D5469B492338247F0047D09D /* Core.swift */,

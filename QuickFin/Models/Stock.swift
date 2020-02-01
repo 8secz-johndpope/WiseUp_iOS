@@ -12,8 +12,8 @@ struct Stock: Codable, Equatable {
 
     var name = String()
     var details = String()
-    var StockID = Int()
+    var currentPrice = Int()
     var numOfShare = Int()
-    var buyInPrice = Float()
-    
+    var buyInPrice = Int()
+    var imageName = String()
 }
