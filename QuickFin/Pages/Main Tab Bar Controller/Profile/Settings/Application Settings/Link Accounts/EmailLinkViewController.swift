@@ -41,16 +41,16 @@ extension EmailLinkViewController {
             b.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
             _ = b.reactive.tap.observeNext { (_) in
                 if emailTextField.text?.isEmpty ?? false || passwordTextField.text?.isEmpty ?? false {
-                    ErrorMessageHandler.shared.showMessageModal(theme: .error, title: "Error".localized(), body: "Please complete the fields.".localized())
+                    MessageHandler.shared.showMessageModal(theme: .error, title: Text.Error, body: "Please complete the fields.".localized())
                     return
                 }
                 let credential = EmailAuthProvider.credential(withEmail: emailTextField.text!, password: passwordTextField.text!)
                 Auth.auth().currentUser?.link(with: credential, completion: { (result, error) in
                     if let error = error {
-                        ErrorMessageHandler.shared.showMessageModal(theme: .error, title: "Error".localized(), body: error.localizedDescription)
+                        MessageHandler.shared.showMessageModal(theme: .error, title: Text.Error, body: error.localizedDescription)
                         return
                     }
-                    ErrorMessageHandler.shared.showMessageModal(theme: .success, title: "Success".localized(), body: "Accounts linked.".localized())
+                    MessageHandler.shared.showMessageModal(theme: .success, title: "Success".localized(), body: "Accounts linked.".localized())
                 })
             }
             return b

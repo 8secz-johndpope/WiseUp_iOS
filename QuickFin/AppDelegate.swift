@@ -79,14 +79,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
             return
         }
         guard let auth = user.authentication else {
-            ErrorMessageHandler.shared.showMessageModal(theme: .error, title: "Google sign in error", body: error.localizedDescription)
+            MessageHandler.shared.showMessageModal(theme: .error, title: "Google sign in error", body: error.localizedDescription)
             return
         }
         let credential = GoogleAuthProvider.credential(withIDToken: auth.idToken, accessToken: auth.accessToken)
         Auth.auth().signIn(with: credential) { (result, error) in
             
             if let error = error {
-                ErrorMessageHandler.shared.showMessageModal(theme: .error, title: "Firebase sign in error", body: error.localizedDescription)
+                MessageHandler.shared.showMessageModal(theme: .error, title: "Firebase sign in error", body: error.localizedDescription)
                 return
             }
             

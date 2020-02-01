@@ -34,12 +34,14 @@
 		D52471D4234150CA00922564 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D52471D3234150CA00922564 /* Images.xcassets */; };
 		D52471D823415A2D00922564 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52471D723415A2D00922564 /* Images.swift */; };
 		D52471DA2341CC8900922564 /* AppDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52471D92341CC8900922564 /* AppDelegateExtension.swift */; };
-		D5460A64237C687500BBE034 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5460A63237C687500BBE034 /* CustomTableViewCell.swift */; };
-		D5460A66237C687B00BBE034 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5460A65237C687B00BBE034 /* LeaderboardViewController.swift */; };
 		D5469B4823377AF20047D09D /* SignInDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5469B4723377AF20047D09D /* SignInDelegateProtocol.swift */; };
 		D5469B4A2338247F0047D09D /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5469B492338247F0047D09D /* Core.swift */; };
 		D5469B4F23398AC70047D09D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5469B4E23398AC70047D09D /* User.swift */; };
 		D5469B5123398E170047D09D /* FirestoreUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5469B5023398E170047D09D /* FirestoreUserResponse.swift */; };
+		D54E5BA923D3F5BA00E31A39 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54E5BA823D3F5BA00E31A39 /* Text.swift */; };
+		D54E5BAC23D401CE00E31A39 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54E5BAB23D401CE00E31A39 /* FriendsTableViewController.swift */; };
+		D54E5BAE23D4085B00E31A39 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54E5BAD23D4085B00E31A39 /* FriendsTableViewCell.swift */; };
+		D5708F8B23D6D857008D7B2C /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5708F8A23D6D857008D7B2C /* AddFriendViewController.swift */; };
 		D570D5FE2333595900AB308B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D570D5FD2333595900AB308B /* AppDelegate.swift */; };
 		D570D6002333595900AB308B /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D570D5FF2333595900AB308B /* MainTabBarViewController.swift */; };
 		D570D6052333595B00AB308B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D570D6042333595B00AB308B /* Colors.xcassets */; };
@@ -51,7 +53,7 @@
 		D571186A237BE846005419D4 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5711869237BE846005419D4 /* ForgotPasswordViewController.swift */; };
 		D5726DF123546F170077BF95 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5726DF023546F170077BF95 /* GameView.swift */; };
 		D5726DF42354710D0077BF95 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5726DF32354710D0077BF95 /* GameTableViewCell.swift */; };
-		D5737F76235ADE6300756298 /* ErrorMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5737F75235ADE6300756298 /* ErrorMessageHandler.swift */; };
+		D5737F76235ADE6300756298 /* MessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5737F75235ADE6300756298 /* MessageHandler.swift */; };
 		D57ED5C3237E819500EC1E87 /* PrivacyNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57ED5C2237E819500EC1E87 /* PrivacyNoticeViewController.swift */; };
 		D57ED5C6237E8C0300EC1E87 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57ED5C5237E8C0300EC1E87 /* AboutViewController.swift */; };
 		D57ED5C8237E8CA200EC1E87 /* AboutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57ED5C7237E8CA200EC1E87 /* AboutTableViewCell.swift */; };
@@ -131,12 +133,14 @@
 		D52471D3234150CA00922564 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D52471D723415A2D00922564 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		D52471D92341CC8900922564 /* AppDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtension.swift; sourceTree = "<group>"; };
-		D5460A63237C687500BBE034 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
-		D5460A65237C687B00BBE034 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		D5469B4723377AF20047D09D /* SignInDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDelegateProtocol.swift; sourceTree = "<group>"; };
 		D5469B492338247F0047D09D /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		D5469B4E23398AC70047D09D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D5469B5023398E170047D09D /* FirestoreUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUserResponse.swift; sourceTree = "<group>"; };
+		D54E5BA823D3F5BA00E31A39 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
+		D54E5BAB23D401CE00E31A39 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
+		D54E5BAD23D4085B00E31A39 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
+		D5708F8A23D6D857008D7B2C /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		D570D5FA2333595900AB308B /* QuickFin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickFin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D570D5FD2333595900AB308B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D570D5FF2333595900AB308B /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
@@ -154,7 +158,7 @@
 		D5711869237BE846005419D4 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		D5726DF023546F170077BF95 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		D5726DF32354710D0077BF95 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
-		D5737F75235ADE6300756298 /* ErrorMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageHandler.swift; sourceTree = "<group>"; };
+		D5737F75235ADE6300756298 /* MessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHandler.swift; sourceTree = "<group>"; };
 		D57ED5C2237E819500EC1E87 /* PrivacyNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyNoticeViewController.swift; sourceTree = "<group>"; };
 		D57ED5C5237E8C0300EC1E87 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		D57ED5C7237E8CA200EC1E87 /* AboutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewCell.swift; sourceTree = "<group>"; };
@@ -252,15 +256,6 @@
 			path = Store;
 			sourceTree = "<group>";
 		};
-		BF2E7AC32354658A0048A201 /* Leaderboard */ = {
-			isa = PBXGroup;
-			children = (
-				D5460A63237C687500BBE034 /* CustomTableViewCell.swift */,
-				D5460A65237C687B00BBE034 /* LeaderboardViewController.swift */,
-			);
-			path = Leaderboard;
-			sourceTree = "<group>";
-		};
 		D505BA0F235180C10025E975 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +330,24 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		D54E5BAA23D4017E00E31A39 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				D5708F8923D6D839008D7B2C /* Add Friend */,
+				D54E5BAB23D401CE00E31A39 /* FriendsTableViewController.swift */,
+				D54E5BAD23D4085B00E31A39 /* FriendsTableViewCell.swift */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		D5708F8923D6D839008D7B2C /* Add Friend */ = {
+			isa = PBXGroup;
+			children = (
+				D5708F8A23D6D857008D7B2C /* AddFriendViewController.swift */,
+			);
+			path = "Add Friend";
+			sourceTree = "<group>";
+		};
 		D570D5F12333595900AB308B = {
 			isa = PBXGroup;
 			children = (
@@ -397,16 +410,17 @@
 		D570D62D233368BB00AB308B /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				BF5A2E92237BEBB800C7EB87 /* AchievementMessageHandler.swift */,
 				D52471D92341CC8900922564 /* AppDelegateExtension.swift */,
+				BF4EDAA32341DC7500E45E90 /* CacheService.swift */,
 				D52471D123402B2400922564 /* Colors.swift */,
 				D5469B492338247F0047D09D /* Core.swift */,
-				BF4EDAA32341DC7500E45E90 /* CacheService.swift */,
+				D59FEA41237F9BAC00C65A2F /* Extensions.swift */,
 				D570D62F233368DD00AB308B /* FirebaseService.swift */,
 				D5EA305F233737C100F56428 /* FontSizes.swift */,
 				D52471D723415A2D00922564 /* Images.swift */,
-				D5737F75235ADE6300756298 /* ErrorMessageHandler.swift */,
-				BF5A2E92237BEBB800C7EB87 /* AchievementMessageHandler.swift */,
-				D59FEA41237F9BAC00C65A2F /* Extensions.swift */,
+				D5737F75235ADE6300756298 /* MessageHandler.swift */,
+				D54E5BA823D3F5BA00E31A39 /* Text.swift */,
 				D5F86625238BD14B0079F65D /* TriLabelView.swift */,
 			);
 			path = Utility;
@@ -525,7 +539,7 @@
 			isa = PBXGroup;
 			children = (
 				D52471DB234257A400922564 /* Chapters */,
-				BF2E7AC32354658A0048A201 /* Leaderboard */,
+				D54E5BAA23D4017E00E31A39 /* Friends */,
 				BF2E7AC2235465870048A201 /* Store */,
 				D52471DC234257AE00922564 /* Profile */,
 				D570D5FF2333595900AB308B /* MainTabBarViewController.swift */,
@@ -816,17 +830,21 @@
 				D5EA30592337187100F56428 /* BaseViewController.swift in Sources */,
 				D570D5FE2333595900AB308B /* AppDelegate.swift in Sources */,
 				D5726DF123546F170077BF95 /* GameView.swift in Sources */,
+				D5708F8B23D6D857008D7B2C /* AddFriendViewController.swift in Sources */,
 				D57ED5C8237E8CA200EC1E87 /* AboutTableViewCell.swift in Sources */,
 				D59FEA40237F9B1400C65A2F /* ChangeUsernameViewController.swift in Sources */,
+				D54E5BAE23D4085B00E31A39 /* FriendsTableViewCell.swift in Sources */,
+				D54E5BAC23D401CE00E31A39 /* FriendsTableViewController.swift in Sources */,
 				D58CAE9823551190009639F5 /* ResultsViewController.swift in Sources */,
 				BFD565442339927C007ECD97 /* ProfileViewController.swift in Sources */,
 				D5F86626238BD14B0079F65D /* TriLabelView.swift in Sources */,
+				D54E5BA923D3F5BA00E31A39 /* Text.swift in Sources */,
 				D5EA305B23371D5600F56428 /* SignInViewController.swift in Sources */,
 				BFD565432339927C007ECD97 /* ProfileView.swift in Sources */,
 				D505BA0C235128330025E975 /* SettingsView.swift in Sources */,
 				D570D630233368DD00AB308B /* FirebaseService.swift in Sources */,
 				BF5A2E93237BEBB800C7EB87 /* AchievementMessageHandler.swift in Sources */,
-				D5737F76235ADE6300756298 /* ErrorMessageHandler.swift in Sources */,
+				D5737F76235ADE6300756298 /* MessageHandler.swift in Sources */,
 				BFD5653E2339926B007ECD97 /* Question.swift in Sources */,
 				D571186A237BE846005419D4 /* ForgotPasswordViewController.swift in Sources */,
 				BF5A2E95237C8F4300C7EB87 /* UserShared.swift in Sources */,
@@ -842,7 +860,6 @@
 				D5711868237BDFCC005419D4 /* SignUpViewController.swift in Sources */,
 				BF96AACC238BCB5A009534B5 /* Store.swift in Sources */,
 				D5BA986F23677FC70099D528 /* StoreItemDetailsView.swift in Sources */,
-				D5460A64237C687500BBE034 /* CustomTableViewCell.swift in Sources */,
 				D5726DF42354710D0077BF95 /* GameTableViewCell.swift in Sources */,
 				D505BA0A2351281A0025E975 /* SettingsViewController.swift in Sources */,
 				D5BA98662367779B0099D528 /* StoreItem.swift in Sources */,
@@ -851,7 +868,6 @@
 				D59FEA4F237FDF3B00C65A2F /* EmailLinkViewController.swift in Sources */,
 				D5EBE6742393AC0000690A49 /* ItemsViewController.swift in Sources */,
 				D5469B4823377AF20047D09D /* SignInDelegateProtocol.swift in Sources */,
-				D5460A66237C687B00BBE034 /* LeaderboardViewController.swift in Sources */,
 				D59FEA4D237FA6A000C65A2F /* LinkAccountsViewController.swift in Sources */,
 				BF4EDAA62341E09800E45E90 /* ChapterStats.swift in Sources */,
 				D57ED5C3237E819500EC1E87 /* PrivacyNoticeViewController.swift in Sources */,

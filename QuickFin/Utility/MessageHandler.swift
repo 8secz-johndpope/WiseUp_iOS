@@ -10,9 +10,9 @@ import UIKit
 import SwiftMessages
 import Localize_Swift
 
-class ErrorMessageHandler {
+class MessageHandler {
     
-    static var shared = ErrorMessageHandler()
+    static var shared = MessageHandler()
     private init() {}
     weak var gameDelegate: GameDelegate?
     
@@ -20,11 +20,11 @@ class ErrorMessageHandler {
         let errorView = MessageView.viewFromNib(layout: .cardView)
         errorView.configureTheme(theme)
         errorView.configureDropShadow()
-        errorView.configureContent(title: title.localized(), body: body)  // Error messages are typically pre-localized
+        errorView.configureContent(title: title.localized(), body: body.localized())
         if let buttonTitle = buttonTitle {
             errorView.button?.setTitle(buttonTitle.localized(), for: .normal)
         } else {
-            errorView.button?.setTitle("Okay".localized(), for: .normal)
+            errorView.button?.setTitle(Text.Okay.localized(), for: .normal)
         }
         _ = errorView.button?.reactive.tap.observeNext(with: { (_) in
             SwiftMessages.hide()
@@ -49,9 +49,9 @@ class ErrorMessageHandler {
         let view = MessageView.viewFromNib(layout: .tabView)
         view.configureTheme(.success)
         view.configureDropShadow()
-        view.configureContent(title: "Insights\n".localized(), body: body.localized())
+        view.configureContent(title: Text.Insights.localized(), body: body.localized())
         view.titleLabel?.font = UIFont.boldSystemFont(ofSize: FontSizes.insightsTitle)
-        view.button?.setTitle("Next".localized(), for: .normal)
+        view.button?.setTitle(Text.Next.localized(), for: .normal)
         _ = view.button?.reactive.tap.observeNext(with: { [unowned self] (_) in
             SwiftMessages.hide()
             self.gameDelegate?.proceedToNextVC()
@@ -70,9 +70,9 @@ class ErrorMessageHandler {
         let view = MessageView.viewFromNib(layout: .tabView)
         view.configureTheme(.success)
         view.configureDropShadow()
-        view.configureContent(title: "Active Item\n".localized(), body: body.localized())
+        view.configureContent(title: Text.ActiveItem.localized(), body: body.localized())
         view.titleLabel?.font = UIFont.boldSystemFont(ofSize: FontSizes.insightsTitle)
-        view.button?.setTitle("Hide".localized(), for: .normal)
+        view.button?.setTitle(Text.Hide.localized(), for: .normal)
         _ = view.button?.reactive.tap.observeNext(with: { (_) in
             SwiftMessages.hide()
         })
