@@ -76,7 +76,7 @@ extension StoreItemDetailsViewController {
                     
                     print("Not enough coins for avatar")
                     
-                } else {
+                }  else {
                     
                     UserShared.shared.coins -= item.cost
                     UserShared.shared.avatarsOwned.append(item.name)
@@ -105,6 +105,41 @@ extension StoreItemDetailsViewController {
                 }
                 
             }
+            
+        } else if item.type == "stock" {
+            
+            if !(UserShared.shared.coins >= item.cost) {
+                let prompt: MessageView = {
+                    let mv = MessageView.viewFromNib(layout: .cardView)
+                    mv.configureTheme(.error)
+                    mv.configureDropShadow()
+                    mv.configureContent(title: "Error!".localized(), body: "Not Enough Coins".localized())  // Error messages are typically pre-localized
+                    mv.button?.setTitle("Okay".localized(), for: .normal)
+               
+                    _ = mv.button?.reactive.tap.observeNext(with: { (_) in
+                          SwiftMessages.hide()
+                    })
+                    return mv
+                }()
+                var config = SwiftMessages.Config()
+                config.presentationContext = .window(windowLevel: .statusBar)
+                config.preferredStatusBarStyle = .lightContent
+                SwiftMessages.show(config: config, view: prompt)
+            
+                print("Not enough coins for stock")
+            } else {
+                var stock = Stock()
+                stock.name = item.name
+                stock.buyInPrice = item.cost
+                stock.currentPrice = item.cost
+                stock.details = item.details
+                stock.numOfShare = 1
+                
+                UserShared.shared.coins -= item.cost
+                
+                
+            }
+            
             
         } else {
             
