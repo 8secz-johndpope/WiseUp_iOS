@@ -143,6 +143,11 @@ extension FriendsTableViewController: UITableViewDelegate, UITableViewDataSource
         let friend = getFriendObject(indexPath: indexPath)
         cell.profileImageView.image = UIImage(named: friend.avatar)
         cell.usernameLabel.text = friend.displayName
+        if friend.isFriendPending() {
+            cell.isUserInteractionEnabled = false
+            cell.usernameLabel.text! += " \(Text.Pending)"
+            cell.usernameLabel.alpha = 0.5
+        }
         return cell
     }
     
