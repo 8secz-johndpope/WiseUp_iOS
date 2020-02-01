@@ -203,7 +203,6 @@ class FirebaseService {
                                 } else {
                                     var user = try! FirebaseDecoder().decode(User.self, from: snapshot!.data()!)
                                     if friend.pending {
-                                        user.uid = user.email
                                         user.displayName = user.email
                                     }
                                     friendsArray.append(user)
@@ -222,9 +221,25 @@ class FirebaseService {
         }
     }
     
-    func removeFriend(friend: User, completion: @escaping (Bool) -> Void) {
-        #warning("TODO: Implement")
-        completion(true)
+    func removeFriend(friend: User, completion: @escaping (Error?) -> Void) {
+        let friendUID = friend.uid
+        db.collection("friends").whereField("uids", arrayContains: UserShared.shared.uid).getDocuments { [unowned self] (snapshot, error) in
+            if let error = error {
+                completion(error)
+            } else {
+                if let snapshot = snapshot {
+                    for document in snapshot.documents {
+                        let friend = try! FirebaseDecoder().decode(Friend.self, from: document.data())
+                        if friend.uids.contains(friendUID) {
+                            self.db.collection("friends").document(document.documentID).delete()
+                            completion(nil)
+                            return
+                        }
+                    }
+                    completion(NSError(domain: "", code: 7, userInfo: [NSLocalizedDescriptionKey: Text.FriendListCorrupt]))
+                }
+            }
+        }
     }
     
     func addFriend(email: String, completion: @escaping (Error?) -> Void) {
