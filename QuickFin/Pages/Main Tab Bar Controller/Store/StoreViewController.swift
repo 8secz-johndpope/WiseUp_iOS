@@ -43,8 +43,9 @@ class StoreViewController: BaseViewController {
     
     var avatarItems = [StoreItem]()
     var consumableItems = [StoreItem]()
+    var stockItems = [StoreItem]()
     
-    let segmentedControl = CustomSegmentedControl(items: ["Avatars", "Items"])
+    let segmentedControl = CustomSegmentedControl(items: ["Avatars", "Items", "Stocks"])
     
     func addControl()  {
                 
@@ -78,6 +79,11 @@ class StoreViewController: BaseViewController {
             storeItems = consumableItems
             tableView.reloadData()
             break // Dos
+        case 2:
+            storeItems = stockItems
+            tableView.reloadData()
+            break
+        
         default:
             break
         }
@@ -90,19 +96,24 @@ class StoreViewController: BaseViewController {
         
         avatarItems = []
         consumableItems = []
+        stockItems = []
         
         for sItem in storeItems {
             if sItem.type == "avatar" {
                 avatarItems.append(sItem)
-            } else {
+            } else if sItem.type == "consumable" {
                 consumableItems.append(sItem)
+            } else if sItem.type == "stock" {
+                stockItems.append(sItem)
             }
         }
         
         if segmentedControl.selectedSegmentIndex == 0 {
             storeItems = avatarItems
-        } else {
+        } else if segmentedControl.selectedSegmentIndex == 1 {
             storeItems = consumableItems
+        } else if segmentedControl.selectedSegmentIndex == 2 {
+            storeItems = stockItems
         }
         
         
@@ -114,21 +125,25 @@ class StoreViewController: BaseViewController {
             
             self.avatarItems = []
             self.consumableItems = []
+            self.stockItems = []
             
             for sItem in self.storeItems {
                 if sItem.type == "avatar" {
                     self.avatarItems.append(sItem)
-                } else {
+                } else if sItem.type == "consumable" {
                     self.consumableItems.append(sItem)
+                } else if sItem.type == "stock" {
+                    self.stockItems.append(sItem)
                 }
             }
             
             if self.segmentedControl.selectedSegmentIndex == 0 {
                 self.storeItems = self.avatarItems
-            } else {
+            } else if self.segmentedControl.selectedSegmentIndex == 1 {
                 self.storeItems = self.consumableItems
+            } else if self.segmentedControl.selectedSegmentIndex == 2 {
+                self.storeItems = self.stockItems
             }
-            
             self.tableView.reloadData()
         }
     

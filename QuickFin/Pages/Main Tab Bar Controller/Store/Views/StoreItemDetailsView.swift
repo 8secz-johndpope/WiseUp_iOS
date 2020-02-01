@@ -65,7 +65,19 @@ extension StoreItemDetailsViewController {
                     }
                     return b
                 }
-            } else {
+            } else if (item.type == "stock") {
+                
+                b.setTitle("Buy for ".localized() + cost.description + " per share", for: .normal)
+                b.backgroundColor = Colors.DynamicNavigationBarColor
+                
+                b.setTitleColor(Colors.DynamicNavigationTitleColor, for: .normal)
+                _ = b.reactive.tap.observeNext { [weak self] (_) in
+                    self?.buyItem()
+                    self?.dismiss(animated: true, completion: nil)
+                }
+                return b
+                
+            } else  {
                 if !UserShared.shared.itemsOwned.contains(item.name) {
                     b.setTitle("Buy for ".localized() + cost.description, for: .normal)
                     b.backgroundColor = Colors.DynamicNavigationBarColor

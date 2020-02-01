@@ -79,6 +79,8 @@
 		D5EBE6742393AC0000690A49 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EBE6732393AC0000690A49 /* ItemsViewController.swift */; };
 		D5F86626238BD14B0079F65D /* TriLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F86625238BD14B0079F65D /* TriLabelView.swift */; };
 		D7AB969357792D2B7E4BA7CE /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		E9BE3B5123E5428600CC023F /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BE3B5023E5428600CC023F /* Stock.swift */; };
+		E9BE3B5323E558D000CC023F /* StocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BE3B5223E558D000CC023F /* StocksViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,6 +185,8 @@
 		D5EA305F233737C100F56428 /* FontSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizes.swift; sourceTree = "<group>"; };
 		D5EBE6732393AC0000690A49 /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		D5F86625238BD14B0079F65D /* TriLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriLabelView.swift; sourceTree = "<group>"; };
+		E9BE3B5023E5428600CC023F /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		E9BE3B5223E558D000CC023F /* StocksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,6 +299,7 @@
 				BFD565412339927C007ECD97 /* ProfileViewController.swift */,
 				BF96AAC9238BA62E009534B5 /* ChangeAvatarViewController.swift */,
 				D5EBE6732393AC0000690A49 /* ItemsViewController.swift */,
+				E9BE3B5223E558D000CC023F /* StocksViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -326,6 +331,7 @@
 				BF4EDAA52341E09800E45E90 /* ChapterStats.swift */,
 				D5BA98652367779B0099D528 /* StoreItem.swift */,
 				BF96AACB238BCB5A009534B5 /* Store.swift */,
+				E9BE3B5023E5428600CC023F /* Stock.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -847,6 +853,7 @@
 				D5737F76235ADE6300756298 /* MessageHandler.swift in Sources */,
 				BFD5653E2339926B007ECD97 /* Question.swift in Sources */,
 				D571186A237BE846005419D4 /* ForgotPasswordViewController.swift in Sources */,
+				E9BE3B5323E558D000CC023F /* StocksViewController.swift in Sources */,
 				BF5A2E95237C8F4300C7EB87 /* UserShared.swift in Sources */,
 				D52471D823415A2D00922564 /* Images.swift in Sources */,
 				D59FEA45237FA07300C65A2F /* HintsViewController.swift in Sources */,
@@ -868,6 +875,7 @@
 				D59FEA4F237FDF3B00C65A2F /* EmailLinkViewController.swift in Sources */,
 				D5EBE6742393AC0000690A49 /* ItemsViewController.swift in Sources */,
 				D5469B4823377AF20047D09D /* SignInDelegateProtocol.swift in Sources */,
+				E9BE3B5123E5428600CC023F /* Stock.swift in Sources */,
 				D59FEA4D237FA6A000C65A2F /* LinkAccountsViewController.swift in Sources */,
 				BF4EDAA62341E09800E45E90 /* ChapterStats.swift in Sources */,
 				D57ED5C3237E819500EC1E87 /* PrivacyNoticeViewController.swift in Sources */,
