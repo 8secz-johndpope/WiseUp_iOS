@@ -148,6 +148,8 @@ class FirebaseService {
         }
     }
     
+    /// Getting all users from Firebase - Deprecated, used for old global leaderboard
+    /// - Parameter completion: An array of User objects
     func getUserData(completion: @escaping ([User]) -> Void) {
         var userArray = [User]()
         db.collection("users").order(by: "achievementCount", descending: true).getDocuments() { (querySnapshot, err) in
@@ -181,13 +183,44 @@ class FirebaseService {
         }
     }
     
-    func getFriends(completion: @escaping ([User]?) -> Void) {
-        #warning("TODO: Implement")
-        completion([
-            User(admin: false, email: "test1@test.com", uid: "1111", displayName: "Test subject 1"),
-            User(admin: false, email: "test2@test.com", uid: "2222", displayName: "Test subject 2"),
-            User(admin: false, email: "test3@test.com", uid: "3333", displayName: "Subject test 3"),
-        ])
+    /// Gets all friends of the current user, including pending ones.
+    /// - Parameter completion: returns an array of friends (never nil) or an error.
+    func getFriends(completion: @escaping (([User]?, Error?)) -> Void) {
+        let group = DispatchGroup()
+        if let uid = Auth.auth().currentUser?.uid {
+            db.collection("friends").whereField("uids", arrayContains: uid).getDocuments { [unowned self] (snapshot, error) in
+                if let error = error {
+                    completion((nil, error))
+                } else {
+                    var friendsArray = [User]()
+                    for document in snapshot!.documents {
+                        group.enter()
+                        let friend = try! FirebaseDecoder().decode(Friend.self, from: document.data())
+                        if friend.uids.count == 2 {
+                            self.db.collection("users").document(friend.uids[1]).getDocument { (snapshot, error) in
+                                if let error = error {
+                                    completion((nil, error))
+                                } else {
+                                    let user = try! FirebaseDecoder().decode(User.self, from: snapshot!.data())
+                                    friendsArray.append(user)
+                                }
+                                group.leave()
+                            }
+                        } else {
+                            completion((nil, NSError(domain: "", code: 7, userInfo: [ NSLocalizedDescriptionKey: "Your friend profile is corrupt. Please contact support."])))
+                        }
+                    }
+                    group.notify(queue: .main) {
+                        completion((friendsArray, nil))
+                    }
+                }
+            }
+        }
+//        completion([
+//            User(admin: false, email: "test1@test.com", uid: "1111", displayName: "Test subject 1"),
+//            User(admin: false, email: "test2@test.com", uid: "2222", displayName: "Test subject 2"),
+//            User(admin: false, email: "test3@test.com", uid: "3333", displayName: "Subject test 3"),
+//        ])
     }
     
     func removeFriend(friend: User, completion: @escaping (Bool) -> Void) {
@@ -195,9 +228,16 @@ class FirebaseService {
         completion(true)
     }
     
-    func addFriend(email: String, completion: @escaping (Bool) -> Void) {
+    func addFriend(email: String, completion: @escaping (Error?) -> Void) {
+        db.collection("users").whereField("email", isEqualTo: email).getDocuments { (snapshot, error) in
+            if let error = error {
+                completion(error)
+            } else {
+                completion(nil)
+            }
+        }
         #warning("TODO: Implement")
-        completion(true)
+        //completion(true)
     }
 }
     

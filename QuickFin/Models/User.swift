@@ -6,6 +6,8 @@
 //  Copyright © 2019 Fidelity Investments. All rights reserved.
 //
 
+// MARK: This struct is used for all users except for the current user.
+
 import Foundation
 
 struct User: Codable, Equatable {
