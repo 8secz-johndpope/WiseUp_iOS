@@ -78,7 +78,7 @@ class ChapterViewController: BaseViewController, UICollectionViewDelegate, UICol
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ChapterCell
         
         if let chapter = chapters?[indexPath.item] {
-            cell.name = chapter.name
+            cell.name = chapter.name.replacingOccurrences(of: "%20", with: " ")
             cell.imageName = chapter.imageName
             
             if UserShared.shared.achievementsCompleted.contains(chapter.name + "PerfectChapter".localized()) {
@@ -96,7 +96,7 @@ class ChapterViewController: BaseViewController, UICollectionViewDelegate, UICol
         let gameVC = GameViewController()
         gameVC.questionNumber = 1
         gameVC.questions = chapter?.questions
-        gameVC.chapterName = chapter?.name
+        gameVC.chapterName = chapter?.name.replacingOccurrences(of: "%20", with: " ")
         navigationController?.pushViewController(gameVC, animated: true)
     }
     

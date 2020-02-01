@@ -9,8 +9,8 @@
 import UIKit
 
 struct Images {
-    static let chaptersUnselected = #imageLiteral(resourceName: "Chapters Unselected")
-    static let chapters = #imageLiteral(resourceName: "Chapters")
+    static let chaptersUnselected = #imageLiteral(resourceName: "Pig Unselected")
+    static let chapters = #imageLiteral(resourceName: "Pig")
     static let leaderboardUnselected = #imageLiteral(resourceName: "Leaderboard Unselected")
     static let leaderboard = #imageLiteral(resourceName: "Leaderboard")
     static let profileUnselected = #imageLiteral(resourceName: "Profile Unselected")

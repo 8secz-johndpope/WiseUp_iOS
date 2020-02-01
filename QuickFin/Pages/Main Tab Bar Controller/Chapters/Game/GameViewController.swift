@@ -29,10 +29,13 @@ class GameViewController: BaseViewController, GameDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getCurrentQuestion()
-        initNav()
-        initTableView()
-        initUI()
+        if getCurrentQuestion() {
+            initNav()
+            initTableView()
+            initUI()
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,8 +52,14 @@ class GameViewController: BaseViewController, GameDelegate {
         navigationItem.rightBarButtonItem?.isEnabled = true
     }
     
-    func getCurrentQuestion() {
-        currentQuestion = questions[questionNumber-1]
+    func getCurrentQuestion() -> Bool {
+        if questions.count == 0 {
+            MessageHandler.shared.showMessage(theme: .error, title: Text.Error, body: Text.SomethingWentWrong)
+            return false
+        } else {
+            currentQuestion = questions[questionNumber-1]
+            return true
+        }
     }
     
     @objc func skip() {
