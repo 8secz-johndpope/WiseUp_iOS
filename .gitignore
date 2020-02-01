@@ -1,1 +1,3 @@
 Pods/
+*.xcuserstate
+QuickFin.xcodeproj/xcuserdata/auroratan.xcuserdatad/xcschemes/xcschememanagement.plist
