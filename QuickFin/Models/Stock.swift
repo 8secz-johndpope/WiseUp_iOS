@@ -9,11 +9,12 @@
 import Foundation
 
 struct Stock: Codable, Equatable {
-
+    
     var name = String()
     var details = String()
     var currentPrice = Int()
     var numOfShare = Int()
     var buyInPrice = Int()
     var imageName = String()
+    var uid = String()
 }

@@ -285,8 +285,18 @@ class FirebaseService {
             }
         }
     }
+    
+    func buyStock(stockObject: Stock, completion: @escaping (Error?) -> Void) {
+        let encodedStockObject = try! FirebaseEncoder().encode(stockObject)
+        self.db.collection("stock-market").addDocument(data: encodedStockObject as! [String : Any])
+        completion(nil)
+    }
+    
 }
     
+
+
+
 // MARK: - Firebase Storage
 extension FirebaseService {
     

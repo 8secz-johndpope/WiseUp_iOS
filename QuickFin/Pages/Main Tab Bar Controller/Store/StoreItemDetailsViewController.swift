@@ -134,9 +134,10 @@ extension StoreItemDetailsViewController {
                 stock.currentPrice = item.cost
                 stock.details = item.details
                 stock.numOfShare = 1
+                stock.uid = UserShared.shared.uid
                 
                 UserShared.shared.coins -= item.cost
-                
+
                 
             }
             
