@@ -11,7 +11,11 @@ import SnapKit
 import SwipeCellKit
 import GradientLoadingBar
 
-class FriendsTableViewController: BaseViewController {
+protocol FriendsTableViewControllerDelegate: class {
+    func fetchFriends()
+}
+
+class FriendsTableViewController: BaseViewController, FriendsTableViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,20 +75,23 @@ class FriendsTableViewController: BaseViewController {
     
     func deleteFriend(indexPath: IndexPath) {
         GradientLoadingBar.shared.fadeIn()
-        FirebaseService.shared.removeFriend(friend: getFriendObject(indexPath: indexPath)) { (success) in
-            if success {
-                self.friends = self.friends.filter() { $0 != self.getFriendObject(indexPath: indexPath) }
-                self.processIndex()
-                self.tableView.deleteRows(at: [indexPath], with: .automatic)
-            } else {
-                MessageHandler.shared.showMessage(theme: .error, title: Text.Error, body: Text.FriendDeletionErrorMessage)
-            }
+        FirebaseService.shared.removeFriend(friend: getFriendObject(indexPath: indexPath)) { (error) in
             GradientLoadingBar.shared.fadeOut()
+            if let error = error {
+                MessageHandler.shared.showMessage(theme: .error, title: Text.Error, body: error.localizedDescription)
+            } else {
+                //self.friends = self.friends.filter() { $0 != self.getFriendObject(indexPath: indexPath) }
+                //self.processIndex()
+                //self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                self.fetchFriends()
+            }
         }
     }
     
     @objc func addFriend() {
-        present(AddFriendViewController(), animated: true, completion: nil)
+        let nextVC = AddFriendViewController()
+        nextVC.delegate = self
+        present(nextVC, animated: true, completion: nil)
     }
     
 }
@@ -144,7 +151,6 @@ extension FriendsTableViewController: UITableViewDelegate, UITableViewDataSource
         cell.profileImageView.image = UIImage(named: friend.avatar)
         cell.usernameLabel.text = friend.displayName
         if friend.isFriendPending() {
-            cell.isUserInteractionEnabled = false
             cell.usernameLabel.text = "\(Text.Pending) " + (cell.usernameLabel.text ?? "")
             cell.usernameLabel.alpha = 0.5
         }
@@ -168,8 +174,11 @@ extension FriendsTableViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let friend = getFriendObject(indexPath: indexPath)
+        if !friend.isFriendPending() {
+            #warning("TODO: Display friend info?")
+        }
         tableView.deselectRow(at: indexPath, animated: true)
-        #warning("TODO: Display friend info?")
     }
     
 }
