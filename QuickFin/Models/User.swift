@@ -7,7 +7,7 @@
 //
 
 // MARK: This struct is used for all users except for the current user.
-// MARK: If email == uid == displayName, then user is pending friend and should not show info.
+// MARK: If email == displayName, then user is pending friend and should not show info.
 
 import Foundation
 
@@ -65,7 +65,7 @@ struct User: Codable, Equatable {
     }
     
     func isFriendPending() -> Bool {
-        return email == uid && email == displayName
+        return email == displayName
     }
     
     mutating func triggerAchievement(AchievementName: String) -> Bool {

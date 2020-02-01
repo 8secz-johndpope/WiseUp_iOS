@@ -18,6 +18,8 @@ class AddFriendViewController: BaseViewController {
         initUI()
     }
     
+    weak var delegate: FriendsTableViewControllerDelegate?
+    
 }
 
 // MARK: - UI
@@ -56,6 +58,7 @@ extension AddFriendViewController {
                             MessageHandler.shared.showMessageModal(theme: .error, title: Text.Failed, body: error.localizedDescription)
                         } else {
                             MessageHandler.shared.showMessageModal(theme: .success, title: Text.Success, body: Text.FriendRequestSent)
+                            self.delegate?.fetchFriends()
                             self.dismiss(animated: true, completion: nil)
                         }
                     }
