@@ -6,6 +6,9 @@
 //  Copyright © 2019 Fidelity Investments. All rights reserved.
 //
 
+// MARK: This struct is used for all users except for the current user.
+// MARK: If email == uid == displayName, then user is pending friend and should not show info.
+
 import Foundation
 
 struct User: Codable, Equatable {
@@ -59,6 +62,10 @@ struct User: Codable, Equatable {
     
     func getName() -> String {
         return "\(fName) \(lName)"
+    }
+    
+    func isFriendPending() -> Bool {
+        return email == uid && email == displayName
     }
     
     mutating func triggerAchievement(AchievementName: String) -> Bool {
