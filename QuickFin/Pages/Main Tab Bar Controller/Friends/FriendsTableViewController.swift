@@ -28,20 +28,55 @@ class FriendsTableViewController: BaseViewController, FriendsTableViewController
     }
     
     var friends = [User]()
+    var pendingRequests = [User]()
     var friendsDictionary = [String: [User]]()
     var friendSectionTitles = [String]()
     var tableView: UITableView!
     let cellReuseID = "friend"
+    let group = DispatchGroup()
     
     func fetchFriends() {
+        GradientLoadingBar.shared.fadeIn()
         FirebaseService.shared.getFriends { [unowned self] (friendsArray, error) in
             if let error = error {
                 MessageHandler.shared.showMessage(theme: .error, title: Text.Error, body: error.localizedDescription)
             } else {
                 self.friends = friendsArray!
-                self.processIndex()
-                self.tableView.reloadData()
+                self.filterPending()
             }
+        }
+    }
+    
+    func filterPending() {
+        var newFriends = [User]()
+        var newPendingRequests = [User]()
+        for friend in friends {
+            if friend.isFriendPending() {
+                group.enter()
+                FirebaseService.shared.getPendingFriendRequest(friendUID: friend.uid) { [unowned self] (friendObj, error) in
+                    if let error = error {
+                        MessageHandler.shared.showMessage(theme: .error, title: Text.Error, body: error.localizedDescription)
+                        print("line 64")
+                        print(friend.uid)
+                    } else {
+                        if friendObj != nil {
+                            newPendingRequests.append(friend)
+                        }
+                    }
+                    self.group.leave()
+                }
+            } else {
+                newFriends.append(friend)
+            }
+        }
+        group.notify(queue: .main) { [unowned self] in
+            self.friends = newFriends
+            self.pendingRequests = newPendingRequests
+            self.processIndex()
+            self.tableView.reloadData()
+            self.navigationItem.leftBarButtonItem?.action = #selector(self.viewIncomingRequests)
+            self.navigationItem.rightBarButtonItem?.action = #selector(self.addFriend)
+            GradientLoadingBar.shared.fadeOut()
         }
     }
     
@@ -80,9 +115,6 @@ class FriendsTableViewController: BaseViewController, FriendsTableViewController
             if let error = error {
                 MessageHandler.shared.showMessage(theme: .error, title: Text.Error, body: error.localizedDescription)
             } else {
-                //self.friends = self.friends.filter() { $0 != self.getFriendObject(indexPath: indexPath) }
-                //self.processIndex()
-                //self.tableView.deleteRows(at: [indexPath], with: .automatic)
                 self.fetchFriends()
             }
         }
@@ -91,6 +123,11 @@ class FriendsTableViewController: BaseViewController, FriendsTableViewController
     @objc func addFriend() {
         let nextVC = AddFriendViewController()
         nextVC.delegate = self
+        present(nextVC, animated: true, completion: nil)
+    }
+    
+    @objc func viewIncomingRequests() {
+        let nextVC = PendingRequestViewController()
         present(nextVC, animated: true, completion: nil)
     }
     
@@ -114,7 +151,8 @@ extension FriendsTableViewController {
             this.bottom.equalToSuperview()
         }
         
-        navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addFriend)), animated: true)
+        navigationItem.setLeftBarButton(UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: nil), animated: true)
+        navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil), animated: true)
     }
 }
 
