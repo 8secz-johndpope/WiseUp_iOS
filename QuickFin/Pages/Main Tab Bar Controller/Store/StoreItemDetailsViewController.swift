@@ -10,7 +10,24 @@ import UIKit
 import SwiftMessages
 import Bond
 
-class StoreItemDetailsViewController: BaseViewController {
+class StoreItemDetailsViewController: BaseViewController{
+    var stock_quantity: Int = 0
+    func setStockQuantity() {
+        let alertController = UIAlertController(title: "Choose Stock Quantity", message: nil, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "Ok", style: .default) { (_) in
+            if let txtField = alertController.textFields?.first, let stock_choice = txtField.text {
+                self.stock_quantity = Int(stock_choice) ?? 0
+                print("Stock Amount is " + stock_choice)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Enter stock quantity in Integer"
+        }
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
     
     var buyButton: UIButton?
 
@@ -107,7 +124,6 @@ extension StoreItemDetailsViewController {
             }
             
         } else if item.type == "stock" {
-            
             if !(UserShared.shared.coins >= item.cost) {
                 let prompt: MessageView = {
                     let mv = MessageView.viewFromNib(layout: .cardView)
@@ -128,15 +144,15 @@ extension StoreItemDetailsViewController {
             
                 print("Not enough coins for stock")
             } else {
+                setStockQuantity()
                 let view = MessageView.viewFromNib(layout: .cardView)
                 SwiftMessages.show(view: view)
-                //todo popup
                 var stock = Stock()
                 stock.name = item.name
                 stock.buyInPrice = item.cost
                 stock.currentPrice = item.cost
                 stock.details = item.details
-                stock.numOfShare = 1 //user input
+                stock.numOfShare = stock_quantity //user input
                 stock.uid = UserShared.shared.uid
                 
                 UserShared.shared.coins -= item.cost
