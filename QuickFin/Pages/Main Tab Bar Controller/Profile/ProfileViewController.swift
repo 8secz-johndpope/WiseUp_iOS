@@ -33,10 +33,11 @@ class ProfileViewController: BaseViewController {
     let cellReuseID = "profileSettings"
     let profileSettings = [
         "Change Avatar".localized(),
+        "Stocks".localized(),
         "Items".localized(),
         "Settings".localized()
     ]
-    let profileSettingIcons: [UIImage] = [#imageLiteral(resourceName: "Change Avatar"), #imageLiteral(resourceName: "Consumables"), #imageLiteral(resourceName: "Settings")]
+    let profileSettingIcons: [UIImage] = [#imageLiteral(resourceName: "Change Avatar"), #imageLiteral(resourceName: "Consumables"), #imageLiteral(resourceName: "Privacy Notice"), #imageLiteral(resourceName: "Settings")]
     
     func fetchData() {
         let xpPercentage = (Double)(UserShared.shared.experience % 1000) / 1000.0
@@ -65,6 +66,11 @@ class ProfileViewController: BaseViewController {
         avatarVC.delegate = self
         let wrappedAvatarVC = BaseNavigationController(rootViewController: avatarVC, prefersLargeTitles: false)
         present(wrappedAvatarVC, animated: true)
+    }
+    
+    func openStocks() {
+        let stockVC = BaseNavigationController(rootViewController: StocksViewController(), prefersLargeTitles: false)
+        present(stockVC, animated: true, completion: nil)
     }
     
     func openItems() {

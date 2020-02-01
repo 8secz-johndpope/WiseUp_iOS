@@ -207,6 +207,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         case "Change Avatar".localized():
             openChangeAvatar()
             break
+        case "Stocks".localized():
+            openStocks()
+            break
         case "Items".localized():
             openItems()
             break
