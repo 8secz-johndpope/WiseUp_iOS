@@ -42,4 +42,6 @@ struct Text {
     static let FriendsAlready = "You are already friends! :)"
     static let FriendRequestSentAlready = "You have already sent a friend request."
     static let FriendPendingRequestTitle = "Incoming Requests"
+    static let Decline = "Decline"
+    static let Accept = "Accept"
 }

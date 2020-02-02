@@ -44,6 +44,7 @@ class FriendsTableViewController: BaseViewController, FriendsTableViewController
                 self.friends = friendsArray!
                 self.filterPending()
             }
+            GradientLoadingBar.shared.fadeOut()
         }
     }
     
@@ -56,8 +57,6 @@ class FriendsTableViewController: BaseViewController, FriendsTableViewController
                 FirebaseService.shared.getPendingFriendRequest(friendUID: friend.uid) { [unowned self] (friendObj, error) in
                     if let error = error {
                         MessageHandler.shared.showMessage(theme: .error, title: Text.Error, body: error.localizedDescription)
-                        print("line 64")
-                        print(friend.uid)
                     } else {
                         if friendObj != nil {
                             newPendingRequests.append(friend)
@@ -128,7 +127,9 @@ class FriendsTableViewController: BaseViewController, FriendsTableViewController
     
     @objc func viewIncomingRequests() {
         let nextVC = PendingRequestViewController()
-        present(nextVC, animated: true, completion: nil)
+        nextVC.pendingRequests = pendingRequests
+        nextVC.delegate = self
+        present(BaseNavigationController(rootViewController: nextVC, prefersLargeTitles: false), animated: true, completion: nil)
     }
     
 }

@@ -147,7 +147,7 @@
 		D54E5BAB23D401CE00E31A39 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		D54E5BAD23D4085B00E31A39 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		D5708F8A23D6D857008D7B2C /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
-		D570D5FA2333595900AB308B /* QuickFin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickFin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D570D5FA2333595900AB308B /* WiseUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WiseUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D570D5FD2333595900AB308B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D570D5FF2333595900AB308B /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		D570D6042333595B00AB308B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -368,7 +368,7 @@
 		D570D5FB2333595900AB308B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D570D5FA2333595900AB308B /* QuickFin.app */,
+				D570D5FA2333595900AB308B /* WiseUp.app */,
 				D570D60E2333595B00AB308B /* QuickFinTests.xctest */,
 				D570D6192333595B00AB308B /* QuickFinUITests.xctest */,
 			);
@@ -600,7 +600,7 @@
 			);
 			name = QuickFin;
 			productName = QuickFin;
-			productReference = D570D5FA2333595900AB308B /* QuickFin.app */;
+			productReference = D570D5FA2333595900AB308B /* WiseUp.app */;
 			productType = "com.apple.product-type.application";
 		};
 		D570D60D2333595B00AB308B /* QuickFinTests */ = {
@@ -1074,7 +1074,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fidelity.QuickFin.notifications;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = WiseUp;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1097,7 +1097,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fidelity.QuickFin.notifications;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = WiseUp;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
