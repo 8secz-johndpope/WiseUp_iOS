@@ -17,6 +17,7 @@ class ChapterViewController: BaseViewController, UICollectionViewDelegate, UICol
     private let widthOffset: CGFloat = 20
     var chapters: [Chapter]?
     var collectionView: UICollectionView!
+    let refreshControl = UIRefreshControl()
     let emojiArray = ["🔆", "🧮", "😊", "🎲", "🏆", "⛩", "💎"]
     
     override func viewDidLoad() {
@@ -42,6 +43,8 @@ class ChapterViewController: BaseViewController, UICollectionViewDelegate, UICol
         collectionView.register(ChapterCell.self, forCellWithReuseIdentifier: "cellId")
         collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
         collectionView.layer.masksToBounds = false
+        collectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(loadChapters), for: .valueChanged)
     }
     
     func initUI() {
@@ -54,17 +57,20 @@ class ChapterViewController: BaseViewController, UICollectionViewDelegate, UICol
         }
     }
     
-    func loadChapters() {
+    @objc func loadChapters() {
         gradientLoadingBar.fadeIn()
         // First Get Pre-Cached Chapters (or empty if nothing cached)
-        self.chapters = CacheService.shared.getCachedChapters()
-        self.collectionView.reloadData()
+        chapters = CacheService.shared.getCachedChapters()
+        Core.shared.chapters = chapters ?? [Chapter]()
+        collectionView.reloadData()
         
         // Second, asynchronously check for updates to chapters and download them if needed
         CacheService.shared.getChapters { [unowned self] (chaps) in
             self.chapters = chaps
+            Core.shared.chapters = chaps
             self.collectionView.reloadData()
             self.gradientLoadingBar.fadeOut()
+            self.refreshControl.endRefreshing()
         }
     }
     

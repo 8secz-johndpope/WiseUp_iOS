@@ -16,8 +16,49 @@ class FriendDetailViewController: ProfileViewController {
         initUI()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        GradientLoadingBar.shared.fadeOut()
+    }
+    
     weak var delegate: FriendsTableViewControllerDelegate?
     var friend: User!
+    
+    func startVersusGame() {
+        // First, create a room
+        var room = VersusRoom()
+        let chapter = Core.shared.randomChapter()
+        room.chapterName = chapter.name
+        room.uid0 = UserShared.shared.uid
+        room.uid1 = friend.uid
+        GradientLoadingBar.shared.fadeIn()
+        FirebaseService.shared.setVersusRoom(room: room) { (roomWithID, error) in
+            GradientLoadingBar.shared.fadeOut()
+            if let error = error {
+                MessageHandler.shared.showMessageModal(theme: .error, title: Text.Error, body: error.localizedDescription)
+                return
+            }
+            if let roomWithID = roomWithID {
+                room = roomWithID
+            }
+            // Then, wait for the opponent to join
+            GradientLoadingBar.shared.fadeIn()
+            FirebaseService.shared.listenForOpponentJoin(room: room) { [unowned self] (error) in
+                GradientLoadingBar.shared.fadeOut()
+                if let error = error {
+                    MessageHandler.shared.showMessageModal(theme: .error, title: Text.Error, body: error.localizedDescription)
+                    print("here")
+                    return
+                }
+                // The opponent has joined
+                let versusVC = VersusGameViewController()
+                versusVC.questionNumber = 1
+                versusVC.questions = chapter.questions
+                versusVC.chapterName = chapter.name.replacingOccurrences(of: "%20", with: " ")
+                self.navigationController?.pushViewController(versusVC, animated: true)
+            }
+        }
+    }
     
     override func fetchData() {
         let xpPercentage = (Double)(friend.experience % 1000) / 1000.0
@@ -205,8 +246,11 @@ extension FriendDetailViewController {
             b.setTitleColor(.white, for: .normal)
             b.titleLabel?.font = UIFont.systemFont(ofSize: FontSizes.pageTitle, weight: .semibold)
             b.backgroundColor = Colors.FidelityGreen
-            _ = b.reactive.tap.observeNext { (_) in
+            _ = b.reactive.tap.observeNext { [unowned self] (_) in
                 #warning("TODO: Implement")
+                GradientLoadingBar.shared.fadeIn()
+                b.setTitle(Text.WaitingForOpponent, for: .normal)
+                self.startVersusGame()
             }
             b.layer.cornerRadius = 10
             return b
