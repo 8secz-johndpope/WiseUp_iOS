@@ -9,7 +9,11 @@
 import UIKit
 import SnapKit
 
-class ProfileViewController: BaseViewController {
+protocol ProfileViewControllerDelegate: class {
+    func fetchData()
+}
+
+class ProfileViewController: BaseViewController, ProfileViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +73,9 @@ class ProfileViewController: BaseViewController {
     }
     
     func openStocks() {
-        let stockVC = BaseNavigationController(rootViewController: StocksViewController(), prefersLargeTitles: false)
+        let innerVC = StocksViewController()
+        innerVC.delegate = self
+        let stockVC = BaseNavigationController(rootViewController: innerVC, prefersLargeTitles: false)
         present(stockVC, animated: true, completion: nil)
     }
     

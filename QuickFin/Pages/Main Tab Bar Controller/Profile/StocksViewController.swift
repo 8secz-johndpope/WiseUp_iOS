@@ -8,14 +8,15 @@
 
 import UIKit
 
-/*
-protocol ItemsViewDelegate: class {
-    func didConsume()
+
+protocol StocksViewDelegate: class {
+    func fetchData()
 }
-*/
 
 class StocksViewController: StoreViewController, ItemsViewDelegate {
 
+    weak var delegate: ProfileViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Stocks".localized()
@@ -32,7 +33,12 @@ class StocksViewController: StoreViewController, ItemsViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //
+        let innerVC = StoreItemDetailsViewController()
+        innerVC.delegate = self
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        delegate?.fetchData()
     }
     
     func didConsume() {
@@ -40,6 +46,7 @@ class StocksViewController: StoreViewController, ItemsViewDelegate {
     }
     
     override func fetchData() {
+        stockItems.removeAll()
         FirebaseService.shared.getStock { (stocks, error) in
             for stock in stocks! {
                 var sItem = StoreItem()
@@ -47,6 +54,7 @@ class StocksViewController: StoreViewController, ItemsViewDelegate {
                 sItem.details = "Current Price: \(stock.currentPrice) \t Buy In Price:  \(stock.currentPrice) \n \(stock.details)"
                 sItem.imageName = stock.imageName
                 sItem.cost = stock.numOfShare
+                sItem.type = "stock"
                 self.stockItems.append(sItem)
             }
             
@@ -93,14 +101,18 @@ class StocksViewController: StoreViewController, ItemsViewDelegate {
         
     }
     
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let detailsVC = StoreItemDetailsViewController()
         detailsVC.item = storeItems[indexPath.row]
-        detailsVC.showConsume = true
+        detailsVC.showSell = true
         detailsVC.itemsViewDelegate = self
+        detailsVC.delegate = self
         present(detailsVC, animated: true) {}
     }
+    
+    
 
 }
 

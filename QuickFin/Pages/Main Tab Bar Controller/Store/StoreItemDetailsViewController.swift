@@ -11,6 +11,9 @@ import SwiftMessages
 import Bond
 
 class StoreItemDetailsViewController: BaseViewController{
+    
+    weak var delegate: StocksViewController?
+    
     var stock_quantity: Int = 0
     func setStockQuantity() {
         let alertController = UIAlertController(title: "Choose Stock Quantity", message: nil, preferredStyle: .alert)
@@ -56,6 +59,21 @@ class StoreItemDetailsViewController: BaseViewController{
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        delegate?.fetchData()
+    }
+    
+    var showSell: Bool? {
+        didSet {
+            buyButton?.setTitle("Sell All Share".localized(), for: .normal)
+            _ = buyButton?.reactive.tap.observeNext(with: {[unowned self] (_) in
+                self.sellStock()
+                // TODO ADD A POPUP
+                self.dismiss(animated: true, completion: nil)
+            })
+        }
+    }
+    
 }
 
 extension StoreItemDetailsViewController {
@@ -65,6 +83,29 @@ extension StoreItemDetailsViewController {
         UserShared.shared.activeItem = item
         FirebaseService.shared.pushUserToFirebase()
     }
+    
+    func sellStock() {
+        
+        FirebaseService.shared.getStock { (stocks, error) in
+            for stock in stocks! {
+                if self.item.name == stock.name
+                    && self.item.cost == stock.numOfShare
+                    && self.item.details.contains("\(stock.buyInPrice)") {
+                    UserShared.shared.coins += stock.currentPrice * stock.numOfShare
+                    FirebaseService.shared.sellStock(stockObject: stock) { (e) in
+                        self.delegate?.fetchData()
+                    }
+
+                    FirebaseService.shared.pushUserToFirebase()
+                }
+            }
+        }
+        
+        
+
+    }
+    
+    
     
     func buyItem() {
         
@@ -159,6 +200,7 @@ extension StoreItemDetailsViewController {
                 
                 UserShared.shared.coins -= item.cost * stock_quantity
                 FirebaseService.shared.buyStock(stockObject: stock) { (e) in }
+                FirebaseService.shared.pushUserToFirebase()
             }
             
         } else {

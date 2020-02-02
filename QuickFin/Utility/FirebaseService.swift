@@ -310,6 +310,25 @@ class FirebaseService {
         }
     }
     
+    func sellStock(stockObject: Stock, completion: @escaping (Error?) -> Void) {
+        if let uid = Auth.auth().currentUser?.uid {
+            db.collection("stock-market").whereField("uid", isEqualTo: uid).whereField("buyInPrice", isEqualTo: stockObject.buyInPrice).whereField("details", isEqualTo: stockObject.details).whereField("imageName", isEqualTo: stockObject.imageName).whereField("name", isEqualTo: stockObject.name).whereField("numOfShare", isEqualTo: stockObject.numOfShare).getDocuments { (snapshot, error) in
+                if let error = error {
+                    completion(error)
+                } else {
+                    if snapshot?.documents.count == 0 {
+                        completion(nil)
+                    } else {
+                        let documentID = snapshot?.documents[0].documentID
+                        self.db.collection("stock-market").document(documentID!).delete()
+                        completion(nil)
+                    }
+                }
+ 
+            }
+        }
+    }
+    
 }
 
 
