@@ -1,33 +1,105 @@
 //
-//  ProfileView.swift
+//  FriendDetailViewController.swift
 //  QuickFin
 //
-//  Created by Connor Buckley on 9/22/19.
-//  Copyright © 2019 Fidelity Investments. All rights reserved.
+//  Created by Xu on 2/1/20.
+//  Copyright © 2020 Fidelity Investments. All rights reserved.
 //
 
 import UIKit
 import SnapKit
+import GradientLoadingBar
 
-protocol ProfileViewDelegate: class {
-    func updateProfileImage()
+class FriendDetailViewController: ProfileViewController {
+    
+    override func viewDidLoad() {
+        initUI()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        GradientLoadingBar.shared.fadeOut()
+    }
+    
+    weak var delegate: FriendsTableViewControllerDelegate?
+    var friend: User!
+    
+    func startVersusGame() {
+        // First, create a room
+        var room = VersusRoom()
+        let chapter = Core.shared.randomChapter()
+        room.chapterName = chapter.name
+        room.uid0 = UserShared.shared.uid
+        room.uid1 = friend.uid
+        GradientLoadingBar.shared.fadeIn()
+        FirebaseService.shared.setVersusRoom(room: room) { (roomWithID, error) in
+            GradientLoadingBar.shared.fadeOut()
+            if let error = error {
+                MessageHandler.shared.showMessageModal(theme: .error, title: Text.Error, body: error.localizedDescription)
+                return
+            }
+            if let roomWithID = roomWithID {
+                room = roomWithID
+            }
+            // Then, wait for the opponent to join
+            GradientLoadingBar.shared.fadeIn()
+            FirebaseService.shared.listenForOpponentJoin(room: room) { [unowned self] (error) in
+                GradientLoadingBar.shared.fadeOut()
+                if let error = error {
+                    MessageHandler.shared.showMessageModal(theme: .error, title: Text.Error, body: error.localizedDescription)
+                    print("here")
+                    return
+                }
+                // The opponent has joined
+                let versusVC = VersusGameViewController()
+                versusVC.questionNumber = 1
+                versusVC.questions = chapter.questions
+                versusVC.chapterName = chapter.name.replacingOccurrences(of: "%20", with: " ")
+                self.navigationController?.pushViewController(versusVC, animated: true)
+            }
+        }
+    }
+    
+    override func fetchData() {
+        let xpPercentage = (Double)(friend.experience % 1000) / 1000.0
+        xpLevelLabel.text = (friend.experience / 1000).description
+        coinBalanceLabel.text = friend.coins.description
+        achievementLabel.text = friend.achievementCount.description
+        UIView.animate(withDuration: 0.4) {
+            self.xpProgressBarFiller.snp.remakeConstraints { (this) in
+                this.leading.equalTo(self.xpProgressBarBackgroundView.snp.leading)
+                this.height.equalTo(10)
+                this.centerY.equalTo(self.xpProgressBarBackgroundView.snp.centerY)
+                this.width.equalTo(self.xpProgressBarBackgroundView.snp.width).multipliedBy(xpPercentage)
+            }
+            self.xpProgressBarFiller.superview?.layoutIfNeeded()
+        }
+        updateProfileImage()
+    }
+    
+    override func updateProfileImage() {
+        profileImageView.image = UIImage(named: friend.avatar)
+    }
+    
 }
 
-extension ProfileViewController: ProfileViewDelegate {
+extension FriendDetailViewController {
+    
+    override func initUI() {
+        setBackground()
         
-    @objc func initUI() {
         profileImageView = {
             let imageView = UIImageView()
             imageView.contentMode = .scaleAspectFill
-            imageView.image = UIImage(named: UserShared.shared.avatar)
+            imageView.image = UIImage(named: friend.avatar)
             return imageView
         }()
         let profileNameLabel: UILabel = {
             let l = UILabel()
-            if UserShared.shared.getName() == " " {
-                l.text = UserShared.shared.displayName
+            if friend.getName() == " " {
+                l.text = friend.displayName
             } else {
-                l.text = UserShared.shared.getName()
+                l.text = friend.getName()
             }
             l.font = .boldSystemFont(ofSize: FontSizes.largeNavTitle)
             l.textColor = Colors.DynamicTextColor
@@ -52,7 +124,7 @@ extension ProfileViewController: ProfileViewDelegate {
         }()
         coinBalanceLabel = {
             let l = UILabel()
-            l.text = UserShared.shared.coins.description
+            l.text = friend.coins.description
             l.font = .systemFont(ofSize: FontSizes.pageTitle)
             l.textColor = Colors.DynamicTextColor
             return l
@@ -68,7 +140,7 @@ extension ProfileViewController: ProfileViewDelegate {
         }()
         achievementLabel = {
             let l = UILabel()
-            l.text = UserShared.shared.achievementCount.description
+            l.text = friend.achievementCount.description
             l.font = .systemFont(ofSize: FontSizes.pageTitle)
             l.textColor = Colors.DynamicTextColor
             return l
@@ -168,53 +240,56 @@ extension ProfileViewController: ProfileViewDelegate {
             this.trailing.equalToSuperview()
         }
         
-        tableView = UITableView(frame: .zero, style: .plain)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(SettingsTableViewCell.self, forCellReuseIdentifier: cellReuseID)
+        let inviteButton: UIButton = {
+            let b = UIButton()
+            b.setTitle(Text.InviteTo1v1.localized(), for: .normal)
+            b.setTitleColor(.white, for: .normal)
+            b.titleLabel?.font = UIFont.systemFont(ofSize: FontSizes.pageTitle, weight: .semibold)
+            b.backgroundColor = Colors.FidelityGreen
+            _ = b.reactive.tap.observeNext { [unowned self] (_) in
+                #warning("TODO: Implement")
+                GradientLoadingBar.shared.fadeIn()
+                b.setTitle(Text.WaitingForOpponent, for: .normal)
+                self.startVersusGame()
+            }
+            b.layer.cornerRadius = 10
+            return b
+        }()
         
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints { (this) in
-            this.top.equalTo(horizontalStackView.snp.bottom).offset(50)
-            this.leading.equalToSuperview()
-            this.trailing.equalToSuperview()
-            this.bottomMargin.equalToSuperview()
+        let deleteButton: UIButton = {
+            let b = UIButton()
+            b.setTitle(Text.Delete.localized(), for: .normal)
+            b.backgroundColor = .systemRed
+            b.setTitleColor(.white, for: .normal)
+            _ = b.reactive.tap.observeNext { [unowned self] (_) in
+                MessageHandler.shared.showGenericWarningMessage {
+                    FirebaseService.shared.removeFriend(friend: self.friend) { (error) in
+                        if let error = error {
+                            MessageHandler.shared.showMessageModal(theme: .error, title: Text.Error, body: error.localizedDescription)
+                            return
+                        }
+                        MessageHandler.shared.showMessageModal(theme: .warning, title: Text.Warning, body: Text.FriendDeleted)
+                        self.delegate?.fetchFriends()
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                }
+            }
+            return b
+        }()
+        
+        view.addSubview(inviteButton)
+        view.addSubview(deleteButton)
+        inviteButton.snp.makeConstraints { (this) in
+            this.height.equalTo(60)
+            this.left.equalToSuperview().offset(20)
+            this.right.equalToSuperview().offset(-20)
+            this.top.equalTo(horizontalStackView.snp.bottom).offset(60)
         }
-        print("Height: \(horizontalStackView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize))")
-    }
-}
-
-// MARK: - UITableView
-extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return profileSettings.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath) as! SettingsTableViewCell;
-        cell.titleLabel.text = profileSettings[indexPath.row]
-        cell.icon.image = profileSettingIcons[indexPath.row]
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        switch profileSettings[indexPath.row] {
-        case "Settings".localized():
-            openSettings()
-            break
-        case "Change Avatar".localized():
-            openChangeAvatar()
-            break
-        case "Stocks".localized():
-            openStocks()
-            break
-        case "Items".localized():
-            openItems()
-            break
-        default:
-            break
+        deleteButton.snp.makeConstraints { (this) in
+            this.height.equalTo(60)
+            this.left.equalToSuperview()
+            this.right.equalToSuperview()
+            this.bottom.equalToSuperview()
         }
     }
     

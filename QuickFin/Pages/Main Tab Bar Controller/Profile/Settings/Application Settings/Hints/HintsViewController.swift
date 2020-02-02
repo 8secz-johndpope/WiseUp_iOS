@@ -51,7 +51,6 @@ extension HintsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath) as! GenericToggleTableViewCell
         cell.leftLabel.text = menu[indexPath.row]
-        #warning("TODO: Hints settings read from local UserDefaults")
         cell.rightToggle.setOn(true, animated: false)
         
         switch menu[indexPath.row] {

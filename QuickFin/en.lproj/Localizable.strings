@@ -20,7 +20,7 @@
 "Action cancelled." = "Action cancelled.";
 
 // MARK: - Sign In Screen
-"QuickFin:" = "QuickFin:";
+"WiseUp:" = "WiseUp:";
 "A financial literacy game." = "A financial literacy game.";
 "Email" = "Email";
 "Password" = "Password";
@@ -100,3 +100,8 @@
 "Incoming Requests" = "Incoming Requests";
 "Decline" = "Decline";
 "Accept" = "Accept";
+"Invite to 1v1!" = "Invite to 1v1!";
+"Are you sure you want to do this?" = "Are you sure you want to do this?";
+"Warning" = "Warning";
+"Friend Deleted." = "Friend Deleted.";
+"Waiting for opponent..." = "Waiting for opponent...";

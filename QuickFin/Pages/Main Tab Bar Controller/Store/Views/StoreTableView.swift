@@ -37,6 +37,8 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.backgroundColor = .clear
         tableView.sectionHeaderHeight = tableView.estimatedSectionHeaderHeight
         tableView.headerView(forSection: 0)?.layer.masksToBounds = false
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(fetchData), for: .valueChanged)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,7 +49,8 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseID, for: indexPath) as! StoreTableViewCell
         cell.thumbnail.image = FirebaseService.shared.getImage(URL: storeItems[indexPath.row].imageName)
         cell.titleLabel.text = storeItems[indexPath.row].name
-        cell.numberLabel.text = storeItems[indexPath.row].cost.description
+        let toDouble = Double(storeItems[indexPath.row].cost.description)
+        cell.numberLabel.text = String((Double)(toDouble ?? 0)/(100.00))
         cell.descriptionLabel.text = storeItems[indexPath.row].details
         cell.initUI()
         return cell
@@ -57,9 +60,7 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         let detailsVC = StoreItemDetailsViewController()
         detailsVC.item = storeItems[indexPath.row]
-        present(detailsVC, animated: true) {
-            #warning("TODO: Refresh data")
-        }
+        present(detailsVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
