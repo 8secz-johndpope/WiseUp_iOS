@@ -219,7 +219,9 @@ extension FriendsTableViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let friend = getFriendObject(indexPath: indexPath)
         if !friend.isFriendPending() {
-            #warning("TODO: Display friend info?")
+            let nextVC = FriendDetailViewController()
+            nextVC.friend = friend
+            present(nextVC, animated: true, completion:     nil)
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
