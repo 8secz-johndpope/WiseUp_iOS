@@ -213,10 +213,16 @@ class FirebaseService {
                 } else {
                     var friendsArray = [User]()
                     for document in snapshot!.documents {
-                        group.enter()
                         let friend = try! FirebaseDecoder().decode(Friend.self, from: document.data())
                         if friend.uids.count == 2 {
-                            self.db.collection("users").document(friend.uids[1]).getDocument { (snapshot, error) in
+                            group.enter()
+                            var friendUID = String()
+                            if friend.uids[0] == UserShared.shared.uid {
+                                friendUID = friend.uids[1]
+                            } else {
+                                friendUID = friend.uids[0]
+                            }
+                            self.db.collection("users").document(friendUID).getDocument { (snapshot, error) in
                                 if let error = error {
                                     completion((nil, error))
                                 } else {
@@ -228,8 +234,6 @@ class FirebaseService {
                                 }
                                 group.leave()
                             }
-                        } else {
-                            completion((nil, NSError(domain: "", code: 7, userInfo: [NSLocalizedDescriptionKey: Text.FriendListCorrupt])))
                         }
                     }
                     group.notify(queue: .main) {

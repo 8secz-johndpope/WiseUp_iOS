@@ -98,3 +98,5 @@
 "You are already friends! :)" = "You are already friends! :)";
 "You have already sent a friend request." = "You have already sent a friend request.";
 "Incoming Requests" = "Incoming Requests";
+"Decline" = "Decline";
+"Accept" = "Accept";
