@@ -86,4 +86,20 @@ class MessageHandler {
         SwiftMessages.show(config: config, view: view)
     }
     
+    func showGenericWarningMessage(function: @escaping () -> Void) {
+        let warningView = MessageView.viewFromNib(layout: .cardView)
+        warningView.configureTheme(Theme.warning)
+        warningView.configureDropShadow()
+        warningView.configureContent(title: Text.Warning.localized(), body: Text.GenericWarning.localized())
+        warningView.button?.setTitle(Text.Yes.localized(), for: .normal)
+        _ = warningView.button?.reactive.tap.observeNext(with: { (_) in
+            function()
+            SwiftMessages.hide()
+        })
+        var config = SwiftMessages.Config()
+        config.presentationContext = .window(windowLevel: .statusBar)
+        config.preferredStatusBarStyle = .lightContent
+        SwiftMessages.show(config: config, view: warningView)
+    }
+    
 }

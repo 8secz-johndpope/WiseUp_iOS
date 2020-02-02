@@ -116,6 +116,7 @@ class FriendsTableViewController: BaseViewController, FriendsTableViewController
             if let error = error {
                 MessageHandler.shared.showMessage(theme: .error, title: Text.Error, body: error.localizedDescription)
             } else {
+                MessageHandler.shared.showMessage(theme: .warning, title: Text.Warning, body: Text.FriendDeleted)
                 self.fetchFriends()
             }
         }
@@ -221,6 +222,7 @@ extension FriendsTableViewController: UITableViewDelegate, UITableViewDataSource
         if !friend.isFriendPending() {
             let nextVC = FriendDetailViewController()
             nextVC.friend = friend
+            nextVC.delegate = self
             present(nextVC, animated: true, completion:     nil)
         }
         tableView.deselectRow(at: indexPath, animated: true)
