@@ -51,7 +51,7 @@ class StocksViewController: StoreViewController, ItemsViewDelegate {
             for stock in stocks! {
                 var sItem = StoreItem()
                 sItem.name = stock.name
-                sItem.details = "Current Price: \(stock.currentPrice) \t Buy In Price:  \(stock.currentPrice) \n \(stock.details)"
+                sItem.details = "Current Price: \(stock.currentPrice) \t Buy In Price:  \(stock.buyInPrice) \n \(stock.details)"
                 sItem.imageName = stock.imageName
                 sItem.cost = stock.numOfShare
                 sItem.type = "stock"

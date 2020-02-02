@@ -49,8 +49,8 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseID, for: indexPath) as! StoreTableViewCell
         cell.thumbnail.image = FirebaseService.shared.getImage(URL: storeItems[indexPath.row].imageName)
         cell.titleLabel.text = storeItems[indexPath.row].name
-        let toDouble = Double(storeItems[indexPath.row].cost.description)
-        cell.numberLabel.text = String((Double)(toDouble ?? 0)/(100.00))
+        //let toDouble = Double(storeItems[indexPath.row].cost.description)
+        cell.numberLabel.text = storeItems[indexPath.row].cost.description
         cell.descriptionLabel.text = storeItems[indexPath.row].details
         cell.initUI()
         return cell
