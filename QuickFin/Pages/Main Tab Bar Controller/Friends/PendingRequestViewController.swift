@@ -17,6 +17,11 @@ class PendingRequestViewController: BaseViewController {
         initUI()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate?.fetchFriends()
+    }
+    
     weak var delegate: FriendsTableViewControllerDelegate?
     var pendingRequests = [User]()
     var tableView: UITableView!
@@ -66,17 +71,23 @@ extension PendingRequestViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         var actions = [SwipeAction]()
+        let friend = pendingRequests[indexPath.row]
         if orientation == .left {
             let deleteAction = SwipeAction(style: .destructive, title: Text.Decline) { (action, indexPath) in
                 #warning("TODO: Implement reject")
             }
             actions.append(deleteAction)
         } else {
-            let inviteAction = SwipeAction(style: .default, title: Text.Accept) { (action, indexPath) in
-                #warning("TODO: Implement accept")
+            let acceptAction = SwipeAction(style: .default, title: Text.Accept) { [unowned self] (action, indexPath) in
+                FirebaseService.shared.acceptFriendRequest(friendUID: friend.uid) { (error) in
+                    if let error = error {
+                        MessageHandler.shared.showMessageModal(theme: .error, title: Text.Error, body: error.localizedDescription)
+                    }
+                    self.tableView.reloadData()
+                }
             }
-            inviteAction.backgroundColor = .systemGreen
-            actions.append(inviteAction)
+            acceptAction.backgroundColor = .systemGreen
+            actions.append(acceptAction)
         }
         return actions
     }

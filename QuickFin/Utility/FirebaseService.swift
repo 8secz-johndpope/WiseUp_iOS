@@ -309,6 +309,30 @@ class FirebaseService {
         }
     }
     
+    func acceptFriendRequest(friendUID: String, completion: @escaping (Error?) -> Void) {
+        db.collection("friends").whereField("uids", arrayContains: friendUID).getDocuments { [unowned self] (snapshot, error) in
+            if let error = error {
+                completion(error)
+                return
+            }
+            if let snapshot = snapshot {
+                for document in snapshot.documents {
+                    var friend = try! FirebaseDecoder().decode(Friend.self, from: document.data())
+                    if friend.uids.contains(UserShared.shared.uid) {
+                        friend.pending = false
+                    }
+                    let friendSerialized = try! FirebaseEncoder().encode(friend)
+                    self.db.collection("friends").document(document.documentID).setData(friendSerialized as! [String : Any])
+                    completion(nil)
+                    return
+                }
+            }
+            completion(NSError(domain: "", code: 99, userInfo: [NSLocalizedDescriptionKey: Text.SomethingWentWrong]))
+        }
+    }
+    
+    
+    
     func buyStock(stockObject: Stock, completion: @escaping (Error?) -> Void) {
         let encodedStockObject = try! FirebaseEncoder().encode(stockObject)
         self.db.collection("stock-market").addDocument(data: encodedStockObject as! [String : Any])
