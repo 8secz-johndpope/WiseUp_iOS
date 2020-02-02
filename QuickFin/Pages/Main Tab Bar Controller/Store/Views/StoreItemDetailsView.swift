@@ -65,7 +65,7 @@ extension StoreItemDetailsViewController {
                     return b
                 }
             } else if (item.type == "stock") {
-                b.setTitle("Buy for ".localized() + cost.description + " per share", for: .normal)
+                b.setTitle("Buy for \(Double(cost)/100) per share", for: .normal)
                 b.backgroundColor = Colors.DynamicNavigationBarColor
                 
                 b.setTitleColor(Colors.DynamicNavigationTitleColor, for: .normal)
