@@ -49,4 +49,5 @@ struct Text {
     static let Warning = "Warning"
     static let Yes = "Yes"
     static let FriendDeleted = "Friend Deleted."
+    static let WaitingForOpponent = "Waiting for opponent..."
 }

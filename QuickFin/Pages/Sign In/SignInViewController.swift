@@ -44,10 +44,6 @@ class SignInViewController: BaseViewController, LoginButtonDelegate {
                 }
                 return
             }
-            
-            #warning("TODO: Sync data")
-            
-            #warning("ADD TO USERS TABLE OR VERIFY USERS TABLE EXISTS")
         }
     }
 }

@@ -11,6 +11,8 @@
 		4AF99A7647266D921597CE70 /* Pods_QuickFin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D7BD893A3A0D4C145E0C06 /* Pods_QuickFin.framework */; };
 		936E21972E905AC0BE87B63A /* Pods_QuickFinTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABABE90F0C260AFB0EA2199 /* Pods_QuickFinTests.framework */; };
 		951B4C1A23E54BA0007CDF9D /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951B4C1923E54BA0007CDF9D /* Friend.swift */; };
+		955596CD23E6A53300C9C25C /* VersusRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955596CC23E6A53300C9C25C /* VersusRoom.swift */; };
+		955596D023E6A80D00C9C25C /* VersusGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955596CF23E6A80D00C9C25C /* VersusGameViewController.swift */; };
 		95FFDFC923E585D000F04378 /* PendingRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FFDFC823E585D000F04378 /* PendingRequestViewController.swift */; };
 		95FFDFCB23E67FE200F04378 /* FriendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FFDFCA23E67FE200F04378 /* FriendDetailViewController.swift */; };
 		A3646E4D4BC74F28ED688773 /* Pods_QuickFinUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57398B24A77A5C84540D2843 /* Pods_QuickFinUITests.framework */; };
@@ -114,6 +116,8 @@
 		896BD25CA2A72A58BB25B87A /* Pods-QuickFinTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickFinTests.debug.xcconfig"; path = "Target Support Files/Pods-QuickFinTests/Pods-QuickFinTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9248079636F91979E99C1BF2 /* Pods-QuickFinTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickFinTests.release.xcconfig"; path = "Target Support Files/Pods-QuickFinTests/Pods-QuickFinTests.release.xcconfig"; sourceTree = "<group>"; };
 		951B4C1923E54BA0007CDF9D /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		955596CC23E6A53300C9C25C /* VersusRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersusRoom.swift; sourceTree = "<group>"; };
+		955596CF23E6A80D00C9C25C /* VersusGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersusGameViewController.swift; sourceTree = "<group>"; };
 		95FFDFC823E585D000F04378 /* PendingRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingRequestViewController.swift; sourceTree = "<group>"; };
 		95FFDFCA23E67FE200F04378 /* FriendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailViewController.swift; sourceTree = "<group>"; };
 		BF2E7AC023545FCB0048A201 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -247,6 +251,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		955596CE23E6A7FF00C9C25C /* Versus */ = {
+			isa = PBXGroup;
+			children = (
+				955596CF23E6A80D00C9C25C /* VersusGameViewController.swift */,
+			);
+			path = Versus;
+			sourceTree = "<group>";
+		};
 		BF2E7ABF235457920048A201 /* Game */ = {
 			isa = PBXGroup;
 			children = (
@@ -340,6 +352,7 @@
 				E9BE3B5023E5428600CC023F /* Stock.swift */,
 				D5469B4E23398AC70047D09D /* User.swift */,
 				BF5A2E94237C8F4300C7EB87 /* UserShared.swift */,
+				955596CC23E6A53300C9C25C /* VersusRoom.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -347,6 +360,7 @@
 		D54E5BAA23D4017E00E31A39 /* Friends */ = {
 			isa = PBXGroup;
 			children = (
+				955596CE23E6A7FF00C9C25C /* Versus */,
 				D5708F8A23D6D857008D7B2C /* AddFriendViewController.swift */,
 				95FFDFCA23E67FE200F04378 /* FriendDetailViewController.swift */,
 				D54E5BAB23D401CE00E31A39 /* FriendsTableViewController.swift */,
@@ -835,6 +849,7 @@
 				D5BA986B23677D490099D528 /* StoreTableViewCell.swift in Sources */,
 				BFD5653D2339926B007ECD97 /* Chapter.swift in Sources */,
 				D5EA30592337187100F56428 /* BaseViewController.swift in Sources */,
+				955596CD23E6A53300C9C25C /* VersusRoom.swift in Sources */,
 				D570D5FE2333595900AB308B /* AppDelegate.swift in Sources */,
 				D5726DF123546F170077BF95 /* GameView.swift in Sources */,
 				D5708F8B23D6D857008D7B2C /* AddFriendViewController.swift in Sources */,
@@ -872,6 +887,7 @@
 				D5BA986F23677FC70099D528 /* StoreItemDetailsView.swift in Sources */,
 				D5726DF42354710D0077BF95 /* GameTableViewCell.swift in Sources */,
 				D505BA0A2351281A0025E975 /* SettingsViewController.swift in Sources */,
+				955596D023E6A80D00C9C25C /* VersusGameViewController.swift in Sources */,
 				D5BA98662367779B0099D528 /* StoreItem.swift in Sources */,
 				D52471D023401F3900922564 /* BaseNavigationController.swift in Sources */,
 				D505BA13235181080025E975 /* ChangePasswordViewController.swift in Sources */,

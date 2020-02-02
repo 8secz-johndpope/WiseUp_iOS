@@ -31,6 +31,7 @@ class StoreViewController: BaseViewController {
     }
     
     
+    let refreshControl = UIRefreshControl()
     var tableView: UITableView!
     let reuseID = "store"
     var storeItems = [StoreItem]()
@@ -89,7 +90,7 @@ class StoreViewController: BaseViewController {
         }
     }
         
-    func fetchData() {
+    @objc func fetchData() {
         
         // First Get Pre-Cached Chapters (or empty if nothing cached)
         storeItems = CacheService.shared.getCachedStore()
@@ -145,6 +146,7 @@ class StoreViewController: BaseViewController {
                 self.storeItems = self.stockItems
             }
             self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
         }
     
     }

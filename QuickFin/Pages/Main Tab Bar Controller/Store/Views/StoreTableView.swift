@@ -37,6 +37,8 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.backgroundColor = .clear
         tableView.sectionHeaderHeight = tableView.estimatedSectionHeaderHeight
         tableView.headerView(forSection: 0)?.layer.masksToBounds = false
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(fetchData), for: .valueChanged)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,9 +60,7 @@ extension StoreViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         let detailsVC = StoreItemDetailsViewController()
         detailsVC.item = storeItems[indexPath.row]
-        present(detailsVC, animated: true) {
-            #warning("TODO: Refresh data")
-        }
+        present(detailsVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

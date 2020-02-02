@@ -14,7 +14,12 @@ class Core: Codable {
     private init() {}
     
     var coldStart = true
+    var chapters = [Chapter]()
+    var currentVersusChapter: Chapter?
     
-    
+    func randomChapter() -> Chapter {
+        let randomNumber = Int(arc4random_uniform(UInt32(chapters.count)))
+        return chapters[randomNumber]
+    }
 }
 
