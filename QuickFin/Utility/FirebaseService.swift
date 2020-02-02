@@ -183,6 +183,25 @@ class FirebaseService {
         }
     }
     
+    func getPendingFriendRequest(friendUID: String, completion: @escaping ((Friend?, Error?)) -> Void) {
+        db.collection("friends").whereField("uids", arrayContains: friendUID).getDocuments { (snapshot, error) in
+            if let error = error {
+                completion((nil, error))
+                return
+            }
+            if let snapshot = snapshot {
+                for document in snapshot.documents {
+                    let friend = try! FirebaseDecoder().decode(Friend.self, from: document.data())
+                    if friend.uids[1] == UserShared.shared.uid {
+                        completion((friend, nil))
+                        return
+                    }
+                }
+                completion((nil, nil))
+            }
+        }
+    }
+    
     /// Gets all friends of the current user, including pending ones.
     /// - Parameter completion: returns an array of friends (never nil) or an error.
     func getFriends(completion: @escaping (([User]?, Error?)) -> Void) {
@@ -194,10 +213,16 @@ class FirebaseService {
                 } else {
                     var friendsArray = [User]()
                     for document in snapshot!.documents {
-                        group.enter()
                         let friend = try! FirebaseDecoder().decode(Friend.self, from: document.data())
                         if friend.uids.count == 2 {
-                            self.db.collection("users").document(friend.uids[1]).getDocument { (snapshot, error) in
+                            group.enter()
+                            var friendUID = String()
+                            if friend.uids[0] == UserShared.shared.uid {
+                                friendUID = friend.uids[1]
+                            } else {
+                                friendUID = friend.uids[0]
+                            }
+                            self.db.collection("users").document(friendUID).getDocument { (snapshot, error) in
                                 if let error = error {
                                     completion((nil, error))
                                 } else {
@@ -209,8 +234,6 @@ class FirebaseService {
                                 }
                                 group.leave()
                             }
-                        } else {
-                            completion((nil, NSError(domain: "", code: 7, userInfo: [NSLocalizedDescriptionKey: Text.FriendListCorrupt])))
                         }
                     }
                     group.notify(queue: .main) {
@@ -285,6 +308,54 @@ class FirebaseService {
             }
         }
     }
+    
+    func acceptFriendRequest(friendUID: String, completion: @escaping (Error?) -> Void) {
+        db.collection("friends").whereField("uids", arrayContains: friendUID).getDocuments { [unowned self] (snapshot, error) in
+            if let error = error {
+                completion(error)
+                return
+            }
+            if let snapshot = snapshot {
+                for document in snapshot.documents {
+                    var friend = try! FirebaseDecoder().decode(Friend.self, from: document.data())
+                    if friend.uids.contains(UserShared.shared.uid) {
+                        friend.pending = false
+                    }
+                    let friendSerialized = try! FirebaseEncoder().encode(friend)
+                    self.db.collection("friends").document(document.documentID).setData(friendSerialized as! [String : Any])
+                    completion(nil)
+                    return
+                }
+            }
+            completion(NSError(domain: "", code: 99, userInfo: [NSLocalizedDescriptionKey: Text.SomethingWentWrong]))
+        }
+    }
+    
+    func declineFriendRequest(friendUID: String, completion: @escaping (Error?) -> Void) {
+        db.collection("friends").whereField("uids", arrayContains: friendUID).getDocuments { [unowned self] (snapshot, error) in
+            if let error = error {
+                completion(error)
+                return
+            }
+            if let snapshot = snapshot {
+                for document in snapshot.documents {
+                    let friend = try! FirebaseDecoder().decode(Friend.self, from: document.data())
+                    if friend.uids.contains(UserShared.shared.uid) {
+                        self.db.collection("friends").document(document.documentID).delete { (error) in
+                            if let error = error {
+                                completion(error)
+                                return
+                            }
+                            completion(nil)
+                            return
+                        }
+                    }
+                }
+            }
+            //completion(NSError(domain: "", code: 99, userInfo: [NSLocalizedDescriptionKey: Text.SomethingWentWrong]))
+        }
+    }
+    
     
     func buyStock(stockObject: Stock, completion: @escaping (Error?) -> Void) {
         let encodedStockObject = try! FirebaseEncoder().encode(stockObject)
