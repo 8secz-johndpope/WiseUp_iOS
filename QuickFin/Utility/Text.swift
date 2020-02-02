@@ -44,4 +44,9 @@ struct Text {
     static let FriendPendingRequestTitle = "Incoming Requests"
     static let Decline = "Decline"
     static let Accept = "Accept"
+    static let InviteTo1v1 = "Invite to 1v1!"
+    static let GenericWarning = "Are you sure you want to do this?"
+    static let Warning = "Warning"
+    static let Yes = "Yes"
+    static let FriendDeleted = "Friend Deleted."
 }
