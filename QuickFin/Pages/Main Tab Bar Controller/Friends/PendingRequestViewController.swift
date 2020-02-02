@@ -77,7 +77,9 @@ extension PendingRequestViewController: UITableViewDelegate, UITableViewDataSour
                 FirebaseService.shared.declineFriendRequest(friendUID: friend.uid) { (error) in
                     if let error = error {
                         MessageHandler.shared.showMessageModal(theme: .error, title: Text.Error, body: error.localizedDescription)
+                        return
                     }
+                    self.pendingRequests.remove(at: indexPath.row)
                     self.tableView.reloadData()
                 }
             }
@@ -87,7 +89,9 @@ extension PendingRequestViewController: UITableViewDelegate, UITableViewDataSour
                 FirebaseService.shared.acceptFriendRequest(friendUID: friend.uid) { (error) in
                     if let error = error {
                         MessageHandler.shared.showMessageModal(theme: .error, title: Text.Error, body: error.localizedDescription)
+                        return
                     }
+                    self.pendingRequests.remove(at: indexPath.row)
                     self.tableView.reloadData()
                 }
             }
