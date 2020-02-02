@@ -331,6 +331,30 @@ class FirebaseService {
         }
     }
     
+    func declineFriendRequest(friendUID: String, completion: @escaping (Error?) -> Void) {
+        db.collection("friends").whereField("uids", arrayContains: friendUID).getDocuments { [unowned self] (snapshot, error) in
+            if let error = error {
+                completion(error)
+                return
+            }
+            if let snapshot = snapshot {
+                for document in snapshot.documents {
+                    let friend = try! FirebaseDecoder().decode(Friend.self, from: document.data())
+                    if friend.uids.contains(UserShared.shared.uid) {
+                        self.db.collection("friends").document(document.documentID).delete { (error) in
+                            if let error = error {
+                                completion(error)
+                                return
+                            }
+                            completion(nil)
+                            return
+                        }
+                    }
+                }
+            }
+            //completion(NSError(domain: "", code: 99, userInfo: [NSLocalizedDescriptionKey: Text.SomethingWentWrong]))
+        }
+    }
     
     
     func buyStock(stockObject: Stock, completion: @escaping (Error?) -> Void) {
