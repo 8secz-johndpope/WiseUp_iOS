@@ -26,7 +26,7 @@ class StoreTableViewCell: UITableViewCell {
     let thumbnail: UIImageView = {
         let image = "🤔".emojiToImage()?.withAlignmentRectInsets(UIEdgeInsets(top: -5, left: -5, bottom: -5, right: -5))
         let imageView = UIImageView(image: image)
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     

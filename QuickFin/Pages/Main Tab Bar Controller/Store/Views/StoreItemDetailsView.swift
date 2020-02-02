@@ -70,7 +70,9 @@ extension StoreItemDetailsViewController {
                 
                 b.setTitleColor(Colors.DynamicNavigationTitleColor, for: .normal)
                 _ = b.reactive.tap.observeNext { [weak self] (_) in
-                    self?.setStockQuantity()
+                    if !(b.titleLabel!.text!.contains("Sell")) {
+                        self?.setStockQuantity()
+                    }
                 }
                 return b
                 
