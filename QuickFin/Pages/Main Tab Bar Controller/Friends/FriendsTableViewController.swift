@@ -34,8 +34,9 @@ class FriendsTableViewController: BaseViewController, FriendsTableViewController
     var tableView: UITableView!
     let cellReuseID = "friend"
     let group = DispatchGroup()
+    let refreshControl = UIRefreshControl()
     
-    func fetchFriends() {
+    @objc func fetchFriends() {
         GradientLoadingBar.shared.fadeIn()
         FirebaseService.shared.getFriends { [unowned self] (friendsArray, error) in
             if let error = error {
@@ -75,6 +76,7 @@ class FriendsTableViewController: BaseViewController, FriendsTableViewController
             self.tableView.reloadData()
             self.navigationItem.leftBarButtonItem?.action = #selector(self.viewIncomingRequests)
             self.navigationItem.rightBarButtonItem?.action = #selector(self.addFriend)
+            self.refreshControl.endRefreshing()
             GradientLoadingBar.shared.fadeOut()
         }
     }
@@ -143,6 +145,8 @@ extension FriendsTableViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(FriendsTableViewCell.self, forCellReuseIdentifier: cellReuseID)
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(fetchFriends), for: .valueChanged)
         
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (this) in

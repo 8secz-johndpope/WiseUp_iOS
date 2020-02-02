@@ -73,8 +73,13 @@ extension PendingRequestViewController: UITableViewDelegate, UITableViewDataSour
         var actions = [SwipeAction]()
         let friend = pendingRequests[indexPath.row]
         if orientation == .left {
-            let deleteAction = SwipeAction(style: .destructive, title: Text.Decline) { (action, indexPath) in
-                #warning("TODO: Implement reject")
+            let deleteAction = SwipeAction(style: .destructive, title: Text.Decline) { [unowned self] (action, indexPath) in
+                FirebaseService.shared.declineFriendRequest(friendUID: friend.uid) { (error) in
+                    if let error = error {
+                        MessageHandler.shared.showMessageModal(theme: .error, title: Text.Error, body: error.localizedDescription)
+                    }
+                    self.tableView.reloadData()
+                }
             }
             actions.append(deleteAction)
         } else {
