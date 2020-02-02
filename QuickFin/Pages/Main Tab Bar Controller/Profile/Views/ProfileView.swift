@@ -15,7 +15,7 @@ protocol ProfileViewDelegate: class {
 
 extension ProfileViewController: ProfileViewDelegate {
         
-    func initUI() {
+    @objc func initUI() {
         profileImageView = {
             let imageView = UIImageView()
             imageView.contentMode = .scaleAspectFill

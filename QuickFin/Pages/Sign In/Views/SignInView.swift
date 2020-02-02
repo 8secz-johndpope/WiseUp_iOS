@@ -23,7 +23,7 @@ extension SignInViewController {
         let logoImageView = UIImageView(image: logo)
         let quickFinTitleLabel: UILabel = {
             let l = UILabel()
-            l.text = "QuickFin:".localized()
+            l.text = "" + "WiseUp:".localized()
             l.font = UIFont.systemFont(ofSize: FontSizes.largeNavTitle, weight: .bold)
             return l
         }()
