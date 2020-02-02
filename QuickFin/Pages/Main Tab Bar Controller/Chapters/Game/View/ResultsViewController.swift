@@ -127,7 +127,6 @@ extension ResultsViewController {
     func initUI() {
         progressRing = {
             let ring = UICircularProgressRing()
-            #warning("TODO: Replace dummy data with real data")
             ring.maxValue = 100
             ring.style = .ontop
             ring.outerRingColor = .clear
@@ -140,7 +139,6 @@ extension ResultsViewController {
         expLabel = {
             let l = UILabel()
             l.font = UIFont.systemFont(ofSize: FontSizes.largeNavTitle, weight: .bold)
-            #warning("TODO: Replace dummy data with real data")
             l.text = "+\(coinsGained) Coins"
             l.textColor = Colors.DynamicTextColor
             return l

@@ -400,6 +400,54 @@ class FirebaseService {
         }
     }
     
+    func setVersusRoom(room: VersusRoom, completion: @escaping ((VersusRoom?, Error?)) -> Void) {
+        if let autoID = room.autoID {
+            let serializedRoom = try! FirebaseEncoder().encode(room) as! [String: Any]
+            db.collection("versus").document(autoID).setData(serializedRoom, merge: true) { (error) in
+                completion((room, error))
+            }
+        } else {
+            let newDoc = db.collection("versus").document()
+            var roomWithID = room
+            roomWithID.autoID = newDoc.documentID
+            let serializedRoom = try! FirebaseEncoder().encode(roomWithID) as! [String: Any]
+            newDoc.setData(serializedRoom) { (error) in
+                completion((roomWithID, error))
+            }
+        }
+    }
+    
+    func updateAnswerInVersusRoom(room: VersusRoom, completion: @escaping (Error?) -> Void) {
+        if let autoID = room.autoID {
+            var answersArray = room.p0Answers
+            var fieldToUpdate = "p0Answers"
+            if room.uid0 != UserShared.shared.uid {
+                answersArray = room.p1Answers
+                fieldToUpdate = "p1Answers"
+            }
+            db.collection("versus").document(autoID).updateData([fieldToUpdate: answersArray]) { (error) in
+                completion(error)
+            }
+        }
+    }
+    
+    func listenForOpponentJoin(room: VersusRoom, completion: @escaping (Error?) -> Void) {
+        db.collection("versus").document(room.autoID!).addSnapshotListener { (snapshot, error) in
+            if let error = error {
+                completion(error)
+                return
+            }
+            if let snapshot = snapshot {
+                let modifiedRoom = try! FirebaseDecoder().decode(VersusRoom.self, from: snapshot.data()!)
+                if modifiedRoom.allJoined {
+                    completion(nil)
+                } else {
+                    completion(NSError(domain: "", code: 12, userInfo: [NSLocalizedDescriptionKey: Text.SomethingWentWrong]))
+                }
+            }
+        }
+    }
+    
 }
 
 
