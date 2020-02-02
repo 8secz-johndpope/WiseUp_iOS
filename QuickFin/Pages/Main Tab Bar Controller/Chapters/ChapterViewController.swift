@@ -17,6 +17,7 @@ class ChapterViewController: BaseViewController, UICollectionViewDelegate, UICol
     private let widthOffset: CGFloat = 20
     var chapters: [Chapter]?
     var collectionView: UICollectionView!
+    let emojiArray = ["🔆", "🧮", "😊", "🎲", "🏆", "⛩", "💎"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +80,10 @@ class ChapterViewController: BaseViewController, UICollectionViewDelegate, UICol
         
         if let chapter = chapters?[indexPath.item] {
             cell.name = chapter.name.replacingOccurrences(of: "%20", with: " ")
-            cell.imageName = chapter.imageName
+            
+            #warning("TODO: Implement")
+            //cell.imageName = chapter.imageName
+            cell.iconImageView.image = emojiArray[indexPath.row].emojiToImage()
             
             if UserShared.shared.achievementsCompleted.contains(chapter.name + "PerfectChapter".localized()) {
                 cell.setAcedFlag()
